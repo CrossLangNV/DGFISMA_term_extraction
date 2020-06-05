@@ -24,9 +24,6 @@ import math
 import string
 from collections import Counter
 
-global nlp
-nlp = spacy.load("en_core_web_sm") 
-
 #---------------------
 #TERM EXTRACTION
 #---------------------
