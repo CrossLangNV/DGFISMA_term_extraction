@@ -7,7 +7,6 @@ from django.shortcuts import HttpResponse
 from django.core.exceptions import *
 from .forms import NameForm
 import pandas as pd
-import contractions
 from .pipeline import terms
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -21,7 +20,7 @@ class TermView ( APIView):
 
     #for a single text doc
     def post(self, request): 
-        corpus_table = pd.read_csv('/path/to/the/file.csv')
+        #corpus_table = pd.read_csv('/path/to/the/file.csv')
     
         doc_id = 1 # should be unique for each input, to be amended
         f = request.data # the input is a json with 'content' and 'content_type'
@@ -58,10 +57,10 @@ class TermView ( APIView):
             list_of_terms.append(x)
         #pandas_dataframe_1 = pd.DataFrame.from_dict(dict_1) #(id_doc | term x-gram | count x-gram | tf )
         pandas_dataframe_2 = pd.DataFrame.from_dict(dict_2) # literally all ngrams, not just terms
-        corpus_table = corpus_table.append(pandas_dataframe_2)
-        aggregation_functions = {'df': 'sum'}
-        corpus_table = corpus_table.groupby(corpus_table['ngrams']).aggregate(aggregation_functions)
-        corpus_table.to_csv('/path/to/the/file.csv')
+        #corpus_table = corpus_table.append(pandas_dataframe_2)
+        #aggregation_functions = {'df': 'sum'}
+        #corpus_table = corpus_table.groupby(corpus_table['ngrams']).aggregate(aggregation_functions)
+        #corpus_table.to_csv('/path/to/the/file.csv')
         
         return HttpResponse(str(list_of_terms))
         

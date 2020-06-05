@@ -21,10 +21,12 @@ RUN conda update -y conda
 RUN apt-get update && apt-get dist-upgrade
 #RUN apt-get -y install --reinstall build-essential &&
 RUN apt-get -y install gcc
+RUN apt-get -y install vim
 
-RUN conda install -y python=3.7.3
+RUN conda install -y python=3.7
 RUN conda install -c conda-forge pyemd
-
+RUN conda install -c conda-forge spacy
+RUN conda install -c conda-forge spacy-model-en_core_web_md
 
 RUN pip install lxml==4.5.0 \
                 Django==3.0.5 \
@@ -39,11 +41,11 @@ RUN pip install lxml==4.5.0 \
                 pandas==1.0.1 \
                 ipython \
                 nltk \
-                spacy \
+                #spacy \
                 pybase64 \
                 jsonlines \
                 contractions
 
-RUN python -m spacy download en_core_web_sm
 
+#RUN python -m spacy download en_core_web_sm
 #CMD python /django/manage.py makemigrations && python /django/manage.py migrate && python /django/manage.py runserver 0.0.0.0:5000
