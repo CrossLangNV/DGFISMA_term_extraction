@@ -72,7 +72,7 @@ def calculate_tf(finder, doc_for_tf_idf, full_term_list, doc_id):
         
     #counting the number of n grams per sentence
     for sentence in doc_for_tf_idf.split('.'):
-        if (len(sentence.split()) > 1 and len(sentence.split()) <= max(lengths)) or (len(sentence.split()) > 1 and len(sentence.split()) > max(lengths)):
+        try:
             sentence = sentence.translate(str.maketrans('', '', string.punctuation.replace("/", "")))
             for x in range(1, min(len(sentence.split()), max(lengths))):
                 vectorizer = CountVectorizer(token_pattern=r'\b\w+\b', stop_words=None, ngram_range = (x,x))
@@ -85,6 +85,8 @@ def calculate_tf(finder, doc_for_tf_idf, full_term_list, doc_id):
                     counts[str(x) + '-grams'].append(ngram_count)
                 else:
                     counts.update({str(x) + '-grams':[ngram_count]})
+        except:
+            continue
     #vectorizer = CountVectorizer(token_pattern=r”(?u)\b\w+\b”, stop_words=None, ngram_range = (x,x)) <= old pattern
     for x in counts:
         ngrams_and_counts.update({x:sum(counts[x])})
