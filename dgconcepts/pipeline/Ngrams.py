@@ -65,8 +65,7 @@ Judicael POUMAY (judicael.poumay@gmail.com)
 from nltk.tokenize  import  word_tokenize
 from nltk.corpus    import stopwords
 from statistics     import mean 
-#from . import utils
-#from utils          import *
+from . import utils
 import contractions
 import numpy as np
 import spacy
@@ -74,9 +73,8 @@ import nltk
 import math
 import re
 
-
 #Constants
-POSTAGGER                   = spacy.load('en_core_web_md')
+POSTAGGER                   = spacy.load('en_core_web_lg')
 NGRAM_FREQ                  = 0
 NGRAM_POS                   = 1
 NGRAM_SIZE                  = 2
@@ -133,6 +131,12 @@ class NgramsFinder:
         self.stopwords.add("more")
         self.stopwords.add("regardless")
         self.stopwords.add("without")
+        self.stopwords.add("whereas") #alina
+        self.stopwords.add("therefore") #alina
+        self.stopwords.add("except") #alina
+        self.stopwords.add("hereto") #alina
+        self.stopwords.add("where") #alina
+        self.stopwords.add("which") #alina
         self.stopwords.add("due")
         self.stopwords.add("thereof")
         self.stopwords.add("please")
@@ -255,247 +259,7 @@ class NgramsFinder:
         self.nonValidWords.add("point")      
         self.nonValidWords.add("points")      
         
-    #---------------------------    
-    #Supergram discovery
-    #---------------------------    
-    def getNgramOccurenceList(self):
-        """
-        Task
-        ----
-            Creates a vector posAndNgram containing, for all n in [2,nMax], ngrams and related information sorted by their corresponding position.
-            Note that, an ngram may appear multiple time at different poisition in the result.
-            
-        Output
-        ------
-            A list of occurence.
-            Each elements contains the position, value, size, and tokens 
-            of the n-gram at that position.
-            
-            Example of output: 
-            POS  | ngram                        | size | tokens
-            ------------------------------------------------------
-            5    | financial assets             | 2    | ["financial", "assets"]
-            10   | capital ratio                | 2    | ["capital", "ratio"]
-            25   | high quality covered bonds   | 4    | ["high", "quality", "covered", "bonds"]
-            50   | own debt securities          | 3    | ["own", "debt", "securities"]
-            60   | financial assets             | 2    | ["financial", "assets"]
-            75   | own debt securities          | 3    | ["own", "debt", "securities"]
-        """
-        posAndNgram = []                
-        for i in range(1,self.nMAx):          
-            for ngram in [x[1] for x in self.getSortedNgrams(i,self.getOne,False)]:
-                for pos in self.ngrams[i][ngram][NGRAM_POS]:
-                    posAndNgram.append([pos, 
-                                        ngram, 
-                                        self.ngrams[i][ngram][NGRAM_SIZE], 
-                                        self.ngrams[i][ngram][NGRAM_TOKENS]])                    
-        return sorted(posAndNgram, key=lambda tup: tup[0])
-    
-    def getPrunedSuperGram(self,tokenizedSN):
-        """
-        Task
-        ----
-            Prune (right) supergram token sequence 
-                if > self.superGramMaxSize
-        Args
-        ----
-            tokenizedSN,
-                List of tokens
-        Output
-        ------
-            String derived from the pruned sequence of tokens.            
-        """
-        #get token subset
-        j = 0
-        res = []
-        for i,t in enumerate(tokenizedSN):
-            if not self.isStopword(t):
-                j += 1
-            if(j == self.superGramMaxSize): 
-                res = tokenizedSN[0:i+1]
-                break
-        
-        #produce string from resulting token subset
-        ret = ""
-        for r in res:
-            ret += r+" "            
-        return ret[0:-1]
-    
-    def getSuperGramSize(self,tokenizedSN):
-        """
-        Task
-        ----
-            Counts the number of non-stopwords words in a sequence of tokens
-        Args
-        ----
-            tokenizedSN,
-                List of tokens
-        Output
-        ------
-            Number of non-stopwords words in tokenizedSN
-        """
-        #count non-stopwords tokens
-        res = 0
-        for t in tokenizedSN:
-            if not self.isStopword(t):
-                res += 1
-        return res
-    
-    def superGramCleaning(self):
-        """
-        Task
-        ----
-            Cleans the self.superNgram set : 
-                Frequency filtering
-                Pruning
-                Subset filtering
-        """
-        #remove infrequent supergram
-        InfrequentSuperNgram = [k for k in self.superNgram 
-                                    if self.superNgram[k][0] < self.freqThreshold]
-        for k in InfrequentSuperNgram:
-            try:
-                del self.superNgram[k]
-                continue
-            except KeyError:
-                pass    
-        
-        #get pruned SN to add and their old version to delete
-        toDel = []
-        toAdd = []
-        for sn in self.superNgram.keys():
-            tokenizedSN = self.tokenize(sn)
-            if self.getSuperGramSize(tokenizedSN) > self.superGramMaxSize:                                      
-                prunedSn = self.getPrunedSuperGram(tokenizedSN)
-                toAdd.append(prunedSn)
-                toDel.append(sn)
-        
-        #add pruned SN to dict
-        for k in toAdd:        
-            if k in self.superNgram.keys():
-                self.superNgram[k][1].extend(self.superNgram[sn][1])
-                self.superNgram[k][3].extend(self.superNgram[sn][3])
-            else:
-                self.superNgram[k] = self.superNgram[sn]
-            self.superNgram[k][2] = self.superGramMaxSize
-            
-        #Remove old version of pruned SN
-        for k in toDel:
-            check = True
-            for a in toAdd:
-                if(k == a): 
-                    check = False
-                    break
-            if(check):
-                try:
-                    del self.superNgram[k]
-                    continue
-                except KeyError:
-                    pass      
-                
-        #Find supergrams that are subset of others
-        toDel = []
-        for toTest in self.superNgram.keys():
-            for sng in self.superNgram.keys():
-                if(toTest != sng and toTest in sng):
-                    toDel.append(toTest)
-                    
-        #Remove supergrams found
-        for k in toDel:
-            try:
-                del self.superNgram[k]
-                continue
-            except KeyError:
-                pass      
-    
-    def areValidlyLinked(self,tokens,elem1,elem2):
-        """ Auxillary function for findSuperNgrams """
-        """
-        Task
-        ----
-            Checks if two elements are linked
-        Args
-        ----
-            Boolean,
-                True if validly linked
-                
-            link,
-                tokenized sequence of words linking the two elements
-        """
-        link = tokens[elem1[0]+elem1[2]:elem2[0]]        
-        if(not self.hasNoSymbols(link)):
-            return False, link
-        for l in link:
-            if not self.isStopword(l) or l in self.nonValidWords:
-                return False, link
-        return True, link
-    
-    def findSuperNgrams(self,tokens):
-        """
-        Task
-        ----
-            Derives supergrams from the detected n-grams
-        Args
-        ----
-            tokens,
-                List of tokens
-                Produced by tokenizing the initial document using cleanText
-        """
-        posAndNgram = self.getNgramOccurenceList()
-        i = 0
-        while(i < len(posAndNgram)):
-            #create chain of validly linked subElements
-            links = []            
-            subElements = [list(posAndNgram[i])]
-            for j in range(1,len(posAndNgram)-i):
-                                
-                #find and check link. 
-                #If invalid => break 
-                validLink, link = self.areValidlyLinked(tokens,
-                                                        subElements[-1],
-                                                        posAndNgram[i+j])
-                links.append(link)
-                if(not validLink):
-                    i += len(subElements)-1
-                    break
-                                    
-                #Check if overlap between two subElements (ngrams). 
-                #If overalap remove overlap in current last subElements
-                overlap = subElements[-1][0]+subElements[-1][2]-posAndNgram[i+j][0]
-                if(overlap > 0):
-                    tmp = subElements[-1][3]
-                    tmp = tmp[0:-overlap]
-                    res = ""
-                    for t in tmp:
-                        if t != "":
-                            res += t+" "
-                    subElements[-1][1] = res[0:-1]
-                    
-                #finally append subElements
-                subElements.append(list(posAndNgram[i+j]))                                
-            i+=1
-            
-            #if valid add super-ngrams to list
-            if(len([s[1] for s in subElements if s[1] != ""]) > 1):
-                superNgram, size, _ = self.fuse([subElements[j][1] for j in range(len(subElements))],links)   
-                tokenizedSN         = self.tokenize(superNgram)
-                size                = self.getSuperGramSize(tokenizedSN)                 
-                if(size > self.nMAx-2):
-                    pos = subElements[0][0]          
-                    
-                    #add new supergram to list or increment existing one
-                    if (superNgram in self.superNgram.keys() 
-                            and pos not in self.superNgram[superNgram][1]):
-                        self.superNgram[superNgram][1].append(pos)
-                    else:
-                        self.superNgram[superNgram] = [self.cleanedText.count(superNgram),
-                                                        [pos],
-                                                        size,
-                                                        tokenizedSN]
-                    
-        #clean set of supergram
-        self.superGramCleaning()
-    
+
     #---------------------------   
     #Ngram discovery
     #---------------------------   
@@ -536,7 +300,6 @@ class NgramsFinder:
         for i in range(1,self.nMAx):
             wordsVector     = [0 for j in range(i)]
             stopwordsMatrix = [[] for j in range(i)]            
-            
             #for each word either add to stopwords list 
             #or shift wordsVector and stopwordsMatrix content 
             #and add new ngram to dict
@@ -559,11 +322,7 @@ class NgramsFinder:
                         if hasNoSymbols:
                             self.addEntry(wordsVector,stopwordsMatrix,i,pos)
         
-        #find super-ngrams
-        print("discovering supergrams")
-        self.findSuperNgrams(tokens)                
-        
-        return clean_data # Alina
+        return clean_data 
         
     def fuse(self,wordsVector,stopwordsMatrix):
         """
@@ -650,6 +409,19 @@ class NgramsFinder:
         #get fused ngram
         ngram, size, tokens = self.fuse(wordsVector,stopwordsMatrix)              
         
+        ###
+        #added grammar check Alina
+        doc = POSTAGGER(ngram)
+        labels = ['ADP', 'VERB', 'PRON', 'CCONJ', 'SCONJ' ]
+        #if any(word.pos_ in labels for word in doc) == False  and any(word in self.stopwords for word in doc) == False:
+        if any(word.pos_ in labels for word in doc) == False:
+            chunks = list(doc.noun_chunks)
+            if len(chunks) > 0:
+                last_chunk = list(doc.noun_chunks)[-1]
+                last_chunk = str(last_chunk)
+                ngram = (ngram.split(last_chunk)[0] + last_chunk)
+        ###
+        
         #If exist, increment count and add new position
         if ngram in self.ngrams[i].keys():
             self.ngrams[i][ngram][NGRAM_FREQ] += 1
@@ -658,8 +430,8 @@ class NgramsFinder:
         else:
             if(self.isValidTerm(ngram,tokens)):            
                 tok, tags = self.getPOS(ngram)
-                if((tags[0] != "VERB" or tok[0].endswith("ed"))
-                    and (tags[-1] != "VERB" or tok[-1].endswith("ed"))):                                        
+                if((tags[0] != "VERB" or not tok[0].endswith("ed")) #alina
+                    and (tags[-1] != "VERB" or not tok[-1].endswith("ed"))): #alina                                     
                         self.ngrams[i][ngram] = [1,
                                                 [pos-size+1],
                                                 size,
@@ -811,7 +583,7 @@ class NgramsFinder:
         data = data.lower()
         data = contractions.fix(data)       
 
-        """
+        
         data = data.replace('implementing technical standards with regard to supervisory reporting of institutions according to regulation','')
         data = data.replace('exposuresthe','exposures. the')
         data = data.replace('/',' / ')
@@ -823,9 +595,9 @@ class NgramsFinder:
         data = data.replace(' - ',' |-| ')
         data = data.replace('as defined in',' | ')
         data = data.replace(' eur ',' | ')
-        data = data.replace('\r',' | ')
-        data = data.replace('\n',' | ')
-        """
+        #data = data.replace('\r',' | ')
+        #data = data.replace('\n',' | ')
+        
         #cache and return
         self.cleanedText = data        
         self.tokenedData = self.tokenize(data) # Alina
@@ -898,6 +670,7 @@ class NgramsFinder:
         return False
         
     def isValidTerm(self,ngram,tokens):
+        
         """
         Task
         ----
@@ -926,7 +699,6 @@ class NgramsFinder:
         for w in self.nonValidWords:
             if(w in tokens):
                 return False
-                
         return True
         
     def hasNoSymbols(self,tokens):
