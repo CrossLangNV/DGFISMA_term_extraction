@@ -137,6 +137,10 @@ class NgramsFinder:
         self.stopwords.add("hereto") #alina
         self.stopwords.add("where") #alina
         self.stopwords.add("which") #alina
+        self.stopwords.add("whereof") #alina
+        self.stopwords.add("since") #alina
+        self.stopwords.add("hereby") #alina
+        
         self.stopwords.add("due")
         self.stopwords.add("thereof")
         self.stopwords.add("please")
