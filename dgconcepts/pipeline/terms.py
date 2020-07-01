@@ -7,7 +7,6 @@ from threading import Thread
 from os import listdir
 import argparse
 import contractions
-from .utils import *
 import time
 import sys
 import re
@@ -23,6 +22,86 @@ from spacy.lang.en import English
 import math
 import string
 from collections import Counter
+
+
+global nlp
+nlp = spacy.load("en_core_web_lg") 
+global spacy_stopwords
+spacy_stopwords = spacy.lang.en.stop_words.STOP_WORDS
+global labels
+labels = ['ADP', 'VERB', 'PRON', 'CCONJ', 'SCONJ' ]
+#---------------------
+#ABBREVIATION EXTRACTION
+#---------------------
+def extractAbbvTerm(tokens,i):
+    """
+    Task
+    ----
+        extracts extended form of an abbreviation
+    Args
+    ----
+        tokens,
+            tokenized text to analyze
+            
+        i,
+            index of abbreviation token
+            
+    Output
+    ------
+        extended form if any else None
+    """  
+    abbv = tokens[i]
+    k = 1
+    for j,c in enumerate(abbv[::-1]):
+        sw = set(stopwords.words('english')) 
+        while(i-j-k >= 0 and tokens[i-j-k][0] != c and c.isupper() and (tokens[i-j-k] in sw or tokens[i-j-k] == '’' or tokens[i-j-k][0] == '(')):
+            k += 1
+        if(i-j-k < 0 or (c.isupper() and tokens[i-j-k][0].lower() != c.lower())):
+            return None
+    
+    res = ""
+    for t in tokens[i-len(abbv)-k+1:i]:
+        if(t != "’" and t != "(" and t != "{" and t != "["):
+            res +=t+" "    
+    return res
+
+def findall(p, s):
+    '''Yields all the positions of
+    the pattern p in the string s.'''
+    i = s.find(p)
+    while i != -1:
+        yield i
+        i = s.find(p, i+1)
+    
+        
+def extractAbbv(tokens):
+    """
+    Task
+    ----
+        Extract all token which are possible candidate for abbreviation
+    Args
+    ----
+        tokens,
+            Tokens to to analyze
+            
+    Output
+    ------
+        list of candidate abbreviation
+    """  
+    sw = set(stopwords.words('english')) 
+    res = []    
+    for i,t in enumerate(tokens):
+        prop = sum(1 for c in t if c.isupper())/len(t)
+        if(prop > 0.5 
+                and len(t) < 6 
+                and len(t) > 1 
+                and t.lower() not in sw 
+                and sum(1 for c in t if c == 'V' or c=='I') != len(t) 
+                and t.isalpha()):
+            term = extractAbbvTerm(tokens,i)
+            if(term is not None):
+                res.append((t,term))
+    return list(set(res))
 
 #---------------------
 #TERM EXTRACTION
@@ -48,7 +127,7 @@ def getTermLists(finder):
 
     return ng1, ng2, ng3, ng4
 
-def calculate_tf(finder, doc_for_tf_idf, full_term_list, doc_id):
+def calculate_tf(finder, doc_for_tf_idf, full_term_list):
     ##### Getting tf for all terms
     #TF = (Frequency of the word in the sentence) / (Total number of words in the sentence)
     #IDF: (Total number of sentences (documents))/(Number of sentences (documents) containing the word)
@@ -59,9 +138,8 @@ def calculate_tf(finder, doc_for_tf_idf, full_term_list, doc_id):
     txt1 = []
     txt1.append(doc_for_tf_idf)
     
-    all_ngrams_and_frequencies = {'ngrams':[], 'df': []} # all ngrams per doc (for the main corpus)
     ngrams_and_counts = {} #the number of ngrams for tf calculation
-    all_ngrams_and_metrics = {"id_doc" : doc_id, "term_ngram" : [], "count":[], "tf":[]} # table of terms per doc
+    all_ngrams_and_metrics = {"ngrams" : [], "count":[], "tf":[]} # table of terms per doc
     terms_and_frequencies = [] #intermediate list of terms and frequency counts
     counts = {} #defining the ngram range
     for x in range(1, max(lengths)):
@@ -82,8 +160,8 @@ def calculate_tf(finder, doc_for_tf_idf, full_term_list, doc_id):
                     counts[str(x) + '-grams'].append(ngram_count)
                 else:
                     counts.update({str(x) + '-grams':[ngram_count]})
-        except:
-            continue
+        except ValueError:
+            pass
     #vectorizer = CountVectorizer(token_pattern=r”(?u)\b\w+\b”, stop_words=None, ngram_range = (x,x)) <= old pattern
     for x in counts:
         ngrams_and_counts.update({x:sum(counts[x])})
@@ -97,31 +175,34 @@ def calculate_tf(finder, doc_for_tf_idf, full_term_list, doc_id):
     terms_and_frequencies = list(map(tuple, d.items()))
     for element in terms_and_frequencies:
         term_length = len(element[0].split())
-        if element[1] > 1 and term_length <= max(lengths): #getting rid of all entries that occur only once
-            all_ngrams_and_frequencies["ngrams"].append(element[0])
-            all_ngrams_and_frequencies["df"].append(element[1])
-        if element[0] in full_term_list and element[1] > 1 : #sanity check for the uliege terms
-            all_ngrams_and_metrics["term_ngram"].append(element[0])
+
+        if element[0] in full_term_list: #terms that only occur once are included here
+        
+            all_ngrams_and_metrics["ngrams"].append(element[0])
             all_ngrams_and_metrics["count"].append(element[1])
             all_ngrams_and_metrics["tf"].append(element[1] / ngrams_and_counts[str(term_length)+'-grams'])
     
     dict_1 = all_ngrams_and_metrics
-    dict_2 = all_ngrams_and_frequencies
-    return dict_1, dict_2
-    
-def formatAllList(finder, lowerTexts, doc_for_tf_idf, doc_id):    
+
+    return dict_1
+
+
+def formatAllList(finder, doc_for_tf_idf):    
 
     ng1, ng2, ng3, ng4 = getTermLists(finder)
     full_term_list = ng1 + ng2 + ng3 + ng4
-    dict_1, dict_2 = calculate_tf(finder, doc_for_tf_idf, full_term_list, doc_id)
-    return dict_1, dict_2
+    dict_1 = calculate_tf(finder, doc_for_tf_idf, full_term_list)
+
+    return dict_1
 
 #---------------------
 #MAIN FUNCTION
 #---------------------
-def analyzeFile(texts, lowerTexts , doc_id):
+def analyzeFile(texts):
 
     finder = NgramsFinder(5)   
     doc_for_tf_idf = finder.feedText(texts)
-    dict_1, dict_2 = formatAllList(finder, lowerTexts, doc_for_tf_idf, doc_id)
-    return dict_1, dict_2
+    abbv = extractAbbv(word_tokenize(texts))
+    abbv = pd.DataFrame(abbv, columns =['abbv', 'term'])
+    dict_1 = formatAllList(finder, doc_for_tf_idf)
+    return dict_1, abbv
