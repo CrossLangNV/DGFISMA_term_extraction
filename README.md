@@ -1,6 +1,7 @@
 # term-extraction
 
-use "dbuild.sh" to build the docker image 
+use "dbuild.sh" to build the docker image
+
 use "dcli.sh" to start a docker container
 
 Given a document (json), e.g.: https://github.com/alina-crosslang/term-extraction/blob/master/example.json, the program will return a json containing terms and tf-idf scores for each term, e.g: 
