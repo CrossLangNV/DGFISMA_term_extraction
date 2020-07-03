@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
-import json
+import re
 import os
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
@@ -12,14 +12,11 @@ from .pipeline import terms, cleaning
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from lxml import html
-from lxml.html.clean import Cleaner
-from .models import TermModel
-from .serializers import TermModelSerializer
 import base64
+import time 
 
 class TermView ( APIView):
-    
-    #voc = set(pd.read_csv(os.path.join(os.path.dirname(__file__), '/pipeline/fisma-voc-filtered.csv'))['ngrams'])
+    dic = set(line.strip() for line in open(os.path.join(settings.MEDIA_ROOT, 'words.txt'))) #voc file for pdf preprocessing 
     pandas_dataframe_2 = pd.read_csv(os.path.join(settings.MEDIA_ROOT, 'full_dgf_jsons_table2.csv'))
     def check_abbvs(self, dict_1, abbvs):
         for x in dict_1['ngrams']:
@@ -29,7 +26,7 @@ class TermView ( APIView):
                 dict_1['ngrams'][dict_1['ngrams'].index(x)] = abbvs['abbv'][abbvs['term'].index(x)] + ' ∙ ' + x
     
     def post(self, request): 
-    
+        start = time.time()
         f = request.data # the input is a json with 'content' and 'content_type'
         if f['content_type'] == 'html':
             decoded_content = base64.b64decode(f['content']).decode('utf-8')
@@ -40,9 +37,17 @@ class TermView ( APIView):
             raw_text = cleaning.clean_html(decoded_content)
         
         if f['content_type'] == 'pdf':
-            decoded_content = base64.b64decode(f['content']).decode('utf-8')
+            decoded_content = base64.b64decode(f['content']).decode("utf-8").replace('\xad', '')
+            newlines = re.findall(r'[a-zA-z]+\n[a-zA-z]+',str(decoded_content))
+            for x in newlines:
+                if not x.split('\n')[0].lower() in self.dic and not x.split('\n')[1].lower() in self.dic and str(x.split('\n')[0].lower()+x.split('\n')[1]).lower() in self.dic:                
+                    decoded_content = decoded_content.replace(x, x.replace('\n', ''))
+            otherlines = re.findall(r'[a-zA-z]+\-\n[a-zA-z]+',str(decoded_content))
+            for x in otherlines:
+                if not x.split('\n')[0].lower() in self.dic and not x.split('\n')[1].lower() in self.dic and str(x.split('\n')[0].lower()+x.split('\n')[1]).lower() in self.dic:                
+                    decoded_content = decoded_content.replace(x, x.replace('\n', ''))
             raw_text = [s for s in decoded_content.splitlines() if s]
-
+            
         raw_text = ' '.join(raw_text)
 
         dict_1, abbvs = terms.analyzeFile(raw_text)
@@ -62,5 +67,7 @@ class TermView ( APIView):
         value_to_return = {}
         for x, y in zip(t1['ngrams'], t1['tfidf']):
             value_to_return.update({x : y})
-                
+        
+        end = time.time()
+        print(end-start)
         return HttpResponse(str(value_to_return))
