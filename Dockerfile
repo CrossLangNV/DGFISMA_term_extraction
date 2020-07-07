@@ -44,8 +44,11 @@ RUN pip install lxml==4.5.0 \
                 #spacy \
                 pybase64 \
                 jsonlines \
-                contractions
+                contractions \
+		bs4==0.0.1
 
+RUN python -m nltk.downloader stopwords
+RUN python -m nltk.downloader punkt
 
 #RUN python -m spacy download en_core_web_sm
 #CMD python /django/manage.py makemigrations && python /django/manage.py migrate && python /django/manage.py runserver 0.0.0.0:5000
