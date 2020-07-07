@@ -184,6 +184,15 @@ class NgramsFinder:
         self.nonValidWords.add("according")  
         self.nonValidWords.add("accordance")  
         self.nonValidWords.add("qualify")  
+        self.nonValidWords.add("whereas") #alina
+        self.nonValidWords.add("therefore") #alina
+        self.nonValidWords.add("except") #alina
+        self.nonValidWords.add("hereto") #alina
+        self.nonValidWords.add("where") #alina
+        self.nonValidWords.add("which") #alina
+        self.nonValidWords.add("whereof") #alina
+        self.nonValidWords.add("since") #alina
+        self.nonValidWords.add("hereby") #alina
         
         #noisy symbols
         self.nonValidWords.add("january")
