@@ -1,5 +1,8 @@
 from bs4 import BeautifulSoup, Comment, Doctype
 import re
+from typing import List, Tuple, Set
+
+from cassis import Cas
 
 
 def clean_html(  html_file  ):
@@ -18,15 +21,15 @@ def clean_html(  html_file  ):
 
     all_text=[]
 
-    #remove the header:
+    # remove the header:
     [x.extract() for x in page_content.findAll('head')]
 
-    #remove the items of Doctype type:
+    # remove the items of Doctype type:
     for item in page_content:
         if isinstance(item, Doctype):
             item.extract()
 
-    #remove the comments
+    # remove the comments
     com = page_content.findAll(text=lambda text:isinstance(text, Comment))
     [comment.extract() for comment in com]
 
@@ -45,3 +48,41 @@ def clean_html(  html_file  ):
 
     articles=all_text.split( 100*"■" )
     return articles
+
+
+def get_text_html(cas: Cas, SofaID: str, tagnames: Set[str] = set('p')) -> List[str]:
+    '''
+    Given a cas, and a view (SofaID), this function selects all ValueBetweenTagType elements ( with tag.tagName in the set tagnames ), extracts the covered text, and returns the list of extracted sentences.
+    '''
+
+    sentences = []
+    for tag in cas.get_view(SofaID).select("com.crosslang.uimahtmltotext.uima.type.ValueBetweenTagType"):
+        if tag.tagName in set(tagnames):
+            sentence = tag.get_covered_text().strip()
+            if sentence:
+                sentences.append(sentence)
+
+    return sentences
+
+
+def get_text_html(cas: Cas, SofaID: str, tagnames: Set[str] = set('p')) -> List[str]:
+    '''
+    Given a cas, and a view (SofaID), this function selects all ValueBetweenTagType elements ( with tag.tagName in the set tagnames ), extracts the covered text, and returns the list of extracted sentences.
+    '''
+
+    sentences = []
+    for tag in cas.get_view(SofaID).select("com.crosslang.uimahtmltotext.uima.type.ValueBetweenTagType"):
+        if tag.tagName in set(tagnames):
+            sentence = tag.get_covered_text().strip()
+            if sentence:
+                sentences.append(sentence)
+
+    return sentences
+
+
+def get_text_pdf(cas: Cas, SofaID: str) -> List[str]:
+    '''
+    Given a cas, and a view, this function should return the text we want. TO DO
+    '''
+
+    pass
