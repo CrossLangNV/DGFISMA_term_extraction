@@ -1,10 +1,10 @@
 FROM ubuntu:18.04
 
 # Install some basic utilities
-#RUN apt-get update && apt-get install -y \
+#RUN apt-get update && apt-get install -y apt-transport-https 
 RUN apt-get -qq -y update
 RUN apt-get -qq -y upgrade
-RUN apt-get -qq -y install \
+RUN apt-get -qq -y install -y apt-transport-https \
     ca-certificates \
     curl \
     sudo \
@@ -41,11 +41,11 @@ RUN pip install lxml==4.5.0 \
                 pandas==1.0.1 \
                 ipython \
                 nltk \
-                #spacy \
+                dkpro-cassis==0.3.0 \
                 pybase64 \
                 jsonlines \
                 contractions \
-		bs4==0.0.1
+                bs4==0.0.1
 
 RUN python -m nltk.downloader stopwords
 RUN python -m nltk.downloader punkt
