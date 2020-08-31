@@ -24,12 +24,6 @@ import string
 from collections import Counter
 
 
-global nlp
-nlp = spacy.load("en_core_web_lg") 
-global spacy_stopwords
-spacy_stopwords = spacy.lang.en.stop_words.STOP_WORDS
-global labels
-labels = ['ADP', 'VERB', 'PRON', 'CCONJ', 'SCONJ' ]
 #---------------------
 #ABBREVIATION EXTRACTION
 #---------------------
@@ -107,7 +101,7 @@ def extractAbbv(tokens):
 #TERM EXTRACTION
 #---------------------
 def getTermLists(finder): 
-
+    # add supergrams if required
     ng1 = []
     ng2 = []
     ng3 = []

@@ -23,10 +23,10 @@ RUN apt-get update && apt-get dist-upgrade
 RUN apt-get -y install gcc
 RUN apt-get -y install vim
 
-RUN conda install -y python=3.7
-RUN conda install -c conda-forge pyemd
+RUN conda install -y python=3.6
 RUN conda install -c conda-forge spacy
 RUN conda install -c conda-forge spacy-model-en_core_web_lg
+
 
 RUN pip install lxml==4.5.0 \
                 Django==3.0.5 \
