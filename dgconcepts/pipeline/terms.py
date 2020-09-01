@@ -122,9 +122,6 @@ def getTermLists(finder):
     return ng1, ng2, ng3, ng4
 
 def calculate_tf(finder, doc_for_tf_idf, full_term_list):
-    ##### Getting tf for all terms
-    #TF = (Frequency of the word in the sentence) / (Total number of words in the sentence)
-    #IDF: (Total number of sentences (documents))/(Number of sentences (documents) containing the word)
     doc_for_tf_idf = doc_for_tf_idf.replace('\n', '. ')
     lengths = set()
     for term in full_term_list:
@@ -156,11 +153,11 @@ def calculate_tf(finder, doc_for_tf_idf, full_term_list):
                     counts.update({str(x) + '-grams':[ngram_count]})
         except ValueError:
             pass
-    #vectorizer = CountVectorizer(token_pattern=r”(?u)\b\w+\b”, stop_words=None, ngram_range = (x,x)) <= old pattern
+
     for x in counts:
         ngrams_and_counts.update({x:sum(counts[x])})
     
-    #flattening the list of frequencies per term per sentence
+    # flattening the list of frequencies per term per sentence
     flat_list = [item for sublist in terms_and_frequencies for item in sublist]
     d = {x:0 for x, _ in flat_list} 
     for name, num in flat_list: d[name] += num 
@@ -170,7 +167,7 @@ def calculate_tf(finder, doc_for_tf_idf, full_term_list):
     for element in terms_and_frequencies:
         term_length = len(element[0].split())
 
-        if element[0] in full_term_list: #terms that only occur once are included here
+        if element[0] in full_term_list:  # terms that only occur once are included here
         
             all_ngrams_and_metrics["ngrams"].append(element[0])
             all_ngrams_and_metrics["count"].append(element[1])
