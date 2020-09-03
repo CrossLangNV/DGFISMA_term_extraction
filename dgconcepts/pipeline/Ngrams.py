@@ -132,15 +132,6 @@ class NgramsFinder:
         self.stopwords.add("more")
         self.stopwords.add("regardless")
         self.stopwords.add("without")
-        self.stopwords.add("whereas")  # alina
-        self.stopwords.add("therefore")  # alina
-        self.stopwords.add("except")  # alina
-        self.stopwords.add("hereto")  # alina
-        self.stopwords.add("where")  # alina
-        self.stopwords.add("which")  # alina
-        self.stopwords.add("whereof")  # alina
-        self.stopwords.add("since")  # alina
-        self.stopwords.add("hereby")  # alina
 
         self.stopwords.add("due")
         self.stopwords.add("thereof")
@@ -194,6 +185,18 @@ class NgramsFinder:
         self.nonValidWords.add("whereof")  # alina
         self.nonValidWords.add("since")  # alina
         self.nonValidWords.add("hereby")  # alina
+        self.nonValidWords.add("than")  # alina
+        self.nonValidWords.add("then")  # alina
+        self.nonValidWords.add("whereas")  # alina
+        self.nonValidWords.add("therefore")  # alina
+        self.nonValidWords.add("except")  # alina
+        self.nonValidWords.add("hereto")  # alina
+        self.nonValidWords.add("where")  # alina
+        self.nonValidWords.add("which")  # alina
+        self.nonValidWords.add("whereof")  # alina
+        self.nonValidWords.add("since")  # alina
+        self.nonValidWords.add("hereby")  # alina
+        self.nonValidWords.add("for")
 
         # noisy symbols
         self.nonValidWords.add("january")
@@ -278,10 +281,10 @@ class NgramsFinder:
         self.nonValidWords.add("these")
         self.nonValidWords.add("this")
         self.nonValidWords.add("that")
+        self.nonValidWords.add("between")
+        self.nonValidWords.add("among")
 
-
-        # ---------------------------
-
+    # ---------------------------
     # Ngram discovery
     # ---------------------------
     def feedText(self, text):
@@ -343,7 +346,7 @@ class NgramsFinder:
                         if hasNoSymbols:
                             self.addEntry(wordsVector, stopwordsMatrix, i, pos)
 
-        return clean_data
+        return clean_data, self.ngrams
 
     def fuse(self, wordsVector, stopwordsMatrix):
         """
@@ -415,7 +418,7 @@ class NgramsFinder:
             labels = ['ADP', 'VERB', 'PRON', 'CCONJ', 'SCONJ']
             invalid_words = self.stopwords.union(self.nonValidWords)
             if any((word.pos_ in labels and word in invalid_words) for word in
-                                    doc) == False and doc[0].pos_ == ('NOUN' or 'PROPN'):  # we iterate over each word of the ngram
+                   doc) == False and doc[0].pos_ == ('NOUN' or 'PROPN'):  # we iterate over each word of the ngram
                 chunks = list(doc.noun_chunks)
                 if len(chunks) > 1:
                     last_chunk = chunks[-1].text
@@ -456,22 +459,21 @@ class NgramsFinder:
         """
         # get fused ngram
         ngram, size, tokens = self.fuse(wordsVector, stopwordsMatrix)
-
         ngram = self.grammarCheck(ngram)  # alina
 
         # If exist, increment count and add new position
         if ngram in self.ngrams[i].keys():
-            self.ngrams[i][ngram][NGRAM_FREQ] += 1
-            self.ngrams[i][ngram][NGRAM_POS].append(pos - size + 1)
+           self.ngrams[i][ngram][NGRAM_FREQ] += 1
+           self.ngrams[i][ngram][NGRAM_POS].append(pos - size + 1)
         # Else if new and valid, set count, add position, set size, set tokens, and init caches
-        else:
-            if (self.isValidTerm(ngram, tokens)):
-                tok, tags = self.getPOS(ngram)
-                self.ngrams[i][ngram] = [1,
-                                         [pos - size + 1],
-                                         size,
-                                         tokens,
-                                         -1, -1, -1, -1, -1, -1, -1]
+        # else:
+        if (self.isValidTerm(ngram, tokens)):
+           tok, tags = self.getPOS(ngram)
+           self.ngrams[i][ngram] = [1,
+                                    [pos - size + 1],
+                                    size,
+                                    tokens,
+                                    -1, -1, -1, -1, -1, -1, -1]
 
     def shift(self, word, wordsVector, stopwordsMatrix, i):
         """
@@ -615,7 +617,7 @@ class NgramsFinder:
         data = data.lower()
         data = contractions.fix(data)
 
-        data = data.translate(str.maketrans('', '', '!"#$%&*+,./:;<=>?@\\^_`|~'))
+        #data = data.translate(str.maketrans('', '', '!"#$%&*+,/:;<=>?@\\^_`|~'))
         data = data.replace(
             'implementing technical standards with regard to supervisory reporting of institutions according to regulation',
             '')
@@ -722,12 +724,13 @@ class NgramsFinder:
             Boolean, true if w is valid
         """
         # check if number
-        # if(any(c.isdigit() for c in ngram)): return False
+        if (any(c.isdigit() for c in ngram)):
+            return False
 
         # check if too small token
-        # for t in self.tokenize(ngram):
-        # if(len(t) < 2):
-        # return False
+        for t in self.tokenize(ngram):
+            if (len(t) < 2):
+                return False
 
         # check if invalid token
         for w in self.nonValidWords:

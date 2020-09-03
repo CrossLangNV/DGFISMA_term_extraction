@@ -2,7 +2,7 @@ from nltk.tokenize import  word_tokenize
 from nltk.corpus import stopwords
 from os.path import isfile, join
 from . import Ngrams
-from .Ngrams import NgramsFinder 
+from .Ngrams import NgramsFinder
 from threading import Thread
 from os import listdir
 import argparse
@@ -59,15 +59,6 @@ def extractAbbvTerm(tokens,i):
             res +=t+" "    
     return res
 
-def findall(p, s):
-    '''Yields all the positions of
-    the pattern p in the string s.'''
-    i = s.find(p)
-    while i != -1:
-        yield i
-        i = s.find(p, i+1)
-    
-        
 def extractAbbv(tokens):
     """
     Task
@@ -97,49 +88,21 @@ def extractAbbv(tokens):
                 res.append((t,term))
     return list(set(res))
 
-#---------------------
-#TERM EXTRACTION
-#---------------------
-def getTermLists(finder): 
-    # add supergrams if required
-    ng1 = []
-    ng2 = []
-    ng3 = []
-    ng4 = []
-
-    for ng in sorted(finder.ngrams[1]):
-        ng1.append(ng)
-
-    for ng in sorted(finder.ngrams[2]):
-        ng2.append(ng)
-        
-    for ng in sorted(finder.ngrams[3]):
-        ng3.append(ng)
-    
-    for ng in sorted(finder.ngrams[4]):
-        ng4.append(ng)
-
-    return ng1, ng2, ng3, ng4
-
-def calculate_tf(finder, doc_for_tf_idf, full_term_list):
-    doc_for_tf_idf = doc_for_tf_idf.replace('\n', '. ')
+def calculate_tf(doc_for_tf_idf, full_term_list):
     lengths = set()
     for term in full_term_list:
-        lengths.add(len(term.split())) #finding the longest ngram
-    txt1 = []
-    txt1.append(doc_for_tf_idf)
-    
-    ngrams_and_counts = {} #the number of ngrams for tf calculation
+        lengths.add(len(term.split()))  # finding the longest ngram
+    txt1 = [doc_for_tf_idf]
+
+    ngrams_and_counts = {}  # the number of ngrams for tf calculation
     all_ngrams_and_metrics = {"ngrams" : [], "count":[], "tf":[]} # table of terms per doc
-    terms_and_frequencies = [] #intermediate list of terms and frequency counts
-    counts = {} #defining the ngram range
+    terms_and_frequencies = []  # intermediate list of terms and frequency counts
+    counts = {}  # defining the ngram range
     for x in range(1, max(lengths)):
         counts.update({str(x) + '-grams' : []})
         
-    #counting the number of n grams per sentence
     for sentence in doc_for_tf_idf.split('.'):
         try:
-            sentence = sentence.translate(str.maketrans('', '', string.punctuation.replace("/", "")))
             for x in range(1, min(len(sentence.split()), max(lengths))):
                 vectorizer = CountVectorizer(token_pattern=r'\b\w+\b', stop_words=None, ngram_range = (x,x))
                 X0 = vectorizer.fit_transform([sentence])
@@ -166,34 +129,30 @@ def calculate_tf(finder, doc_for_tf_idf, full_term_list):
     terms_and_frequencies = list(map(tuple, d.items()))
     for element in terms_and_frequencies:
         term_length = len(element[0].split())
-
-        if element[0] in full_term_list:  # terms that only occur once are included here
-        
+        if element[0] in full_term_list:  # terms that only occur once are also included here
             all_ngrams_and_metrics["ngrams"].append(element[0])
             all_ngrams_and_metrics["count"].append(element[1])
             all_ngrams_and_metrics["tf"].append(element[1] / ngrams_and_counts[str(term_length)+'-grams'])
-    
-    dict_1 = all_ngrams_and_metrics
 
-    return dict_1
-
-
-def formatAllList(finder, doc_for_tf_idf):    
-
-    ng1, ng2, ng3, ng4 = getTermLists(finder)
-    full_term_list = ng1 + ng2 + ng3 + ng4
-    dict_1 = calculate_tf(finder, doc_for_tf_idf, full_term_list)
-
-    return dict_1
+    return all_ngrams_and_metrics
 
 #---------------------
 #MAIN FUNCTION
 #---------------------
 def analyzeFile(texts):
-
-    finder = NgramsFinder(5)   
-    doc_for_tf_idf = finder.feedText(texts)
+    # TO DO : annotations of abbreviations
+    finder = NgramsFinder(4)
+    doc_for_tf_idf, ngrams = finder.feedText(texts)
+    all_ngrams = []
+    for x in ngrams:
+        all_ngrams.append([term for term in x])
+    terms_v1 = [term for ngrams in all_ngrams for term in ngrams]
     abbv = extractAbbv(word_tokenize(texts))
-    abbv = pd.DataFrame(abbv, columns =['abbv', 'term'])
-    dict_1 = formatAllList(finder, doc_for_tf_idf)
-    return dict_1, abbv
+    abvs = []
+    for x in abbv:
+        abv = x[0] + " ■ " + x[1]
+        terms_v1.append(x[0].lower().strip())
+        terms_v1.append(x[1].lower().strip())
+        abvs.append(abv)
+    dict_1 = calculate_tf(doc_for_tf_idf, terms_v1)
+    return dict_1, abvs

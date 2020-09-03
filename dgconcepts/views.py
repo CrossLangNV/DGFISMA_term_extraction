@@ -31,16 +31,18 @@ class TermView(APIView):
         cas = load_cas_from_xmi(decoded_cas_content, typesystem=typesystem)  # check the format
         sofa_id = "html2textView"
         sentences = get_text_html(cas, sofa_id, tagnames=['p'])  # html or pdf get_text_pdf
-        dict_v1, abbvs = terms.analyzeFile(' '.join(sentences))
-        dict_v2 = tables.check_abbvs(dict_v1, abbvs)
-        terms_n_tfidf = tables.calculate_tf_idf(dict_v2, PATH_TO_PD2)
+        dict_v1, abvs = terms.analyzeFile(' '.join(sentences))
+        terms_n_tfidf = tables.calculate_tf_idf(dict_v1, PATH_TO_PD2)
+        for abv in abvs:
+            terms_n_tfidf.update({abv : 1})
+        # terms_n_tfidf = tables.crosscheck_unigrams(terms_n_tfidf)
         cas = add_terms_to_cas(cas, typesystem, sofa_id, [(k, v) for k, v in terms_n_tfidf.items()])
         # cas = annotate_voc(cas, typesystem, sofa_id)  # cross check with terms and annotations
         cas_string = base64.b64encode(bytes(cas.to_xmi(), 'utf-8'))
         if 'update_voc' in f.keys():
-            tables.update_voc(dict_v2, PATH_TO_VOC)
+            tables.update_voc(dict_v1, PATH_TO_VOC)
         if 'update_pd2' in f.keys():
-            tables.update_pd2(dict_v2, PATH_TO_PD2)
+            tables.update_pd2(dict_v1, PATH_TO_PD2)
         end = time.time()
         f['cas_content'] = cas_string
         print(end - start)
