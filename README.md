@@ -11,3 +11,8 @@ The pipeline makes use of a corpus table for the tf-idf calculation:
 https://github.com/alina-crosslang/term-extraction/tree/master/media/full_dgf_jsons_table2.csv
 
 The proper way to rank most relevant terms will eventually need to be included in the pipeline, since not all the relevant terms will have a tf-idf score, and not all highly ranked terms (especially unigrams) are equally relevant. 
+
+For unit test run "pytest annotationsTest.py"
+
+Currently a script is running for the composition of a vocabulary file on thorne:/home/alina/dgf-voc/dgf-voc.csv 
+The final voc file should still be deduplicated. Be sure to add it to the media folder, and amend the PATH_TO_VOC variable in views.py
