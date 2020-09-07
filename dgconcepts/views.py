@@ -38,7 +38,7 @@ class TermView(APIView):
         # terms_n_tfidf = tables.crosscheck_unigrams(terms_n_tfidf)
         cas = add_terms_to_cas(cas, typesystem, sofa_id, [(k, v) for k, v in terms_n_tfidf.items()])
         # cas = annotate_voc(cas, typesystem, sofa_id)  # cross check with terms and annotations
-        cas_string = base64.b64encode(bytes(cas.to_xmi(), 'utf-8'))
+        cas_string = base64.b64encode( bytes( cas.to_xmi() , 'utf-8' ) ).decode()
         if 'update_voc' in f.keys():
             tables.update_voc(dict_v1, PATH_TO_VOC)
         if 'update_pd2' in f.keys():

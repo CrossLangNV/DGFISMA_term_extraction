@@ -51,4 +51,4 @@ RUN python -m nltk.downloader stopwords
 RUN python -m nltk.downloader punkt
 
 #RUN python -m spacy download en_core_web_sm
-#CMD python /django/manage.py makemigrations && python /django/manage.py migrate && python /django/manage.py runserver 0.0.0.0:5000
+CMD python train/manage.py makemigrations && python train/manage.py migrate && python train/manage.py runserver 0.0.0.0:5001
