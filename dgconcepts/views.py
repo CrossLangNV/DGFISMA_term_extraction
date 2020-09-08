@@ -1,12 +1,12 @@
 import base64
 import binascii
-import os
 import time
+
 from cassis.typesystem import load_typesystem
 from cassis.xmi import load_cas_from_xmi
-from django.conf import settings
-from django.http import HttpResponse
+from django.http import JsonResponse
 from rest_framework.views import APIView
+
 from .pipeline import tables
 from .pipeline import terms  # , cleaning
 from .pipeline.annotations import *
@@ -46,4 +46,4 @@ class TermView(APIView):
         end = time.time()
         f['cas_content'] = cas_string
         print(end - start)
-        return HttpResponse(f)
+        return JsonResponse(f)
