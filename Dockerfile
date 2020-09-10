@@ -50,5 +50,7 @@ RUN pip install lxml==4.5.0 \
 RUN python -m nltk.downloader stopwords
 RUN python -m nltk.downloader punkt
 
+COPY . /train
+
 #RUN python -m spacy download en_core_web_sm
 CMD python train/manage.py makemigrations && python train/manage.py migrate && python train/manage.py runserver 0.0.0.0:5001
