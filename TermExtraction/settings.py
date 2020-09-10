@@ -26,7 +26,7 @@ SECRET_KEY = '6-kl9yqrp#y($60ilv!xvi2+m4m^yzne3=wed#^zy0us@+1gry'
 DEBUG = True
 
 ALLOWED_HOSTS = [h for h in os.environ.get(
-    'DJANGO_ALLOWED_HOSTS', "localhost django").split(" ")]
+    'TERMEXTRACT_ALLOWED_HOSTS', "localhost termextract").split(" ")]
 
 
 # Application definition
