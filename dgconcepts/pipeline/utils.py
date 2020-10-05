@@ -1,7 +1,8 @@
 import re
 import string
+from collections import Counter
 
-
+### Might use for normalisation
 def find_indices_term(term: str, sentence: str):
     '''
     Find matches of a given term in a given sentence using a regex. Different variants of the term will also be matches. Returns a Callable.
@@ -20,12 +21,12 @@ def find_indices_term(term: str, sentence: str):
 
     return re.finditer(term_regex, sentence, re.IGNORECASE)
 
+def flatten_term_dicts(all_terms_n_tf):
+    """
+    :param all_terms_n_tf: a list of dictionaries with ngrams, counts and tf
+    :return: a flat dictionary with unique ngrams, counts and tf
+    """
+    flattened_term_dict = {'ngrams', 'count', 'tf'}
+    print(flattened_term_dict)
 
-def beautiprint(title,list, toFile=None):
-    """ Print out a list with a title """
-    print(title, file=toFile)
-    print("#######################", file=toFile)
-    print("", file=toFile)
-    for l in list:        
-        print(l, file=toFile)
-    print("", file=toFile)   
+    return flattened_term_dict
