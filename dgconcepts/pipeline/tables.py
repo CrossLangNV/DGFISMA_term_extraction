@@ -1,6 +1,3 @@
-import pandas as pd
-import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 
@@ -18,7 +15,7 @@ def crosscheck_white_black_lists(terms_list, WHITELIST, BLACKLIST):
     return terms_list
 
 
-def recalculate_tf_idf(corpus, vocabulary):
+def recalculate_tf_idf(corpus, vocabulary, MAX_LEN_NGRAM):
     """
 
     :param corpus: a list of text segments / <p>
@@ -28,7 +25,7 @@ def recalculate_tf_idf(corpus, vocabulary):
     terms_n_tfidf = {}
     # our corpus
     data = corpus
-    cv = CountVectorizer(ngram_range=(1, 5))
+    cv = CountVectorizer(ngram_range=(1, MAX_LEN_NGRAM+1))
     # convert text data into term-frequency matrix
     data = cv.fit_transform(data)
     tfidf_transformer = TfidfTransformer()
