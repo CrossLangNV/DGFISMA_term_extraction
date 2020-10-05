@@ -20,7 +20,7 @@ BLACKLIST = open(os.path.join(settings.MEDIA_ROOT, 'blacklist.csv')).read().spli
 MAX_LEN_NGRAM = 4
 
 class TermView(APIView):
-    def processTermExtraction(self, sentences, f):
+    def launchTermExtraction(self, sentences, f):
         start = time.time()
         all_terms= []
         all_abvs = []
@@ -37,7 +37,7 @@ class TermView(APIView):
             for x in terms_so_far:
                 all_terms.append(x)
 
-        terms_n_tfidf = tables.recalculate_tf_idf(doc_for_tf_idf, list(set(all_terms)))
+        terms_n_tfidf = tables.recalculate_tf_idf(doc_for_tf_idf, list(set(all_terms)),MAX_LEN_NGRAM)
         all_abvs = [abv for abvs_sublist in all_abvs for abv in abvs_sublist]
         # all_terms = crosscheck_white_black_lists(all_terms)
         termTime = time.time()
@@ -63,7 +63,7 @@ class TermView(APIView):
         cas = load_cas_from_xmi(decoded_cas_content, typesystem=typesystem)  # check the format
         sofa_id = "html2textView"
         sentences = get_text_html(cas, sofa_id, tagnames=['p'])  # html or pdf get_text_pdf
-        terms_n_tfidf = self.processTermExtraction(sentences, f)
+        terms_n_tfidf = self.launchTermExtraction(sentences, f)
         cas = add_terms_and_lemmas_to_cas(NLP, cas, typesystem, sofa_id, [(k, v) for k, v in terms_n_tfidf.items()])
         cas_string = base64.b64encode( bytes( cas.to_xmi() , 'utf-8' ) ).decode()
         end = time.time()
