@@ -1,14 +1,13 @@
 import base64
 import os
-from cassis.typesystem import load_typesystem
-from cassis.xmi import load_cas_from_xmi
-from ..pipeline import terms
-from ..pipeline.utils import get_text
-from ..pipeline.annotations import add_terms_and_lemmas_to_cas
-from ..pipeline.metrics import calculate_tf_idf
-
 import unittest
 import spacy
+from cassis.typesystem import load_typesystem
+from cassis.xmi import load_cas_from_xmi
+from dgconcepts.pipeline import terms
+from dgconcepts.pipeline.utils import get_text
+from dgconcepts.pipeline.annotations import add_terms_and_lemmas_to_cas
+from dgconcepts.pipeline.metrics import calculate_tf_idf
 
 class TestTermExtractionModules(unittest.TestCase):
     NLP = spacy.load('en_core_web_lg')

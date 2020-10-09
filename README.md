@@ -1,17 +1,22 @@
 # term-extraction
 
+##Instructions
 
 use "dbuild.sh" to build the docker image
 
 use "dcli.sh" to start a docker container
 
-Given a document (json), e.g.: https://github.com/alina-crosslang/term-extraction/blob/master/example.json, the program will return a json containing annotated 'cas_content' and 'content_type.'
+Given a document [json](https://github.com/alina-crosslang/term-extraction/blob/master/example.json), the program will return a json containing annotated 'cas_content' and 'content_type.'
+The "cas_content" is a UIMA CAS object, encoded in base64. The "content_type" can be "html" or "pdf". The "extract_supergrams" parameter could be either "true" or "false."
+
 
 The Term Extraction pipeline consists of the following steps:
 
+1. After decoding from base64, read in the CAS object using [the dkpro-cassis library](https://github.com/dkpro/dkpro-cassis)
+2. Retrieve text segments:
 
-1. Decode the original CAS content from base64
-2. Convert HTML to text 
+   cas.get_view( 'html2textView' ).select( "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Paragraph" ) will return a generator containing all paragraph annotations. Using the .get_covered_text() method will return the covered text ( e.g. List(cas.get_view( 'html2textView' ).select( "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Paragraph" ))[0].get_covered_text() ).
+   
 3. Extract terms from text segments :
    
    SpaCy will process a raw text and return a Doc object with various annotations. 
@@ -33,3 +38,9 @@ The Term Extraction pipeline consists of the following steps:
 5. Annotate the original CAS with terms, tf-idf scores and lemmata
 6. Encode the annotated CAS to base64
 7. Return a json with the annotated CAS and the original field 'content_type'
+
+##Testing:
+
+Unit and integration tests could be run with the unittest module or with pytest:
+
+pytest $test_name.py
