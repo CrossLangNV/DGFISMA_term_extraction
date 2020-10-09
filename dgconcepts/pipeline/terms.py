@@ -234,7 +234,7 @@ def get_invalid_words():
 
 def validate_term(np):
     """
-    :param np: noun chunk (SpaCy) to be checked for validation (ngram)
+    :param np: noun phrase to be checked for validation
     :return: whether or not the ngram is a valid term
     """
 

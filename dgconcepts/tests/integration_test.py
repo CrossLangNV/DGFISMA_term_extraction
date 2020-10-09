@@ -1,10 +1,9 @@
 import base64
 import os
-import ahocorasick as ahc
 from cassis.typesystem import load_typesystem
 from cassis.xmi import load_cas_from_xmi
 from ..pipeline import terms
-from ..pipeline.utils import get_text_html
+from ..pipeline.utils import get_text
 from ..pipeline.annotations import add_terms_and_lemmas_to_cas
 from ..pipeline.metrics import calculate_tf_idf
 
@@ -14,15 +13,12 @@ import spacy
 class TestTermExtractionModules(unittest.TestCase):
     NLP = spacy.load('en_core_web_lg')
     MAX_LEN_NGRAM = 4
-    encoded_xmi = open('test_xmi').read()  # amend the path
-
-    def test_annotations(self):
-        with open(os.path.join('typesystem.xml'), 'rb') as x:
-            typesystem = load_typesystem(x)
-
-        cas = load_cas_from_xmi(base64.b64decode(self.encoded_xmi).decode('utf-8'), typesystem=typesystem)
-        sofa_id = "html2textView"
-        sentences = get_text_html(cas, sofa_id, tagnames=['p'])
+    encoded_xmi = open('test_xmi').read()
+    def text_to_terms(self, sentences):
+        """
+        reproducing the term extraction pipeline
+        :return: list of terms
+        """
         doc_for_tf_idf = []
         all_abvs = []
         all_terms = []
@@ -32,10 +28,20 @@ class TestTermExtractionModules(unittest.TestCase):
             ngrams, supergrams, abvs = terms.extract_concepts(sentence, self.NLP, self.MAX_LEN_NGRAM)
             all_abvs.append(abvs)
             terms_so_far.append(ngrams)
+            terms_so_far.append(supergrams)
             terms_so_far = [t for t_sublist in terms_so_far for t in t_sublist]
             for x in terms_so_far:
                 all_terms.append(x)
         all_terms = list(set(all_terms))
+        return doc_for_tf_idf, all_terms
+
+    def test_annotations(self):
+        with open(os.path.join('typesystem.xml'), 'rb') as x:
+            typesystem = load_typesystem(x)
+        cas = load_cas_from_xmi(base64.b64decode(self.encoded_xmi).decode('utf-8'), typesystem=typesystem)
+        sofa_id = "html2textView"
+        sentences = get_text(cas, sofa_id, tagnames=['p'])
+        doc_for_tf_idf, all_terms = self.text_to_terms(sentences)  # we extract both ngrams and supergrams
         terms_n_tfidf = calculate_tf_idf(doc_for_tf_idf, self.MAX_LEN_NGRAM, list(set(all_terms)))
         self.assertIsInstance(terms_n_tfidf, dict)
         self.assertNotEqual(len(terms_n_tfidf.keys()), 0)
