@@ -12,7 +12,7 @@ The Term Extraction pipeline consists of the following steps:
 
 1. Decode the original CAS content from base64
 2. Convert HTML to text 
-3. Extract terms from text segments (<p>) :
+3. Extract terms from text segments :
    
    SpaCy will process a raw text and return a Doc object with various annotations. 
    Doc.noun_chunks is a generator (list) containing all 'flat' noun phrases, i.e. phrases with a noun as their head.
@@ -24,7 +24,7 @@ The Term Extraction pipeline consists of the following steps:
 4. Calculate tf-idf for the extracted terms
 
    We use sklearn's Tfidftransformer to calculate the tf-idf score per term per document. 
-   The document in this context is a list of segments (<p>).
+   The document in this context is a list of segments.
    CountVectorizer() will count the number of occurrences of terms for a given word range.
    TfidfTransformer will calculate the IDF on the CountVectorizer's term counts.
    We want to generate a matrix of term counts in case of previously unseen documents.
