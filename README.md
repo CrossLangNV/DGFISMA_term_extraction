@@ -15,7 +15,8 @@ The Term Extraction pipeline consists of the following steps:
 1. After decoding from base64, read in the CAS object using [the dkpro-cassis library](https://github.com/dkpro/dkpro-cassis)
 2. Retrieve text segments:
 
-   cas.get_view( 'html2textView' ).select( "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Paragraph" ) will return a generator containing all paragraph annotations. Using the .get_covered_text() method will return the covered text ( e.g. List(cas.get_view( 'html2textView' ).select( "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Paragraph" ))[0].get_covered_text() ).
+   cas.get_view("html2textView").select("com.crosslang.uimahtmltotext.uima.type.ValueBetweenTagType") will return a generator containing all tags detected by UIMA. 
+   We retrieve the text segments by limiting ourself to the 'p' tags.
    
 3. Extract terms from text segments :
    
@@ -29,8 +30,8 @@ The Term Extraction pipeline consists of the following steps:
 4. Calculate tf-idf for the extracted terms
 
    We use sklearn's Tfidftransformer to calculate the tf-idf score per term per document. 
-   The document in this context is a list of segments.
-   CountVectorizer() will count the number of occurrences of terms for a given word range.
+   The document in this context is a list of text segments.
+   CountVectorizer() will count the number of occurrences of terms for all ngrams.
    TfidfTransformer will calculate the IDF on the CountVectorizer's term counts.
    We want to generate a matrix of term counts in case of previously unseen documents.
    Finally, the tf-idf score can be calculated.
