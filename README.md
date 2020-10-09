@@ -1,6 +1,6 @@
 # term-extraction
 
-##Instructions
+## Instructions
 
 use "dbuild.sh" to build the docker image
 
@@ -39,7 +39,7 @@ The Term Extraction pipeline consists of the following steps:
 6. Encode the annotated CAS to base64
 7. Return a json with the annotated CAS and the original field 'content_type'
 
-##Testing:
+## Testing:
 
 Unit and integration tests could be run with the unittest module or with pytest:
 
