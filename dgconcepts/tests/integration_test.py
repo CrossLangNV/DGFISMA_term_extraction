@@ -3,11 +3,10 @@ import os
 import ahocorasick as ahc
 from cassis.typesystem import load_typesystem
 from cassis.xmi import load_cas_from_xmi
-from django.conf import settings
 from ..pipeline import terms
-from ..pipeline.metrics import *
 from ..pipeline.utils import get_text_html
 from ..pipeline.annotations import add_terms_and_lemmas_to_cas
+from ..pipeline.metrics import calculate_tf_idf
 
 import unittest
 import spacy
@@ -17,37 +16,30 @@ class TestTermExtractionModules(unittest.TestCase):
     MAX_LEN_NGRAM = 4
     encoded_xmi = open('test_xmi').read()  # amend the path
 
-    def test_annotations(self):  # f is a json {"xml" : "encoded_xml"}
-        with open(os.path.join(settings.MEDIA_ROOT, 'typesystem.xml'), 'rb') as x:
+    def test_annotations(self):
+        with open(os.path.join('typesystem.xml'), 'rb') as x:
             typesystem = load_typesystem(x)
 
         cas = load_cas_from_xmi(base64.b64decode(self.encoded_xmi).decode('utf-8'), typesystem=typesystem)
         sofa_id = "html2textView"
-        sentences = get_text_html(cas, sofa_id, tagnames=['p'])  # html or pdf get_text_pdf
-        terms_n_tfidf = terms.extract_concepts(sentences, self.NLP, self.MAX_LEN_NGRAM)
+        sentences = get_text_html(cas, sofa_id, tagnames=['p'])
+        doc_for_tf_idf = []
+        all_abvs = []
+        all_terms = []
+        for sentence in sentences:
+            doc_for_tf_idf.append(sentence)
+            terms_so_far = []
+            ngrams, supergrams, abvs = terms.extract_concepts(sentence, self.NLP, self.MAX_LEN_NGRAM)
+            all_abvs.append(abvs)
+            terms_so_far.append(ngrams)
+            terms_so_far = [t for t_sublist in terms_so_far for t in t_sublist]
+            for x in terms_so_far:
+                all_terms.append(x)
+        all_terms = list(set(all_terms))
+        terms_n_tfidf = calculate_tf_idf(doc_for_tf_idf, self.MAX_LEN_NGRAM, list(set(all_terms)))
         self.assertIsInstance(terms_n_tfidf, dict)
-        self.assertNotEquals(len(terms_n_tfidf.keys()), 0)
-
+        self.assertNotEqual(len(terms_n_tfidf.keys()), 0)
         cas = add_terms_and_lemmas_to_cas(self.NLP, cas, typesystem, sofa_id, [(k, v) for k, v in terms_n_tfidf.items()])
-
-        Token = typesystem.get_type('de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf')
-        A = ahc.Automaton()
         cas_view = cas.get_view(sofa_id)
-        for (key, cat) in terms_n_tfidf:
-            A.add_word(key.strip(), (cat, key.strip()))
-        A.make_automaton()
-
-        for tag in cas_view.select("com.crosslang.uimahtmltotext.uima.type.ValueBetweenTagType"):
-            if tag.tagName in set('p'):
-                text = tag.get_covered_text()
-                try:
-                    for end_index, (tfidf, term) in A.iter(text):
-                        start_index = end_index - len(term) + 1
-                        cas_view.add_annotation(
-                            Token(begin=tag.begin + start_index, end=tag.begin + end_index + 1, tfidfValue=tfidf,
-                                  term=term))
-                except:
-                    continue
-
         for item in cas_view.select("de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf"):
-            self.assertEquals(item.term, item.get_covered_text())
+            self.assertEqual(item.term, item.get_covered_text())

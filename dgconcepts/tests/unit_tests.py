@@ -28,7 +28,7 @@ class TestTermExtractionModules(unittest.TestCase):
         self.assertIn(term, tf_idf_dic.keys())
         self.assertIsInstance(tf_idf_dic, dict)
         self.assertIsInstance(tf_idf_dic[term], float)
-        self.assertNotEquals(len(tf_idf_dic.keys()), 0)
+        self.assertNotEqual(len(tf_idf_dic.keys()), 0)
         self.assertTrue(1 <= tf_idf_dic[term]  <= 2)
 
     def test_get_ngrams_supergrams_for_unigrams(self):
@@ -42,8 +42,8 @@ class TestTermExtractionModules(unittest.TestCase):
         ngrams, supergrams = get_ngrams_supergrams(tree, nMax)
         self.assertIsInstance(ngrams, list)
         self.assertIsInstance(supergrams, list)
-        self.assertNotEquals(len(ngrams), 0)
-        self.assertNotEquals(len(supergrams), 0)
+        self.assertNotEqual(len(ngrams), 0)
+        self.assertEqual(len(supergrams), 0)
         for term in ngrams:
             self.assertIn(term, expected_ngrams)
 
@@ -54,12 +54,12 @@ class TestTermExtractionModules(unittest.TestCase):
         doc = nlp(s)
         tree = parse_doc(doc) # in this context it is safe to assume the model works properly
         nMax = 2
-        expected_ngrams = ['suckler cow', 'cow premium','individual ceilings']
+        expected_ngrams = ['suckler cow', 'cow premium','individual ceilings', 'producers', 'ceilings', 'cow', 'premium']
         ngrams, supergrams = get_ngrams_supergrams(tree, nMax)
         self.assertIsInstance(ngrams, list)
         self.assertIsInstance(supergrams, list)
-        self.assertNotEquals(len(ngrams), 0)
-        self.assertNotEquals(len(supergrams), 0)
+        self.assertNotEqual(len(ngrams), 0)
+        self.assertNotEqual(len(supergrams), 0)
         for term in ngrams:
             self.assertIn(term, expected_ngrams)
 
@@ -73,9 +73,9 @@ class TestTermExtractionModules(unittest.TestCase):
         ngrams, supergrams = get_ngrams_supergrams(tree, nMax)
         self.assertIsInstance(ngrams, list)
         self.assertIsInstance(supergrams, list)
-        self.assertEquals(ngrams, supergrams)
-        self.assertEquals(len(ngrams), 0)
-        self.assertEquals(len(supergrams), 0)
+        self.assertEqual(ngrams, supergrams)
+        self.assertEqual(len(ngrams), 0)
+        self.assertEqual(len(supergrams), 0)
 
     def test_parse_doc_into_tree(self):
         expected_tree = {'the situation of small producers', 'compliance', 'intensification of beef and veal production', 'the forage capacity of each holding in relation to the numbers and species of animals held', 'animals', 'intensification', 'premiums', 'consideration', 'relation', 'excessively intensive types', 'production', 'regard to the forage capacity of each holding in relation to the numbers and species of animals held', 'species', 'a maximum stocking density on the holding', 'excessively intensive types of production', 'the numbers', 'such premiums', 'beef and veal production', 'the holding', 'the situation', 'the numbers and species of animals', 'regard', 'the forage capacity', 'the grant', 'relation to the numbers and species of animals', 'premiums for stockfarming', 'stockfarming', 'small producers', 'the trend towards intensification of beef and veal production', 'the grant of such premiums', 'the trend', 'compliance with a maximum stocking density on the holding', 'a maximum stocking density'}
@@ -87,7 +87,7 @@ class TestTermExtractionModules(unittest.TestCase):
         output_tree = set()
         for leaf in tree:
             output_tree.add(leaf.text)
-        self.assertEquals(expected_tree, output_tree)
+        self.assertEqual(expected_tree, output_tree)
 
     def test_validate_term(self):
         with open(r"spacy_doc.pickle", "rb") as d:
@@ -97,4 +97,4 @@ class TestTermExtractionModules(unittest.TestCase):
         for np in doc.noun_chunks:
             if validate_term(np):
                 output_terms.add(np.text)
-        self.assertEquals(expected_terms, output_terms)
+        self.assertEqual(expected_terms, output_terms)

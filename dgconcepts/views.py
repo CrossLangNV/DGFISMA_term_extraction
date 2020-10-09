@@ -61,7 +61,7 @@ class TermView(APIView):
         except binascii.Error:
             logging.info(f"could not decode the 'cas_content' field. Make sure it is in base64 encoding.")
 
-        cas = load_cas_from_xmi(decoded_cas_content, typesystem=typesystem)  # check the format
+        cas = load_cas_from_xmi(decoded_cas_content, typesystem=typesystem)
         sofa_id = "html2textView"
         sentences = get_text_html(cas, sofa_id, tagnames=['p'])  # html or pdf get_text_pdf
         terms_n_tfidf = self.launchTermExtraction(sentences, f)
