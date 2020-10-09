@@ -5,6 +5,7 @@ import _pickle as cPickle
 import spacy
 
 class TestTermExtractionModules(unittest.TestCase):
+    nlp = spacy.load('en_core_web_lg')
 
     '''
     Code for dumping the SpaCy Doc object:
@@ -16,7 +17,6 @@ class TestTermExtractionModules(unittest.TestCase):
     doc = nlp(t)
     with open(r"spacy_doc.pickle", "wb") as d:
         cPickle.dump(doc, d)
-
 
     '''
 
@@ -34,8 +34,8 @@ class TestTermExtractionModules(unittest.TestCase):
     def test_get_ngrams_supergrams_for_unigrams(self):
 
         s = 'the numbers and species of animals'
-        nlp = spacy.load('en_core_web_lg')
-        doc = nlp(s)
+
+        doc = self.nlp(s)
         tree = parse_doc(doc) # in this context it is safe to assume the model works properly
         nMax = 1
         expected_ngrams = ['numbers', 'species','animals']
@@ -51,7 +51,7 @@ class TestTermExtractionModules(unittest.TestCase):
 
         s = 'as regards the suckler cow premium, it is appropriate to maintain individual ceilings for producers'
         nlp = spacy.load('en_core_web_lg')
-        doc = nlp(s)
+        doc = self.nlp(s)
         tree = parse_doc(doc) # in this context it is safe to assume the model works properly
         nMax = 2
         expected_ngrams = ['suckler cow', 'cow premium','individual ceilings', 'producers', 'ceilings', 'cow', 'premium']
@@ -66,8 +66,7 @@ class TestTermExtractionModules(unittest.TestCase):
     def test_get_ngrams_supergrams_for_termfree_text(self):
 
         s = 'therefore obviously testing this'
-        nlp = spacy.load('en_core_web_lg')
-        doc = nlp(s)
+        doc = self.nlp(s)
         tree = parse_doc(doc)  # in this context it is safe to assume the model works properly
         nMax = 4
         ngrams, supergrams = get_ngrams_supergrams(tree, nMax)
