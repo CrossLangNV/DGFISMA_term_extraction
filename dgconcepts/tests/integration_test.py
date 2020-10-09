@@ -6,7 +6,7 @@ from cassis.xmi import load_cas_from_xmi
 from django.conf import settings
 from ..pipeline import terms
 from ..pipeline.metrics import *
-from ..pipeline.cleaning import get_text_html
+from ..pipeline.utils import get_text_html
 from ..pipeline.annotations import add_terms_and_lemmas_to_cas
 
 import unittest
