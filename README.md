@@ -36,7 +36,13 @@ The Term Extraction pipeline consists of the following steps:
    We want to generate a matrix of term counts in case of previously unseen documents.
    Finally, the tf-idf score can be calculated.
    
-5. Annotate the original CAS with terms, tf-idf scores and lemmata
+5. Annotate each text segment og the original CAS as follows:
+   
+   typesystem.get_type('de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf') to annotate extracted terms and the corresponding tf-idf scores
+   typesystem.get_type('de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma') to annotate lemmata for each extracted term
+   
+   A SpaCy model is used to obtain the lemmata of each term.
+
 6. Encode the annotated CAS to base64
 7. Return a json with the annotated CAS and the original field 'content_type'
 
