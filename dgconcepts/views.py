@@ -7,12 +7,12 @@ from django.http import JsonResponse
 from django.conf import settings
 from rest_framework.views import APIView
 import spacy
-from .pipeline import tables
-from .pipeline import terms
+from .pipeline.metrics import *
+from .pipeline.terms import extract_concepts
 from .pipeline.annotations import *
-from .pipeline.cleaning import get_text_html
 import os
 from .pipeline.utils import *
+import logging
 
 NLP = spacy.load('en_core_web_lg')
 WHITELIST = open(os.path.join(settings.MEDIA_ROOT, 'whitelist.csv')).read().splitlines()
@@ -20,7 +20,8 @@ BLACKLIST = open(os.path.join(settings.MEDIA_ROOT, 'blacklist.csv')).read().spli
 MAX_LEN_NGRAM = 4
 
 class TermView(APIView):
-    def launchTermExtraction(self, sentences, f):
+    @staticmethod
+    def launchTermExtraction(sentences, f):
         start = time.time()
         all_terms= []
         all_abvs = []
@@ -28,21 +29,21 @@ class TermView(APIView):
         for sentence in sentences:
             doc_for_tf_idf.append(sentence)
             terms_so_far = []
-            ngrams, supergrams, abvs = terms.extractConcepts(sentence, NLP, MAX_LEN_NGRAM)
+            ngrams, supergrams, abvs = extract_concepts(sentence, NLP, MAX_LEN_NGRAM)
             all_abvs.append(abvs)
             terms_so_far.append(ngrams)
-            if 'extract_supergrams' in f.keys():
+            if f['extract_supergrams'] == "true":
                 terms_so_far.append(supergrams)
             terms_so_far = [t for t_sublist in terms_so_far for t in t_sublist]
             for x in terms_so_far:
                 all_terms.append(x)
-
-        terms_n_tfidf = tables.recalculate_tf_idf(doc_for_tf_idf, list(set(all_terms)),MAX_LEN_NGRAM)
+        all_terms = crosscheck_white_black_lists(all_terms, WHITELIST, BLACKLIST)
+        all_terms = list(set(all_terms))
+        terms_n_tfidf = calculate_tf_idf(doc_for_tf_idf,MAX_LEN_NGRAM, list(set(all_terms)))
         all_abvs = [abv for abvs_sublist in all_abvs for abv in abvs_sublist]
-        # all_terms = crosscheck_white_black_lists(all_terms)
         termTime = time.time()
-        print('Terms extracted in: ')
-        print(termTime - start)
+        logging.basicConfig()
+        logging.info('Terms extracted in ' + str(termTime - start))
 
         for abv in all_abvs:
             terms_n_tfidf.update({abv : 1.0})
@@ -58,7 +59,7 @@ class TermView(APIView):
         try:
             decoded_cas_content = base64.b64decode(f['cas_content']).decode('utf-8')
         except binascii.Error:
-            print(f"could not decode the 'cas_content' field. Make sure it is in base64 encoding.")
+            logging.info(f"could not decode the 'cas_content' field. Make sure it is in base64 encoding.")
 
         cas = load_cas_from_xmi(decoded_cas_content, typesystem=typesystem)  # check the format
         sofa_id = "html2textView"
@@ -68,5 +69,7 @@ class TermView(APIView):
         cas_string = base64.b64encode( bytes( cas.to_xmi() , 'utf-8' ) ).decode()
         end = time.time()
         f['cas_content'] = cas_string
+        f.pop('extract_supergrams', None)
+        print(str(terms_n_tfidf))
         print(end - start)
         return JsonResponse(f)
