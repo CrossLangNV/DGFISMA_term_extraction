@@ -9,35 +9,12 @@ from typing import List
 import fasttext
 import numpy as np
 
+from similar_terms.preprocessing import preprocessing_word
+
 
 class Vocabulary(list):
     def __init__(self, l: List[str]):
         super(Vocabulary, self).__init__(map(str, l))
-
-
-def preprocessing_word(word: str,
-                       b_lower=True):
-    """Do basic processing to be able to join identical words.
-    TODO: update with Francois' methods
-
-    Args:
-        word:
-
-    Returns:
-
-    """
-
-    word_pre = word[:]  # copy
-
-    word_pre = word_pre.strip()
-
-    word_pre = word_pre.replace('  ', ' ')  # Remove double spaces
-    if b_lower:
-        word_pre = word_pre.lower()
-    word_pre = word_pre.replace(' ', '_')
-    word_pre = word_pre.replace('__', '_')  # Remove double underscores
-
-    return word_pre
 
 
 class SimilarWordsRetriever:
