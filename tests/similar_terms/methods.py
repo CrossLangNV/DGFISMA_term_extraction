@@ -3,7 +3,8 @@ import unittest
 import numpy as np
 
 from examples.similar_terms_main import SimilarWords
-from similar_terms.methods import SimilarWordsRetriever, preprocessing_word, argpartitionsort
+from similar_terms.methods import SimilarWordsRetriever, argpartitionsort
+from similar_terms.preprocessing import preprocessing_word
 
 VOC_RANDOM_CHAR = ["FyUVpwezcV", "5pDYh8e9aN", "inPxwYCAxx", "zFgAXeHetZ", "f3qn2vpSSE", "RpHCTNu5MU", "7K7kqt4ZJG", "MgphBv2ynj", "anyxprP7GS", "jdVUDJXRk5"]
 VOC_RANDOM_WORDS = ["subway", "craft", "injection", "hen", "general", "us", "color-blind", "pool", "feminist", "basin", "polite", "combination"]
