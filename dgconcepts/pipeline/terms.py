@@ -1,10 +1,11 @@
 from nltk.corpus import stopwords
 import contractions
 
-#---------------------
-#ABBREVIATION EXTRACTION
-#---------------------
-def extractAbbvTerm(tokens,i, sw):
+
+# ---------------------
+# ABBREVIATION EXTRACTION
+# ---------------------
+def extractAbbvTerm(tokens, i, sw):
     """
     Task
     ----
@@ -20,20 +21,22 @@ def extractAbbvTerm(tokens,i, sw):
     Output
     ------
         extended form if any else None
-    """  
+    """
     abbv = tokens[i]
     k = 1
-    for j,c in enumerate(abbv[::-1]):
-        while(i-j-k >= 0 and tokens[i-j-k][0] != c and c.isupper() and (tokens[i-j-k] in sw or tokens[i-j-k] == '’' or tokens[i-j-k][0] == '(')):
+    for j, c in enumerate(abbv[::-1]):
+        while (i - j - k >= 0 and tokens[i - j - k][0] != c and c.isupper() and (
+                tokens[i - j - k] in sw or tokens[i - j - k] == '’' or tokens[i - j - k][0] == '(')):
             k += 1
-        if(i-j-k < 0 or (c.isupper() and tokens[i-j-k][0].lower() != c.lower())):
+        if (i - j - k < 0 or (c.isupper() and tokens[i - j - k][0].lower() != c.lower())):
             return None
-    
+
     res = ""
-    for t in tokens[i-len(abbv)-k+1:i]:
-        if(t != "’" and t != "(" and t != "{" and t != "["):
-            res +=t+" "    
+    for t in tokens[i - len(abbv) - k + 1:i]:
+        if (t != "’" and t != "(" and t != "{" and t != "["):
+            res += t + " "
     return res
+
 
 def extractAbbv(tokens):
     """
@@ -48,21 +51,21 @@ def extractAbbv(tokens):
     Output
     ------
         list of candidate abbreviation
-    """  
-    sw = set(stopwords.words('english')) 
-    res = []    
-    for i,t in enumerate(tokens):
+    """
+    sw = set(stopwords.words('english'))
+    res = []
+    for i, t in enumerate(tokens):
         t = t.text
-        prop = sum(1 for c in t if c.isupper())/len(t)
-        if(prop > 0.5 
-                and len(t) < 6 
-                and len(t) > 1 
-                and t.lower() not in sw 
-                and sum(1 for c in t if c == 'V' or c=='I') != len(t) 
+        prop = sum(1 for c in t if c.isupper()) / len(t)
+        if (prop > 0.5
+                and len(t) < 6
+                and len(t) > 1
+                and t.lower() not in sw
+                and sum(1 for c in t if c == 'V' or c == 'I') != len(t)
                 and t.isalpha()):
-            term = extractAbbvTerm(tokens,i, sw)
-            if(term is not None):
-                res.append((t,term))
+            term = extractAbbvTerm(tokens, i, sw)
+            if (term is not None):
+                res.append((t, term))
     abvs = []
     for x in list(set(res)):
         abv = x[0] + " ■ " + x[1]
@@ -70,9 +73,10 @@ def extractAbbv(tokens):
 
     return abvs
 
-#---------------------
-#TERM EXTRACTION
-#---------------------
+
+# ---------------------
+# TERM EXTRACTION
+# ---------------------
 def get_ngrams_supergrams(tree, nMax):
     """
 
@@ -85,13 +89,11 @@ def get_ngrams_supergrams(tree, nMax):
     for ngram in tree:
         if ngram[0].pos_ == 'DET':
             ngram = ngram[1:]
-        if validate_term(ngram):
-            if len(ngram) > nMax:
-                supergrams.append(ngram.text)
-            else:
-             ngrams.append(ngram.text)
+        if len(ngram) > nMax:
+            supergrams.append(ngram.text)
         else:
-            continue
+            if validate_term(ngram):
+                ngrams.append(ngram.text)
     return ngrams, supergrams
 
 def get_invalid_words():
@@ -232,6 +234,7 @@ def get_invalid_words():
     invalid_words.append("points")
     return invalid_words
 
+
 def validate_term(np):
     """
     :param np: noun phrase to be checked for validation
@@ -245,23 +248,18 @@ def validate_term(np):
     else:
         return False
 
-def cleanText(data):
+
+def clean_text(data):
     """
     :param data: the text segment
     :return: the cleaned text segment
     """
     # clean
     data = data.lower()
-    data = data.replace('/', ' / ')
-    data = data.replace('.', ' . ')
-    data = data.replace('‘', ' ‘ ')
-    data = data.replace('’', ' ’ ')
-    data = data.replace(',', ' , ')
-    data = data.replace(':', ' : ')
-    data = data.replace(' - ', ' |-| ')
+    data = data.replace(u'\xa0', ' ')
     data = contractions.fix(data)
-
     return data
+
 
 def parse_doc(doc):
     """
@@ -271,9 +269,11 @@ def parse_doc(doc):
     """
     tree = {np for nc in doc.noun_chunks for np in [nc, doc[nc.root.left_edge.i:nc.root.right_edge.i + 1]]}
     return tree
-#---------------------
-#MAIN FUNCTION
-#---------------------
+
+
+# ---------------------
+# MAIN FUNCTION
+# ---------------------
 def extract_concepts(text, NLP, nMax):
     """
     :param text: the text segment
@@ -281,7 +281,7 @@ def extract_concepts(text, NLP, nMax):
     :param nMax: the max ngram length
     :return: 3 lists : ngrams (n <= nMax), supergrams (n >= nMax) and abbreviations
     """
-    clean_data = cleanText(text)
+    clean_data = clean_text(text)
     doc = NLP(clean_data)
     tree = parse_doc(doc)
     abvs = extractAbbv(doc)

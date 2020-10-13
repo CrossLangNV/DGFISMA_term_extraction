@@ -15,8 +15,8 @@ from .pipeline.utils import *
 import logging
 
 NLP = spacy.load('en_core_web_lg')
-WHITELIST = open(os.path.join(settings.MEDIA_ROOT, 'whitelist.csv')).read().splitlines()
-BLACKLIST = open(os.path.join(settings.MEDIA_ROOT, 'blacklist.csv')).read().splitlines()
+WHITELIST = open(os.path.join(settings.MEDIA_ROOT, 'whitelist.txt')).read().splitlines()
+BLACKLIST = open(os.path.join(settings.MEDIA_ROOT, 'blacklist.txt')).read().splitlines()
 MAX_LEN_NGRAM = 4
 
 class TermView(APIView):
@@ -38,17 +38,20 @@ class TermView(APIView):
             terms_so_far = [t for t_sublist in terms_so_far for t in t_sublist]
             for x in terms_so_far:
                 all_terms.append(x)
-        all_terms = crosscheck_white_black_lists(all_terms, WHITELIST, BLACKLIST)
         all_terms = list(set(all_terms))
         terms_n_tfidf = calculate_tf_idf(doc_for_tf_idf, MAX_LEN_NGRAM, list(set(all_terms)))
         all_abvs = [abv for abvs_sublist in all_abvs for abv in abvs_sublist]
         termTime = time.time()
         logging.basicConfig()
         logging.info('Terms extracted in ' + str(termTime - start))
-
+        whitelisted_terms = crosscheck_white_black_lists(all_terms, WHITELIST, BLACKLIST)
+        for term in whitelisted_terms:
+            if term in terms_n_tfidf.keys():
+                continue
+            else:
+                terms_n_tfidf.update({term: 1.0})
         for abv in all_abvs:
             terms_n_tfidf.update({abv: 1.0})
-
         return terms_n_tfidf
 
     def post(self, request):
@@ -76,6 +79,7 @@ class TermView(APIView):
             f['cas_content'] = cas_string
             f.pop('extract_supergrams', None)
             logging.info(end - start)
+            print(end-start)
             return JsonResponse(f)
         except:
             logging.info(f"could not process the sofa_id. Make sure it is html2textView.")
