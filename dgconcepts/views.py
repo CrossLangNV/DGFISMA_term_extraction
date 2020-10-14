@@ -71,11 +71,12 @@ class TermView(APIView):
         cas = load_cas_from_xmi(decoded_cas_content, typesystem=typesystem)
 
         try:
-            sofa_id = "html2textView"
+            cas.get_view("html2textView")
         except:
             logging.info(f"could not process the sofa_id. Make sure it is html2textView.")
             return JsonResponse(f)
 
+        sofa_id = "html2textView"
         sentences = get_text(cas, sofa_id, tagnames=['p'])
         terms_n_tfidf = self.launch_term_extraction(sentences, f)
         cas = add_terms_and_lemmas_to_cas(NLP, cas, typesystem, sofa_id, [(k, v) for k, v in terms_n_tfidf.items()])
