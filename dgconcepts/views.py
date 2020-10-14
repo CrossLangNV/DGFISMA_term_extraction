@@ -42,7 +42,6 @@ class TermView(APIView):
                 all_terms.append(x)
         all_terms = list(set(all_terms))
         terms_n_tfidf = calculate_tf_idf(doc_for_tf_idf, MAX_LEN_NGRAM, list(set(all_terms)))
-        print(terms_n_tfidf)
         all_abvs = [abv for abvs_sublist in all_abvs for abv in abvs_sublist]
         termTime = time.time()
         logging.basicConfig()
@@ -86,7 +85,5 @@ class TermView(APIView):
         f.pop('extract_supergrams', None)
         logging.info(end - start)
 
-        #from itertools import islice
-        #print(list(islice(terms_n_tfidf,10)))
         print(end - start)
         return JsonResponse(f)
