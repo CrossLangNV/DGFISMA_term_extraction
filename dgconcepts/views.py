@@ -73,7 +73,7 @@ class TermView(APIView):
         try:
             cas.get_view("html2textView")
         except:
-            logging.info(f"could not process the sofa_id. Make sure it is html2textView.")
+            logging.info(f"could not process the view in this CAS. Make sure it is html2textView.")
             return JsonResponse(f)
 
         sofa_id = "html2textView"
