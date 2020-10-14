@@ -33,13 +33,16 @@ class TermView(APIView):
             ngrams, supergrams, abvs = extract_concepts(sentence, NLP, MAX_LEN_NGRAM)
             all_abvs.append(abvs)
             terms_so_far.append(ngrams)
-            if f['extract_supergrams'] == "true":
+            if f['extract_supergrams'] == 'True':
                 terms_so_far.append(supergrams)
+            if f['extract_supergrams'] == 'False':
+                pass
             terms_so_far = [t for t_sublist in terms_so_far for t in t_sublist]
             for x in terms_so_far:
                 all_terms.append(x)
         all_terms = list(set(all_terms))
         terms_n_tfidf = calculate_tf_idf(doc_for_tf_idf, MAX_LEN_NGRAM, list(set(all_terms)))
+        print(terms_n_tfidf)
         all_abvs = [abv for abvs_sublist in all_abvs for abv in abvs_sublist]
         termTime = time.time()
         logging.basicConfig()
@@ -56,7 +59,6 @@ class TermView(APIView):
 
     def post(self, request):
         start = time.time()
-
         with open(os.path.join(settings.MEDIA_ROOT, 'typesystem.xml'), 'rb') as f:
             typesystem = load_typesystem(f)
 
@@ -71,16 +73,20 @@ class TermView(APIView):
 
         try:
             sofa_id = "html2textView"
-            sentences = get_text(cas, sofa_id, tagnames=['p'])
-            terms_n_tfidf = self.launch_term_extraction(sentences, f)
-            cas = add_terms_and_lemmas_to_cas(NLP, cas, typesystem, sofa_id, [(k, v) for k, v in terms_n_tfidf.items()])
-            cas_string = base64.b64encode(bytes(cas.to_xmi(), 'utf-8')).decode()
-            end = time.time()
-            f['cas_content'] = cas_string
-            f.pop('extract_supergrams', None)
-            logging.info(end - start)
-            print(end-start)
-            return JsonResponse(f)
         except:
             logging.info(f"could not process the sofa_id. Make sure it is html2textView.")
             return JsonResponse(f)
+
+        sentences = get_text(cas, sofa_id, tagnames=['p'])
+        terms_n_tfidf = self.launch_term_extraction(sentences, f)
+        cas = add_terms_and_lemmas_to_cas(NLP, cas, typesystem, sofa_id, [(k, v) for k, v in terms_n_tfidf.items()])
+        cas_string = base64.b64encode(bytes(cas.to_xmi(), 'utf-8')).decode()
+        end = time.time()
+        f['cas_content'] = cas_string
+        f.pop('extract_supergrams', None)
+        logging.info(end - start)
+
+        #from itertools import islice
+        #print(list(islice(terms_n_tfidf,10)))
+        print(end - start)
+        return JsonResponse(f)

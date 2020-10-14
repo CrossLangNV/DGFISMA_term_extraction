@@ -7,7 +7,7 @@ use "dbuild.sh" to build the docker image
 use "dcli.sh" to start a docker container
 
 Given a document [json](https://github.com/alina-crosslang/term-extraction/blob/master/example.json), the program will return a json containing annotated 'cas_content' and 'content_type.'
-The "cas_content" is a UIMA CAS object, encoded in base64. The "content_type" can be "html" or "pdf". The "extract_supergrams" parameter could be either "true" or "false."
+The "cas_content" is a UIMA CAS object, encoded in base64. The "content_type" can be "html" or "pdf". The "extract_supergrams" parameter could be either "True" or "False."
 
 
 The Term Extraction pipeline consists of the following steps:

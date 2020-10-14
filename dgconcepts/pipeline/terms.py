@@ -52,10 +52,10 @@ def extractAbbv(tokens):
     ------
         list of candidate abbreviation
     """
+    tokens = [t.text for t in tokens]
     sw = set(stopwords.words('english'))
     res = []
     for i, t in enumerate(tokens):
-        t = t.text
         prop = sum(1 for c in t if c.isupper()) / len(t)
         if (prop > 0.5
                 and len(t) < 6
@@ -101,8 +101,9 @@ def get_invalid_words():
 
     :return: the list of invalid words for ngram filtering
     """
-    invalid_words = ['other', 'such', 'same', 'similar', 'different'] + stopwords.words('english')
+    invalid_words = ['other', 'such', 'same', 'similar', 'different', 'relevant', 'specific', 'total', 'appropriate'] + stopwords.words('english')
     invalid_words.append("less")
+    invalid_words.append("overall")
     invalid_words.append("more")
     invalid_words.append("regardless")
     invalid_words.append("without")
@@ -144,6 +145,8 @@ def get_invalid_words():
     invalid_words.append("may")
     invalid_words.append("is")
     invalid_words.append("not")
+    invalid_words.append("new")
+    invalid_words.append("old")
     invalid_words.append("according")
     invalid_words.append("accordance")
     invalid_words.append("qualify")
@@ -232,6 +235,15 @@ def get_invalid_words():
     invalid_words.append("items")
     invalid_words.append("point")
     invalid_words.append("points")
+    invalid_words.append("part")
+    invalid_words.append("parts")
+    invalid_words.append("kind")
+    invalid_words.append("kinds")
+    invalid_words.append("whole")
+    invalid_words.append("best")
+    invalid_words.append("worst")
+
+
     return invalid_words
 
 
@@ -284,6 +296,6 @@ def extract_concepts(text, NLP, nMax):
     clean_data = clean_text(text)
     doc = NLP(clean_data)
     tree = parse_doc(doc)
-    abvs = extractAbbv(doc)
+    abvs = extractAbbv(NLP(text))
     ngrams, supergrams = get_ngrams_supergrams(tree, nMax)
     return ngrams, supergrams, abvs
