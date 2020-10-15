@@ -2009,3 +2009,3278 @@ third country or territory
 calculated area
 underwriting risk
 ecb
+abcp
+ability
+abnormal operations
+absence
+absolute ambient temperature
+absolute amount
+absolute pressure
+absolute value
+absorption
+acceleration
+acceptable alternatives
+acceptable means
+acceptance
+accepted classification
+access
+accessibility
+accident
+accidental exposure
+accidents
+accidnum
+accommodation
+accompanying
+account
+accountability
+accounting
+accounts
+accreditation
+accredited representative
+accumulated equity value
+accumulation
+accuracy
+achievement
+acquirer
+acquisition
+acquisition costs
+acronym
+action
+actions
+active licence
+active mode
+activities
+activity
+actual density
+actual expenditure
+actual fuel consumption
+actual landing
+actual ramp weight
+actual reporting
+actual statistical benefits
+actual transaction costs
+actual value
+actual values
+actual vat receipts
+actual weight
+actuarial equivalent
+actuarial value
+ad
+adaptation costs
+addition
+additional costs
+additional data
+additional eligible costs
+additional identification methodology
+additionality
+additional payments
+additional tier
+additional unit
+address
+adequate benchmark
+adequate public disclosure
+adev
+adjusted annual financial commitment
+adjusted level
+adjusted share
+adjusted solvency
+adjustment
+adjustment coefficients
+adjustments
+administration
+administrative
+administrative operating expenditure
+administrator
+adt
+advance
+advanced brake system
+advanced electronic seal
+advanced electronic signature
+advances
+adverse effect
+adverse scenarios
+adviser
+advisory
+aeo system
+aerobatic flight
+aerodrome
+aerodynamic drag
+aeronautical data
+aeronautical information
+affected person
+affiliate
+affiliated entity
+affiliated undertakings
+age
+agency
+agent
+agglomerate
+aggregate
+aggregated data
+aggregated quarterly data
+aggregator
+aggressive order
+agreement
+agricultural conversion
+agriculture
+aidcp
+aids
+aim
+aims
+air
+airbag
+aircraft
+air emissions accounts
+airplanes
+airport
+airport operators
+airspace
+ak
+al
+alert
+algorithm
+alias
+allocation
+allocations
+allotment
+allowable costs
+allowance
+alphanumeric data
+alternate representative
+alternative
+ambient conditions
+amortisation
+amount
+amounts
+amp
+amroggang
+analysis
+analytical procedures
+ancillary banking services
+ancillary service
+ancillary stabilisation
+animal
+animal feed
+animal health investigation
+animals
+annual accounts
+annual amounts
+annual assessment
+annual average
+annual average transmission charges
+annual benchmark
+annual budget
+annual cash
+annual ceiling
+annual contribution
+annual contributions
+annual demographic statistics
+annual effective rate
+annual emission allocation
+annual emission allocations
+annual enterprise statistics
+annual estimate
+annual exchange rate
+annual financial contribution
+annual fisheries control
+annual indicative breakdown
+annual number
+annual percentage
+annual percentage rate
+annual plan
+annual rate
+annual reduction
+annual resources
+annual target level
+annual tariff quotas
+annual traffic volume
+annuity
+anonymisation
+answer
+antimicrobial
+app
+appliance
+applicable revenues
+applicable turnover
+applicant
+application
+applied research
+applies
+apply
+appointing authority
+approach
+appropriate authority
+appropriations
+approval
+approximations
+aprc
+aqua
+area
+arithmetic mean
+armed robbery
+arrangement
+arrangements
+arrival
+arts
+assemblies
+assembly
+assessing
+assessment
+assessments
+assessor
+asset
+assets
+assigned amount
+assigned funds
+assistance
+assistive technology
+associate
+associated country
+associated instruments
+associated undertaking
+association
+assumptions
+assurance
+assurance level high
+assurance level low
+assurance level substantial
+assurances
+atalaia
+atmosphere
+atomic ratios
+au
+auction
+audiovisual
+audit
+auditor
+authentication
+authentic instrument
+authorisation
+authorisations
+authorised operator
+authorised personnel
+authorised repairer
+authorised representative
+authorised vessels
+authorising officer responsible
+authorities
+authority
+authorization
+auto
+automated teller machine
+automatic switching
+automatic washing machine
+autumn
+availability
+available annual resources
+available capacity
+available financial means
+available liquidity
+available solvency margin
+average
+average effective spread
+average quote presence
+average speed
+avian influenza
+award
+axis
+axle
+background
+bail
+bait
+balance
+balances
+balancing
+ball
+bank
+banka slovenije
+banking
+banknote
+bar
+base
+basel iii lcr framework
+baseline
+base product
+bases
+basic act
+basic amount
+basic amounts
+basic earnings
+basic equation
+basic heading
+basic information
+basic material
+basic monthly salaries
+basic monthly salary
+basic salary
+basis
+batch
+batch file
+batch sampling
+bearer
+belgië
+belgium
+belt
+benchmark
+bending moment
+beneficial owner
+beneficiary
+benefit
+benefits
+best available techniques
+best environmental practices
+best practice
+beverage
+bfrs
+bi
+bid
+bill
+biobanks
+biodiesel
+biodiversity
+biodiversity offsets
+biofuels
+biological
+biomass
+biometric data
+biometric risk premiums
+biometric search
+black
+blending
+block
+blocking
+b method
+b methods
+board
+bodies
+body
+boiler
+bonds
+bonuses
+book
+book depth
+border
+borrowing
+bottom
+bounds
+bow height
+braking
+branch
+breach
+breakdown
+breakdowns
+bridge
+bridging
+brine
+broadcast
+broadcaster
+broadcasting
+broad categories
+brokering
+brother
+brothers
+budget
+budgetary allocation
+budgetary authority
+budgetary breakdown
+budgetary commitment
+budgetary commitments
+budget line
+budgets
+building
+buildings
+bundling
+burden
+bus
+business
+business risk
+business travel
+buy
+by electronic means
+ca
+cabin
+cabinet
+cabotage
+calculation
+calculation credit risk adjustments
+calculations
+calendar
+call
+calls
+cancel
+cancellation
+cancelled service
+candidate
+cap
+capacity
+capital
+captive reinsurance undertaking
+capture
+carbon
+card
+carriage
+carrier
+carry
+carrying
+case
+cases
+cash
+categories
+category
+causes
+cb
+cbs
+ccn
+ccp
+ccps
+cdo
+cds
+ceiling
+cellar
+cells
+celsius temperature
+central
+centre
+certainty
+certificate
+certificates
+certification
+ch
+chairperson
+change
+changes
+channel
+characteristics
+characters
+charge
+chargeable unit
+charges
+chassis
+checks
+cheeses
+chemical
+chest freezer
+chicago
+chief
+child
+children
+chill compartment
+chilled operating temperature
+chimney
+choice
+chp
+chp hη
+circular
+circulator
+circulators
+circumstances
+cis
+cit
+cities
+citizens
+citizenship
+cius
+claim
+claims
+clarity
+class
+class c
+classes
+classical swine fever
+classification
+classified contract
+classified information
+classified subcontract
+clean price
+clean vehicle
+clearing
+client
+climate
+clinical data
+close
+cns
+co
+coastal fisheries
+coastal zone
+code
+codes
+coefficient
+coefficients
+cogeneration
+cogeneration production
+coherence
+col
+cold start
+collaborative
+collateral
+collection
+collective investment
+college
+combination
+combined brake system
+combined cabinet
+commencement
+commerce
+commercial
+commercially reasonable replacement trade
+commission
+commitment
+commitment appropriations
+commitments
+committed capital
+committee
+commodity
+common conditions
+common costs
+common dashboard
+common data
+common equity
+common frameworks
+common information
+common methodology
+common service
+common services
+common user feedback tool
+communicable diseases
+communication
+community
+community contributions
+company
+comparability
+comparison
+compartment
+compartmented mode
+compartments
+compensation
+competence
+competent authorities
+competent authority
+competent bodies
+competent body
+competent institution
+competent inventory authorities
+competent national central bank
+competent person
+competent state
+competition
+competitive dialogue
+complementary ground components
+complete aii code
+complete cycle
+complete vehicle
+completion
+complex disease
+complexity
+compliance
+component
+components
+composition
+compound interest
+comprehensive review
+compression
+compressive axial force
+compromise
+computer
+computerised system
+computing
+coms
+concentration ratio
+concept
+concession
+concise financial viability
+concurrent infringements
+condensation
+condenser
+conditional stage
+conditions
+conduct
+conference
+confidential data
+confidential value
+confirmation
+confiscation
+conformity
+congestion
+consensus
+consent
+consequence
+consequences
+conservation
+consideration
+consistency
+consistent means
+consolidated
+consolidating entity
+consolidating supervisor
+consortium
+constant
+constituent
+constituent entities
+consulate
+consumable materials
+consumer
+consumers
+consumption
+contact
+container ships
+contamination
+contests
+context
+contingent
+continual improvement
+continuous cycle
+continuous sampling
+contract
+contracting
+contractor
+contracts
+contractual
+contractual obligation
+contractual term
+contributing
+contribution
+contributions
+contributor
+control
+controller
+controllers
+convention
+conventional production
+conventions
+conversion
+conversions
+converted company
+convertibility
+convertible
+cooker
+cooperation
+cooperative
+cooperatives
+coordinated universal time
+coordination
+coordinator
+copernicus
+core funding
+corner
+correction
+correction coefficients
+corrective action
+correlation
+correspondent
+corresponding effect
+corresponding expenditure
+corresponding value
+cost
+costs
+count
+counter
+counterparties
+counterparty
+countries
+country
+couple
+coupon
+court
+cover
+coverage
+coverage rate
+covered bond
+covered deposits
+cp
+cpc
+crankcase
+creator
+credit
+creditor
+creditworthiness
+crew
+cricket world cup
+crime
+criminal
+criminal activity
+crisis
+criteria
+criterion
+critical data
+critical design review
+critical phases
+critical services
+crm
+cross
+crude
+cruise
+csd
+csdp
+csdp operation
+csds
+cu
+cultbook
+culture
+cumulative preferential share capital
+cupboard
+currencies
+currency
+current expenditure
+current household members
+current market
+current transfers
+curve
+custodian
+custody
+custom
+customer
+customised link
+cy
+cycle
+cyclic volume
+dactyloscopic data
+daily exchange
+damage
+dangerous goods
+dariah
+das
+data
+databank
+data dissemination
+data protection
+data quality requirements
+date
+day
+days
+daytime
+db
+dca
+dcms
+dd
+de
+dealing
+dealings
+death
+debt
+debtor
+deceleration
+decision
+declarations
+declassification
+decommissioning
+decrease
+dedicated cash account
+dedicated mode
+dedicated sentinel missions
+deduction
+deemed cost
+default
+defaulting
+default value
+defeat device
+defect
+defence
+deferral
+deficiency
+definition
+definitions
+deflator
+deflection
+deformable barrier
+degrees
+delay
+delivery
+delivery type
+delivery versus payment
+delta
+demand
+dematerialised form
+demonstration
+denominator
+density
+dental services
+departure
+dependants
+deposit
+depositary
+depositor
+deposits
+depreciation
+depreciation costs
+deputy
+derivative
+derivatives
+derogation
+description
+design
+designated authorities
+designated authority
+designated operational coverage
+designated vessels
+designating authority
+designation
+destination
+destruction
+detailed minimum requirements
+detailed monitoring
+detailed topic
+detection
+determination
+determined costs
+determining
+developing
+deviation
+device
+dicalcium phosphate
+difference
+differences
+differentials
+difficulty
+difftype
+digit
+digital
+digital content stakeholders
+dimensions
+diploma
+direct
+direct damage
+directing
+direct injection engine
+directive
+director
+directors
+directory
+direct participation
+direct purchase
+disabled person
+disaster
+disaster risk prevention
+disclosure
+discount
+discovery
+discrimination
+disintegration
+dispersion
+display
+disposable income
+disposal
+dissemination
+distance
+distinction
+distinct underlying type
+distribution
+distribution fee
+distributor
+dividend
+dividends
+division
+dkr
+dm
+dna profile
+document
+dollar
+domain
+domestic extraction
+domestic freight
+domestic merger
+domestic payment transaction
+domestic provider
+domestic voyage
+domicile
+dominance
+donation
+donor
+door
+dose
+double
+double slash
+downgrading
+dr
+drophigh
+droplevel
+drum
+dry
+drying
+dry lease agreement
+dual career
+dual-use goods and technology
+dublin
+durability
+durable medium
+duration
+dynamic data
+dynamic purchasing system
+early warning
+earmarkable assets
+ebti system
+ec
+ecaa
+ecai
+ecall
+ecb
+ecm
+eco
+economic
+economically justifiable demand
+economic resources
+economy
+ecosystem
+ecu
+edelivery
+edf
+editorial decision
+editorial responsibility
+education
+educational project
+educational staff
+eea
+eeas
+eei
+effect
+effective annual rate
+effective date
+effective dates
+effective nuclear security
+efficiency
+efficient district heating
+efficient heating
+efficient individual heating and cooling
+efficient internal control
+efsi
+efta
+efti
+egnos
+eiah
+eipp
+electric
+electricity
+electricity production
+electronic auction
+electronic communications
+electronic document
+electronic flight bag
+electronic freight transport information
+electronic identification
+electronic means
+electronic money
+electronic payment transaction
+electronic recording
+electronic room temperature control
+electronic seal
+electronic signature
+electronic stability control
+electronic terrain data
+electronic ticketing services
+electronic tickets
+electronic time stamp
+electronvolt
+element
+elements
+eligibility
+eligible cost
+eligible costs
+eligible deposits
+eligible expenditure
+eligible expenses
+eligible indirect costs
+eligible liabilities
+eligible net lending
+emergency
+emff
+emission
+emissions
+emp
+employed person
+employees
+employer
+employment
+en
+end
+endowments
+endurance
+energy
+energy efficiency index
+energy products
+enforceable title
+enforcement
+engagement
+engine
+enroute service unit
+entering
+enterprise
+enterprise characteristics
+entitlements
+entity
+entrusted party
+entry
+environment
+environmental aspect
+environmental audit
+environmental economic accounts
+environmental goods
+environmental impact
+environmental management
+environmental objective
+environmental performance
+environmental policy
+environmental programme
+environmental protection
+environmental review
+environmental statement
+environmental verifier
+eori
+epco
+epec
+equalisation reserve
+equal periods
+equal share
+equation
+equations
+equipment
+equity
+equivalent
+equivalised disposable income
+er
+erdf
+error
+erru
+esa
+escb
+esma
+esr compliance period
+ess
+essential characteristic
+essential data
+essential features
+established claim
+establishment
+estimate
+estimates
+estimation
+etias
+eto
+ets
+eu
+euci
+eumetsat
+eupm
+eur
+euratom
+eures
+euro
+eurodac
+eurojust
+euromed country
+europass
+europe
+european
+europhyt
+europol
+eurostat
+eurostat hicp
+eurosystem
+eusef
+euveca
+ev
+evaporative emissions
+evasion
+event
+events
+evidence
+ex
+exact version number
+examination
+example
+examples
+exascale
+exceptional weather conditions
+excess
+excessive imbalances
+exchange
+exchange rate
+exclusive choice
+executing state
+execution
+execution venues
+executive
+exercise
+exercising
+exhaust
+exit
+expansion
+expected loss
+expected performance
+expected results
+expenditure
+expert
+expiry
+exploitation
+exploration
+explosives
+exports
+exposure
+exposures
+expression
+extension
+extent
+external borders
+external combustion
+external maritime borders
+external reprocessor
+extraordinary public financial support
+extrapolated part
+extreme but plausible market conditions
+facial image
+facility
+factor
+factors
+failure
+fair
+fair value
+falls
+false match
+false negative identification rate
+false positive identification rate
+family
+family workers
+fast freeze
+fatal accident
+fatal injury
+fatalities
+fatf
+father
+fats
+fault
+favourable scenario
+fc
+fch
+fed
+fedlevel
+fednum
+fedpaidby
+fee
+feeder
+fees
+ferry
+ff
+fi
+fibre
+fieldwork
+fifth freedom
+fifth year
+figi
+figure
+figures
+filing
+fill
+final
+final beneficiary
+final closure
+final customer
+final decision
+final destination
+final energy
+final exchange rate adjustment
+final funding amount
+final investment decision
+final nrsc
+final payment
+final rde emissions
+final recipients
+final step
+financial
+financial account
+financial adviser
+financial allocation
+financial assets
+financial collateral
+financial conglomerate
+financial contracts
+financial contribution
+financial contributions
+financial corporation
+financial corporations
+financial costs
+financial counterparties
+financial counterparty
+financial derivatives
+financial envelope
+financial holding company
+financial institution
+financial institutions
+financial instrument
+financial instruments
+financial intermediaries
+financial liability
+financial market
+financial outturn account
+financial plan
+financial product
+financial reference amount
+financial result
+financial sector
+financial statements
+financial transactions
+financial undertaking
+financial viability
+financial year
+financing
+financing transport resources
+findings
+fingerprint
+finite reinsurance
+firm
+firms
+first assessment
+first dimension
+first instalment
+first member
+first month
+first reference period
+first reference year
+first reference years
+first result
+first test
+first wave
+first year
+fish
+fisheries
+fisherman
+fishery
+fishing
+fisim
+fitness
+fiu
+five-day futures
+fixed assets
+fixity
+fl
+flag
+flat rate
+flex fuel biodiesel vehicle
+flex fuel ethanol vehicle
+flex fuel vehicle
+flight
+floor
+flow
+flowrate
+flueless heater
+fmc
+fnir
+follow
+following
+food
+foodstuffs
+footprint
+forecast
+forecasts
+foregone fees
+foreground
+foreign currency
+foreign direct investment
+foreign exchange
+foreign exposure
+foreign investor
+foreign reserve assets
+forest
+formal open standard
+format
+formula
+forward
+forward exchange rate
+forward transactions
+fossil fuel
+fossil solid fuel
+foundation
+fpir
+fraction
+fractions
+framework
+fraud
+freedom
+free float
+freezer
+freezing
+freight
+freight insurance services
+frequency
+fresh cheeses
+fresh fish
+frontier
+frost
+frozen fish
+frozen operating temperature
+fuel
+fuel consumption
+full performance
+full security accreditation
+full time equivalents
+full trainload
+full understanding
+full visa reciprocity
+full wagonload
+function
+functional safety
+functional system
+functions
+fund
+funding
+funds
+future
+fx
+gains
+galileo
+gambling
+gas
+gaseous fuel
+gdp
+gear
+gender
+general
+general government transfers
+generic device group
+generic medicinal product
+generic tools
+genetic data
+genetic material
+genetic merit
+genetic resources
+geneva
+genuine attempt
+geo
+geographical area
+geographical breakdowns
+geographical location
+geoid model
+geometric mean
+geothermal
+gfcf
+gge
+gif
+glandless circulator
+global
+global budget
+global financial commitments
+gni
+gold
+good
+goods
+goodwill
+government
+government debt
+governor
+gradient
+graduate
+grains
+grant
+granting
+granular credit data
+graphs
+grassroots sport
+gravad
+green harvesting
+green infrastructure
+greenshoe option
+grid
+gross
+gross best estimate
+gross income
+gross insured sum
+gross premiums
+gross wage
+ground
+groundwater
+group
+g scale
+gt
+guarantee
+guarantor
+gui
+guidance
+half
+handling
+handover
+haqqani
+harmonised efficiency reference values
+harmonised indices
+harmonised standard
+harmonized standard
+hatcomp
+hatlevel
+hatother
+hazardous material
+hbs
+head
+heading
+headline
+heads
+health
+healthcare
+heat
+heater
+heating
+heat loads
+height
+hh
+hicp
+hicps
+high-efficiency cogeneration
+high epidemic risk
+higher education
+highest multiple
+highest value
+high message intraday rate
+high performance aircraft
+high speed
+high-value datasets
+historical asset values
+historic traffic data
+hit
+ho
+holder
+holding
+home
+homologation
+horizontal
+host
+hosting
+hotspot area
+hot work
+hour
+house
+household
+household grid
+households
+household size
+household type
+housing
+hpc
+hprobnum
+hr
+hs
+hssc
+htl
+hu
+human
+hybrid
+hydraulic power
+hydraulic pump efficiency
+hydrocarbons
+hydrogen
+ias
+ibuy
+ice
+ictcomputer
+identification
+identification code
+identity
+idle speed
+ietf
+ifr
+illegal immigration
+imbalance order
+imbalances
+imi
+immediate liquidity transfer order
+immediate threat
+immigration
+immobilisation
+impact
+impartiality
+impediments
+implementation
+implementing
+implied volatility
+importer
+imputation
+incident
+income
+incomplete vehicle
+increase
+incremental costs
+indemnity
+independent
+index
+indexing variable
+indicate
+indication
+indicative amount
+indicative amounts
+indicative breakdown
+indicative budgetary allocations
+indicative financing plan
+indicative list
+indicative total contribution
+indicator
+indicators
+indirect action
+indirect clearing
+indirect client
+indirect heating functionality
+indirect heat output
+indirect link
+indirect participant
+indirect participation
+indirect rtd actions
+individual
+individuals
+industrial security
+industrial states
+inf
+informal learning
+information
+information exchange
+information systems security
+informed consent
+infrastructure
+infringement
+inherent risk
+initial
+initial margin
+initial period
+initial recognition
+initiation
+inland fishing
+inland waterways
+innovation
+input
+   remarks:
+input
+input random vibration
+inputs
+inside information
+insider
+insolvency
+inspection
+inspector
+inspire
+installation
+instalments
+instantaneous oxidation
+institution
+institutional protection scheme
+institutional unit
+institutional units
+institutions
+instrument
+instrumentalities
+instruments
+insurance
+insured person
+insurer
+intact stability
+integer
+integral cabinet
+integrated aeronautical information package
+integrated coastal zone management
+integrated projects
+integrity
+intellectual property
+intelligent banknote neutralisation system
+intelligent transport systems
+intended purpose
+intended settlement date
+intensity
+inter
+interactive computing capability
+interconnection
+interest
+interested party
+interest rate swaps
+interests
+interface
+interference
+interim
+interim payments
+interim profits
+interlinking
+intermediary
+intermediate body
+internal
+internal production control
+international
+international agreement
+international instruments
+international open communication procedures
+international organisation
+interoperability
+interoperable link
+interpolation
+interruptible capacity
+interruptible services
+interval
+intervals
+intervention measures
+interview
+intra-eurosystem balances on euro banknotes in circulation
+intra-group transaction
+intra-group transactions
+introduction
+introductory phrase
+invalidity
+inventories
+inventory
+investigation
+investigator
+investment
+investment costs
+investment income
+investment projects
+investments
+investor
+invitation
+ip
+ir
+irl
+irr
+irregularity
+irrespective
+irsg
+iso
+ispa
+issuer
+issuing
+itc
+itd
+item-by-item data
+jaber ibn hayan
+jet
+job
+jobstat
+joint degrees
+joint programme
+judgment
+kc
+kelvin
+key
+key actions
+kilogram
+kilometric allowance
+kind
+kinds
+knc
+knowledge
+korea
+kv
+labels
+laboratory
+labour cost indices
+laden journey
+laden tractive units
+lag
+land purchase
+lane
+language
+langused
+large groups
+large rotorcraft
+large undertakings
+lasers
+last term
+late payment
+later
+latvian
+law
+lawyer
+lb
+lc
+lead
+learning
+lease payments
+left
+legal
+legislation
+legitimate interest
+legitimate public interest grounds
+lei
+length
+less significant credit institution
+letter
+level
+leverage
+levy
+liabilities
+liability
+license
+life
+lifelong learning
+light
+likelihood
+limit
+limitation
+limited liability
+linear factor
+linear instruments
+linear interpolation
+linearity
+link
+linking
+liquid
+liquidator
+liquidity
+list
+lists
+lit
+lithuanian
+live birth
+lloyd
+lng
+load
+load factor
+loan
+loan procedure
+loans
+loans payable
+loan value
+local
+localisation
+localization
+local space heaters
+location
+lock
+logistical support
+lone parent
+longitudinal common eu indicators
+longitudinal component
+longitudinal data
+long run
+long term
+lorry
+loss
+losses
+lots
+low
+lpg
+lt
+luggage
+luminous local space heater
+lump
+lump sums
+machine
+machinery
+main
+main activity
+main elements
+main grooves
+mains
+mainstat
+maintenance
+major
+majority
+make
+making
+maltese
+management
+management companies
+manager
+mandate
+mandatory contributions
+manual
+manufacturer
+manufacturing
+margin
+marine
+maritime
+mark
+market
+marketing
+market prices
+market risk
+market services
+marshalling yard
+mass
+masses
+mass spectrometers
+master
+match
+matching
+material
+materiality
+mathematical formula
+mathematical model
+mating
+matrix
+maturity
+maturity tenor
+maximum
+maximum mass
+mc
+mean
+meaning
+means
+measure
+      transitional provisions and effective date
+measure
+measured volatility
+measurement
+measurements
+measures
+measuring
+mechanical pressure absorption
+mechanism
+media
+median
+mediation
+mediator
+medical device
+medical fitness
+medical services
+medical surveillance
+medium
+mei
+member
+members
+membership
+member states
+mentor
+merchanting
+merger
+mergers
+merit
+message
+metadata
+meter
+meters
+method
+methodological soundness
+methodology
+methods
+metier
+metre
+metro
+mfa
+mfi
+mi
+micro
+microcredit
+microdata
+microenterprise
+microfinance
+microwave radiometer
+mid
+migration
+military
+milling
+minibar
+minimum
+mining
+minor
+misclassification
+misstatement
+mistake
+mitigating
+mixed-activity holding company
+mixed-activity insurance holding company
+mixed financial holding company
+mm
+mobile
+mode
+model
+modelling
+moderate scenario
+modes
+module
+moisture
+molar hydrogen ratio
+molar mass
+molar nitrogen ratio
+molar oxygen ratio
+molar sulphur ratio
+mole
+monetary data
+monetary financial institution
+monetary financial institutions
+monetary transaction
+monetary union
+money
+money market instruments
+money remittance
+monies
+monitoring
+mono fuel vehicle
+month
+monthly
+months
+mortgage
+mother
+motor
+motorcycle
+motorway
+mr
+mrel
+mro
+multidisciplinary healthcare team
+multilateral development banks
+multilateral trading
+multilateral trading facility
+multilevel mode
+multilingual services
+multimodal travel information
+multiple
+multiplication
+multiplication rates
+multiplier
+mutual assistance
+mvo
+mx
+nafo
+name
+nanomaterial
+národná banka slovenska
+national
+nationality
+national laws
+natural background radiation
+natural capital
+natural capital financing facility
+natural disaster
+natural disturbances
+natural energy inputs
+natural gas
+natural persons
+natural uranium
+nature
+nb
+ncb
+ncbs
+nedc
+need
+negative
+neighbourhood countries
+nested display
+net
+net current monthly income
+netherlands
+net social benefits
+netting
+network
+networking
+network tariffs
+new
+new business
+new entrant
+new equity instruments
+new infrastructure
+new margin balance
+new price
+nfelesson
+nfenum
+ng
+ngr
+ni
+night
+nitrogen
+noise
+nomenclature
+nominal
+nominal power
+nominal value
+nominated holding account
+nomination
+non deliverable forwards
+none
+non-financial counterparty
+non-financial entity
+non-member country reinsurance undertaking
+non-objection procedure
+non-practitioner
+normal trading
+notam
+notch
+notes
+notional
+nrh
+nrp
+nrvs
+nsfr
+nuclear reactor vessel components
+nuclide
+number
+numbers
+numerator
+numerical capacity
+numerical value
+object
+objective
+objectives
+obligated party
+obligor
+observation
+observed audit
+observed value
+observer
+obstacle
+occasional automatic exchange
+occasional services
+occupation
+offeror
+official
+officials
+offset
+offshore service craft
+offshore service ship
+oil
+one-sided payment
+ongoing costs
+online
+onward transfer
+open access
+open format
+open method
+open procedure
+open standards
+operating
+operation
+operational analysis
+operational cancellation
+operational costs
+operational information
+operational personal data
+operational risk
+operational risks
+operational terms
+operations
+operative
+operator
+operators
+option
+option contracts
+options
+orbital test satellite
+order
+orderly wind
+ordinal
+ordinance
+organ
+organisation
+organisational coordinator
+organisational node
+organisers
+original
+originator
+origins
+otc
+other relevant authorities and bodies
+others
+othr
+outcome
+outcomes
+outdoor use
+outlook
+output
+output prices
+outside
+outsourcing
+outstanding amounts
+overall amount
+overall efficiency
+overall exposures
+overall fraud
+overall gross position
+overallotment facility
+overall resources
+overall summary risk indicator
+overall weight
+overdraft
+overheads
+overlap
+oversight
+overstayer
+owner
+own funds requirements
+own-use covered bonds
+oxygen
+pa
+package
+paragraphs
+parameter
+parameters
+parent
+part
+partial disposal
+partial exposure
+partial fill
+partial load
+participant
+participants
+participating interest
+participating member state
+participating member states
+participating party
+participating undertaking
+participation
+particle
+particle concentration measurements
+particular
+particulate
+parties
+partner
+partners
+partnership
+parts
+party
+passenger
+passive licence
+passive order
+passport
+passporting
+past performance figures
+path
+pay
+payee
+payer
+payload
+payment
+payments
+pc
+pcered
+peak
+peg
+pension
+pension funds
+pensions
+percentage
+percentage increases
+perfluorooctane sulfonic acid
+performance
+performing
+perimeter
+period
+periodic variation
+periods
+permanent health insurance
+permissible relationship
+person
+personal data
+personal dose
+personal travel
+personnel
+persons
+pes
+petascale
+pfi
+phase
+phasing
+phrase
+physical
+physical energy flow accounts
+physical imports
+pi
+pilot
+piracy
+place
+places
+placing
+plan
+planned abnormal exposure
+planned expenditure
+planning
+platform
+plausibility
+pleasure
+plot
+pm
+pn
+pnr
+po
+pogi
+policies
+policy
+political alliance
+political foundation
+politically exposed person
+politically exposed persons
+political party
+pollutant
+pollution
+polychlorinated biphenyls
+polychlorinated dibenzofurans
+pool
+population
+port
+portfolio
+portfolio investment
+portfolio investment income
+portion
+position
+positive amount
+positive difference
+positive ignition
+post
+potential
+potential ordinary shares
+power
+power consumption
+powered sailplane
+powered tricycle
+powertrain
+ppp
+ppps
+pr
+precise definition
+predefined liquidity transfer order
+preference
+preference shares
+preferential position
+preferred fuel
+preferred resolution strategy
+prefixes
+prejudice
+preliminary draft
+preliminary draft supplementary budget
+preliminary national results
+preliminary report
+preliminary terms
+pre-marketing
+premises
+premium
+prepaid card
+prepaid cards
+preparation
+preparatory projects
+preparedness
+prescribed multiplier
+present
+preservation
+pressure
+prevention
+previous gaap
+price
+price multiplier
+price notation
+prices
+pricing
+priip
+priips
+primary energy
+primary insolvency jurisdiction
+primary market
+primary sample size
+primary sampling unit
+primary stratum
+principal
+principality
+principle
+prior authorisation
+prior information
+priorities
+priority
+private financing
+private household
+private member
+privatisation
+probability
+procedure
+procedures
+proceeds
+process
+processes
+processing
+processor
+procurement
+procurement procedures
+producer
+producers
+product
+production
+products
+professional
+professional client
+professional experience
+profiling
+profit
+programme
+programming
+progress
+project
+projected basic salary
+projections
+projects
+promotion
+property
+proportion
+proportionality
+proportional share
+propulsion
+prospectus
+protective system
+protective systems
+protocol
+provider
+provision
+provisional valuation
+provisions
+proxies
+prr
+prudent valuation
+ps
+psap
+pseudonymisation
+pso
+psps
+psychoactive substances
+psychological harassment
+pta
+ptw
+public
+pump
+punctuality
+pupil
+purchase
+purchase costs
+purchaser
+purchasing
+pure electric vehicle
+purpose
+purposes
+pursuant
+push method
+puttable financial instrument
+qas
+qn
+qods
+qr
+quadricycle
+qualification
+qualified certificate
+qualified electronic seal
+qualified electronic signature
+qualified electronic time stamp
+qualified entity
+qualified majority
+qualified trust service
+qualifying
+qualitative factors
+qualitative limits
+quality
+quality control
+quality reports
+quantifiable indicator
+quantification
+quantitative estimates
+quantitative factors
+quantitative information
+quantitative limits
+quantities
+quantity
+quantity notation
+quarter
+quarterly
+quarters
+quasi-equity
+quick response
+quota
+rabies
+radian
+radiations
+radio
+radioactive substances
+radioactivity
+rail
+railway
+random test result
+range
+rapidity
+rate
+rates
+rating
+ratio
+ratios
+raw data
+rb
+rcv
+rde
+rdf
+reader
+ready
+real asset
+real estate
+real time
+real unit labour
+reasonable accommodation
+reasonable assurance
+reasonable return
+reasons
+rebate
+rebates
+recalculations
+recall
+receipts
+receivable
+receiving
+recipient
+recipients
+recognised exchanges
+recognised organisation
+record
+recording
+recoverability
+recovery
+recurring
+recyclability
+recycling
+redenominate
+reduced visibility
+reduction
+ref
+refer
+reference
+reference rate
+references
+refining
+refrigerated vending machine
+refrigerating
+refrigerator
+refugee
+regard
+regards
+region
+regional economic integration
+regional integration
+regional parliament
+regional statistics
+regional transport services
+regions
+registered candidate
+registration
+registries
+regular automatic exchange
+regularisation
+regular service
+regular services
+regulated data roaming service
+regulated entity
+regulated market
+regulated roaming call
+regulated roaming sms message
+regulation
+regulatory information
+reimbursement
+reimbursements
+reinsurance
+related level
+related undertaking
+relates
+relation
+relative
+relatives
+release
+relevance
+relevant account
+relevant aggravating coefficient
+relevant aggravating coefficients
+relevant agreement
+relevant authorities
+relevant authority
+relevant box
+relevant capital instruments
+relevant classes
+relevant competent authority
+relevant consideration
+relevant costs
+relevant currencies
+relevant currency
+relevant date
+relevant day
+relevant entity
+relevant financial obligations
+relevant indicator
+relevant national resolution authority
+relevant nca
+relevant ncb
+relevant number
+relevant part
+relevant person
+relevant public authority
+relevant securities
+relevant stakeholders
+relevant turnover
+relevant union
+reliable
+rem
+remainder
+remote cabinet
+removal
+remuneration
+renewable energy
+renewals
+reorganisation
+repairs
+repayment
+replacement
+replicability
+report
+reporting
+repos
+representative
+representativity
+reprocessing
+reprocessor
+reproduction
+republic
+repurchase
+request
+requested authority
+requesting
+requesting csd
+requesting member state
+required degree
+required solvency margin
+requirement
+requirements
+research
+researcher
+reservation
+reserve
+reserve base
+reserved
+reserves
+resettlement
+residence
+resident
+residual
+resolution
+resource
+resources
+respect
+respondent
+response
+responsible authority
+rest
+restorative justice
+restricted areas
+restricted procedure
+restriction
+result
+results
+retail
+retention
+retirement
+return
+returnee
+reusability
+re-use
+reuse
+revaluation
+revenue
+reverse
+review
+revision
+rice
+right
+ripened cheeses
+risk
+risk management
+risks
+rm
+rmbs
+ro
+road
+roaming
+robertstown
+robustness
+roll
+roof
+room
+routing
+rp
+rpm
+rr
+rtd
+rules
+sa
+safety
+sailing ship
+sailplane
+sailplanes
+saladette
+sale
+sample
+samples
+sampling
+sanctions
+sapard
+satistical base
+sauna
+savings
+scale
+scaling
+scenario
+scenarios
+scheduled time
+scheme
+schemes
+schengen
+school
+scope
+score
+screen
+screening
+sdrv
+sea
+seafarer
+search
+seasonal adjustment
+seasonal products
+seasonal worker
+seat
+seating position
+second
+secondary market
+secondary processing site
+seconding
+secretary
+sectoral rules
+sectors
+secure
+secured area
+securities
+securitisation
+security
+security risk management
+seekinfo
+selection
+self-regulatory body
+senior
+sensitivity
+sentinel ground segment
+separate calculation
+separate head restraint
+separate technical unit
+series
+serious adverse event
+serious adverse reaction
+serious crime
+serious criminal offence
+serious criminal offences
+serious deficiency
+serious disturbance
+serious fraud
+serious incident
+serious injury
+serious misconduct
+service
+services
+serving
+sesar
+set
+sets
+setting
+settlement
+several deficiencies
+several vat rates
+severe acute respiratory syndrome
+severe conditions
+sex
+sexual harassment
+sft
+share
+shared equity credit agreement
+shares
+sharing
+shelf
+shell bank
+ship
+shipment
+shipping
+ships
+short run
+short stay
+short term
+si
+signatories
+signatory
+signed
+significant accident
+significant credit institution
+significant distribution
+significant supervised entity
+simple
+simulated past performance
+simulation
+simultaneous changes
+single allocation platform
+single character
+single figure
+single point of entry
+single shared platform
+single time period
+single use
+sink
+sips
+sirene
+site
+situation
+sixth framework programme
+size
+skills
+skos
+slovak
+slovenian
+small airships
+small and medium-sized enterprises
+small enterprise
+small groups
+small-scale project
+small undertakings
+small volume manufacturer
+smart metering
+sme
+smes
+smoothing
+smp
+sms
+sndb
+snow
+social
+social partners
+soil
+solas
+sole
+solidarity
+solid fuel
+solid state
+solutions
+solvency
+solvit
+son
+sound
+source
+space
+span
+spare part
+spare parts
+spatial adjustment factors
+spatial data
+spatial units
+spec
+special contributions
+special elimination levy
+special interest
+specialised lending
+special purpose
+special rate
+special reference
+special use
+special value
+species
+specific agricultural conversion rate
+specification
+specific emission reference target
+specific emission target
+specific exchange rate
+specific gravity
+specific groups
+specific indicators
+specific physical activity
+specific priority
+specific regulations
+specific security
+specific union
+specifying
+spectrum
+speed
+sponsorship
+spot
+spread
+spreadbets
+sr
+ss
+ssp
+stabilisation
+stability
+staff
+staff costs
+         ii.1.2.   travel and subsistence costs
+         ii.1.3.   equipment
+         ii.1.3.1.   general rules
+staff costs
+         ii.1.2.   travel and subsistence costs
+         ii.1.3.   equipment
+         ii.1.3.1.   general rules
+stage
+stand
+standalone
+standard
+standard deviation
+standardisation
+standby
+standby mode
+standing
+start
+starting
+state
+statement
+states
+static data
+station
+statistical data
+statistical disclosure control
+statistical errors
+statistical information
+statistical margin
+statistical unit
+statistical units
+statistics
+      section 3
+      coverage
+      section 4
+      characteristics
+      section 5
+      first reference year
+statistics
+      section 3
+      coverage
+statistics
+      section 3
+      coverage
+      section 4
+      characteristics
+statistics
+      section 3
+      coverage
+      section 4
+      characteristics
+      section 5
+      first reference year
+statistics
+status
+statute
+statutes
+statutory audit
+statutory certificate
+statutory interest
+stay
+step
+steps
+stepson
+steradian
+sternum
+stock
+stock data
+stocks
+stop
+storage
+straight line
+strategic analysis
+strategic information
+strategy
+stratum
+stress
+strict annual weights index
+strike
+structure
+structured dialogue
+structured entity
+student
+studies
+study
+subcontracting
+subcontractor
+subject
+      c.   guarantee fund
+subject
+submission
+sub product
+subscribed capital
+subscribed capital key
+subscriber
+subsequent data transmission
+subsidiaries
+subsidiary
+subsidies
+subsidy
+substantial basis
+substantial error
+substantial refurbishment
+substitution
+successful party
+sucrose
+sufficient number
+sugar
+suicide
+suitable methods
+sulphur
+sum
+summarised financial information
+summary
+sums
+supercomputer
+supermarket
+supervised entity
+supervised group
+supervisory authorities
+supervisory authority
+supplementary capital adequacy requirements
+supplementary heater
+supplementary information
+supplementary insurance
+supplier
+supplies
+supply
+support
+sureties
+surface
+surplus
+surreptitious audiovisual commercial communication
+surveillance
+survey
+survivor
+suspension
+suspicious transaction
+sustainability
+sustainable
+sustainable investment
+sv
+swaps
+swaptions
+sweden
+switzerland
+syrian
+system
+systematic allocation
+systematic internaliser
+systematic management
+systemic irregularity
+systemic risk
+systems
+tables
+tachonet
+tactile screen
+tailpipe
+tailpipe emissions
+taking
+tams
+tanker
+target
+target animal safety
+tarms
+tax
+taxable amount
+taxation
+technical assistance
+technical building system
+technical capacity
+technical characteristics
+technical corrections
+technical costs
+technical documentation
+technical expert
+technical instructions
+technical interoperability
+technical malfunction
+technical note
+technical parameters
+technical promotional material
+technical service
+technical specification
+technical specifications
+techniques
+technology
+telematic network
+telematic services
+teleshopping
+television
+temperature
+temperatures
+tempest
+template
+temporal adjustment factors
+temporary external borders
+temporary security accreditation
+temporary slippery road
+tender
+tendering
+term
+terminal
+termination
+terms
+terrain
+territory
+terrorist
+terrorist financing
+terrorist offences
+tertiary education
+test
+testing
+tests
+teu
+thematic networks
+thematic objectives
+theoretical test
+theoretical vat receipts
+thermal shock resistance test
+thermodynamic factor
+thermostat
+third country
+third-country audit entity
+third-country auditor
+third-country csd
+third party
+threat
+threshold
+thresholds
+ti
+tibia
+ticket
+tied agent
+tier
+till
+time
+timeliness
+time period
+title
+tltros
+tm
+tolerance
+tolerance limits
+tolerances
+toll
+tonne
+tontines
+top
+topic
+torque
+total
+total assets
+total background mass
+total economy
+total exposures
+total market value
+total number
+total value
+tour operator
+toxicity
+tr
+traceability
+track
+tracking
+traction
+trade
+trade repositories
+trading
+trading mode
+trading platform
+trading system
+trading venues
+traditional knowledge
+traditional ship
+traffic
+trafficking
+trailer
+train
+trainee
+traineeship
+traits
+trajectory management
+tram
+transaction
+transaction costs
+transactions
+transfer
+transferability
+transferable deposits
+transferable securities
+transfers
+transit
+transit factor
+transitional arrangements
+transitional deduction
+transitional flowrate
+transitional period
+transitive
+transmission
+transnational component
+transparent lid
+transplantation
+transport
+transportation
+transport work
+transshipment
+travel
+traveller
+treasury
+treaty
+trial
+tri-party repo
+trust
+tsos
+tube
+tumble
+turkey
+turnover
+twinned wheels
+two-day spot
+two-sided payment
+tying practice
+type
+types
+tyre
+tyres
+uan
+uas
+uas operations
+ucits
+uiosi
+uk
+ukraine
+un
+unaccompanied cash
+unaccompanied minor
+unanimous vote
+unauthorised persons
+unavailability
+uncertain tax treatment
+uncertainty
+unclos
+underlying
+undertaking
+unfavourable scenario
+unidentifiable goods
+unified atomic mass unit
+uniform
+uninvolved persons
+union
+unique identifier
+unique transaction identifier
+unit
+unit cost
+unit costs
+united
+united kingdom
+units
+universal
+university
+unladen factor
+unladen kerb mass
+unlawful disclosure
+unlimited guarantees
+unlisted shares
+unmanaged blockage
+unmanned aircraft
+unmanned sailplane
+unprotected accident area
+unprotected road user
+unrealised gains
+unused capacity
+upgrades
+upright type
+uptake
+use
+useful heat
+user
+user requirement activities
+users
+usual method
+usual residence
+usual trade description
+utc
+utilisation
+vacuum
+validated data
+validation
+validity
+valuation
+value
+valuer
+values
+var
+variability
+variable
+variable consideration
+variables
+variance
+variant
+variation
+vat
+vat resources
+vehicle
+venue
+verification
+verifications
+verifier
+version
+vertical
+vessel
+vessels
+vev
+vfr
+vhf assignments
+victim
+video
+view
+vin
+violence
+virtual currency
+virtual mobility
+virtual testing
+visa
+viscous criterion
+visited network
+visual line
+vital events
+volatility
+volume
+volumetric meter
+volumetric meters
+voluntary financial payment
+voluntary service
+volunteer
+volunteering
+voyage
+vulnerability
+wadt
+wal
+warning
+warrant
+washing
+waste
+water
+waterbirds
+waterborne
+wave
+way
+weight
+weighted annual energy consumption
+weighted annual water consumption
+weighted average
+weighted average life
+weighted average maturity
+weighted distance
+weighted programme time
+weighting
+weights
+wetland
+wheelbase
+whole
+wholesale
+wild
+winding
+wine
+withdrawal
+wltp
+            where:
+wltp
+wood
+woody biomass
+words
+work
+worker
+working
+workload
+works
+workstation
+world
+wrinkle guard function
+write
+writing
+wrong-way risk
+wstator
+xxi
+year
+yield
+young
+young people
+youth
+yyyy
+zeroising mechanism
+zero values
+zone
+αbr
+δm
+νίκης
