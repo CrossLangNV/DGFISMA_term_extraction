@@ -18,6 +18,8 @@ NLP = spacy.load('en_core_web_lg')
 WHITELIST = open(os.path.join(settings.MEDIA_ROOT, 'whitelist.txt')).read().splitlines()
 BLACKLIST = open(os.path.join(settings.MEDIA_ROOT, 'blacklist.txt')).read().splitlines()
 MAX_LEN_NGRAM = 4
+with open(os.path.join(settings.MEDIA_ROOT, 'typesystem.xml'), 'rb') as f:
+    TYPESYSTEM = load_typesystem(f)
 
 class TermView(APIView):
 
@@ -55,11 +57,52 @@ class TermView(APIView):
         for abv in all_abvs:
             terms_n_tfidf.update({abv: 1.0})
         return terms_n_tfidf
+    
+    def add_term_to_cas(self, cas_view, sentence, np):
+        import ahocorasick as ahc
+        A = ahc.Automaton()
+        Token = TYPESYSTEM.get_type('de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf')
+        A.add_word(np.text, (1, np.text.strip()))
+        A.make_automaton()
+        for tag in cas_view.select("com.crosslang.uimahtmltotext.uima.type.ValueBetweenTagType"):
+            if tag.get_covered_text() == sentence.get_covered_text():
+                for end_index, (tfidf, term) in A.iter(sentence.get_covered_text()):
+                    start_index = end_index - len(term) + 1
+                    cas_view.add_annotation(
+                        Token(begin=tag.begin + start_index, end=tag.begin + end_index + 1, tfidfValue=1.0, term=np.text))
+        
+    def check_if_term_annotated(self,cas_view, sentence, np):
+        terms = [token.get_covered_text() for token in cas_view.select_covered("de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf", sentence)]
+        if np.text not in terms:
+            return False
+        else:
+            return True
+        
+    def check_definitions(self, cas):
+        import string
+        import re
+        cas_view = cas.get_view("html2textView")
+        for sentence in cas_view.select("de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"):
+            definition = sentence.get_covered_text()
+            definition = re.sub(r'\(\w{1}\)', '', definition)
+            definition = definition.translate(str.maketrans('', '', string.punctuation))
+            definition = definition.strip()
+
+            doc = NLP(definition)
+            for np in doc.noun_chunks:
+                printed_np = False
+                for token in np:
+                    if token.dep_ == 'nsubj' and token.head.dep_ == 'ROOT':
+                        term_has_been_annotated = self.check_if_term_annotated(cas_view, sentence, np)
+                        if term_has_been_annotated:
+                            continue
+                        else:
+                            self.add_term_to_cas(cas_view, sentence, np)
+
+        return cas
 
     def post(self, request):
         start = time.time()
-        with open(os.path.join(settings.MEDIA_ROOT, 'typesystem.xml'), 'rb') as f:
-            typesystem = load_typesystem(f)
 
         f = request.data
 
@@ -68,7 +111,7 @@ class TermView(APIView):
         except binascii.Error:
             logging.info(f"could not decode the 'cas_content' field. Make sure it is in base64 encoding.")
 
-        cas = load_cas_from_xmi(decoded_cas_content, typesystem=typesystem)
+        cas = load_cas_from_xmi(decoded_cas_content, typesystem=TYPESYSTEM)
 
         try:
             cas.get_view("html2textView")
@@ -79,7 +122,11 @@ class TermView(APIView):
         sofa_id = "html2textView"
         sentences = get_text(cas, sofa_id, tagnames=['p'])
         terms_n_tfidf = self.launch_term_extraction(sentences, f)
-        cas = add_terms_and_lemmas_to_cas(NLP, cas, typesystem, sofa_id, [(k, v) for k, v in terms_n_tfidf.items()])
+        cas = add_terms_and_lemmas_to_cas(NLP, cas, TYPESYSTEM, sofa_id, [(k, v) for k, v in terms_n_tfidf.items()])
+        print(cas.to_xmi())
+        cas = self.check_definitions(cas)
+        print(cas.to_xmi())
+        
         cas_string = base64.b64encode(bytes(cas.to_xmi(), 'utf-8')).decode()
         end = time.time()
         f['cas_content'] = cas_string
