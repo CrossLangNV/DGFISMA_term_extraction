@@ -1,6 +1,9 @@
 import ahocorasick as ahc
 from cassis import Cas, TypeSystem
 from typing import List, Tuple, Set
+import string
+import re
+
 
 def add_terms_and_lemmas_to_cas(NLP, cas: Cas, typesystem: TypeSystem, SofaID: str, terms_tf_idf: List[Tuple[str, float]],
                      tagnames: Set[str] = set('p')) -> Cas:
@@ -54,4 +57,43 @@ def add_terms_and_lemmas_to_cas(NLP, cas: Cas, typesystem: TypeSystem, SofaID: s
                         cas_view.add_annotation(Lemma(begin=tag.begin + start_index, end=tag.begin + end_index + 1, value=term_lemmas))
             except:
                 continue
+    return cas
+
+def add_checked_term_to_cas(cas_view, sentence, np, TYPESYSTEM):
+    A = ahc.Automaton()
+    Token = TYPESYSTEM.get_type('de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf')
+    A.add_word(np.text, (1, np.text.strip()))
+    A.make_automaton()
+    for tag in cas_view.select("com.crosslang.uimahtmltotext.uima.type.ValueBetweenTagType"):
+        if tag.get_covered_text() == sentence.get_covered_text():
+            for end_index, (tfidf, term) in A.iter(sentence.get_covered_text()):
+                start_index = end_index - len(term) + 1
+                cas_view.add_annotation(
+                    Token(begin=tag.begin + start_index, end=tag.begin + end_index + 1, tfidfValue=1.0,
+                          term=np.text))
+
+def check_if_term_annotated(cas_view, sentence, np):
+    terms = [token.get_covered_text() for token in
+             cas_view.select_covered("de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf", sentence)]
+    if np.text not in terms:
+        return False
+    else:
+        return True
+
+def check_definitions(cas, NLP, TYPESYSTEM):
+    cas_view = cas.get_view("html2textView")
+    for sentence in cas_view.select("de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"):
+        definition = sentence.get_covered_text()
+        definition = re.sub(r'\(\w{1}\)', '', definition)
+        definition = definition.translate(str.maketrans('', '', string.punctuation))
+        definition = definition.strip()
+        doc = NLP(definition)
+        for np in doc.noun_chunks:
+            for token in np:
+                if token.dep_ == 'nsubj' and token.head.dep_ == 'ROOT':
+                    term_has_been_annotated = check_if_term_annotated(cas_view, sentence, np)
+                    if term_has_been_annotated:
+                        continue
+                    else:
+                        add_checked_term_to_cas(cas_view, sentence, np, TYPESYSTEM)
     return cas
