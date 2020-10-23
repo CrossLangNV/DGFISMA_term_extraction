@@ -1,6 +1,9 @@
 from nltk.corpus import stopwords
 import contractions
 
+POS_TAG_DET = 'DET'
+INVALID_POS_LABELS = ['ADP', 'VERB', 'PRON', 'CCONJ', 'SCONJ', 'ADV']
+
 
 # ---------------------
 # ABBREVIATION EXTRACTION
@@ -77,22 +80,23 @@ def extractAbbv(tokens):
 # ---------------------
 # TERM EXTRACTION
 # ---------------------
-def get_ngrams_supergrams(tree, nMax):
+
+def get_ngrams_supergrams(tree, max_ngram_length):
     """
 
-    :param tree: the spacy parser tree
-    :param nMax: the max ngram length
-    :return: 2 lists : ngrams (noun phrases with length <= nMax) and supergrams (noun phrases with length >= nMax)
+    :param tree: a set of noun chunks derived from the SpaCy Doc object
+    :param max_ngram_length: the max ngram length
+    :return: 2 lists : ngrams (noun phrases with length <= max_ngram_length) and supergrams (noun phrases with length >= max_ngram_length)
     """
     ngrams = []
     supergrams = []
     for ngram in tree:
-        if ngram[0].pos_ == 'DET':
+        if ngram[0].pos_ == POS_TAG_DET:
             ngram = ngram[1:]
-        if len(ngram) > nMax:
+        if len(ngram) > max_ngram_length:
             supergrams.append(ngram.text)
         else:
-            if validate_term(ngram):
+            if validate_term(ngram):  # grammar check
                 ngrams.append(ngram.text)
     return ngrams, supergrams
 
@@ -254,8 +258,7 @@ def validate_term(np):
     """
 
     invalid_words = get_invalid_words()
-    labels = ['ADP', 'VERB', 'PRON', 'CCONJ', 'SCONJ', 'ADV']
-    if any(word.pos_ in labels for word in np) == False and all(word.text.isalpha() for word in np) and any(word.text in invalid_words for word in np)==False and len(np.text) > 1:
+    if any(word.pos_ in INVALID_POS_LABELS for word in np) == False and all(word.text.isalpha() for word in np) and any(word.text in invalid_words for word in np)==False and len(np.text) > 1:
         return True
     else:
         return False

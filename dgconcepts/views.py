@@ -89,5 +89,4 @@ class TermView(APIView):
         f.pop('extract_supergrams', None)
         logging.info(end - start)
 
-        print(end - start)
         return JsonResponse(f)
