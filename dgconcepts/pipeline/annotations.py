@@ -4,6 +4,26 @@ from typing import List, Tuple, Set
 import string
 import re
 
+def proceed_with_annotation(start_index, end_index, term, text):
+    proceed_with_annotation = False
+
+    # annotate if term is the first word in text, and term is not followed by a letter,
+    # e.g. 'livestock' in 'livestock units'
+    if start_index == end_index - len(term) - 1 and not text[end_index + 1].isalpha():
+        proceed_with_annotation = True
+
+    # annotate if term is the last word in text, and term is not preceded by a letter, e.g. 'unit' in
+    # 'livestock unit'
+    if end_index == len(text) - 1 and not text[start_index - 1].isalpha():
+        proceed_with_annotation = True
+
+    # annotate if term is somewhere in text, and term is neither preceded nor followed by a letter,
+    # e.g. 'stock' in 'live stock unit'
+    if not text[start_index - 1].isalpha() and start_index != end_index - len(term) - 1 and not text[
+        end_index + 1].isalpha() and end_index != len(text) - 1:
+        proceed_with_annotation = True
+
+    return proceed_with_annotation
 
 def add_terms_and_lemmas_to_cas(NLP, cas: Cas, typesystem: TypeSystem, SofaID: str, terms_tf_idf: List[Tuple[str, float]],
                      tagnames: Set[str] = set('p')) -> Cas:
@@ -29,24 +49,7 @@ def add_terms_and_lemmas_to_cas(NLP, cas: Cas, typesystem: TypeSystem, SofaID: s
             text = tag.get_covered_text().lower()
             for end_index, (tfidf, term) in A.iter(text):
                 start_index = end_index - len(term) + 1
-                proceed_with_annotation = False
-
-                # annotate if term is the first word in text, and term is not followed by a letter,
-                # e.g. 'livestock' in 'livestock units'
-                if start_index == end_index - len(term)-1 and not text[end_index + 1].isalpha():
-                    proceed_with_annotation = True
-
-                # annotate if term is the last word in text, and term is not preceded by a letter, e.g. 'unit' in
-                # 'livestock unit'
-                if end_index == len(text)-1 and not text[start_index - 1].isalpha():
-                    proceed_with_annotation = True
-
-                # annotate if term is somewhere in text, and term is neither preceded nor followed by a letter,
-                # e.g. 'stock' in 'live stock unit'
-                if not text[start_index-1].isalpha() and start_index != end_index - len(term)-1 and not text[end_index+1].isalpha() and end_index != len(text)-1:
-                    proceed_with_annotation = True
-
-                if proceed_with_annotation:
+                if proceed_with_annotation(start_index, end_index, term, text):
                     lemmas = []
                     for word in NLP(term):
                         lemmas.append(word.lemma_)
@@ -67,13 +70,6 @@ def add_checked_term_to_cas(cas_view, sentence, np, TYPESYSTEM):
             Token(begin=sentence.begin + start_index, end=sentence.begin + end_index + 1, tfidfValue=-1,
                   term=np.text))
 
-def check_if_term_annotated(cas_view, sentence, np):
-    terms = [token.get_covered_text() for token in
-             cas_view.select_covered("de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf", sentence)]
-    if np.text not in terms:
-        return False
-    else:
-        return True
 
 def check_definitions(cas, NLP, TYPESYSTEM):
     cas_view = cas.get_view("html2textView")
@@ -86,9 +82,5 @@ def check_definitions(cas, NLP, TYPESYSTEM):
         for np in doc.noun_chunks:
             for token in np:
                 if token.dep_ == 'nsubj' and token.head.dep_ == 'ROOT':
-                    term_has_been_annotated = check_if_term_annotated(cas_view, sentence, np)
-                    if term_has_been_annotated:
-                        continue
-                    else:
-                        add_checked_term_to_cas(cas_view, sentence, np, TYPESYSTEM)
+                    add_checked_term_to_cas(cas_view, sentence, np, TYPESYSTEM)
     return cas
