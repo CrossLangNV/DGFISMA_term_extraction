@@ -51,3 +51,5 @@ The Term Extraction pipeline consists of the following steps:
 Unit and integration tests could be run with the unittest module or with pytest:
 
 pytest $test_name.py
+
+tes
