@@ -1,9 +1,13 @@
+from typing import List, Set
+
 from nltk.corpus import stopwords
 import contractions
+import re
+
+from .metrics import calculate_tf_idf
 
 POS_TAG_DET = 'DET'
 INVALID_POS_LABELS = ['ADP', 'VERB', 'PRON', 'CCONJ', 'SCONJ', 'ADV']
-
 
 # ---------------------
 # ABBREVIATION EXTRACTION
@@ -71,8 +75,8 @@ def extractAbbv(tokens):
                 res.append((t, term))
     abvs = []
     for x in list(set(res)):
-        abv = x[0] + " ■ " + x[1]
-        abvs.append(abv)
+        #abv = x[0] + " ■ " + x[1]
+        abvs.append( (x[0].strip(), x[1].strip() ) )
 
     return abvs
 
@@ -98,6 +102,11 @@ def get_ngrams_supergrams(tree, max_ngram_length):
         else:
             if validate_term(ngram):  # grammar check
                 ngrams.append(ngram.text)
+    
+    #TO DO check why ngram not unique
+    ngrams=list(set( ngrams ))
+    supergrams=list( set(supergrams ) )
+                
     return ngrams, supergrams
 
 def get_invalid_words():
@@ -286,9 +295,6 @@ def parse_doc(doc):
     return tree
 
 
-# ---------------------
-# MAIN FUNCTION
-# ---------------------
 def extract_concepts(text, NLP, nMax):
     """
     :param text: the text segment
@@ -302,3 +308,87 @@ def extract_concepts(text, NLP, nMax):
     abvs = extractAbbv(NLP(text))
     ngrams, supergrams = get_ngrams_supergrams(tree, nMax)
     return ngrams, supergrams, abvs
+
+#Main functions
+
+def get_terms( NLP , sentences: List[str] , extract_supergrams:bool=False, nMax:int=4 ) -> dict:
+
+    terms=[]
+    all_abvs = []
+    doc_for_tf_idf = []
+    for sentence in sentences:
+        doc_for_tf_idf.append(sentence)
+        ngrams, supergrams, abvs = extract_concepts(sentence, NLP, nMax )
+        all_abvs+=abvs
+        terms+=ngrams
+        if extract_supergrams:
+            terms+=supergrams
+              
+    for abv in all_abvs:
+        abbreviation=abv[0].strip()
+        full_abbreviation=abv[1].strip()
+        if not abbreviation or not full_abbreviation:
+            continue
+        terms.append( abbreviation.lower() )
+        terms.append( full_abbreviation.lower() )
+
+    terms = list(set(terms))
+    all_abvs=list( set(all_abvs ))
+    terms_n_tfidf = calculate_tf_idf(doc_for_tf_idf, nMax, terms )
+    
+    return terms_n_tfidf, all_abvs
+
+
+def get_terms_defined_in_regex(  definitions: List[str] ) -> List[str]:
+    
+    '''
+    to do
+    '''
+    
+    #regex for terms in between quotes
+    regex_terms=r"[\‘|\"|\`|\'|\’|\•|\“\‧][a-z0-9\-(){}_/\\]{2,}[a-z0-9 \-(){}_/\\]*[a-z0-9\-(){}_/\\]+[\‘|\"|\`|\'|\’|\•|\”\‧]"
+
+    #regex for abbreviations in between quotes
+    regex_abbv=r"[\‘|\"|\`|\'|\’|\•|\“\‧][A-Z]{2,}[\‘|\"|\`|\'|\’|\•|\”\‧]"
+
+    terms=[]
+    
+    for definition in definitions:
+
+        match_term=re.finditer( regex_terms, definition, re.IGNORECASE  )
+        match_abbv=re.finditer( regex_abbv, definition  )
+
+        #first annotate the abbreviations:
+        for m in match_abbv:
+            if m:
+                term=m.group(0)[1:-1].strip()
+                if term:
+                    terms.append( term.lower() )
+
+        #annotate the terms:
+        for m in match_term:
+            if m:
+                term=m.group(0)[1:-1]
+                if term:
+                    terms.append( term.lower() )
+              
+    terms=list(set(terms))
+            
+    return terms
+
+def remove_add_update_terms_blacklist_whitelist( terms_n_tfidf: dict, whitelist: Set[str], blacklist: Set[str], tf_idf_whitelist: float =-1.0  ) -> dict:
+    
+    keys=set( terms_n_tfidf.keys() )
+    
+    #remove blacklisted terms, update tfidf score of whitelisted terms
+    for term in keys:
+        if term in blacklist:
+            terms_n_tfidf.pop( term )
+            
+    #update tfidf score of whitelisted terms, add whitelisted terms not in blacklist
+    difference = list( whitelist - blacklist )
+    for term in difference:
+        terms_n_tfidf.update( { term: tf_idf_whitelist }  )
+            
+    return terms_n_tfidf
+    

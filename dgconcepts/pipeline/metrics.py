@@ -1,21 +1,6 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 import operator
 
-
-def crosscheck_white_black_lists(terms_list, WHITELIST, BLACKLIST):
-    """
-
-    :param terms_list: a list of terms
-    :param WHITELIST: a list of whitelisted terms
-    :param BLACKLIST: a list of blacklisted terms
-    :return: the rectified list of terms
-    """
-    clean_term_list = WHITELIST
-    for term in terms_list:
-        if term not in set(BLACKLIST):
-            clean_term_list.append(term)
-    return clean_term_list
-
 def calculate_tf_idf(corpus, MAX_LEN_NGRAM, term_list):
     """
 
