@@ -17,3 +17,6 @@ tests/.coverage
 build/
 tests/report/
 .idea/
+notebooks/
+DATA/
+*.ipynb_checkpoints
