@@ -49,13 +49,22 @@ def add_defined_term( cas: Cas, typesystem: TypeSystem, SofaID:str, definition_t
         terms_sentence = list(cas.get_view( SofaID ).select_covered( token_type, definition  ) )
         
         for tf_idf in terms_sentence:
-            #case where tf_idf term is found via regex and does not have a bad dependency type
-            #if (tf_idf.tfidfValue == whitelist_score_tf_idf and defined_term(tf_idf)=='nsubj' ): #make this configurable   
-            if (tf_idf.tfidfValue == tf_idf_regex and defined_term(tf_idf)!='bad' ): #make this configurable
+            #case where tf_idf term is found via regex and has a good dependency type
+            if (tf_idf.tfidfValue == tf_idf_regex and defined_term(tf_idf)=='nsubj' ): #make this configurable
                     cas.get_view( SofaID ).add_annotation( Token( begin=tf_idf.begin , end=tf_idf.end ) )
                     defined_detected=True
+                    
+        #if one of the terms found via regex is considered the term confirmed via dependency parsing, stop searching.
+        if defined_detected:
+            continue
 
-        #if one of the terms found via regex is considered the defined term, stop searching
+        for tf_idf in terms_sentence:
+            #case where tf_idf term is found via regex and does not have a bad dependency type
+            if (tf_idf.tfidfValue == tf_idf_regex and defined_term(tf_idf)!='bad' ): 
+                    cas.get_view( SofaID ).add_annotation( Token( begin=tf_idf.begin , end=tf_idf.end ) )
+                    defined_detected=True   
+                    
+        #if one of the terms found via regex is not considered bad, stop searching
         if defined_detected:
             continue
           
