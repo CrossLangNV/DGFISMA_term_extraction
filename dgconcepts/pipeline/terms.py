@@ -346,10 +346,10 @@ def get_terms_defined_in_regex(  definitions: List[str] ) -> List[str]:
     '''
     
     #regex for terms in between quotes
-    regex_terms=r"[\‘|\"|\`|\'|\’|\•|\“\‧][a-z0-9\-(){}_/\\]{2,}[a-z0-9 \-(){}_/\\]*[a-z0-9\-(){}_/\\]+[\‘|\"|\`|\'|\’|\•|\”\‧]"
+    regex_terms=r"[\‘|\"|\`|\'|\’|\•|\“|\‧][a-z0-9\-(){}_/\\]{2,}[a-z0-9 \-(){}_/\\]*[a-z0-9\-(){}_/\\]+[\‘|\"|\`|\'|\’|\•|\”|\‧]"
 
     #regex for abbreviations in between quotes
-    regex_abbv=r"[\‘|\"|\`|\'|\’|\•|\“\‧][A-Z]{2,}[\‘|\"|\`|\'|\’|\•|\”\‧]"
+    regex_abbv=r"[\‘|\"|\`|\'|\’|\•|\“|\‧][A-Z]{2,}[\‘|\"|\`|\'|\’|\•|\”|\‧]"
 
     terms=[]
     
