@@ -19,4 +19,5 @@ tests/report/
 .idea/
 notebooks/
 DATA/
+MODELS/
 *.ipynb_checkpoints
