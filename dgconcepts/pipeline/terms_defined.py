@@ -140,7 +140,6 @@ def add_defined_term( cas: Cas, typesystem: TypeSystem, SofaID:str, definition_t
     
     def defined_term( tf_idf ):
         
-        '''helper function to find dependency relation of the tfidf annotation'''
         
         for dependency in cas.get_view( SofaID ).select_covered( dependency_type, tf_idf ):
             dependency_tag=dependency.DependencyType
