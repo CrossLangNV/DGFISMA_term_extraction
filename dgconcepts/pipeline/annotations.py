@@ -6,7 +6,11 @@ import string
 
 from .utils import deepest_child
 
-def proceed_with_annotation(start_index, end_index, text):
+def proceed_with_annotation(start_index:int, end_index:int, text:str, special_characters:List[str]=[ "-","_","+"]) -> bool:
+    
+    #list of special characters treated as alpha
+    #e.g.: the term 'livestock' in 'some livestock-some some' should not be annotated 
+    special_characters=set(special_characters)
     
     #trivial case (no text)
     if not text:
@@ -22,29 +26,31 @@ def proceed_with_annotation(start_index, end_index, text):
     
     #e.g. 'livestock' in 'livestock some'
     elif start_index == 0:
-        if text[ end_index+1 ].isalpha():
+        if (text[ end_index+1 ].isalpha() or text[ end_index+1 ] in special_characters ):
             return False
         
     #e.g. 'livestock' in 'some livestock'
     elif end_index == len( text ) -1:
-        if text[start_index -1].isalpha():
+        if (text[start_index -1].isalpha()  or text[start_index -1] in special_characters ):
             return False
         
-    #e.g. 'livestock' in 'some livestock some'      
+    #e.g. 'livestock' in 'some livestock some';      
     else:
-        if text[ start_index-1 ].isalpha() or text[end_index+1].isalpha():
+        if (text[ start_index-1 ].isalpha() or text[ start_index-1 ] in special_characters ) \
+        or (text[end_index+1].isalpha() or text[end_index+1] in special_characters ):
             return False
         
     return True
 
 
-def add_terms_and_lemmas_to_cas(NLP, cas: Cas, typesystem: TypeSystem, SofaID: str,
+def add_terms_and_lemmas_to_cas( NLP, cas: Cas, typesystem: TypeSystem, SofaID: str,
                                 terms_tf_idf: dict,
                                 tagnames: Set[str] = set('p')) -> Cas:
     '''
     Given a cas and its typesystem, this function adds terms and associated tf_idf score (terms_tf_idf) to a given view (SofaID) as type.Tfidf. Annotations will only be added to ValueBetweenTagType elements with tag.tagName in the set tagnames. Returns the same cas object as the input cas, but now with annotations added.
     NLP is the SpaCy model for the extraction of lemmas per token
     '''
+    
     Token = typesystem.get_type('de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf')
     Lemma = typesystem.get_type('de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma')
        

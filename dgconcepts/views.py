@@ -75,6 +75,7 @@ class TermView(APIView):
         whitelist=set( WHITELIST ) - set( terms_defined )
         blacklist=set( BLACKLIST )
 
+        #add whitelisted terms from terms_n_tfidf, remove blacklisted terms
         terms_n_tfidf = remove_add_update_terms_blacklist_whitelist( terms_n_tfidf, whitelist, blacklist, tf_idf_whitelist=TFIDF_WHITELIST )
 
         add_terms_and_lemmas_to_cas( NLP, cas, TYPESYSTEM, SofaID, terms_n_tfidf ) 
