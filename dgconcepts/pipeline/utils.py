@@ -3,6 +3,9 @@ from typing import List, Tuple, Set
 
 from cassis import Cas
 
+import ahocorasick as ahc
+from typing import Generator
+
 def get_sentences(  cas: Cas, SofaID: str , tagnames : Set[str] = set( 'p'), \
                   value_between_tagtype="com.crosslang.uimahtmltotext.uima.type.ValueBetweenTagType"  ) -> (List[str], List[Tuple[ int,int ]]):
     
@@ -36,3 +39,75 @@ def deepest_child( cas:Cas, SofaID:str , tag ,tagnames: Set[str] = set( 'p' ), \
         return False
     else:
         return True
+    
+    
+def is_token(start_index:int, end_index:int, text:str, special_characters:List[str]=[ "-","_","+"]) -> bool:
+    
+    '''
+    Given a start index, an end_index, and a string, this function checks if token(s) covered by the span is part of other token(s).
+    
+    :param start_index: int.
+    :param end_index: int. 
+    :param special_characters: List.
+    :return: bool.
+    '''
+    
+    #set of special characters treated as alpha
+    #e.g.: the term 'livestock' in 'some livestock-some some' should not be annotated, but 'livestock' in 'some "livestock" some' should.
+    special_characters=set(special_characters)
+    
+    #trivial case (no text)
+    if not text:
+        return False
+    
+    #trivial case (start_index equal to end_index)
+    elif start_index==end_index:
+        return False
+    
+    #e.g. 'livestock' in 'livestock'
+    elif start_index == 0 and end_index == len( text ) - 1:
+        return True
+    
+    #e.g. 'livestock' in 'livestock some'
+    elif start_index == 0:
+        if (text[ end_index+1 ].isalpha() or text[ end_index+1 ] in special_characters ):
+            return False
+        
+    #e.g. 'livestock' in 'some livestock'
+    elif end_index == len( text ) -1:
+        if (text[start_index -1].isalpha()  or text[start_index -1] in special_characters ):
+            return False
+        
+    #e.g. 'livestock' in 'some livestock some';      
+    else:
+        if (text[ start_index-1 ].isalpha() or text[ start_index-1 ] in special_characters ) \
+        or (text[end_index+1].isalpha() or text[end_index+1] in special_characters ):
+            return False
+        
+    return True
+
+#find the index
+def find_index_term( terms:List[str], text:str ) -> Generator[  Tuple[ str, int, int ], None, None  ]:
+    
+    '''
+    Function finds the span of a list of terms in a sentence (string) using is_token function. 
+    
+    :param terms: List. List of terms.
+    :param text: str. Sentence in which to find terms.
+    :return: Generator.
+    '''
+
+    A = ahc.Automaton()
+
+    for term in terms:
+        if not term.strip():
+            continue
+        A.add_word( term, ( term  ) )
+    A.make_automaton()
+
+    for end_index, ( term ) in A.iter(text):
+        if not term:
+            continue
+        start_index = end_index - (len(term) - 1)
+        if is_token( start_index, end_index, text ):
+            yield( ( term, start_index, end_index+1 ) )
