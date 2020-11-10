@@ -98,7 +98,9 @@ def bert_bio_tagging( sentences: List[str], path_model_dir:Path, gpu:int=-1, seq
 
 def join_bpe( tokens:List[str], tags:List[str]  )->Tuple[ List[str], List[str] ]:
     
-    'Detokenize bert tokenized sentence and process bio_tags. Tokens with no bio tag (i.e. at position>seq_length) are ignored.'
+    '''
+    Detokenize bert tokenized sentence and process bio_tags. Tokens with no bio tag (i.e. at position>seq_length) are ignored.
+    '''
 
     new_tokens, new_tags = [], []
 
@@ -110,3 +112,34 @@ def join_bpe( tokens:List[str], tags:List[str]  )->Tuple[ List[str], List[str] ]
             new_tags.append(tag)
             new_tokens.append(token)
     return new_tokens, new_tags
+
+
+def get_terms_pos_bio_tags( tokens:List[str], bio_tags:List[str] ):
+    
+    '''
+    Function to get the tokenized term + span found via Bert bio tagger.
+    '''
+    
+    detected_term=[]
+    
+    start_index=0
+    position=0
+    
+    for token, bio_tag in zip( tokens, bio_tags ):
+                
+        if bio_tag!="O":
+            if not detected_term: #newly detected token
+                start_index=position
+            detected_term.append( token )
+
+
+        elif bio_tag=="O" and detected_term:
+            yield( (" ".join(detected_term), start_index, start_index+len(" ".join(detected_term))  )  )
+            detected_term=[]
+            detected_term_pos=[]
+            
+        position=position+len(token+" ")  #position in detokenized sentence
+
+    #add the last one
+    if detected_term:
+        yield( (" ".join(detected_term), start_index, start_index+len(" ".join(detected_term))  )  )

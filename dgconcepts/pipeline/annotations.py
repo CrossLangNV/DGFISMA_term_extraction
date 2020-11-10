@@ -4,44 +4,7 @@ from typing import List, Tuple, Set
 import re
 import string
 
-from .utils import deepest_child
-
-def proceed_with_annotation(start_index:int, end_index:int, text:str, special_characters:List[str]=[ "-","_","+"]) -> bool:
-    
-    #list of special characters treated as alpha
-    #e.g.: the term 'livestock' in 'some livestock-some some' should not be annotated 
-    special_characters=set(special_characters)
-    
-    #trivial case (no text)
-    if not text:
-        return False
-    
-    #trivial case (start_index equal to end_index)
-    elif start_index==end_index:
-        return False
-    
-    #e.g. 'livestock' in 'livestock'
-    elif start_index == 0 and end_index == len( text ) - 1:
-        return True
-    
-    #e.g. 'livestock' in 'livestock some'
-    elif start_index == 0:
-        if (text[ end_index+1 ].isalpha() or text[ end_index+1 ] in special_characters ):
-            return False
-        
-    #e.g. 'livestock' in 'some livestock'
-    elif end_index == len( text ) -1:
-        if (text[start_index -1].isalpha()  or text[start_index -1] in special_characters ):
-            return False
-        
-    #e.g. 'livestock' in 'some livestock some';      
-    else:
-        if (text[ start_index-1 ].isalpha() or text[ start_index-1 ] in special_characters ) \
-        or (text[end_index+1].isalpha() or text[end_index+1] in special_characters ):
-            return False
-        
-    return True
-
+from .utils import deepest_child, is_token
 
 def add_terms_and_lemmas_to_cas( NLP, cas: Cas, typesystem: TypeSystem, SofaID: str,
                                 terms_tf_idf: dict,
@@ -74,7 +37,7 @@ def add_terms_and_lemmas_to_cas( NLP, cas: Cas, typesystem: TypeSystem, SofaID: 
                     continue
                 start_index = end_index - (len(term) - 1)
                 #print( start_index, end_index, term, text  )
-                if proceed_with_annotation(start_index, end_index, text):
+                if is_token(start_index, end_index, text):
                     lemmas = []
                     for word in NLP(term):
                         lemmas.append(word.lemma_)
