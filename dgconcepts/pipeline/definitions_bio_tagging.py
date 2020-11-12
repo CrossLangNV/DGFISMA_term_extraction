@@ -1,6 +1,10 @@
 import os
 import pickle
 import time
+import string
+import re
+
+from typing import List, Tuple
 
 from pathlib import Path 
 
@@ -13,11 +17,12 @@ from transformers import BertTokenizer
 from transformers import BertForTokenClassification
 from keras.preprocessing.sequence import pad_sequences
 
-from typing import List, Tuple
+
+from .utils import  is_token
+
 
 def bert_bio_tagging( sentences: List[str], path_model_dir:Path, gpu:int=-1, seq_length:int=75, batch_size:int=32) -> Tuple[ List[str], List[str] ]:
 
-    
     '''
     Bio tagging with finetuned BertForTokenClassification model.
     '''
@@ -143,3 +148,60 @@ def get_terms_pos_bio_tags( tokens:List[str], bio_tags:List[str] ):
     #add the last one
     if detected_term:
         yield( (" ".join(detected_term), start_index, start_index+len(" ".join(detected_term))  )  )
+        
+        
+def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ):
+
+    '''
+    Find matches of a bert tokenized term (after ##'s are joined) in a tokenized/non tokenized sentence using regex.
+    Leading and trailing punctuation is stripped from the token (and will thus also not be in the span).
+    '''
+    
+    extra_punctuation_tokens='‘\"`\'’•”‧'
+
+    #strip leading and trailing punctuation from this term
+    tokenized_term=tokenized_term.strip( string.punctuation+extra_punctuation_tokens+" " )
+    
+    #make regex
+    term_regex=''
+    for token in tokenized_term.split():
+        if not term_regex:
+            term_regex=token
+        elif token in (string.punctuation+extra_punctuation_tokens ):
+            #we have to escape special characters (i.e. . without \. would match whatever character)
+            term_regex=term_regex+"([ ]*)"+"\\"+token
+        else:
+            term_regex=term_regex+"([ ]*)"+token
+    
+    if tokenized_term:
+        for match in re.finditer( term_regex , sentence , re.IGNORECASE):
+            if is_token( match.span()[0], match.span()[1]-1, sentence, special_characters=[] ):
+                yield match
+        
+'''
+def find_indices_tokenized_term_in_nontokenized_text(tokenized_term: str, sentence: str):
+    
+
+    #first strip possible leading or trailing punctuation from the bert tokenized term:
+    #tokenized_term=tokenized_term.strip( string.punctuation+'‘\"`\'’•”‧'+" "  )
+    
+    extra_punctuation_tokens='‘\"`\'’•”‧'
+    
+    tokenized_term=tokenized_term.strip( string.punctuation+extra_punctuation_tokens+" " )
+            
+    #make regex
+    term_regex=''
+    for token in tokenized_term.split():
+        if not term_regex:
+            term_regex=token
+        elif token in (string.punctuation+extra_punctuation_tokens ):
+            #we have to escape special characters (i.e. . without \. would match whatever character)
+            term_regex=term_regex+"([ ]*)"+"\\"+token
+        else:
+            term_regex=term_regex+"([ ]*)"+token
+    
+    if tokenized_term:
+        for match in re.finditer(term_regex, sentence, re.IGNORECASE):
+            if is_token( match.span()[0], match.span()[1]-1, sentence, special_characters=[] ):
+                yield match
+'''

@@ -48,11 +48,17 @@ def is_token(start_index:int, end_index:int, text:str, special_characters:List[s
     
     :param start_index: int.
     :param end_index: int. 
-    :param special_characters: List.
+    :param special_characters: List. List of special characters treated as alpha characters
     :return: bool.
     '''
     
-    #set of special characters treated as alpha
+    if start_index <0 or end_index<0:
+        raise ValueError(f"Both start_index and end_index should be >0, however start_index is {start_index} and end_index is {end_index}")
+
+    elif end_index<start_index:
+        raise ValueError(f"end_index should be > start_index, however start_index is {start_index} and end_index is {end_index}")
+ 
+    #set of special characters treated as alpha characters
     #e.g.: the term 'livestock' in 'some livestock-some some' should not be annotated, but 'livestock' in 'some "livestock" some' should.
     special_characters=set(special_characters)
     
