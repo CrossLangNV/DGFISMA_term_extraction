@@ -57,21 +57,20 @@ def is_token(start_index:int, end_index:int, text:str, special_characters:List[s
 
     elif end_index<start_index:
         raise ValueError(f"end_index should be > start_index, however start_index is {start_index} and end_index is {end_index}")
+        
+    elif end_index > (len( text ) -1) :   #this one also takes care of no text case
+        raise ValueError(f"end_index should be < len(text) -1, however end_index is {end_index} and len(text) is {len(text)}")
  
     #set of special characters treated as alpha characters
     #e.g.: the term 'livestock' in 'some livestock-some some' should not be annotated, but 'livestock' in 'some "livestock" some' should.
     special_characters=set(special_characters)
-    
-    #trivial case (no text)
-    if not text:
-        return False
-    
+        
     #trivial case (start_index equal to end_index)
-    elif start_index==end_index:
-        return False
+    #if start_index==end_index:
+        #return False
     
     #e.g. 'livestock' in 'livestock'
-    elif start_index == 0 and end_index == len( text ) - 1:
+    if start_index == 0 and end_index == len( text ) - 1:
         return True
     
     #e.g. 'livestock' in 'livestock some'
@@ -81,7 +80,7 @@ def is_token(start_index:int, end_index:int, text:str, special_characters:List[s
         
     #e.g. 'livestock' in 'some livestock'
     elif end_index == len( text ) -1:
-        if (text[start_index -1].isalpha()  or text[start_index -1] in special_characters ):
+        if (text[start_index -1].isalpha() or text[start_index -1] in special_characters ):
             return False
         
     #e.g. 'livestock' in 'some livestock some';      
@@ -91,6 +90,7 @@ def is_token(start_index:int, end_index:int, text:str, special_characters:List[s
             return False
         
     return True
+
 
 #find the index
 def find_index_term( terms:List[str], text:str ) -> Generator[  Tuple[ str, int, int ], None, None  ]:

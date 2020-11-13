@@ -87,7 +87,7 @@ def bert_bio_tagging( sentences: List[str], path_model_dir:Path, gpu:int=-1, seq
 
     total_number_of_words=len([j for sub in tokenized_texts for j in sub])
 
-    print( f"NER on {len(sentences)} sentences took {end-start} seconds (  { total_number_of_words/(end-start) } words/s ) "  )
+    print( f"BIO tagging on {len(sentences)} sentences took {end-start} seconds (  { total_number_of_words/(end-start) } words/s ) "  )
 
     assert len(tokenized_texts) == len(predictions_tags)
 
@@ -111,7 +111,7 @@ def join_bpe( tokens:List[str], tags:List[str]  )->Tuple[ List[str], List[str] ]
 
     #tokens at position>seq_length are ignored
     for token, tag in zip(tokens, tags ):
-        if token.startswith("##"):
+        if token.startswith("##") and new_tokens: #check for new_tokens, to deal with case if sentence starts with ##
             new_tokens[-1] = new_tokens[-1] + token[2:]
         else:
             new_tags.append(tag)
@@ -178,30 +178,40 @@ def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ):
             if is_token( match.span()[0], match.span()[1]-1, sentence, special_characters=[] ):
                 yield match
         
-'''
-def find_indices_tokenized_term_in_nontokenized_text(tokenized_term: str, sentence: str):
+        
+def find_defined_term_bio_tag( sentence:str , tokenized_sentence:str, tokenized_bio_tags:List[ str ], verbose=True  ):
     
+    '''
+    Find offset of the detected term (via bio tag), in the original (non-tokenized) sentence. 
+    Note that punctuation is stripped from the detected term. I.e. if b,i tags cover a punctuation, this is stripped before lookup via regex (for calculation of offsets).
+    '''
+    
+    #Sanity check.
+    assert (len (tokenized_sentence.split()) == len( tokenized_bio_tags ))
+    
+    for term, span_begin, span_end in get_terms_pos_bio_tags( tokenized_sentence.split(), tokenized_bio_tags ):
+        matches=[]
+        for match in find_indices_tokenized_term_in_text( term, tokenized_sentence  ):
 
-    #first strip possible leading or trailing punctuation from the bert tokenized term:
-    #tokenized_term=tokenized_term.strip( string.punctuation+'‘\"`\'’•”‧'+" "  )
-    
-    extra_punctuation_tokens='‘\"`\'’•”‧'
-    
-    tokenized_term=tokenized_term.strip( string.punctuation+extra_punctuation_tokens+" " )
-            
-    #make regex
-    term_regex=''
-    for token in tokenized_term.split():
-        if not term_regex:
-            term_regex=token
-        elif token in (string.punctuation+extra_punctuation_tokens ):
-            #we have to escape special characters (i.e. . without \. would match whatever character)
-            term_regex=term_regex+"([ ]*)"+"\\"+token
-        else:
-            term_regex=term_regex+"([ ]*)"+token
-    
-    if tokenized_term:
-        for match in re.finditer(term_regex, sentence, re.IGNORECASE):
-            if is_token( match.span()[0], match.span()[1]-1, sentence, special_characters=[] ):
-                yield match
-'''
+            is_defined=False
+
+            if match.span()[0]>=span_begin and match.span()[1]<=span_end: #check if it is a defined term
+                is_defined=True
+
+            matches.append( (match, is_defined) )
+
+        if not matches and verbose:
+            print( f"Could not find detected term: {term} in tokenized sentence. If the term only consists of punctuation, this is expected behaviour." )
+            continue
+
+        matches_original_sentence=list(find_indices_tokenized_term_in_text( term, sentence ))
+
+        if (len( matches_original_sentence ) < len( matches ) ) and verbose :  #number of matches in original sentence could be greater than number of matches in tokenized sentence, due to seq_length
+            print( f"Number of occurences of tokenized term: {term} in tokenized sentence: {tokenized_sentence} is greater than the number of occurences in non-tokenized sentence: {sentence}. This could be unwanted behaviour." )
+            continue
+
+        for match_original, match_tokenized in zip( matches_original_sentence, matches ):
+
+            if match_tokenized[-1]==True:
+                yield match_original
+
