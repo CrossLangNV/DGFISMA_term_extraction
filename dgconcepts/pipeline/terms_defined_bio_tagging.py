@@ -4,7 +4,7 @@ import time
 import string
 import re
 
-from typing import List, Tuple
+from typing import List, Tuple, Generator
 
 from pathlib import Path 
 
@@ -17,8 +17,40 @@ from transformers import BertTokenizer
 from transformers import BertForTokenClassification
 from keras.preprocessing.sequence import pad_sequences
 
+from .utils import is_token
 
-from .utils import  is_token
+def process_definitions_bert_bio_tagging( sentences: List[str], path_model_dir: Path, gpu:int=-1, seq_length:int=75, batch_size:int=32 ) -> Generator[ List[ Tuple[ str, int, int ] ], None, None ]:
+    
+    '''
+    Function will use BertForTokenClassification model and accompanying BertTokenizer to tokenize the sentences, and to BIO tag the sentences. Next the BIO tags are converted to offsets in the original sentence.
+    Function returns a Generator.
+    '''
+    
+    #inference
+    tokenized_sentences, bio_tags = bert_bio_tagging( sentences, path_model_dir, gpu, seq_length=seq_length, batch_size=batch_size  )
+
+    #sanity check
+    assert( len( sentences ) == len( tokenized_sentences ) == len( bio_tags ) )
+    
+    joint_tokenized_sentences=[]
+    joint_tokenized_bio_tags=[]
+
+    #join tokenized sentences  (i.e. remove the ##) and take care of the bio tags
+    for tokenized_sentence, bio_tag in zip( tokenized_sentences , bio_tags ):
+        joint_tokenized_sentence, joint_tokenized_bio_tag=join_bpe( tokenized_sentence, bio_tag )
+        joint_tokenized_sentences.append( joint_tokenized_sentence )
+        joint_tokenized_bio_tags.append( joint_tokenized_bio_tag )
+
+    #sanity check
+    assert( len( sentences ) == len( joint_tokenized_sentences  ) ==len(  joint_tokenized_bio_tags  )  )
+    
+    #find the offset in the original sentence
+    for i in range( len( sentences ) ):
+        detected_terms=find_defined_term_bio_tag( sentences[i], " ".join(joint_tokenized_sentences[i]) , joint_tokenized_bio_tags[i]  )
+        if not detected_terms:
+            yield []
+            continue
+        yield [ (detected_term.group(0),  detected_term.span()[0], detected_term.span()[1]) for detected_term in detected_terms ] 
 
 
 def bert_bio_tagging( sentences: List[str], path_model_dir:Path, gpu:int=-1, seq_length:int=75, batch_size:int=32) -> Tuple[ List[str], List[str] ]:
@@ -122,7 +154,7 @@ def join_bpe( tokens:List[str], tags:List[str]  )->Tuple[ List[str], List[str] ]
 def get_terms_pos_bio_tags( tokens:List[str], bio_tags:List[str] ):
     
     '''
-    Function to get the tokenized term + span found via Bert bio tagger.
+    Function to get the tokenized term + span found via Bert bio tagger. Note that the tags I, B are not treated differently, for robustness. E.g. O, B, I, I, O and O, I, I, B, O both indicate a term consisting of 3 tokens starting at position 1 and ending at position 3.
     '''
     
     detected_term=[]
