@@ -1,24 +1,23 @@
+from typing import Generator, List, Tuple
+
 from cassis import Cas, TypeSystem
 
 from spacy.lang.en import English      
+        
+def process_definitions_dependency_parser(  sentences: List[str], nlp: English ) -> Generator[ List[ Tuple[ str, int, int ] ], None, None ] :
+        
+    for sentence in sentences:
+        detected_terms=[]
+        doc=nlp(  sentence  )
+        for sent in doc.sents:
+            for np in sent.noun_chunks:
+                for token in np:
+                    if token.dep_ == 'nsubj' and token.head.dep_ == 'ROOT':
+                        detected_terms.append( ( token.text  , token.idx , token.idx + len(token)  ) )
+                        break
+        yield detected_terms
+        
     
-    
-def add_nsubj_dependency( nlp: English, cas:Cas, typesystem: TypeSystem , SofaID:str, \
-                         definition_type:str='de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence', \
-                         dependency_type:str="de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency" ):
-    
-    dpdc = typesystem.get_type( dependency_type )
-    
-    for sentence in cas.get_view( SofaID ).select( definition_type ):
-
-        doc=nlp( sentence.get_covered_text() )
-        for np in doc.noun_chunks:
-            for token in np:
-                if token.dep_ == 'nsubj' and token.head.dep_ == 'ROOT':
-                    cas.get_view( SofaID ).add_annotation( dpdc( begin=sentence.begin+token.idx, end=(sentence.begin+token.idx+len(token)), \
-                                                               DependencyType='nsubj' ))
-                    
-                    
 def add_defined_term( cas: Cas, typesystem: TypeSystem, SofaID:str, definition_type:str = 'de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence' ,\
                       token_type:str = 'de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf', \
                       defined_type:str = 'cassis.Token', \
@@ -85,6 +84,21 @@ def add_defined_term( cas: Cas, typesystem: TypeSystem, SofaID:str, definition_t
                 defined_detected=True
 
 '''
+def add_nsubj_dependency( nlp: English, cas:Cas, typesystem: TypeSystem , SofaID:str, \
+                         definition_type:str='de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence', \
+                         dependency_type:str="de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency" ):
+    
+    dpdc = typesystem.get_type( dependency_type )
+    
+    for sentence in cas.get_view( SofaID ).select( definition_type ):
+
+        doc=nlp( sentence.get_covered_text() )
+        for np in doc.noun_chunks:
+            for token in np:
+                if token.dep_ == 'nsubj' and token.head.dep_ == 'ROOT':
+                    cas.get_view( SofaID ).add_annotation( dpdc( begin=sentence.begin+token.idx, end=(sentence.begin+token.idx+len(token)), \
+                                                               DependencyType='nsubj' ))
+
 #new approach, failing on some cases
 
 from cassis import Cas, TypeSystem

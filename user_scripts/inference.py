@@ -13,7 +13,7 @@ from transformers import BertTokenizer
 from transformers import BertForTokenClassification
 from keras.preprocessing.sequence import pad_sequences
 
-from dgconcepts.pipeline.definitions_bio_tagging import bert_bio_tagging
+from dgconcepts.pipeline.terms_defined_bio_tagging import bert_bio_tagging
 
 import plac
 

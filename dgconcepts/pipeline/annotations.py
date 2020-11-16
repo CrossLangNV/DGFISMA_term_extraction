@@ -1,6 +1,6 @@
 import ahocorasick as ahc
 from cassis import Cas, TypeSystem
-from typing import List, Tuple, Set
+from typing import List, Tuple, Set, Generator
 import re
 import string
 
@@ -48,3 +48,21 @@ def add_terms_and_lemmas_to_cas( NLP, cas: Cas, typesystem: TypeSystem, SofaID: 
                     cas_view.add_annotation(
                         Lemma(begin=tag.begin + start_index, end=tag.begin + end_index + 1, value=term_lemmas))
     return cas
+
+
+def add_dependency_annotation( cas:Cas, typesystem: TypeSystem, SofaID:str, defined_terms:Generator[ List[ Tuple[ str, int, int ] ], None, None ], \
+                        definition_type:str='de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence', \
+                        dependency_type:str="de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency" ):
+
+    definitions=list( cas.get_view( SofaID ).select( definition_type ))
+    
+    #Sanity check: for each definition, there should be a list of terms (or empty list) that are defined by the definition.
+    #This list of terms should either be detected by bert bio tagger, or dependency parser.
+    assert len( definitions ) == len( defined_terms )
+    
+    dpdc = typesystem.get_type( dependency_type )
+    
+    for defined_terms_sentence, definition in zip( defined_terms, definitions ):
+        for defined_term in defined_terms_sentence:
+            cas.get_view( SofaID ).add_annotation( dpdc( begin=definition.begin+defined_term[1] , end=definition.begin+defined_term[2], \
+                                                                   DependencyType='nsubj' ))
