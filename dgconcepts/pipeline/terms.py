@@ -339,43 +339,6 @@ def get_terms( NLP , sentences: List[str] , extract_supergrams:bool=False, nMax:
     return terms_n_tfidf, all_abvs
 
 
-def get_terms_defined_in_regex(  definitions: List[str] ) -> List[str]:
-    
-    '''
-    to do
-    '''
-    
-    #regex for terms in between quotes
-    regex_terms=r"[\‘|\"|\`|\'|\’|\•|\“|\‧][a-z0-9\-(){}_/\\]{2,}[a-z0-9 \-(){}_/\\]*[a-z0-9\-(){}_/\\]+[\‘|\"|\`|\'|\’|\•|\”|\‧]"
-
-    #regex for abbreviations in between quotes
-    regex_abbv=r"[\‘|\"|\`|\'|\’|\•|\“|\‧][A-Z]{2,}[\‘|\"|\`|\'|\’|\•|\”|\‧]"
-
-    terms=[]
-    
-    for definition in definitions:
-
-        match_term=re.finditer( regex_terms, definition, re.IGNORECASE  )
-        match_abbv=re.finditer( regex_abbv, definition  )
-
-        #first annotate the abbreviations:
-        for m in match_abbv:
-            if m:
-                term=m.group(0)[1:-1].strip()
-                if term:
-                    terms.append( term.lower() )
-
-        #annotate the terms:
-        for m in match_term:
-            if m:
-                term=m.group(0)[1:-1]
-                if term:
-                    terms.append( term.lower() )
-              
-    terms=list(set(terms))
-            
-    return terms
-
 def remove_add_update_terms_blacklist_whitelist( terms_n_tfidf: dict, whitelist: Set[str], blacklist: Set[str], tf_idf_whitelist: float =-1.0  ) -> dict:
     
     keys=set( terms_n_tfidf.keys() )
