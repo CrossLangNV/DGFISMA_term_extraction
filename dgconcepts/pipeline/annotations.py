@@ -6,6 +6,7 @@ import string
 
 from configparser import ConfigParser
 
+from .terms_defined_regex import process_definitions_regex
 from .utils import deepest_child, is_token
 
 def add_terms_and_lemmas_to_cas( NLP, cas: Cas, typesystem: TypeSystem, config: ConfigParser ,
@@ -75,6 +76,129 @@ def add_dependency_annotation( cas:Cas, typesystem: TypeSystem, config: ConfigPa
             cas.get_view( SofaID ).add_annotation( dpdc( begin=definition.begin+defined_term[1] , end=definition.begin+defined_term[2], \
                                                                    DependencyType='nsubj' ))
             
+            
+def add_defined_term_regex( cas, typesystem , config , sentence_feature, fall_back_regex=True ):
+    
+    Defined_type=typesystem.get_type( config[ 'Annotation' ].get( 'DEFINED_TYPE' ) )
+    SofaID= config[ 'Annotation' ].get( 'SOFA_ID' )
+
+    defined_terms_regex=list(process_definitions_regex(  [  sentence_feature.get_covered_text() ] ))[0]
+    defined_terms_regex=[( term[0] , term[1]+sentence_feature.begin, term[2]+sentence_feature.begin ) for term in defined_terms_regex]
+    
+    rejected_terms=[]
+    defined_term_found=False
+    for term in cas.get_view( SofaID ).select_covered( config[ 'Annotation' ].get( 'TOKEN_TYPE' ) , sentence_feature ):
+        
+        if (term.term, term.begin, term.end) in defined_terms_regex: #this means it is one of the detected regexes
+            
+            #only annotate the ones with overlapping dependency type
+            if has_dependency_annotation(cas, config, term, sentence_feature ):
+                cas.get_view( SofaID ).add_annotation( Defined_type( begin=term.begin , end=term.end ) )
+                defined_term_found=True
+            elif fall_back_regex:
+                rejected_terms.append(term)
+    
+    #only fall-back to annotation of all terms found via regex if all terms found via regex where rejected
+    if rejected_terms and fall_back_regex and not defined_term_found:
+        for rejected_term in rejected_terms:
+            cas.get_view( SofaID ).add_annotation( Defined_type( begin=rejected_term.begin, end=rejected_term.end )  )
+            defined_term_found=True
+    
+    #you want to keep track of the state
+    return defined_term_found
+
+            
+def add_defined_term_custom_tf_idf_score( cas, typesystem, config, sentence_feature, tf_idf_scores=set([-1.0,-2.0]), fall_back=True ):
+    
+    Defined_type = typesystem.get_type( config[ 'Annotation' ].get( 'DEFINED_TYPE' ) )
+    SofaID = config[ 'Annotation' ].get( 'SOFA_ID' )
+    
+    rejected_terms=[]
+    defined_term_found=False
+    
+    for term in cas.get_view( SofaID ).select_covered( config[ 'Annotation' ].get( 'TOKEN_TYPE' ) , sentence_feature ):
+        
+        if tf_idf_scores and term.tfidfValue not in tf_idf_scores: #only interested in terms with specific scores ( whitelisted and regex detected terms )
+            continue
+        
+        #check if it is the 'longest' whitelisted term at that location...
+        if is_longest_term( cas, config, term, tf_idf_scores ): # and not defined_annotation_exists( cas,config,term.begin,term.end ):
+
+            if has_dependency_annotation( cas, config, term, sentence_feature ):
+                cas.get_view( SofaID ).add_annotation( Defined_type( begin=term.begin, end=term.end )  )
+                defined_term_found=True
+            elif fall_back:
+                rejected_terms.append( term )
+                
+    if rejected_terms and fall_back and not defined_term_found:
+        for rejected_term in rejected_terms:
+            
+            if is_longest_term( cas, config, term, tf_idf_scores ):
+                cas.get_view( SofaID ).add_annotation( Defined_type( begin=rejected_term.begin, end=rejected_term.end )  )
+                defined_term_found=True
+    
+    return defined_term_found
+
+def add_defined_term_bert():
+    
+    bert=True
+    
+    if bert:
+        pass
+        #and fallback...
+        
+        
+#helper functions
+def has_dependency_annotation( cas, config, term_feature, sentence_feature ):
+    
+    set1=set(list( range( term_feature.begin, term_feature.end ) ))
+
+    for dependency_feature in cas.get_view( config[ 'Annotation' ][ 'Sofa_ID' ] ).select( config[ 'Annotation' ][ 'DEPENDENCY_TYPE' ]  ):
+        set2=set( list( range( dependency_feature.begin, dependency_feature.end ) ) )
+        #check if term_feature has some overlapping with a dependency feature
+        if set1.intersection( set2 ):
+            return True
+    
+    return False
+
+def defined_annotation_exists( cas:Cas, config:ConfigParser, begin:int, end:int ):
+    
+    for defined_type in cas.get_view( config[ 'Annotation' ]['Sofa_ID']  ).select( config[ 'Annotation' ].get( 'DEFINED_TYPE' ) ):
+        if defined_type.begin == begin and defined_type.end==end:
+            return True
+        
+    return False
+        
+def is_longest_term(cas:Cas, config:ConfigParser , term , tf_idf_scores: set() ) -> bool:
+
+    '''
+    Function checks if a tfidf annotation (term) is not part of a longer tfidf annotation. 
+    Only covering tfidf annotations with specific score (tf_idf_scores) are considered (if tf_idf_score_flag is set to True).
+    When tf_idf_score_flag is set to False, all covering tfidf annotations will be considered to determine if it is the longest term.
+    
+    :param cas: Cas.
+    :param config: ConfigParser. Configuration file.
+    :param term: tfidf annotation
+    :param tf_idf_score: int. tf idf score
+    :param tf_idf_score_flag: bool. 
+    :return: Bool.
+    '''
+    
+    SofaID=config[ 'Annotation' ].get( 'SOFA_ID' )
+    Token_type=config[ 'Annotation' ].get( 'TOKEN_TYPE' )
+    
+    tf_idf_scores=set( tf_idf_scores )
+    
+    for other_term in cas.get_view(  SofaID ).select_covering( Token_type  , term ):
+        if tf_idf_scores:  #only check if not empty, if empty ==> all should be checked
+            if other_term.tfidfValue not in tf_idf_scores: #only interested in covering terms of specific type ( whitelist / obtained via regex )
+                continue
+        if other_term.begin < term.begin or other_term.end > term.end:
+            return False
+    return True  
+    
+    
+'''
         
 def add_defined_term_dependency_parser( cas: Cas, typesystem: TypeSystem, config: ConfigParser ):
     
@@ -160,44 +284,15 @@ def add_defined_term_dependency_parser( cas: Cas, typesystem: TypeSystem, config
                     cas.get_view( SofaID ).add_annotation( Token( begin=tf_idf.begin  , end=tf_idf.end ) )
                     defined_detected=True
 
-#helper functions
-def is_longest_term(cas:Cas, config:ConfigParser , term , tf_idf_score: int, tf_idf_score_flag: bool=True ) -> bool:
-
-    '''
-    Function checks if a tfidf annotation (term) is not part of a longer tfidf annotation. 
-    Only covering tfidf annotations with specific score (tf_idf_score) are considered (if tf_idf_score_flag is set to True).
-    When tf_idf_score_flag is set to False, all covering tfidf annotations will be considered to determine if it is the longest term.
-    
-    :param cas: Cas.
-    :param config: ConfigParser. Configuration file.
-    :param term: tfidf annotation
-    :param tf_idf_score: int. tf idf score
-    :param tf_idf_score_flag: bool. 
-    :return: Bool.
-    '''
-    
-    SofaID=config[ 'Annotation' ].get( 'SOFA_ID' )
-    token_type=config[ 'Annotation' ].get( 'TOKEN_TYPE' )
-    
-    for other_term in cas.get_view(  SofaID ).select_covering( token_type  , term ):
-        if tf_idf_score_flag:
-            if other_term.tfidfValue!=tf_idf_score: #only interested in covering terms of specific type ( whitelist / obtained via regex )
-                continue
-        if other_term.begin < term.begin or other_term.end > term.end:
-            return False
-    return True
-
 
 def defined_term( cas:Cas, config:ConfigParser, term )-> str:
 
-    '''
     Function to find dependency relation of a tfidf annotation (term).
 
     :param cas: Cas.
     :param config: ConfigParser. Configuration file.
     :param term: tfidf annotation
     :return: String.
-    '''
 
     SofaID=config[ 'Annotation' ].get( 'SOFA_ID' )
     dependency_type=config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )
@@ -209,3 +304,5 @@ def defined_term( cas:Cas, config:ConfigParser, term )-> str:
             return 'nsubj'
 
     return 'no_dependency_found'
+    
+'''
