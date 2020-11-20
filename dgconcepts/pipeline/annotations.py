@@ -75,6 +75,11 @@ def add_dependency_annotation( cas:Cas, typesystem: TypeSystem, config: ConfigPa
         for defined_term in defined_terms_sentence:
             cas.get_view( SofaID ).add_annotation( dpdc( begin=definition.begin+defined_term[1] , end=definition.begin+defined_term[2], \
                                                                    DependencyType='nsubj' ))
+
+def add_defined_term_annotation():
+    
+    #this will return a list of terms, possibly detected via dependency parser (can be important for bio tagger..)....
+    pass
             
             
 def add_defined_term_regex( cas, typesystem , config , sentence_feature, fall_back_regex=True ):
@@ -82,8 +87,22 @@ def add_defined_term_regex( cas, typesystem , config , sentence_feature, fall_ba
     Defined_type=typesystem.get_type( config[ 'Annotation' ].get( 'DEFINED_TYPE' ) )
     SofaID= config[ 'Annotation' ].get( 'SOFA_ID' )
 
-    defined_terms_regex=list(process_definitions_regex(  [  sentence_feature.get_covered_text() ] ))[0]
+    sentence=sentence_feature.get_covered_text()
+    
+    if sentence:
+    
+        defined_terms_regex=list(process_definitions_regex(  [  sentence ] ))[0]
+
+    else:
+        
+        return False
+        
     defined_terms_regex=[( term[0] , term[1]+sentence_feature.begin, term[2]+sentence_feature.begin ) for term in defined_terms_regex]
+    defined_terms_regex=set( defined_terms_regex )
+    
+    if not defined_terms_regex:
+        
+        return False
     
     rejected_terms=[]
     defined_term_found=False
@@ -122,8 +141,7 @@ def add_defined_term_custom_tf_idf_score( cas, typesystem, config, sentence_feat
             continue
         
         #check if it is the 'longest' whitelisted term at that location...
-        if is_longest_term( cas, config, term, tf_idf_scores ): # and not defined_annotation_exists( cas,config,term.begin,term.end ):
-
+        if is_longest_term( cas, config, term, tf_idf_scores ):
             if has_dependency_annotation( cas, config, term, sentence_feature ):
                 cas.get_view( SofaID ).add_annotation( Defined_type( begin=term.begin, end=term.end )  )
                 defined_term_found=True
@@ -132,20 +150,30 @@ def add_defined_term_custom_tf_idf_score( cas, typesystem, config, sentence_feat
                 
     if rejected_terms and fall_back and not defined_term_found:
         for rejected_term in rejected_terms:
-            
             if is_longest_term( cas, config, term, tf_idf_scores ):
                 cas.get_view( SofaID ).add_annotation( Defined_type( begin=rejected_term.begin, end=rejected_term.end )  )
                 defined_term_found=True
     
     return defined_term_found
 
-def add_defined_term_bert():
+
+def add_defined_term_bio_tagging( cas, typesystem, config, sentence_feature ):
     
-    bert=True
     
-    if bert:
-        pass
-        #and fallback...
+    Defined_type = typesystem.get_type( config[ 'Annotation' ].get( 'DEFINED_TYPE' ) )
+    SofaID = config[ 'Annotation' ].get( 'SOFA_ID' )
+    
+    detected_terms=[]
+    
+    for dependency in cas.get_view( SofaID ).select_covered( config[ 'Annotation' ][ 'DEPENDENCY_TYPE' ], sentence_feature):
+        
+        if not defined_annotation_exists( cas, config, sentence_feature, dependency.begin, dependency.end ):
+
+            detected_terms.append(dependency.get_covered_text())
+            
+            cas.get_view( SofaID ).add_annotation( Defined_type( begin=dependency.begin, end=dependency.end )  )
+            
+    return detected_terms #need to annotate this term in the cas as tfidf
         
         
 #helper functions
@@ -155,15 +183,15 @@ def has_dependency_annotation( cas, config, term_feature, sentence_feature ):
 
     for dependency_feature in cas.get_view( config[ 'Annotation' ][ 'Sofa_ID' ] ).select( config[ 'Annotation' ][ 'DEPENDENCY_TYPE' ]  ):
         set2=set( list( range( dependency_feature.begin, dependency_feature.end ) ) )
-        #check if term_feature has some overlapping with a dependency feature
+        #check if term_feature has some overlapping with a dependency feature ==> if it does, considered having a dependency annotation
         if set1.intersection( set2 ):
             return True
     
     return False
 
-def defined_annotation_exists( cas:Cas, config:ConfigParser, begin:int, end:int ):
+def defined_annotation_exists( cas:Cas, config:ConfigParser, sentence_feature, begin:int, end:int ):
     
-    for defined_type in cas.get_view( config[ 'Annotation' ]['Sofa_ID']  ).select( config[ 'Annotation' ].get( 'DEFINED_TYPE' ) ):
+    for defined_type in cas.get_view( config[ 'Annotation' ]['Sofa_ID']  ).select_covered( config[ 'Annotation' ][ 'DEFINED_TYPE' ], sentence_feature ):
         if defined_type.begin == begin and defined_type.end==end:
             return True
         
@@ -197,112 +225,3 @@ def is_longest_term(cas:Cas, config:ConfigParser , term , tf_idf_scores: set() )
             return False
     return True  
     
-    
-'''
-        
-def add_defined_term_dependency_parser( cas: Cas, typesystem: TypeSystem, config: ConfigParser ):
-    
-    SofaID=config[ 'Annotation' ].get( 'SOFA_ID' )
-
-    token_type=config[ 'Annotation' ].get( 'TOKEN_TYPE' )
-    definition_type=config['Annotation'].get( 'DEFINITION_TYPE' )
-    defined_type=config[ 'Annotation' ].get( 'DEFINED_TYPE' )
-    dependency_type=config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )
-        
-    tf_idf_whitelist=config[ 'TermExtraction' ].getfloat( 'TFIDF_WHITELIST' )
-    tf_idf_regex=config[ 'TermExtraction' ].getfloat( 'TFIDF_REGEX' )
-    tf_idf_threshold=config[ 'TermExtraction' ].getfloat( 'TFIDF_THRESHOLD' )
-    
-    prioritize_regex=config[ 'DefinedTerm' ].getboolean( 'PRIORITIZE_REGEX' )
-    prioritize_whitelist=config[ 'DefinedTerm' ].getboolean( 'PRIORITIZE_WHITELIST' )
-    fallback_to_regex=config[ 'DefinedTerm' ].getboolean( 'FALLBACK_TO_REGEX' )
-    fallback_to_whitelist=config[ 'DefinedTerm' ].getboolean( 'FALLBACK_TO_WHITELIST' )
-                
-    Token = typesystem.get_type( defined_type )
-    
-    #iteration over the definitions
-    for definition in cas.get_view( SofaID ).select( definition_type ):
-    
-        defined_detected=False
-        
-        terms_sentence = list(cas.get_view( SofaID ).select_covered( token_type, definition  ) )
-        
-        if prioritize_regex:
-            
-            for tf_idf in terms_sentence:
-                #case where tf_idf term is found via regex and has a good dependency type
-                if (tf_idf.tfidfValue == tf_idf_regex and defined_term(cas, config, tf_idf )=='nsubj' ): #make this configurable
-                    if is_longest_term( cas, config, tf_idf, tf_idf_regex, True ): #check if there is a longer covering terms with same tf_idf_score
-                        cas.get_view( SofaID ).add_annotation( Token( begin=tf_idf.begin , end=tf_idf.end ) )
-                        defined_detected=True
-
-            #if one of the terms found via regex is considered the term confirmed via dependency parser, stop searching.
-            if defined_detected:
-                continue
-
-            if fallback_to_regex:
-                for tf_idf in terms_sentence:
-                    #case where tf_idf term is found via regex and does not have a bad dependency type
-                    if (tf_idf.tfidfValue == tf_idf_regex and defined_term(cas, config, tf_idf )!='bad' ): 
-                        if is_longest_term( cas, config, tf_idf, tf_idf_regex, True ): #check if there is a longer covering term with same tf_idf_score (via regex)
-                            cas.get_view( SofaID ).add_annotation( Token( begin=tf_idf.begin , end=tf_idf.end ) )
-                            defined_detected=True   
-                        
-        #if one of the terms found via regex is not considered bad, stop searching
-        if defined_detected:
-            continue
-          
-        if prioritize_whitelist:
-        
-            for tf_idf in terms_sentence:
-                #case where tf_idf term is whitelisted and has a good dependency type
-                if (tf_idf.tfidfValue == tf_idf_whitelist and defined_term(cas, config, tf_idf)=='nsubj' ): #make this configurable
-                    if is_longest_term( cas, config, tf_idf, tf_idf_whitelist, True ): #check if there is a longer covering term with same tf_idf_score (whitelisted)
-                        cas.get_view( SofaID ).add_annotation( Token( begin=tf_idf.begin , end=tf_idf.end ) )
-                        defined_detected=True
-                        
-            if defined_detected:
-                continue
-                
-            if fallback_to_whitelist:
-                for tf_idf in terms_sentence:
-                    #case where tf_idf term is whitelisted and has a good dependency type
-                    if (tf_idf.tfidfValue == tf_idf_whitelist and defined_term(cas, config, tf_idf )!='bad' ): #make this configurable
-                        if is_longest_term( cas, config, tf_idf, tf_idf_whitelist, True ): #check if there is a longer covering term with same tf_idf_score (whitelisted)
-                            cas.get_view( SofaID ).add_annotation( Token( begin=tf_idf.begin , end=tf_idf.end ) )
-                            defined_detected=True
-                
-        #if one of the whitelisted terms is considered the defined term, stop searching
-        if defined_detected:
-            continue
-            
-        #case when there are not whitelisted/regex terms in the sentence, and/or all whitelisted terms were rejected by dependency parser 
-        #for bert bio_tagger you probably want fallback to bio-tagged item...
-        for tf_idf in terms_sentence:
-            if defined_term(cas, config, tf_idf ) =='nsubj' and tf_idf.tfidfValue > tf_idf_threshold:
-                if is_longest_term( cas, config, tf_idf, 0 , False ): #check if there is a longer covering term (with any tf_idf_score)
-                    cas.get_view( SofaID ).add_annotation( Token( begin=tf_idf.begin  , end=tf_idf.end ) )
-                    defined_detected=True
-
-
-def defined_term( cas:Cas, config:ConfigParser, term )-> str:
-
-    Function to find dependency relation of a tfidf annotation (term).
-
-    :param cas: Cas.
-    :param config: ConfigParser. Configuration file.
-    :param term: tfidf annotation
-    :return: String.
-
-    SofaID=config[ 'Annotation' ].get( 'SOFA_ID' )
-    dependency_type=config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )
-    
-    for dependency in cas.get_view( SofaID ).select_covered( dependency_type, term ):
-        if dependency.DependencyType == 'bad':
-            return 'bad'
-        elif dependency.DependencyType == 'nsubj':
-            return 'nsubj'
-
-    return 'no_dependency_found'
-    
-'''
