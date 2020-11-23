@@ -2,19 +2,88 @@ import pytest
 import os
 import configparser
 
-from dgconcepts.pipeline.annotations import add_defined_term_regex, add_defined_term_custom_tf_idf_score, add_defined_term_bio_tagging
+from dgconcepts.pipeline.annotations import add_defined_term_regex, add_defined_term_custom_tf_idf_score, add_defined_term_bio_tagging, add_defined_term_annotation  
+
 
 from cassis.typesystem import load_typesystem
 
 from ._create_cas import _create_test_cas_1
 
-MEDIA_ROOT='media'
+MEDIA_ROOT='tests/test_files'
                         
 with open( os.path.join( MEDIA_ROOT, 'typesystem.xml' )  , 'rb') as f:
     TYPESYSTEM = load_typesystem(f)
 
 config = configparser.ConfigParser()
 config.read( os.path.join( MEDIA_ROOT, 'TermExtraction.config' ))
+
+config_no_fall_back = configparser.ConfigParser()
+config_no_fall_back.read( os.path.join( MEDIA_ROOT, 'TermExtraction_no_fall_back.config' ))
+
+config_bert = configparser.ConfigParser()
+config_bert.read( os.path.join( MEDIA_ROOT, 'TermExtraction_bert.config' ))
+
+def test_add_defined_term_annotation_no_fall_back():
+   
+    terms_bio_tagging=['ha', 'some']
+    true_defined_terms=[(11, 20), (52, 54), (67, 71)]
+
+    cas=_create_test_cas_1()
+    
+    terms=add_defined_term_annotation( cas, TYPESYSTEM, config_bert )
+    
+    defined_terms=[(defined_term.begin, defined_term.end) for \
+                   defined_term in cas.get_view( config_bert[ 'Annotation' ]['Sofa_ID']  ).select( config_bert[ 'Annotation' ][ 'DEFINED_TYPE' ] )]
+    
+    assert true_defined_terms == defined_terms
+    assert terms == terms_bio_tagging
+
+
+def test_add_defined_term_annotation_no_fall_back():
+   
+    terms_bio_tagging=[]
+    true_defined_terms=[(11, 20), (51, 59), (67, 80)]
+
+    cas=_create_test_cas_1()
+    
+    terms=add_defined_term_annotation( cas, TYPESYSTEM, config_no_fall_back )
+    
+    defined_terms=[(defined_term.begin, defined_term.end) for \
+                   defined_term in cas.get_view( config_no_fall_back[ 'Annotation' ]['Sofa_ID']  ).select( config_no_fall_back[ 'Annotation' ][ 'DEFINED_TYPE' ] )]
+    
+    assert true_defined_terms == defined_terms
+    assert terms == terms_bio_tagging
+
+
+def test_add_defined_term_annotation():
+   
+    terms_bio_tagging=[]
+    true_defined_terms=[(11, 20), (61, 65), (67, 80)]
+    
+    cas=_create_test_cas_1()
+    
+    terms=add_defined_term_annotation( cas, TYPESYSTEM, config )
+    
+    defined_terms=[(defined_term.begin, defined_term.end) for defined_term in cas.get_view( config[ 'Annotation' ]['Sofa_ID']  ).select( config[ 'Annotation' ][ 'DEFINED_TYPE' ] )]
+    
+    assert true_defined_terms == defined_terms
+    assert terms == terms_bio_tagging
+    
+def test_add_defined_term_annotation_no_extra_dependencies():
+   
+    terms_bio_tagging=[]
+    true_defined_terms=[(11, 20), (61, 65)]
+    
+    cas=_create_test_cas_1( extra_dependencies=False )
+    
+    terms=add_defined_term_annotation( cas, TYPESYSTEM, config )
+    
+    defined_terms=[(defined_term.begin, defined_term.end) for defined_term in cas.get_view( config[ 'Annotation' ]['Sofa_ID']  ).select( config[ 'Annotation' ][ 'DEFINED_TYPE' ] )]
+    
+    assert true_defined_terms == defined_terms
+    assert terms == terms_bio_tagging
+    
+    
 
 def test_add_defined_term_regex_no_fall_back():
     
