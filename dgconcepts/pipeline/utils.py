@@ -117,3 +117,18 @@ def find_index_term( terms:List[str], text:str ) -> Generator[  Tuple[ str, int,
         start_index = end_index - (len(term) - 1)
         if is_token( start_index, end_index, text ):
             yield( ( term, start_index, end_index+1 ) )
+            
+            
+def select_covered( cas, view:str , feature_type, feature ):
+    begin=feature.begin
+    end=feature.end
+    for element in cas.get_view( view ).select( feature_type ):
+        if element.begin >=begin and element.end <= end :
+            yield element
+            
+def select_covering( cas, view:str , feature_type, feature ):
+    begin=feature.begin
+    end=feature.end
+    for element in cas.get_view( view ).select( feature_type ):
+        if element.begin <=begin and element.end >= end :
+            yield element
