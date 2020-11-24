@@ -16,15 +16,17 @@ from .pipeline.inference import concept_extraction
 from .pipeline.terms_defined_bio_tagging import TrainedBertBIOTagger
 
 CONFIG = configparser.ConfigParser()
-CONFIG.read( os.path.join( settings.MEDIA_ROOT, "TermExtraction.config"  )
+CONFIG.read( os.path.join( settings.MEDIA_ROOT, "TermExtraction.config"  ))
 
 NLP = spacy.load( CONFIG['TermExtraction'].get( 'SPACY_MODEL' ) )
 
 WHITELIST = open( os.path.join( settings.MEDIA_ROOT, "whitelist.txt" )).read().rstrip( "\n" ).split( "\n" )
 BLACKLIST = open( os.path.join( settings.MEDIA_ROOT, "blacklist.txt" )).read().rstrip( "\n" ).split( "\n" )
 
+SOFA_ID=CONFIG[ 'Annotation' ].get( 'SOFA_ID' )
+
 #load the trained bio tagger
-if CONFIG['DefinedTerm'].getboolean( 'BERT_BIO_TAGGING' )
+if CONFIG['DefinedTerm'].getboolean( 'BERT_BIO_TAGGING' ):
     TRAINED_BERT_BIO_TAGGER=TrainedBertBIOTagger( os.path.join( settings.MODEL_ROOT, CONFIG[ 'BertBIOTagger' ][ 'PATH_MODEL_DIR' ] ) ) 
     TRAINED_BERT_BIO_TAGGER.load_model( )
 else:
@@ -42,7 +44,7 @@ class TermView(APIView):
         f = request.data
         
         output_json={}
-
+        
         try:
             decoded_cas_content = base64.b64decode(f['cas_content']).decode('utf-8')
         except binascii.Error:
@@ -54,9 +56,9 @@ class TermView(APIView):
         cas = load_cas_from_xmi(decoded_cas_content, typesystem=TYPESYSTEM)
 
         try:
-            cas.get_view( SofaID )
+            cas.get_view( SOFA_ID )
         except:
-            logging.info(f"could not process the view in this CAS. Make sure it contains a {SofaID} view.")
+            logging.info(f"could not process the view in this CAS. Make sure it contains a { SOFA_ID } view.")
             end = time.time()
             logging.info(end - start)
             return JsonResponse(f)
