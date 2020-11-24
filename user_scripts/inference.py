@@ -13,7 +13,7 @@ from transformers import BertTokenizer
 from transformers import BertForTokenClassification
 from keras.preprocessing.sequence import pad_sequences
 
-from dgconcepts.pipeline.terms_defined_bio_tagging import bert_bio_tagging
+from dgconcepts.pipeline.terms_defined_bio_tagging import bert_bio_tagging, TrainedBertBIOTagger
 
 import plac
 
@@ -44,7 +44,10 @@ def main( path_test_sentences:Path,\
     #Load the sentences on which to apply BERT_NER:
     sentences=open( path_test_sentences  ).read().rstrip("\n").split( "\n" )
     
-    tokenized_texts, predictions_tags_no_pad = bert_bio_tagging( sentences, path_model_dir, gpu, seq_length=seq_length, batch_size=batch_size  )
+    trained_bert_bio_tagger=TrainedBertBIOTagger( path_model_dir )
+    trained_bert_bio_tagger.load_model()
+    
+    tokenized_texts, predictions_tags_no_pad = bert_bio_tagging( sentences, trained_bert_bio_tagger, gpu, seq_length=seq_length, batch_size=batch_size  )
     
     with open( path_output_file , "w"  ) as f:
         f.write( "Sentence #˳Word˳POS˳Tag\n")

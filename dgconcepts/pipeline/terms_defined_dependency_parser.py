@@ -17,7 +17,9 @@ def process_definitions_dependency_parser(  sentences: List[str], nlp: English )
                         break
         yield detected_terms
         
-    
+
+        
+'''
 def add_defined_term( cas: Cas, typesystem: TypeSystem, SofaID:str, definition_type:str = 'de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence' ,\
                       token_type:str = 'de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf', \
                       defined_type:str = 'cassis.Token', \
@@ -27,9 +29,7 @@ def add_defined_term( cas: Cas, typesystem: TypeSystem, SofaID:str, definition_t
                       tf_idf_threshold:float = -9999.0):
     
     def defined_term( tf_idf ):
-        
-        '''helper function to find dependency relation of the tfidf annotation'''
-        
+                
         for dependency in cas.get_view( SofaID ).select_covered( dependency_type, tf_idf ):
             if dependency.DependencyType == 'bad':
                 return 'bad'
@@ -83,7 +83,7 @@ def add_defined_term( cas: Cas, typesystem: TypeSystem, SofaID:str, definition_t
                 cas.get_view( SofaID ).add_annotation( Token( begin=tf_idf.begin  , end=tf_idf.end ) )
                 defined_detected=True
 
-'''
+
 def add_nsubj_dependency( nlp: English, cas:Cas, typesystem: TypeSystem , SofaID:str, \
                          definition_type:str='de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence', \
                          dependency_type:str="de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency" ):
