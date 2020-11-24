@@ -271,6 +271,7 @@ def main( path_training_data:Path,\
         model.config.to_json_file(output_config_file)
         tokenizer.save_vocabulary(path_output_dir)
 
+        #during inference you need conversion from ID to BIO tags
         with open( os.path.join( path_output_dir , "tags_vals" ) , "wb" ) as fp:
             pickle.dump( tag_values, fp  )
     

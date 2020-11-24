@@ -7,9 +7,9 @@ import string
 from configparser import ConfigParser
 
 from .terms_defined_regex import process_definitions_regex
-from .utils import deepest_child, is_token, select_covered, select_covering
+from .utils import deepest_child, is_token 
 
-def add_terms_and_lemmas_to_cas( NLP, cas: Cas, typesystem: TypeSystem, config: ConfigParser ,
+def add_token_and_lemma_annotation( NLP, cas: Cas, typesystem: TypeSystem, config: ConfigParser ,
                                 terms_tf_idf: dict ) -> Cas:
     '''
     Given a cas and its typesystem, this function adds terms and associated tf_idf score (terms_tf_idf) to a given view (SofaID) as type.Tfidf. Annotations will only be added to ValueBetweenTagType elements with tag.tagName in the set tagnames. 
@@ -150,7 +150,7 @@ def add_defined_term_regex( cas, typesystem , config , sentence_feature, fall_ba
     
     rejected_terms=[]
     defined_term_found=False
-    for term in select_covered( cas, SofaID, config[ 'Annotation' ].get( 'TOKEN_TYPE' ), sentence_feature  ):
+    for term in cas.get_view( SofaID ).select_covered( config[ 'Annotation' ].get( 'TOKEN_TYPE' ) ,sentence_feature ):
         
         if (term.term, term.begin, term.end) in defined_terms_regex: #this means it is one of the detected regexes
             
@@ -179,7 +179,7 @@ def add_defined_term_custom_tf_idf_score( cas, typesystem, config, sentence_feat
     rejected_terms=[]
     defined_term_found=False
     
-    for term in select_covered( cas, SofaID, config[ 'Annotation' ].get( 'TOKEN_TYPE' ), sentence_feature  ):
+    for term in cas.get_view( SofaID ).select_covered( config[ 'Annotation' ].get( 'TOKEN_TYPE' ) ,sentence_feature ):
         
         if tf_idf_scores and term.tfidfValue not in tf_idf_scores: #only interested in terms with specific scores ( whitelisted and regex detected terms )
             continue
@@ -209,7 +209,7 @@ def add_defined_term_bio_tagging( cas, typesystem, config, sentence_feature ):
     
     detected_terms=[]
     
-    for dependency in select_covered( cas, SofaID, config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' ), sentence_feature  ):
+    for dependency in cas.get_view( SofaID ).select_covered( config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' ) ,sentence_feature ):
         
         if not defined_annotation_exists( cas, config, sentence_feature, dependency.begin, dependency.end ):
             
@@ -227,7 +227,7 @@ def has_dependency_annotation( cas, config, term_feature, sentence_feature ):
 
     for dependency_feature in cas.get_view( config[ 'Annotation' ][ 'Sofa_ID' ] ).select( config[ 'Annotation' ][ 'DEPENDENCY_TYPE' ]  ):
         set2=set( list( range( dependency_feature.begin, dependency_feature.end ) ) )
-        #check if term_feature has some overlapping with a dependency feature ==> if it does, considered having a dependency annotation
+        #check if term_feature has some overlapping with a dependency feature ==> if it does, the term is considered to have a dependency annotation
         if set1.intersection( set2 ):
             return True
     
@@ -237,7 +237,7 @@ def defined_annotation_exists( cas:Cas, config:ConfigParser, sentence_feature, b
     
     SofaID = config[ 'Annotation' ].get( 'SOFA_ID' )
     
-    for defined_type in select_covered( cas, SofaID, config[ 'Annotation' ].get( 'DEFINED_TYPE' ), sentence_feature  ):
+    for defined_type in cas.get_view( SofaID ).select_covered( config[ 'Annotation' ].get( 'DEFINED_TYPE' ), sentence_feature ):
         if defined_type.begin == begin and defined_type.end==end:
             return True
         
@@ -263,8 +263,8 @@ def is_longest_term(cas:Cas, config:ConfigParser , term , tf_idf_scores: set() )
     
     tf_idf_scores=set( tf_idf_scores )
     
-    for other_term in select_covering( cas, SofaID, Token_type, term  ):
-        if tf_idf_scores:  #only check if not empty, if empty ==> all should be checked
+    for other_term in cas.get_view( SofaID ).select_covering( Token_type, term  ):
+        if tf_idf_scores:  #only check if not empty; if empty ==> all should be checked
             if other_term.tfidfValue not in tf_idf_scores: #only interested in covering terms of specific type ( whitelist / obtained via regex )
                 continue
         if other_term.begin < term.begin or other_term.end > term.end:
