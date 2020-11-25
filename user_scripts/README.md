@@ -38,7 +38,7 @@ For the purpose of this paragraph ★ 'annual contribution' ☆ means the contri
 ```
 
 
-The provided scripts will then strip the quotations from the annotated term, to prevent the model to memorize these special symbols. The list of special symbols that are stripped is: [ " , ‘ , " , ` , ' , ’ , • , “ , ‧ ], and all symbols that are not present in the Bert vocabulary.
+The provided code will strip the quotations from the annotated term, to prevent the model to memorize these special symbols. The list of special symbols that are stripped is: [ " , ‘ , " , ` , ' , ’ , • , “ , ‧ ], and all symbols that are not present in the Bert vocabulary.
 
 The annotated data should be saved in a simple text file separated by newlines. 
 
@@ -82,6 +82,7 @@ Sentence 1 |  asset | -- | B |
 /|  else | -- | O |
 /|  . | -- | O |
 
+Note the lowercasing and how quotation is stripped from the annotated term. 
 
 <h2> Training </h2>
 
@@ -128,3 +129,12 @@ evaluate.main( "results_test_sentences.csv", \
 This will return a classification report with precision and recall scores using seqeval (https://pypi.org/project/seqeval), a python framework for sequence labeling evaluation.
 
 The easiest way to obtain the Gold Standard BIO tags, is to run the user script `inference` and correct the resulting csv file.
+
+<h2> Results </h2>
+
+When trained on 296 annotated sentences (see release link), containing 10277 tokens, we obtain the following results on a held out test set (22 sentences, 857 tokens):
+
+Model | precision | recall | f1-score | support |
+--- | --- | --- |--- |--- |
+BertForTokenClassification |  0.86 | 0.76 | 0.81 | 33 | 
+
