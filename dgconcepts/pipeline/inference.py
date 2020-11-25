@@ -1,5 +1,7 @@
 from typing import Tuple, List
 
+import time
+
 from .utils import get_sentences
 from .terms import get_terms, remove_add_update_terms_blacklist_whitelist
 
@@ -21,14 +23,15 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
     sentences, _ = get_sentences( cas, SofaID=config[ 'Annotation' ].get( 'SOFA_ID' ), tagnames=set(config[ 'Annotation' ].get( 'TAG_NAMES' )), \
                                  value_between_tagtype=config[ 'Annotation' ].get( 'VALUE_BETWEEN_TAG_TYPE' )   )
 
-    print( "start term extraction" )
+    print( "Start term extraction." )
+    start=time.time()
 
     #get a dictionary with all detected terms and tfidf scores
     terms_n_tfidf, _ = get_terms( NLP, sentences, \
                                  extract_supergrams = config[ 'TermExtraction' ].getboolean( 'EXTRACT_SUPERGRAMS' ), \
                                  nMax = config[ 'TermExtraction' ].getint( 'MAX_LEN_NGRAM' ) )
 
-    print( "end term extraction" )
+    print( f"Term extraction took { time.time() -start } seconds." )
 
     #get the definitions (previously annotated via definition detector)
     definitions=[definition.get_covered_text() for definition in \
@@ -57,10 +60,11 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
     terms_n_tfidf = remove_add_update_terms_blacklist_whitelist( terms_n_tfidf, whitelist, blacklist, \
                                                                 tf_idf_whitelist=config[ 'TermExtraction' ].getfloat( 'TFIDF_WHITELIST' ) )
 
-    print( "annotate terms and lemmas" )
+    print( "Start annotation terms and lemmas." )
+    start=time.time()
     #annotate tokens and lemmas in the cas (lemmatization done via Spacy model)
     add_token_and_lemma_annotation( NLP, cas, typesystem, config, terms_n_tfidf ) 
-    print( "end annotate terms and lemmas" )
+    print( f"Annotation of terms and lemmas took { time.time() -start } seconds." )
     
     #obtain dependency annotation (what is defined)
     if config[ 'DefinedTerm' ].getboolean( 'BERT_BIO_TAGGING' ):

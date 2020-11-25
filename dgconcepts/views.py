@@ -34,11 +34,12 @@ else:
             
 with open(os.path.join(settings.MEDIA_ROOT, 'typesystem.xml'), 'rb') as f:
     TYPESYSTEM = load_typesystem(f)
-
+    
 class TermView(APIView):
         
     def post(self, request):
                 
+        print( "TermView post received." )
         start = time.time()
 
         f = request.data
@@ -48,9 +49,7 @@ class TermView(APIView):
         try:
             decoded_cas_content = base64.b64decode(f['cas_content']).decode('utf-8')
         except binascii.Error:
-            logging.info(f"could not decode the 'cas_content' field. Make sure it is in base64 encoding.")
-            end = time.time()
-            logging.info(end - start)
+            print(f"could not decode the 'cas_content' field. Make sure it is in base64 encoding.")
             return JsonResponse(f)
             
         cas = load_cas_from_xmi(decoded_cas_content, typesystem=TYPESYSTEM)
@@ -58,9 +57,7 @@ class TermView(APIView):
         try:
             cas.get_view( SOFA_ID )
         except:
-            logging.info(f"could not process the view in this CAS. Make sure it contains a { SOFA_ID } view.")
-            end = time.time()
-            logging.info(end - start)
+            print(f"could not process the view in this CAS. Make sure it contains a { SOFA_ID } view.")
             return JsonResponse(f)
 
         concept_extraction( NLP, TRAINED_BERT_BIO_TAGGER, cas, TYPESYSTEM, CONFIG, ( WHITELIST, BLACKLIST ) ) 
@@ -69,6 +66,6 @@ class TermView(APIView):
         output_json['content_type']=f[ 'content_type']
         
         end = time.time()
-        logging.info(end - start)
+        print( f"Concept extraction took {end-start} seconds." )
 
         return JsonResponse(output_json)

@@ -1,104 +1,130 @@
-# BERT_NER
+<h1> Bert BIO tagging for concept detection </h1>
 
-Named entity recognition with BERT
+BIO tagging, in the context of the DGFISMA project is used for determining which concept is defined by a certain definition. E.g., given a definition, detected by our definition detector: <br />
 
-Code to finetune a pretrained BERT model for NER task.
-
-The following library is used for loading pretrained BERT: 
-
-https://github.com/huggingface/transformers
-
-Code could, for example, be run on the following dataset: https://www.kaggle.com/abhinavwalia95/entity-annotated-corpus
-
-Training data should be a csv, f.e.: 
-
-Sentence #,Word,POS,Tag \
-Sentence: 1,Thousands,NNS,O \
-,of,IN,O \
-,demonstrators,NNS,O \
-,have,VBP,O \
-,marched,VBN,O \
-,through,IN,O  \
-,London,NNP,B-geo  \
-,to,TO,O  \
-,protest,VB,O  \
-,the,DT,O  \
-,war,NN,O  \
-,in,IN,O \
-,Iraq,NNP,B-geo \
-,and,CC,O \
-,demand,VB,O \
-,the,DT,O \
-,withdrawal,NN,O \
-,of,IN,O \
-,British,JJ,B-gpe \
-,troops,NNS,O \
-,from,IN,O \
-,that,DT,O \
-,country,NN,O \
-,.,.,O \
-Sentence: 2,Families,NNS,O  \
-,of,IN,O \
-,soldiers,NNS,O \
-,killed,VBN,O \
-,in,IN,O \
-,the,DT,O \
-... 
+```
+For the purpose of this paragraph annual contribution means the contribution to be collected by the Board for a given financial year in accordance with this Regulation in order to cover the administrative expenditures of the Board;
+```
 
 
-One can finetune a pretrained BERT model on this data:
+We want to label the term `annual contribution` with the tags B and I. All other words in the sentence should be tagged as O, for instance the term `administrative expenditures of the Board` which is not defined by this definition, should be tagged as O O O O O.
 
-*python train.py \
---data /notebook/nas-trainings/arne/OCCAM/NER_with_BERT/DATA/ner_dataset.csv \
---output_dir /notebook/nas-trainings/arne/OCCAM/NER_with_BERT/Fine_tuned_models/ner_en \
---epochs 5 \
---batch_size 64 \
---gpu 1*
+The model used for BIO tagging is the BertForTokenClassification model ( https://github.com/huggingface/transformers ), which consists of a Bert Model with a Token classification layer on top.
 
-And next apply the finetuned model on a set of tokenized sentences:
+<h2> Preparation of training data </h2>
 
-*python test.py \
---input_file /notebook/nas-trainings/arne/OCCAM/NER_with_BERT/DATA/test_sentences.txt \
---model_dir /notebook/nas-trainings/arne/OCCAM/NER_with_BERT/Fine_tuned_models/ner_en \
---output_dir  /notebook/nas-trainings/arne/OCCAM/NER_with_BERT/output_folder \
---gpu 1*
+Given a definition, containing a term, e.g. 
 
-This script will create a file *results* in the output folder with the NER results in the BIO scheme. 
+``` 
+For the purpose of this paragraph annual contribution means the contribution to be collected by the Board for a given financial year in accordance with this Regulation in order to cover the administrative expenditures of the Board;
+```
 
-F.e.:
+The annotator should annotate the term that is defined by this definition with the special symbols ★ and ☆, or two other symbols that are in the Bert vocabulary, and are not expected to occur in the corpus. The annotator should also make sure to leave a space between the special symbols ★ and ☆ and other words. The above sentence thus becomes:
 
-sentence_0      thousands       O  \
-sentence_0      of      O  \
-sentence_0      demonstrators   O  \
-sentence_0      have    O  \
-sentence_0      marched O \
-sentence_0      through O \
-sentence_0      london  B-geo  \
-sentence_0      to      O \
-sentence_0      protest O \
-sentence_0      the     O \
-sentence_0      war     O \
-sentence_0      in      O \
-sentence_0      iraq    B-geo \
-sentence_0      and     O \
-sentence_0      demand  O \
-sentence_0      the     O  \
-sentence_0      withdrawal      O \
-sentence_0      of      O \
-sentence_0      british B-gpe  \
-sentence_0      troops  O \
-sentence_0      from    O \
-sentence_0      that    O \
-sentence_0      country O \
-sentence_0      .       O \
-sentence_1      iranian B-gpe \
-sentence_1      officials       O \
-sentence_1      say     O \
-sentence_1      they    O \
-sentence_1      expect  O \
-sentence_1      to      O \
-...
+``` 
+For the purpose of this paragraph ★ annual contribution ☆ means the contribution to be collected by the Board for a given financial year in accordance with this Regulation in order to cover the administrative expenditures of the Board;
+```
+
+If some quotation is present around the concept defined by the definition, e.g.: 
+
+```
+For the purpose of this paragraph 'annual contribution' means the contribution to be collected by the Board for a given financial year in accordance with this Regulation in order to cover the administrative expenditures of the Board;
+```
+
+, then we advice to annotate as follows:
+
+```
+For the purpose of this paragraph ★ 'annual contribution' ☆ means the contribution to be collected by the Board for a given financial year in accordance with this Regulation in order to cover the administrative expenditures of the Board;
+```
 
 
+The provided scripts will then strip the quotations from the annotated term, to prevent the model to memorize these special symbols. The list of special symbols that are stripped is: [ " , ‘ , " , ` , ' , ’ , • , “ , ‧ ], and all symbols that are not present in the Bert vocabulary.
+
+The annotated data should be saved in a simple text file separated by newlines. 
+
+We provide code to generate training data from these annotated sentences. From python interpreter run:
+
+```
+from user scripts import generate_training_data
+generate_training_data.main( "training_set_annotated.txt",\
+                            "training_set_bio_tag.csv",\
+                            seq_length=75 )
+```
+With <em> training_set_annotated.txt </em> the annotated training data, and <em> training_set_bio_tag.csv </em> a resulting csv file with BPE-tokenized (BertTokenizer) tokens and BIO tags, that can be used by the provided training script (next section).
+
+The sequence length is the cut off value for the number of tokens in the (Bert)tokenized sentence. Note that Bert supports sequences of up to 512 tokens.
+
+Note that the symbols used for annotation are set by default to ★ and ☆.
+
+<h3> Example </h3>
+
+Given a training set consisting of the sentences:
+
+<em> ★ ' Asset ' ☆ means something. <br/>
+The ★ Profit ☆ is defined as something else.</em>
+
+Then the csv file produced by the user script `generate_training_data`, will be:
 
 
+Sentence #  | Word | POS | Tag 
+--- | --- | --- |--- |
+Sentence 1 |  asset | -- | B | 
+ |  means | - | O |
+ |  something | - | O |
+ |  . | - | O |
+ Sentence 2 |  the | -- | O | 
+ |  profit | - | B |
+  |  estimate | - | I |
+ |  is | - | O |
+ |  defined | - | O |
+ |  as | - | O |
+ |  something | - | O |
+|  else | - | O |
+|  . | - | O |
+
+
+<h2> Training </h2>
+
+We provide code to train the classification layers of a BertForTokenClassification model:
+
+```
+from user_scripts import train
+train.main( "training_set_bio_tag.csv",\
+             "bio_tagger",\
+             seq_length=75,\
+             epochs=20)
+```
+
+With <em> training_set_bio_tag.csv </em> the file created by the user script `generate_training_data`.
+
+This will train the model, create the directory <em> bio_tagger </em>, and save the model there (<em>config.json</em>, <em>pytorch_model.bin</em>, <em>vocab.txt</em> and the pickle <em>tags_vals</em>, containing a python list, that allows us to make the conversion between BertForTokenClassification prediction id's back to BIO tag labels).
+The model will train on GPU if available, and if not, on CPU. 
+
+<h2> Inference </h2>
+
+The trained model can be used to predict the BIO tags of tokens in a set of sentences:
+
+```
+from user_scripts import inference
+inference.main(  "test_sentences.txt",\
+             "bio_tagger",\
+             "results_test_sentences.csv"
+              )
+```
+              
+With <em> bio_tagger </em> the directory where the trained BertForTokenClassification model is stored, and <em> test_sentences.txt </em> a text file containing sentences. Note that these sentences do not need to be tokenized, they will be tokenized during inference. Results will be written to the csv_file <em> results_test_sentences.csv </em> (.csv file has same format as described in the example above). 
+
+<h2> Evaluation </h2>
+
+Results produced by the inference script can be evaluated, given a csv file in the same format containing Gold Standard BIO tags (e.g. <em> results-gold_standard.csv </em> ) for each token:
+
+```
+from user_scripts import evaluate
+evaluate.main( "results_test_sentences.csv", \
+                    "results-gold_standard.csv"
+)
+```
+
+This will return a classification report with precision and recall scores using seqeval (https://pypi.org/project/seqeval), a python framework for sequence labeling evaluation.
+
+The easiest way to obtain the Gold Standard BIO tags, is to run the user script `inference` and correct the resulting csv file.
