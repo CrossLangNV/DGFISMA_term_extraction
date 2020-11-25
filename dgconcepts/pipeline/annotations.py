@@ -1,6 +1,6 @@
 import ahocorasick as ahc
 from cassis import Cas, TypeSystem
-from typing import List, Tuple, Set, Generator
+from typing import List, Tuple, Set, Generator, Dict
 import re
 import string
 
@@ -9,11 +9,21 @@ from configparser import ConfigParser
 from .terms_defined_regex import process_definitions_regex
 from .utils import deepest_child, is_token 
 
+'''
+Module contains functions for adding TOKEN_TYPE, LEMMA_TYPE, DEPENDENCY_TYPE and DEFINED_TYPE annotations to a Cas.
+'''
+
 def add_token_and_lemma_annotation( NLP, cas: Cas, typesystem: TypeSystem, config: ConfigParser ,
-                                terms_tf_idf: dict ) -> Cas:
+                                terms_tf_idf: Dict ):
     '''
-    Given a cas and its typesystem, this function adds terms and associated tf_idf score (terms_tf_idf) to a given view (SofaID) as type.Tfidf. Annotations will only be added to ValueBetweenTagType elements with tag.tagName in the set tagnames. 
-    NLP is the SpaCy model for the extraction of lemmas per token
+    Function adds TOKEN_TYPE annotations and corresponding tf-idf score to a given cas (SOFA_ID view), using a python dictionary (terms_tf_idf). Annotations will only be added to VALUE_BETWEEN_TAG_TYPE elements with tag.tagName in TAG_NAMES. Lemmata of terms are obtained via the NLP spacy model, and added to the Cas.
+    
+    :param NLP: spacy model. 
+    :param cas: Cas. 
+    :param typesytem: TypeSystem.
+    :param config: ConfigParser.
+    :param terms_tf_idf. dict. Keys: terms, Values: tf_idf_score.
+    :return: None.     
     '''
     
     SofaID=config[ 'Annotation' ].get( 'SOFA_ID' )
@@ -58,7 +68,17 @@ def add_token_and_lemma_annotation( NLP, cas: Cas, typesystem: TypeSystem, confi
 
 
 def add_dependency_annotation( cas:Cas, typesystem: TypeSystem, config: ConfigParser, defined_terms:Generator[ List[ Tuple[ str, int, int ] ], None, None ]):
-
+    
+    '''
+    Function adds DEPENDENCY_TYPE annotations to a Cas. DEPENDENCY_TYPE annotations are only added to positions in the Sofa_string with a DEFINITION_TYPE annotation. The variable defined_terms is a Generator yielding a list of terms and offsets. For each definition (annotated as DEFINITION_TYPE) there is a list of terms and offsets, that are defined by the definition.
+    
+    :param cas: Cas. 
+    :param typesytem: TypeSystem.
+    :param config: ConfigParser.
+    :param defined_terms. Generator. Yields a list of tuples, with the tuple containing a term, and the begin and end position in the definition.
+    :return: None.         
+    '''
+    
     SofaID=config[ 'Annotation' ].get( 'SOFA_ID' )
     definition_type=config[ 'Annotation' ].get( 'DEFINITION_TYPE' )
     dependency_type=config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )
@@ -80,14 +100,6 @@ def add_dependency_annotation( cas:Cas, typesystem: TypeSystem, config: ConfigPa
 
             
 def add_defined_term_annotation( cas:Cas, typesystem: TypeSystem, config: ConfigParser ):
-    
-    #sentence_feature=list( cas.get_view( config[ 'Annotation' ]['Sofa_ID'] ).select( config[ 'Annotation' ][ 'DEFINITION_TYPE'  ] ))[0]
-    #for bert:
-    #fall_back_regex=False
-    #fall_back=False  #fall_back to tf idf
-    #prioritize_regex=True
-    #prioritize_whitelist=False
-    #prioritize_tf_idf=False
     
     terms_bio_tagging=[]
     

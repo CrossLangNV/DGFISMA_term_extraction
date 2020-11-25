@@ -19,6 +19,17 @@ from configparser import ConfigParser
 def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTagger, cas: Cas, typesystem: TypeSystem, config: ConfigParser, \
                        whitelist_blacklist: Tuple[ List[str], List[str] ]=( [],[] )):
 
+    '''
+    Function to perform term extraction (using spacy model NLP), and detection of the defined terms (using a spacy dependency parser or a TrainedBertBIOTagger, depending on the configuration). Terms and defined terms will be annotated in the Cas.
+    
+    :param NLP: spacy model. 
+    :param trained_bert_bio_tagger: TrainedBertBIOTagger. 
+    :param cas: Cas. 
+    :param typesytem: TypeSystem.
+    :param config: ConfigParser
+    :param whitelist_blacklist. Contains two lists: one of whitelisted terms, and one of blacklisted terms.
+    :return: None.        
+    '''
     
     sentences, _ = get_sentences( cas, SofaID=config[ 'Annotation' ].get( 'SOFA_ID' ), tagnames=set(config[ 'Annotation' ].get( 'TAG_NAMES' )), \
                                  value_between_tagtype=config[ 'Annotation' ].get( 'VALUE_BETWEEN_TAG_TYPE' )   )
