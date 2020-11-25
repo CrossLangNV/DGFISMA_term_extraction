@@ -3,7 +3,7 @@ import os
 
 from transformers import BertTokenizer
 
-from pathlib import Path 
+from pathlib import Path
 import plac
 
 def remove_quotations_around_terms(sentence:str, tag_begin="★", tag_end="☆" ) -> str:

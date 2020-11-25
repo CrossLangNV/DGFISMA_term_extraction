@@ -82,9 +82,9 @@ def bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBert
     #Put the model on the GPU
     if torch.cuda.is_available() and gpu > -1:
         trained_bert_bio_tagger.model.cuda(gpu) 
-        print( f"inference on gpu {gpu}" )
+        print( f"Inference (Bert BIO tagging) on gpu {gpu}." )
     else:
-        print( "inference on cpu" )
+        print( "Inference (Bert BIO tagging) on cpu." )
 
     trained_bert_bio_tagger.model.eval()
 
@@ -132,7 +132,7 @@ def bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBert
 
     total_number_of_words=len([j for sub in tokenized_texts for j in sub])
 
-    print( f"BIO tagging on {len(sentences)} sentences took {end-start} seconds (  { total_number_of_words/(end-start) } words/s ) "  )
+    print( f"Bert BIO tagging on {len(sentences)} sentences took {end-start} seconds (  { total_number_of_words/(end-start) } words/s ) "  )
 
     assert len(tokenized_texts) == len(predictions_tags)
 
