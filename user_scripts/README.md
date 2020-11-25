@@ -1,4 +1,4 @@
-<h1> Bert BIO tagging for concept detection </h1>
+<h1> Bert Bio tagging </h1>
 
 BIO tagging, in the context of the DGFISMA project is used for determining which concept is defined by a certain definition. E.g., given a definition, detected by our definition detector: <br />
 
@@ -7,9 +7,9 @@ For the purpose of this paragraph annual contribution means the contribution to 
 ```
 
 
-We want to label the term `annual contribution` with the tags B and I. All other words in the sentence should be tagged as O, for instance the term `administrative expenditures of the Board` which is not defined by this definition, should be tagged as O O O O O.
+We want to tag the term `annual contribution` with the tags B and I. All other words in the sentence should be tagged as O, for instance the term `administrative expenditures of the Board` which is not defined by this definition, should be tagged as O O O O O.
 
-The model used for BIO tagging is the BertForTokenClassification model ( https://github.com/huggingface/transformers ), which consists of a Bert Model with a Token classification layer on top.
+The model used for BIO tagging is the BertForTokenClassification model ( https://github.com/huggingface/transformers ), which consists of a Bert Model with a Token classification layer on top. 
 
 <h2> Preparation of training data </h2>
 
@@ -19,7 +19,7 @@ Given a definition, containing a term, e.g.
 For the purpose of this paragraph annual contribution means the contribution to be collected by the Board for a given financial year in accordance with this Regulation in order to cover the administrative expenditures of the Board;
 ```
 
-The annotator should annotate the term that is defined by this definition with the special symbols ★ and ☆, or two other symbols that are in the Bert vocabulary, and are not expected to occur in the corpus. The annotator should also make sure to leave a space between the special symbols ★ and ☆ and other words. The above sentence thus becomes:
+The annotator should annotate the term that is defined by this definition with the special symbols ★ and ☆, or two other symbols that are in the Bert vocabulary, and are not expected to occur in the training data. The annotator should also make sure to leave a space between the special symbols ★ and ☆ and other words. The above sentence thus becomes:
 
 ``` 
 For the purpose of this paragraph ★ annual contribution ☆ means the contribution to be collected by the Board for a given financial year in accordance with this Regulation in order to cover the administrative expenditures of the Board;
@@ -54,7 +54,7 @@ With <em> training_set_annotated.txt </em> the annotated training data, and <em>
 
 The sequence length is the cut off value for the number of tokens in the (Bert)tokenized sentence. Note that Bert supports sequences of up to 512 tokens.
 
-Note that the symbols used for annotation are set by default to ★ and ☆.
+The symbols used for annotation are set by default to ★ and ☆.
 
 <h3> Example </h3>
 
@@ -69,18 +69,18 @@ Then the csv file produced by the user script `generate_training_data`, will be:
 Sentence #  | Word | POS | Tag 
 --- | --- | --- |--- |
 Sentence 1 |  asset | -- | B | 
- |  means | - | O |
- |  something | - | O |
- |  . | - | O |
+ / |  means | -- | O |
+ / |  something | -- | O |
+ / |  . | -- | O |
  Sentence 2 |  the | -- | O | 
- |  profit | - | B |
-  |  estimate | - | I |
- |  is | - | O |
- |  defined | - | O |
- |  as | - | O |
- |  something | - | O |
-|  else | - | O |
-|  . | - | O |
+ /|  profit | -- | B |
+ / |  estimate | -- | I |
+ /|  is | -- | O |
+ /|  defined | -- | O |
+ /|  as | -- | O |
+ /|  something | -- | O |
+/|  else | -- | O |
+/|  . | -- | O |
 
 
 <h2> Training </h2>
