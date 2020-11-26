@@ -169,13 +169,13 @@ FALLBACK_TO_WHITELIST=False
 FALLBACK_TO_TF_IDF=False
 ```
 
-Using this configuration, terms that are whitelisted (+terms detected in definitions between quotes (i.e. regex), will be considered the Defined term if they have an overlap with a `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotation. 
+Using this configuration, terms that are whitelisted (+terms detected in definitions between quotes (i.e. regex), will be considered the Defined term if they have an overlap with a `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotation. If such a term is not found, the algorithm will consider other terms annotated as `config[ 'Annotation' ].get( 'TOKEN_TYPE' )`, due to USE_TF_IDF being set to True (see below).
 
 A small example will make this clear. Consider the following definition:
 
 `The 'Profit estimate' is defined as something else.`
 
-If our BertBIOTagger mistakenly only tags `Profit' with a B or I tag, we would label `Profit' as the defined term. However, by looking at `config[ 'Annotation' ].get( 'TOKEN_TYPE' )` annotations sharing an intersection with the `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotation, we can correct `Profit' to `Profit estimate'. 
+If our BertBIOTagger mistakenly only tags `Profit` with a B or I tag, we would label `Profit` as the defined term. However, by looking at `config[ 'Annotation' ].get( 'TOKEN_TYPE' )` annotations sharing an intersection with the `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotation, we can correct `Profit` to `Profit estimate`. 
 
 If USE_REGEX is set to True, terms in between 'quotes' (detected via a regex), will be considered the first candidates for obtaining a `config[ 'Annotation' ].get( 'DEFINED_TYPE' )` annotation. If such a defined term is found in a definition, the algorithm will stop searching, and proceed to the following detected definition. If no defined term is found, the algorithm will consider the other candidates.
 
