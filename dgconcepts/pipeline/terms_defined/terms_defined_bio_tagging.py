@@ -17,15 +17,27 @@ from transformers import BertTokenizer
 from transformers import BertForTokenClassification
 from keras.preprocessing.sequence import pad_sequences
 
-from .utils import is_token
+from ..utils import is_token
 
 class TrainedBertBIOTagger( ):
     
+    '''
+    A trained BertForTokenClassification model.
+    '''
+    
     def __init__( self,  path_model_dir: Path ):
+        
+        '''
+        :param path_model_dir: Path. Path to the trained BertForTokenClassification model.
+        '''
 
         self._path_model_dir=path_model_dir
         
     def load_model(self ):
+        
+        '''
+        Load a trained BertForTokenClassification models, and accompanying BertTokenizer. The BertTokenizer will lowercase the tokens. If this needs to be changed, please also change it in the user_scripts.train module.
+        '''
         
         with open( os.path.join( self._path_model_dir , "tags_vals" ) , "rb") as fp:
             self.tags_vals = pickle.load(fp)
@@ -40,8 +52,16 @@ class TrainedBertBIOTagger( ):
 def process_definitions_bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBertBIOTagger, gpu:int=-1, seq_length:int=75, batch_size:int=32 ) -> Generator[ List[ Tuple[ str, int, int ] ], None, None ]:
     
     '''
-    Function will use BertForTokenClassification model and accompanying BertTokenizer to tokenize the sentences, and to BIO tag the sentences. Next the BIO tags are converted to offsets in the original sentence.
-    Function returns a Generator.
+    Function will use TrainedBertBIOTagger model to tokenize the sentences and BIO tag the sentences, using the bert_bio_tagging function. 
+    Next the BIO tags are converted to offsets in the original (non-tokenized) sentence using the join_bpe and find_defined_term_bio_tag functions. 
+    Function returns a Generator yielding a list of terms (defined_terms) and offsets for each sentence.
+    
+    :param sentences: List. List of strings. 
+    :param trained_bert_bio_tagger: TrainedBertBIOTagger. 
+    :param gpu: int. GPU id. 
+    :param seq_length: int. Sequence length. 
+    :param batch_size: int.
+    :return: Generator.
     '''
     
     #inference
@@ -74,7 +94,15 @@ def process_definitions_bert_bio_tagging( sentences: List[str], trained_bert_bio
 def bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBertBIOTagger, gpu:int=-1, seq_length:int=75, batch_size:int=32) -> Tuple[ List[str], List[str] ]:
 
     '''
-    Bio tagging with finetuned BertForTokenClassification model.
+    Inference using TrainedBertBIOTagger. Sentences will be padded to seq_length before being send to TrainedBertBIOTagger in batches. 
+    Returns tokenized texts (original length of input sentences) and BIO tags for each token (not containing predictions for padded elements/or stripped tokens due seq_length). Length of the predictions (BIO) tags may thus differ from the length of the tokenized_texts.
+    
+    :param sentences: List. List of strings.
+    :param trained_bert_bio_tagger: TrainedBertBIOTagger. 
+    :param gpu: int. GPU id. 
+    :param seq_length: int. Sequence length. 
+    :param batch_size: int.
+    :return: Tuple. Returns a list of tokenized sentences and predicted tags. 
     '''
             
     tags_vals=trained_bert_bio_tagger.tags_vals
@@ -149,14 +177,18 @@ def bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBert
 def join_bpe( tokens:List[str], tags:List[str]  )->Tuple[ List[str], List[str] ]:
     
     '''
-    Detokenize bert tokenized sentence and process bio_tags. Tokens with no bio tag (i.e. at position>seq_length) are ignored.
+    Merge bpe tokens of a bert tokenized sentence and process bio_tags. Tokens with no bio tag (i.e. at position>seq_length) are ignored (stripped).
+    
+    :param tokens: List. List of strings (bpe tokens).
+    :param tags: List. List of strings (predicted tag for each bpe token)
+    :return: Tuple. Returns a list of bpe-merged tokens and predicted tags.     
     '''
 
     new_tokens, new_tags = [], []
 
     #tokens at position>seq_length are ignored
     for token, tag in zip(tokens, tags ):
-        if token.startswith("##") and new_tokens: #check for new_tokens, to deal with case if sentence starts with ##
+        if token.startswith("##") and new_tokens: #check for new_tokens, to deal with case if sentence should start with ##
             new_tokens[-1] = new_tokens[-1] + token[2:]
         else:
             new_tags.append(tag)
@@ -164,10 +196,15 @@ def join_bpe( tokens:List[str], tags:List[str]  )->Tuple[ List[str], List[str] ]
     return new_tokens, new_tags
 
 
-def get_terms_pos_bio_tags( tokens:List[str], bio_tags:List[str] ):
+def get_terms_pos_bio_tags( tokens:List[str], bio_tags:List[str] ) -> Generator[ Tuple[ str, int, int  ], None, None ]:
     
     '''
-    Function to get the tokenized term + span found via Bert bio tagger. Note that the tags I, B are not treated differently, for robustness. E.g. O, B, I, I, O and O, I, I, B, O both indicate a term consisting of 3 tokens starting at position 1 and ending at position 3.
+    Function to get the tagged term + span found via TrainedBertBIOTagger. Note that the tags I, B are not treated differently, for robustness. E.g. O, B, I, I, O and O, I, I, B, O both indicate a term consisting of 3 tokens starting at position 1 and ending at position 3.
+    Function returns a Generator yielding a tuple containing the tagged term (i.e. tagged with B, I tags) and offset in detokenized sentence.
+    
+    :param tokens: List.
+    :param bio_tags: List.
+    :return: Generator.
     '''
     
     detected_term=[]
@@ -195,11 +232,15 @@ def get_terms_pos_bio_tags( tokens:List[str], bio_tags:List[str] ):
         yield( (" ".join(detected_term), start_index, start_index+len(" ".join(detected_term))  )  )
         
         
-def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ):
+def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ) -> Generator:
 
     '''
-    Find matches of a bert tokenized term (after ##'s are joined) in a tokenized/non tokenized sentence using regex.
+    Find matches of a bert tokenized term (after merging of bpe tokens with function join_bpe) in a tokenized (after merging of bpe-tokens)/non tokenized sentence using regex.
     Leading and trailing punctuation is stripped from the token (and will thus also not be in the span).
+    
+    :param tokenized_term: String.
+    :param sentence: String.
+    :return: Generator. Generator yielding a regex match.
     '''
     
     extra_punctuation_tokens='‘\"`\'’•”‧'
@@ -224,11 +265,16 @@ def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ):
                 yield match
         
         
-def find_defined_term_bio_tag( sentence:str , tokenized_sentence:str, tokenized_bio_tags:List[ str ], verbose=True  ):
+def find_defined_term_bio_tag( sentence:str , tokenized_sentence:str, tokenized_bio_tags:List[ str ], verbose=True  ) -> Generator:
     
     '''
     Find offset of the detected term (via bio tag), in the original (non-tokenized) sentence. 
     Note that punctuation is stripped from the detected term. I.e. if b,i tags cover a punctuation, this is stripped before lookup via regex (for calculation of offsets).
+    
+    :param sentence: String. Original (non-tokenized) sentence.
+    :param tokenized_sentence: String. Bert tokenized sentence after merging of bpe tokens (joining of ##'s).
+    :param tokenized_bio_tags: List. Tags predicted by a TrainedBertBIOTagger for each token (after processing with join_bpe function).
+    :return: Generator. Generator yielding regex matches of detected terms in the original sentence.
     '''
     
     #Sanity check.

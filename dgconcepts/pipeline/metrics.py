@@ -3,6 +3,7 @@ import operator
 
 def calculate_tf_idf(corpus, MAX_LEN_NGRAM, term_list):
     """
+    Function to calculate tf_idf_score.
 
     :param corpus: a list of text segments / <p>
     :param vocabulary: a list of terms

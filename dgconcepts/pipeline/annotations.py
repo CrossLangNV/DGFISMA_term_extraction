@@ -6,7 +6,7 @@ import string
 
 from configparser import ConfigParser
 
-from .terms_defined_regex import process_definitions_regex
+from .terms_defined.terms_defined_regex import process_definitions_regex
 from .utils import deepest_child, is_token 
 
 '''
@@ -101,6 +101,15 @@ def add_dependency_annotation( cas:Cas, typesystem: TypeSystem, config: ConfigPa
             
 def add_defined_term_annotation( cas:Cas, typesystem: TypeSystem, config: ConfigParser ):
     
+    '''
+    Function adds DEFINED_TERM annotations to a Cas at positions in the Sofa_string with a DEFINITION_TYPE annotation, using DEPENDENCY_TYPE and TOKEN_TYPE annotations already added to the Cas. Depending on the configuration, TOKEN_TYPE with different tf_idf scores will get priority ( whitelisted terms with tf_idf score == TF_IDF_WHITELIST or 'regex' terms with tf_idf_score == TF_IDF_REGEX ).
+    
+    :param cas: Cas.
+    :param typesytem: TypeSystem.
+    :param config: ConfigParser.
+    :return None.
+    '''
+    
     terms_bio_tagging=[]
     
     for sentence_feature in cas.get_view( config[ 'Annotation' ].get( 'SOFA_ID' ) ).select( config[ 'Annotation' ].get( 'DEFINITION_TYPE' ) ):
@@ -139,6 +148,18 @@ def add_defined_term_annotation( cas:Cas, typesystem: TypeSystem, config: Config
 #helper functions:
             
 def add_defined_term_regex( cas, typesystem , config , sentence_feature, fall_back_regex=True ):
+    
+    '''
+    Function adds DEFINED_TERM annotations to a Cas at positions in the Sofa_string with a DEFINITION_TYPE annotation (sentence_feature), using DEPENDENCY_TYPE and TOKEN_TYPE annotations already added to the Cas. Function only adds TOKEN_TYPE annotation as DEFINED_TERM if it has DEPENDENCY_TYPE overlap, and if it is found via regex (via function process_definitions_regex). 
+    If fall_back_regex==True, then, if no DEFINED_TERM is found in the sentence, all terms found via regex will be annotated as DEFINED_TYPE.
+    
+    :param cas: Cas.
+    :param typesytem: TypeSystem.
+    :param config: ConfigParser.
+    :param sentence_feature: DEFINITION_TYPE feature.
+    :param fall_back_regex: bool. If set to True all 
+    :return bool.
+    '''
     
     Defined_type=typesystem.get_type( config[ 'Annotation' ].get( 'DEFINED_TYPE' ) )
     SofaID= config[ 'Annotation' ].get( 'SOFA_ID' )
@@ -185,6 +206,19 @@ def add_defined_term_regex( cas, typesystem , config , sentence_feature, fall_ba
             
 def add_defined_term_custom_tf_idf_score( cas, typesystem, config, sentence_feature, tf_idf_scores=set([-1.0,-2.0]), fall_back=True ):
     
+    '''
+    Function adds DEFINED_TERM annotations to a Cas at positions in the Sofa_string with a DEFINITION_TYPE annotation (sentence_feature), using DEPENDENCY_TYPE and TOKEN_TYPE annotations already added to the Cas. Function only adds TOKEN_TYPE annotation as DEFINED_TERM if it has DEPENDENCY_TYPE overlap, and if the TOKEN_TYPE has a tfidfValue present in tf_idf_scores. The longest TOKEN_TYPE will be chosen as DEFINED_TERM in case of overlap.
+    If fall_back==True, then, if no DEFINED_TERM is found in the sentence, all TOKEN_TYPE with tfidfValue in tf_idf_scores will be annotated as DEFINED_TYPE. If tf_idf_scores is empty and fall_back==True, then all TOKEN_TYPE's will be annotated.
+    
+    :param cas: Cas.
+    :param typesytem: TypeSystem.
+    :param config: ConfigParser.
+    :param sentence_feature: DEFINITION_TYPE feature.
+    :param fall_back: bool.
+    :return bool.
+    '''
+    
+    
     Defined_type = typesystem.get_type( config[ 'Annotation' ].get( 'DEFINED_TYPE' ) )
     SofaID = config[ 'Annotation' ].get( 'SOFA_ID' )
     
@@ -215,6 +249,16 @@ def add_defined_term_custom_tf_idf_score( cas, typesystem, config, sentence_feat
 
 def add_defined_term_bio_tagging( cas, typesystem, config, sentence_feature ):
     
+    '''
+    Function adds DEFINED_TERM annotations to a Cas at positions in the Sofa_string with a DEFINITION_TYPE annotation (sentence_feature), using DEPENDENCY_TYPE already added to the Cas detected via bio tagging. BIO tagging finds defined_terms, thus we only copy DEPENDENCY_TYPE annotation to a DEFINED_TERM annotation. Function returns defined_terms found in this way. These can then be added as TOKEN_TYPE to the cas.
+    
+    :param cas: Cas.
+    :param typesytem: TypeSystem.
+    :param config: ConfigParser.
+    :param sentence_feature: DEFINITION_TYPE feature.
+    :return List.
+    '''
+    
     
     Defined_type = typesystem.get_type( config[ 'Annotation' ].get( 'DEFINED_TYPE' ) )
     SofaID = config[ 'Annotation' ].get( 'SOFA_ID' )
@@ -232,12 +276,15 @@ def add_defined_term_bio_tagging( cas, typesystem, config, sentence_feature ):
     return detected_terms #need to annotate these terms in the cas as tfidf
         
         
-#helper functions
 def has_dependency_annotation( cas, config, term_feature, sentence_feature ):
+    
+    '''
+    Function checks if a TOKEN_TYPE annotation has some overlap with a DEPENDENCY_TYPE annotation in the sentence_feature.
+    '''
     
     set1=set(list( range( term_feature.begin, term_feature.end ) ))
 
-    for dependency_feature in cas.get_view( config[ 'Annotation' ][ 'Sofa_ID' ] ).select( config[ 'Annotation' ][ 'DEPENDENCY_TYPE' ]  ):
+    for dependency_feature in cas.get_view( config[ 'Annotation' ][ 'Sofa_ID' ] ).select_covered(( config[ 'Annotation' ][ 'DEPENDENCY_TYPE' ]  ), sentence_feature ):
         set2=set( list( range( dependency_feature.begin, dependency_feature.end ) ) )
         #check if term_feature has some overlapping with a dependency feature ==> if it does, the term is considered to have a dependency annotation
         if set1.intersection( set2 ):
@@ -246,6 +293,10 @@ def has_dependency_annotation( cas, config, term_feature, sentence_feature ):
     return False
 
 def defined_annotation_exists( cas:Cas, config:ConfigParser, sentence_feature, begin:int, end:int ):
+    
+    '''
+    Function checks if a DEFINED_TYPE annotation already exists at position begin, end.
+    '''
     
     SofaID = config[ 'Annotation' ].get( 'SOFA_ID' )
     
@@ -258,15 +309,14 @@ def defined_annotation_exists( cas:Cas, config:ConfigParser, sentence_feature, b
 def is_longest_term(cas:Cas, config:ConfigParser , term , tf_idf_scores: set() ) -> bool:
 
     '''
-    Function checks if a tfidf annotation (term) is not part of a longer tfidf annotation. 
-    Only covering tfidf annotations with specific score (tf_idf_scores) are considered (if tf_idf_score_flag is set to True).
-    When tf_idf_score_flag is set to False, all covering tfidf annotations will be considered to determine if it is the longest term.
+    Function checks if a TOKEN_TYPE annotation (term) is not part of a longer TOKEN_TYPE annotation. 
+    Only covering TOKEN_TYPE annotations with specific score (tf_idf_scores) are considered.
+    When tf_idf_scores is None, all covering tfidf annotations will be considered to determine if it is the longest term.
     
     :param cas: Cas.
     :param config: ConfigParser. Configuration file.
-    :param term: tfidf annotation
-    :param tf_idf_score: int. tf idf score
-    :param tf_idf_score_flag: bool. 
+    :param term: TOKEN_TYPE annotation
+    :param tf_idf_score: Set. Tf_idf scores to consider.
     :return: Bool.
     '''
     

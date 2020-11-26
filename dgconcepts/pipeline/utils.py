@@ -3,14 +3,13 @@ from typing import List, Tuple, Set
 
 from cassis import Cas
 
-import ahocorasick as ahc
 from typing import Generator
 
 def get_sentences(  cas: Cas, SofaID: str , tagnames : Set[str] = set( 'p'), \
                   value_between_tagtype="com.crosslang.uimahtmltotext.uima.type.ValueBetweenTagType"  ) -> (List[str], List[Tuple[ int,int ]]):
     
     '''
-    Given a cas, and a view (SofaID), this function selects all ValueBetweenTagType elements ( with tag.tagName in the set tagnames ), extracts the covered text, and returns the list of extracted sentences and a list of Tuples containing begin and end posistion of the extracted sentence in the sofa.
+    Given a cas, and a view (SofaID), this function selects all VALUE_BETWEEN_TAG_TYPE elements ( with tag.tagName in TAG_NAMES ), extracts the covered text, and returns the list of extracted sentences and a list of Tuples containing begin and end posistion of the extracted sentence in the sofa.
     Function will only extract text of the deepest child of the to be extracted tagnames.
         
     :param cas: cassis.typesystem.Typesystem. Corresponding Typesystem of the cas.
@@ -44,7 +43,7 @@ def deepest_child( cas:Cas, SofaID:str , tag ,tagnames: Set[str] = set( 'p' ), \
 def is_token(start_index:int, end_index:int, text:str, special_characters:List[str]=[ "-","_","+"]) -> bool:
     
     '''
-    Given a start index, an end_index, and a string, this function checks if token(s) covered by the span is part of other token(s).
+    Given a start index, and end_index, and a string, this function checks if token(s) covered by the span is part of other token(s).
     
     :param start_index: int.
     :param end_index: int. 
@@ -92,16 +91,14 @@ def is_token(start_index:int, end_index:int, text:str, special_characters:List[s
     return True
 
 
-#find the index
+'''
 def find_index_term( terms:List[str], text:str ) -> Generator[  Tuple[ str, int, int ], None, None  ]:
     
-    '''
     Function finds the span of a list of terms in a sentence (string) using is_token function. 
     
     :param terms: List. List of terms.
     :param text: str. Sentence in which to find terms.
     :return: Generator.
-    '''
 
     A = ahc.Automaton()
 
@@ -118,7 +115,6 @@ def find_index_term( terms:List[str], text:str ) -> Generator[  Tuple[ str, int,
         if is_token( start_index, end_index, text ):
             yield( ( term, start_index, end_index+1 ) )
             
-'''
 def select_covered( cas, view:str , feature_type, feature ):
     begin=feature.begin
     end=feature.end

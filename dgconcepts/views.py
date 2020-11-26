@@ -13,7 +13,7 @@ from rest_framework.views import APIView
 import spacy
 
 from .pipeline.inference import concept_extraction
-from .pipeline.terms_defined_bio_tagging import TrainedBertBIOTagger
+from .pipeline.terms_defined.terms_defined_bio_tagging import TrainedBertBIOTagger
 
 CONFIG = configparser.ConfigParser()
 CONFIG.read( os.path.join( settings.MEDIA_ROOT, "TermExtraction.config"  ))
