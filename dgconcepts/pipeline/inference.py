@@ -5,9 +5,9 @@ import time
 from .utils import get_sentences
 from .terms import get_terms, remove_add_update_terms_blacklist_whitelist
 
-from .terms_defined_dependency_parser import process_definitions_dependency_parser
-from .terms_defined_bio_tagging import process_definitions_bert_bio_tagging, TrainedBertBIOTagger
-from .terms_defined_regex import process_definitions_regex
+from .terms_defined.terms_defined_dependency_parser import process_definitions_dependency_parser
+from .terms_defined.terms_defined_bio_tagging import process_definitions_bert_bio_tagging, TrainedBertBIOTagger
+from .terms_defined.terms_defined_regex import process_definitions_regex
 
 from .annotations import add_token_and_lemma_annotation, add_dependency_annotation, add_defined_term_annotation
 

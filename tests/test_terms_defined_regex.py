@@ -1,6 +1,6 @@
 import pytest
 
-from dgconcepts.pipeline.terms_defined_regex import process_definitions_regex
+from dgconcepts.pipeline.terms_defined.terms_defined_regex import process_definitions_regex
 
 def test_process_definitions_regex():
     

@@ -1,6 +1,6 @@
 import pytest
 
-from dgconcepts.pipeline.terms_defined_bio_tagging import get_terms_pos_bio_tags, find_indices_tokenized_term_in_text, find_defined_term_bio_tag, join_bpe
+from dgconcepts.pipeline.terms_defined.terms_defined_bio_tagging import get_terms_pos_bio_tags, find_indices_tokenized_term_in_text, find_defined_term_bio_tag, join_bpe
 
 def test_join_bpe():
     

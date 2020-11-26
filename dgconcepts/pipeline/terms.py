@@ -1,4 +1,4 @@
-from typing import List, Set
+from typing import List, Set, Dict, Tuple
 
 from nltk.corpus import stopwords
 import contractions
@@ -9,9 +9,77 @@ from .metrics import calculate_tf_idf
 POS_TAG_DET = 'DET'
 INVALID_POS_LABELS = ['ADP', 'VERB', 'PRON', 'CCONJ', 'SCONJ', 'ADV']
 
-# ---------------------
-# ABBREVIATION EXTRACTION
-# ---------------------
+
+#Main functions
+
+def get_terms( NLP , sentences: List[str] , extract_supergrams:bool=False, nMax:int=4 ) -> Tuple[Dict, List[Tuple[str,str]]]:
+
+    '''
+    Function uses spacy model to extract nouns from a list of sentences.
+    
+    :param NLP: spacy model. 
+    :param sentences: List. List of strings 
+    :param extract_supergrams: Bool.
+    :param nMax: int. Max length of extracted n-grams.
+    :return: Tuple. Dictionary with detected terms and tf_idf score, and a list of abbreviations.
+    '''
+    
+    terms=[]
+    all_abvs = []
+    doc_for_tf_idf = []
+    for sentence in sentences:
+        doc_for_tf_idf.append(sentence)
+        ngrams, supergrams, abvs = extract_concepts(sentence, NLP, nMax )
+        all_abvs+=abvs
+        terms+=ngrams
+        if extract_supergrams:
+            terms+=supergrams
+              
+    for abv in all_abvs:
+        abbreviation=abv[0].strip()
+        full_abbreviation=abv[1].strip()
+        if not abbreviation or not full_abbreviation:
+            continue
+        terms.append( abbreviation.lower() )
+        terms.append( full_abbreviation.lower() )
+
+    terms = list(set(terms))
+    all_abvs=list( set(all_abvs ))
+    terms_n_tfidf = calculate_tf_idf(doc_for_tf_idf, nMax, terms )
+    
+    return terms_n_tfidf, all_abvs
+
+
+def remove_add_update_terms_blacklist_whitelist( terms_n_tfidf: dict, whitelist: Set[str], blacklist: Set[str], tf_idf_whitelist: float =-1.0  ) -> Dict:
+    
+    '''
+    Functions updates dictionary with detected terms as keys and tf_idf scores as values, using a blacklist and whitelist. Blacklisted terms are removed, whitelisted terms are given a tf_idf_score equal to tf_idf_whitelist.
+    
+    :param terms_n_tfidf: Dict. 
+    :param whitelist: List. List of strings 
+    :param blacklist: Bool.
+    :param tf_idf_whitelist: float.
+    :return: Dict. Update of the terms_n_tfidf dictionary.
+    '''
+    
+    keys=set( terms_n_tfidf.keys() )
+    
+    #remove blacklisted terms, update tfidf score of whitelisted terms
+    for term in keys:
+        if term in blacklist:
+            terms_n_tfidf.pop( term )
+            
+    #update tfidf score of whitelisted terms, add whitelisted terms not in blacklist
+    difference = list( whitelist - blacklist )
+    for term in difference:
+        terms_n_tfidf.update( { term: tf_idf_whitelist }  )
+            
+    return terms_n_tfidf
+
+
+
+#helper functions abbreviation extraction:
+
 def extractAbbvTerm(tokens, i, sw):
     """
     Task
@@ -81,9 +149,7 @@ def extractAbbv(tokens):
     return abvs
 
 
-# ---------------------
-# TERM EXTRACTION
-# ---------------------
+#helper functions term extraction
 
 def get_ngrams_supergrams(tree, max_ngram_length):
     """
@@ -309,49 +375,5 @@ def extract_concepts(text, NLP, nMax):
     ngrams, supergrams = get_ngrams_supergrams(tree, nMax)
     return ngrams, supergrams, abvs
 
-#Main functions
 
-def get_terms( NLP , sentences: List[str] , extract_supergrams:bool=False, nMax:int=4 ) -> dict:
-
-    terms=[]
-    all_abvs = []
-    doc_for_tf_idf = []
-    for sentence in sentences:
-        doc_for_tf_idf.append(sentence)
-        ngrams, supergrams, abvs = extract_concepts(sentence, NLP, nMax )
-        all_abvs+=abvs
-        terms+=ngrams
-        if extract_supergrams:
-            terms+=supergrams
-              
-    for abv in all_abvs:
-        abbreviation=abv[0].strip()
-        full_abbreviation=abv[1].strip()
-        if not abbreviation or not full_abbreviation:
-            continue
-        terms.append( abbreviation.lower() )
-        terms.append( full_abbreviation.lower() )
-
-    terms = list(set(terms))
-    all_abvs=list( set(all_abvs ))
-    terms_n_tfidf = calculate_tf_idf(doc_for_tf_idf, nMax, terms )
-    
-    return terms_n_tfidf, all_abvs
-
-
-def remove_add_update_terms_blacklist_whitelist( terms_n_tfidf: dict, whitelist: Set[str], blacklist: Set[str], tf_idf_whitelist: float =-1.0  ) -> dict:
-    
-    keys=set( terms_n_tfidf.keys() )
-    
-    #remove blacklisted terms, update tfidf score of whitelisted terms
-    for term in keys:
-        if term in blacklist:
-            terms_n_tfidf.pop( term )
-            
-    #update tfidf score of whitelisted terms, add whitelisted terms not in blacklist
-    difference = list( whitelist - blacklist )
-    for term in difference:
-        terms_n_tfidf.update( { term: tf_idf_whitelist }  )
-            
-    return terms_n_tfidf
     

@@ -5,7 +5,11 @@ import re
 def process_definitions_regex(  sentences: List[str] ) -> Generator[ List[ Tuple[ str, int, int ] ], None, None ]:
     
     '''
-    Function finds terms in sentences (List of Strings) in between quotes.
+    Function finds position of terms via a regex. Regex finds terms in between quotes.
+    Function returns a Generator yielding a list of terms (dependend/defined_terms) and offsets for each sentence.
+    
+    :param sentences: List. List of Strings. 
+    :return: Generator.  
     '''
     
     #regex for terms in between quotes
