@@ -12,7 +12,6 @@ The "cas_content" is a UIMA CAS object, encoded in base64. The "content_type" ca
 
 For working with CAS object, [the dkpro-cassis library](https://github.com/dkpro/dkpro-cassis) is used.
 
-
 ### Configuration
 
 We provide a configuration file: https://github.com/CrossLangNV/DGFISMA_term_extraction/blob/master/media/TermExtraction.config
@@ -27,7 +26,7 @@ TFIDF_BERT=-3.0
 
 [DefinedTerm]
 BERT_BIO_TAGGING=True
-USE_REGEX=True
+USE_REGEX=False
 USE_WHITELIST=True
 USE_TF_IDF=True
 USE_BERT=True
@@ -70,15 +69,17 @@ The Term Extraction algorithm consists of the following steps:
    POS tags, as well as a list of invalid words, are used to filter the terms.
    Dependency values of nouns in the Doc are used for the extraction of complex noun phrases, i.e. supergrams. 
    With the head noun as root, its attributes left_edge and right_edge will provide the first and the last tokens of the subtrees.
-   Supergrams are therefore Doc spans from the root's left_edge's index up to and including its right_edge. If `config[ 'Annotation' ].get( 'EXTRACT_SUPERGRAMS' )` is set to False, no supergrams will be extracted. 
+   Supergrams are therefore Doc spans from the root's left_edge's index up to and including its right_edge. If `config[ 'Annotation' ].get( 'EXTRACT_SUPERGRAMS' )` is set to False, no supergrams will be obtained in this step. 
 
-3. Calculate tf-idf for the extracted terms
+3. Calculate tf-idf score for the extracted terms
 
-   [Scikit-learn's](https://scikit-learn.org/stable/) Tfidftransformer then is used to calculate the tf-idf score for each term in the document. 
+   [Scikit-learn's](https://scikit-learn.org/stable/) Tfidftransformer is used to calculate the tf-idf score for each term in the document. 
 
 4. Rule based retrieval of terms:
 
-    Retrieve detected definitions, annotated as a `config[ 'Annotation' ].get( 'DEFINITION_TYPE' )` feature, and search for text in between 'quotes' using a regex. This allows us to retrieve terms that are difficult to find using classic NLP methods. The tf-idf score of this set of terms is set to `config[ 'Annotation' ].get( 'TF_IDF_REGEX' )`. 
+    Retrieve detected definitions, annotated as a `config[ 'Annotation' ].get( 'DEFINITION_TYPE' )` feature, and search for text in between 'quotes' using a regex. This allows us to retrieve terms that are difficult to find using classic NLP methods. The tf-idf score of this set of terms is set to `config[ 'Annotation' ].get( 'TF_IDF_REGEX' )`.
+    
+    Important note: `config[ 'Annotation' ].get( 'DEFINITION_TYPE' )` annotations should be added to the cas using the API for definition detection, see: https://github.com/CrossLangNV/DGFISMA_definition_extraction.
     
 5. Whitelist + blacklist:
 
@@ -92,9 +93,104 @@ The Term Extraction algorithm consists of the following steps:
 
     Lemmata of terms are obtained using the Spacy model `config[ 'Annotation' ].get( 'SPACY_MODEL' )`. Lemmata annotations are added at the obtained offset of the original term using the `config[ 'Annotation' ].get( 'LEMMA_TYPE' )` feature type  ( <em> .begin, .end, .value </em> ). 
     
+#### BertBIOTagger
+
+We refer to https://github.com/CrossLangNV/DGFISMA_term_extraction/tree/master/user_scripts for more information on training of a BertForTokenClassification model for BIO tagging. In short, the BertBIOTagger is used to detect the defined term in a definition. 
+
+The `config[ 'Annotation' ].get( 'PATH_MODEL_DIR' )` is the path to the trained BertBIOTagger relative to the MODELS folder.
+
+It is recommended to set `config[ 'Annotation' ].get( 'SEQ_LENGTH' )` (sequence length used during inference) to the same number as used during training of the model. 
+
+If a set of tokens in a definition (i.e. covered by a `config[ 'Annotation' ].get( 'DEFINITION_TYPE' )` annotation)  are labeled with B or I tags, they are annotated with the `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` feature.
+
+Use of the BertBIOTagger is optional. If `config[ 'DefinedTerm' ].get( 'BERT_BIO_TAGGING' )` is set to False, the `config[ 'Annotation' ].get( 'SPACY_MODEL' )` will be used for dependency parsing.
+
+##### Example:
+
+Given the definitions:
+
+`Asset management means something.` </br>
+`The Profit estimate is defined as something else.`
+
+And the following tags predicted by the BertBIOTagger:
+
+Sentence #  | Word | Tag  
+--- | --- | --- |
+Sentence 1 |  asset | B 
+ / |  management | I 
+ / |  means | O 
+ / |  something | O 
+ / |  . | O 
+ Sentence 2 |  the | O  
+ /|  profit | I 
+ / |  estimate | B 
+ /|  is | O 
+ /|  defined | O 
+ /|  as | O 
+ /|  something | O 
+/|  else | O 
+/|  . | O
+
+Then the term `Asset management` with offset 0 - 16 , and the term `Profit estimate` with offset 4 - 19, will be annotated with `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )`. 
+
+Note that for robustness the tags I, B are not treated differently. E.g. O, B, I, I, O and O, I, I, B, O both indicate a defined term consisting of 3 tokens starting at position 1 and ending at position 3.
+
+#### DefinedTerm
+
+Defined Terms (i.e. terms that are defined by a definition, annotated as `config[ 'Annotation' ].get( 'DEFINITION_TYPE' )` ) are annotated as `config[ 'Annotation' ].get( 'DEFINED_TYPE' )`.
+
+If precision/recall of the BertBIOTagger is sufficiently high, one can use the following configuration:
+
+```
+[DefinedTerm]
+BERT_BIO_TAGGING=True
+USE_REGEX=False
+USE_WHITELIST=False
+USE_TF_IDF=False
+USE_BERT=True
+FALLBACK_TO_REGEX=False
+FALLBACK_TO_WHITELIST=False
+FALLBACK_TO_TF_IDF=False
+```
+
+This configuration will assume all `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotations are correct, and indicate terms that are defined by the definition. At the offset of the `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotation, a `config[ 'Annotation' ].get( 'DEFINED_TYPE' )` annotation will simply be added. The term at `config[ 'Annotation' ].get( 'DEFINED_TYPE' )` is then annotated as a `config[ 'Annotation' ].get( 'TOKEN_TYPE' )` in the document, with `config[ 'TermExtraction' ].get( 'TFIDF_BERT' )`, if it was not already detected by the TermExtraction algorithm. 
+
+However, to increase precision, we recommend using the following configuration:
+
+```
+[DefinedTerm]
+BERT_BIO_TAGGING=True
+USE_REGEX=False
+USE_WHITELIST=True
+USE_TF_IDF=True
+USE_BERT=True
+FALLBACK_TO_REGEX=False
+FALLBACK_TO_WHITELIST=False
+FALLBACK_TO_TF_IDF=False
+```
+
+Using this configuration, terms that are whitelisted (+terms detected in definitions between quotes (i.e. regex), will be considered the Defined term if they have an overlap with a `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotation. 
+
+A small example will make this clear. Consider the following definition:
+
+`The 'Profit estimate' is defined as something else.`
+
+If our BertBIOTagger mistakenly only tags `Profit' with a B or I tag, we would label `Profit' as the defined term. However, by looking at `config[ 'Annotation' ].get( 'TOKEN_TYPE' )` annotations sharing an intersection with the `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotation, we can correct `Profit' to `Profit estimate'. 
+
+If USE_REGEX is set to True, terms in between 'quotes' (detected via a regex), will be considered the first candidates for obtaining a `config[ 'Annotation' ].get( 'DEFINED_TYPE' )` annotation. If such a defined term is found in a definition, the algorithm will stop searching, and proceed to the following detected definition. If no defined term is found, the algorithm will consider the other candidates.
+
+If USE_WHITELIST is set to True, terms in the whitelist and in between 'quotes' will be considered candidates. (Terms in between quotes are considered whitelisted).
+
+If USE_TF_IDF is set to True, other terms found via the TermExtraction algorithm will be considered. 
+
+Setting USE_BERT to True, means that, if no `config[ 'Annotation' ].get( 'DEFINED_TYPE' )` is found by looking at overlap between `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotations and `config[ 'Annotation' ].get( 'TOKEN_TYPE' )` annotation (given one of the USE_REGEX, USE_WHITELIST, USE_TF_IDF flags are set to True), the `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotation offset is added as a `config[ 'Annotation' ].get( 'DEFINED_TYPE' )` annotation, as explained above.
+
+Setting FALLBACK_TO_REGEX, FALL_BACK_TO_WHITELIST or FALL_BACK_TO_TF_IDF to True means that all terms in between quotes, whitelisted terms, or `config[ 'Annotation' ].get( 'TOKEN_TYPE' )` annotations are annotated as defined terms (i.e. as `config[ 'Annotation' ].get( 'DEFINED_TYPE' )` ). This is not recommended. 
+
+
 
 ## Testing:
 
-Unit and integration tests could be run with the unittest module or with pytest:
+Unit tests can be run with pytest:
 
-pytest $test_name.py
+`pytest`
