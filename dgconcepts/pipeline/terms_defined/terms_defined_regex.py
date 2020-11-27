@@ -1,22 +1,26 @@
 from typing import Generator, List, Tuple
+from configparser import ConfigParser
 
 import re
 
-def process_definitions_regex(  sentences: List[str] ) -> Generator[ List[ Tuple[ str, int, int ] ], None, None ]:
+def process_definitions_regex(  sentences: List[str], config: ConfigParser ) -> Generator[ List[ Tuple[ str, int, int ] ], None, None ]:
     
     '''
     Function finds position of terms via a regex. Regex finds terms in between quotes.
     Function returns a Generator yielding a list of terms (dependend/defined_terms) and offsets for each sentence.
     
     :param sentences: List. List of Strings. 
+    :param config: ConfigParser.
     :return: Generator.  
     '''
     
     #regex for terms in between quotes
-    regex_terms=r"[\‘|\"|\`|\'|\’|\•|\“|\‧][a-z0-9\-(){}_/\\]{2,}[a-z0-9 \-(){}_/\\]*[a-z0-9\-(){}_/\\]+[\‘|\"|\`|\'|\’|\•|\”|\‧]"
+    regex_terms=config[ "Regex" ].get( "REGEX_TERMS" )
+    #r"[\‘|\"|\`|\'|\’|\•|\“|\‧][a-z0-9\-(){}_/\\]{2,}[a-z0-9 \-(){}_/\\]*[a-z0-9\-(){}_/\\]+[\‘|\"|\`|\'|\’|\•|\”|\‧]"
 
     #regex for abbreviations in between quotes
-    regex_abbv=r"[\‘|\"|\`|\'|\’|\•|\“|\‧][A-Z]{2,}[\‘|\"|\`|\'|\’|\•|\”|\‧]"
+    regex_abbv=config[ "Regex" ].get( "REGEX_ABBREVIATIONS" )  
+    #r"[\‘|\"|\`|\'|\’|\•|\“|\‧][A-Z]{2,}[\‘|\"|\`|\'|\’|\•|\”|\‧]"
 
     terms=[]
     
