@@ -24,6 +24,12 @@ TFIDF_REGEX=-2.0
 TFIDF_WHITELIST=-1.0
 TFIDF_BERT=-3.0
 
+[BertBIOTagger]
+PATH_MODEL_DIR=Fine_tuned_models/dgfisma_bio_tag
+GPU=-1
+SEQ_LENGTH=75
+BATCH_SIZE=32
+
 [DefinedTerm]
 BERT_BIO_TAGGING=True
 USE_REGEX=False
@@ -34,11 +40,9 @@ FALLBACK_TO_REGEX=False
 FALLBACK_TO_WHITELIST=False
 FALLBACK_TO_TF_IDF=False
 
-[BertBIOTagger]
-PATH_MODEL_DIR=Fine_tuned_models/dgfisma_bio_tag
-GPU=-1
-SEQ_LENGTH=75
-BATCH_SIZE=32
+[Regex]
+REGEX_TERMS = [\‘|\"|\`|\'|\’|\•|\“|\‧][a-z0-9\-(){}_/\\]{2,}[a-z0-9 \-(){}_/\\]*[a-z0-9\-(){}_/\\]+[\‘|\"|\`|\'|\’|\•|\”|\‧]
+REGEX_ABBREVIATIONS = [\‘|\"|\`|\'|\’|\•|\“|\‧][A-Z]{2,}[\‘|\"|\`|\'|\’|\•|\”|\‧]
 
 [Annotation]
 SOFA_ID=html2textView
@@ -77,7 +81,7 @@ The Term Extraction algorithm consists of the following steps:
 
 4. Rule based retrieval of terms:
 
-    Retrieve detected definitions, annotated as a `config[ 'Annotation' ].get( 'DEFINITION_TYPE' )` feature, and search for text in between 'quotes' using a regex. This allows us to retrieve terms that are difficult to find using classic NLP methods. The tf-idf score of this set of terms is set to `config[ 'Annotation' ].get( 'TF_IDF_REGEX' )`.
+    Retrieve detected definitions, annotated as a `config[ 'Annotation' ].get( 'DEFINITION_TYPE' )` feature, and search for text in between 'quotes' using a regex. This allows us to retrieve terms that are difficult to find using classic NLP methods. The tf-idf score of this set of terms is set to `config[ 'Annotation' ].get( 'TF_IDF_REGEX' )`. The regex to find text in between quotes can be configured via the `config[ 'Regex' ].get( 'REGEX_TERMS' )` and `config[ 'Regex' ].get( 'REGEX_ABBREVIATIONS' )` fields. Matches of both regexes are considered terms and will be given the tf-idf score `config[ 'Annotation' ].get( 'TF_IDF_REGEX' )`. 
     
     Important note: `config[ 'Annotation' ].get( 'DEFINITION_TYPE' )` annotations should be added to the cas using the API for definition detection, see: https://github.com/CrossLangNV/DGFISMA_definition_extraction.
     
@@ -97,7 +101,7 @@ The Term Extraction algorithm consists of the following steps:
 
 We refer to https://github.com/CrossLangNV/DGFISMA_term_extraction/tree/master/user_scripts for more information on training of a BertForTokenClassification model for BIO tagging. In short, the BertBIOTagger is used to detect the defined term in a definition. 
 
-The `config[ 'Annotation' ].get( 'PATH_MODEL_DIR' )` is the path to the trained BertBIOTagger relative to the MODELS folder.
+The `config[ 'Annotation' ].get( 'PATH_MODEL_DIR' )` is the path to the trained BertBIOTagger relative to the MODELS folder that should be created in the directory where this repository is cloned.
 
 It is recommended to set `config[ 'Annotation' ].get( 'SEQ_LENGTH' )` (sequence length used during inference) to the same number as used during training of the model. 
 
@@ -169,7 +173,7 @@ FALLBACK_TO_WHITELIST=False
 FALLBACK_TO_TF_IDF=False
 ```
 
-Using this configuration, terms that are whitelisted (+terms detected in definitions between quotes (i.e. regex), will be considered the Defined term if they have an overlap with a `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotation. If such a term is not found, the algorithm will consider other terms annotated as `config[ 'Annotation' ].get( 'TOKEN_TYPE' )`, due to USE_TF_IDF being set to True (see below).
+Using this configuration, terms that are whitelisted (+terms detected in definitions between quotes (i.e. via a regex), will be considered the Defined term if they have an overlap with a `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` annotation. If such a term is not found, the algorithm will consider other terms annotated as `config[ 'Annotation' ].get( 'TOKEN_TYPE' )`, due to USE_TF_IDF being set to True (see below).
 
 A small example will make this clear. Consider the following definition:
 

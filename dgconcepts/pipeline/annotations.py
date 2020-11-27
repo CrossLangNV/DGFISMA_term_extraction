@@ -168,7 +168,7 @@ def add_defined_term_regex( cas, typesystem , config , sentence_feature, fall_ba
     
     if sentence:
     
-        defined_terms_regex=list(process_definitions_regex(  [  sentence ] ))[0]
+        defined_terms_regex=list(process_definitions_regex(  [  sentence ] , config ))[0]
 
     else:
         

@@ -49,7 +49,7 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
     cas.get_view( config[ 'Annotation' ].get( 'SOFA_ID' ) ).select( config[ 'Annotation' ].get( 'DEFINITION_TYPE' )  ) ]
 
     #get a list of terms defined in detected definitions, via a regex (i.e. in between quotes)
-    terms_regex=process_definitions_regex( definitions ) 
+    terms_regex=process_definitions_regex( definitions, config ) 
     terms_regex=list( terms_regex )
 
     #sanity check
