@@ -248,6 +248,8 @@ def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ) 
     #strip leading and trailing punctuation from this term
     tokenized_term=tokenized_term.strip( string.punctuation+extra_punctuation_tokens+" " )
     
+    sentence=sentence.replace( "\xa0", " " )
+    
     #make regex
     term_regex=''
     for token in tokenized_term.split():
@@ -298,7 +300,7 @@ def find_defined_term_bio_tag( sentence:str , tokenized_sentence:str, tokenized_
         matches_original_sentence=list(find_indices_tokenized_term_in_text( term, sentence ))
 
         if (len( matches_original_sentence ) < len( matches ) ) and verbose :  #number of matches in original sentence could be greater than number of matches in tokenized sentence, due to seq_length
-            print( f"Number of occurences of tokenized term: {term} in tokenized sentence: {tokenized_sentence} is greater than the number of occurences in non-tokenized sentence: {sentence}. This could be unwanted behaviour." )
+            print( f"Number of occurences of tokenized term: '{term}' in tokenized sentence: '{tokenized_sentence}' is greater than the number of occurences in non-tokenized sentence: '{sentence}'. This could be unwanted behaviour." )
             continue
 
         for match_original, match_tokenized in zip( matches_original_sentence, matches ):
