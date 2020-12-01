@@ -58,7 +58,7 @@ keras==2.4.3 \
 bs4==0.0.1 \
 beautifulsoup4==4.5.3 \
 fasttext==0.9.2 \
-#dkpro-cassis==0.5.0 \
+dkpro-cassis==0.5.0 \
 pytest==6.0.1 \
 plac==1.2.0 \
 seqeval==1.2.2 \
@@ -67,7 +67,7 @@ ipython \
 jupyter \
 jupyterlab
 
-RUN pip install -e git://github.com/dkpro/dkpro-cassis.git@bugfix/144-overlapping-select-covered#egg=dkpro-cassis
+#RUN pip install -e git://github.com/dkpro/dkpro-cassis.git@bugfix/144-overlapping-select-covered#egg=dkpro-cassis
 
 RUN python -m nltk.downloader stopwords
 RUN python -m nltk.downloader punkt

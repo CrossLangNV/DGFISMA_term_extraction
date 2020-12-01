@@ -2008,3 +2008,54 @@ initial margin protection
 third country or territory
 calculated area
 underwriting risk
+detailed liquidity coverage requirement
+level 2a assets
+level 2b assets
+securitisation position
+exposures underlying the position
+remaining weighted average life of the tranche
+market value of level 2b securitisations
+credit institutions
+liquid coverage ratio
+liquidity coverage requirement
+covered bonds
+covered bond
+personal investment company
+liquidity coverage ratio
+stress scenarios for the purposes of the liquidity coverage ratio
+liquid assets
+liquid asset
+specific liquidity requirement
+level 2b securisations
+liquidity outflows
+liquidity inflows
+excess liquid assets
+adjusted non-covered bond level 1 assets amount
+adjusted level 1 covered bonds amount
+adjusted level 2a asset amount
+adjusted level 2b asset amount
+excess liquid assets amount
+composition of the liquidity buffer
+asset quality indicators
+assets of the reporting institution
+equity instruments 	
+carrying amount of encumbered assets
+fair value of encumbered assets
+collateral received by the reporting institution
+loans on demand
+own debt securities issued other than own covered bonds or asset-backed securities
+own covered bonds and asset-backed securities issued and not yet pledged
+total assets, collateral received and own debt securities issued
+fair value of encumbered collateral received or own debt securities issued
+fair value of collateral received or own debt securities issued available for encumbrance
+matching liabilities, contingent liabilities or securities lent
+assets, collateral received and own securities issued other than covered bonds and asset-backed securities encumbered
+own funds
+mrel
+leverage ratio
+tre
+net stable funding ratio
+interbank loans
+interbank deposists
+total interbank loans and deposits in the eu
+liquidity buffer of the credit institution
