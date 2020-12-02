@@ -9,6 +9,7 @@ from typing import List
 import fasttext
 import numpy as np
 
+from examples.similar_terms_main import match_vocs
 from similar_terms.preprocessing import preprocessing_word
 
 
@@ -69,8 +70,6 @@ class SimilarWordsRetriever:
     def get_similar_foo(self, term, term_voc):
         # TODO name
 
-        from examples.similar_terms_main import match_vocs
-
         return list(match_vocs([term], term_voc, k=5))[0]
 
     def get_similar_k(self, term, k=1):
@@ -105,6 +104,18 @@ class SimilarWordsRetriever:
         emb_term = self.get_embedding([term_pre])
 
         sim = get_similarity_fast(emb_term, self._embedding_voc_cleaned)[0]
+        return sim
+
+    def get_sim_between_words(self, term1: str, term2: str):
+
+        term_pre1 = preprocessing_word(term1)
+        term_pre2 = preprocessing_word(term2)
+
+        # return as a (1 x n) matrix
+        emb_term1 = self.get_embedding([term_pre1])
+        emb_term2 = self.get_embedding([term_pre2])
+
+        sim = float(get_similarity_fast(emb_term1, emb_term2))
         return sim
 
 
