@@ -1,7 +1,9 @@
+from typing import Dict
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 import operator
 
-def calculate_tf_idf(corpus, MAX_LEN_NGRAM, term_list):
+def calculate_tf_idf(corpus, MAX_LEN_NGRAM, term_list)-> Dict:
     """
     Function to calculate tf_idf_score.
 
@@ -9,6 +11,9 @@ def calculate_tf_idf(corpus, MAX_LEN_NGRAM, term_list):
     :param vocabulary: a list of terms
     :return: {term : tf-idf}
     """
+    
+    if not term_list or not corpus:
+        return dict()
 
     vectorizer = TfidfVectorizer(vocabulary=term_list,ngram_range=(1, MAX_LEN_NGRAM+1), sublinear_tf=True)
     vectorizer.fit_transform(corpus)

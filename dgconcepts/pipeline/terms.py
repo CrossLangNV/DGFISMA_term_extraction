@@ -23,7 +23,7 @@ def get_terms( NLP , sentences: List[str] , extract_supergrams:bool=False, nMax:
     :param nMax: int. Max length of extracted n-grams.
     :return: Tuple. Dictionary with detected terms and tf_idf score, and a list of abbreviations.
     '''
-    
+        
     terms=[]
     all_abvs = []
     doc_for_tf_idf = []
