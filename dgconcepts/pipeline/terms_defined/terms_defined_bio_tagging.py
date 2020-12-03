@@ -245,11 +245,15 @@ def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ) 
     
     extra_punctuation_tokens='‘\"`\'’•”‧'
 
+    if '[UNK]' in tokenized_term: #if the term contains an [UNK] ==> probably not a legit term
+        return
+    
     #strip leading and trailing punctuation from this term
+
     tokenized_term=tokenized_term.strip( string.punctuation+extra_punctuation_tokens+" " )
     
     sentence=sentence.replace( "\xa0", " " )
-    
+        
     #make regex
     term_regex=''
     for token in tokenized_term.split():
@@ -257,7 +261,7 @@ def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ) 
             term_regex=token
         elif token in (string.punctuation+extra_punctuation_tokens ):
             #we have to escape special characters (i.e. . without \. would match whatever character)
-            term_regex=term_regex+"([ ]*)"+"\\"+token
+            term_regex=term_regex+"([ ]*)"+re.escape( token )
         else:
             term_regex=term_regex+"([ ]*)"+token
     
@@ -294,7 +298,7 @@ def find_defined_term_bio_tag( sentence:str , tokenized_sentence:str, tokenized_
             matches.append( (match, is_defined) )
 
         if not matches and verbose:
-            print( f"Could not find detected term: {term} in tokenized sentence. If the term only consists of punctuation, this is expected behaviour." )
+            print( f"Could not find detected term: '{term}' in tokenized sentence '{tokenized_sentence}'. If the term only consists of punctuation, or if the term contains [UNK]'s this is expected behaviour." )
             continue
 
         matches_original_sentence=list(find_indices_tokenized_term_in_text( term, sentence ))

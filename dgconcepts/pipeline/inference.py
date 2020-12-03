@@ -1,6 +1,9 @@
-from typing import Tuple, List
+from typing import Tuple, List, Dict
+from re import Pattern
 
 import time
+import re
+import string
 
 from .utils import get_sentences
 from .terms import get_terms, remove_add_update_terms_blacklist_whitelist
@@ -31,6 +34,9 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
     :return: None.        
     '''
     
+    #exclude terms matching this pattern ( i.e. terms consisting only of numericals / punctuation )
+    pattern = re.compile("[\d{}]+$".format(re.escape(string.punctuation)))
+
     sentences, _ = get_sentences( cas, SofaID=config[ 'Annotation' ].get( 'SOFA_ID' ), tagnames=set(config[ 'Annotation' ].get( 'TAG_NAMES' )), \
                                  value_between_tagtype=config[ 'Annotation' ].get( 'VALUE_BETWEEN_TAG_TYPE' )   )
 
@@ -70,10 +76,12 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
     #add/remove terms from whitelist, blacklist
     terms_n_tfidf = remove_add_update_terms_blacklist_whitelist( terms_n_tfidf, whitelist, blacklist, \
                                                                 tf_idf_whitelist=config[ 'TermExtraction' ].getfloat( 'TFIDF_WHITELIST' ) )
-
+    
     print( "Start annotation terms and lemmas." )
     start=time.time()
     #annotate tokens and lemmas in the cas (lemmatization done via Spacy model)
+    #first remove terms consisting only of punctuation/numbers
+    clean_dictionary( terms_n_tfidf, pattern  )
     add_token_and_lemma_annotation( NLP, cas, typesystem, config, terms_n_tfidf ) 
     print( f"Annotation of terms and lemmas took { time.time() -start } seconds." )
     
@@ -101,5 +109,22 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
         for term in terms:
             if term not in terms_n_tfidf and term not in blacklist:
                 terms_bert[ term  ]=config[ 'TermExtraction' ].getfloat( 'TFIDF_BERT' )
+        clean_dictionary( terms_bert, pattern  )
         if terms_bert:
             add_token_and_lemma_annotation( NLP, cas, typesystem, config, terms_bert ) 
+            
+            
+#helper function
+def clean_dictionary( terms_dict: Dict , pattern: Pattern   )-> None:
+    
+    '''
+    Helper function to remove invalid terms from a dictionary using a precompiled pattern regex.
+    :param terms_dict: Dict. 
+    :param pattern: Pattern.
+    :return: None.        
+    '''
+    
+    keys=set( terms_dict.keys() )
+    for term in keys:
+        if pattern.match( term ):
+            terms_dict.pop( term )

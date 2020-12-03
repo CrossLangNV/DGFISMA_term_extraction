@@ -268,7 +268,7 @@ def add_defined_term_bio_tagging( cas, typesystem, config, sentence_feature ):
     for dependency in cas.get_view( SofaID ).select_covered( config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' ) ,sentence_feature ):
         
         if not defined_annotation_exists( cas, config, sentence_feature, dependency.begin, dependency.end ):
-            
+                        
             detected_terms.append(dependency.get_covered_text().lower())
             
             cas.get_view( SofaID ).add_annotation( Defined_type( begin=dependency.begin, end=dependency.end )  )
