@@ -121,19 +121,22 @@ def test_find_indices_tokenized_term_in_tokenized_text():
     sentences=[ 
     'test sentence swaption - shops some more swaption - shops test swaption - shopsswaption - shops swaption - shops',
     'test sentence swaption - shops some more swaption - shops test swaption - shopsswaption - shops swaption - shops',    
-    ''
+    '',
+    'test sentence [UNK] some term [UNK] swaption - shops some more swaption - shops test swaption - shopsswaption - shops swaption - shops'
     ]
     
     tokenized_terms=[
     'swaption - shops',
     '" swaption - shops  )',
-    ''
+    '',
+    'sentence [UNK]'
     ]
     
     true_indices=[
     [ ( 'swaption - shops' , 14, 30), ( 'swaption - shops', 41, 57 ), ( 'swaption - shops', 96, 112 ) ],
     [ ( 'swaption - shops' , 14, 30), ( 'swaption - shops', 41, 57 ), ( 'swaption - shops', 96, 112 ) ],
-    [] 
+    [],
+    []
     ]
     
     for sentence, tokenized_term, true_index in zip( sentences, tokenized_terms, true_indices):
