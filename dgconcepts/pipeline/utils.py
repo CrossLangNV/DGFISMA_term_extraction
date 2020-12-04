@@ -5,6 +5,8 @@ from cassis import Cas
 
 from typing import Generator
 
+from spacy.lang.en import English      
+
 def get_sentences(  cas: Cas, SofaID: str , tagnames : Set[str] = set( 'p'), \
                   value_between_tagtype="com.crosslang.uimahtmltotext.uima.type.ValueBetweenTagType"  ) -> (List[str], List[Tuple[ int,int ]]):
     
@@ -90,42 +92,18 @@ def is_token(start_index:int, end_index:int, text:str, special_characters:List[s
         
     return True
 
-
-'''
-def find_index_term( terms:List[str], text:str ) -> Generator[  Tuple[ str, int, int ], None, None  ]:
+def lemmatize( NLP: English, term:str )->str:
+    '''
+    Lemmatize (multi-word) term using a spacy model.
     
-    Function finds the span of a list of terms in a sentence (string) using is_token function. 
+    :param NLP: English.
+    :param term: string. 
+    :return: string.
+    '''
     
-    :param terms: List. List of terms.
-    :param text: str. Sentence in which to find terms.
-    :return: Generator.
+    lemma = []
+    for word in NLP(term):
+        lemma.append(word.lemma_)
+    term_lemma = ' '.join(lemma)
+    return term_lemma
 
-    A = ahc.Automaton()
-
-    for term in terms:
-        if not term.strip():
-            continue
-        A.add_word( term, ( term  ) )
-    A.make_automaton()
-
-    for end_index, ( term ) in A.iter(text):
-        if not term:
-            continue
-        start_index = end_index - (len(term) - 1)
-        if is_token( start_index, end_index, text ):
-            yield( ( term, start_index, end_index+1 ) )
-            
-def select_covered( cas, view:str , feature_type, feature ):
-    begin=feature.begin
-    end=feature.end
-    for element in cas.get_view( view ).select( feature_type ):
-        if element.begin >=begin and element.end <= end :
-            yield element
-            
-def select_covering( cas, view:str , feature_type, feature ):
-    begin=feature.begin
-    end=feature.end
-    for element in cas.get_view( view ).select( feature_type ):
-        if element.begin <=begin and element.end >= end :
-            yield element
-'''
