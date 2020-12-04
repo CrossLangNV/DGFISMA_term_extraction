@@ -6,14 +6,16 @@ import string
 
 from configparser import ConfigParser
 
+from spacy.lang.en import English      
+
 from .terms_defined.terms_defined_regex import process_definitions_regex
-from .utils import deepest_child, is_token 
+from .utils import deepest_child, is_token, lemmatize
 
 '''
 Module contains functions for adding TOKEN_TYPE, LEMMA_TYPE, DEPENDENCY_TYPE and DEFINED_TYPE annotations to a Cas.
 '''
 
-def add_token_and_lemma_annotation( NLP, cas: Cas, typesystem: TypeSystem, config: ConfigParser ,
+def add_token_and_lemma_annotation( NLP: English, cas: Cas, typesystem: TypeSystem, config: ConfigParser ,
                                 terms_tf_idf: Dict ):
     '''
     Function adds TOKEN_TYPE annotations and corresponding tf-idf score to a given cas (SOFA_ID view), using a python dictionary (terms_tf_idf). Annotations will only be added to VALUE_BETWEEN_TAG_TYPE elements with tag.tagName in TAG_NAMES. Lemmata of terms are obtained via the NLP spacy model, and added to the Cas.
@@ -34,7 +36,10 @@ def add_token_and_lemma_annotation( NLP, cas: Cas, typesystem: TypeSystem, confi
     
     Token = typesystem.get_type( token_type )
     Lemma = typesystem.get_type( lemma_type )
-       
+    
+    #dictionary with terms-lemmas, would otherwise need to lemmatize the same term several times
+    terms_lemmas=dict()
+        
     A = ahc.Automaton()
     cas_view = cas.get_view(SofaID)
     for term in terms_tf_idf.keys():
@@ -56,17 +61,14 @@ def add_token_and_lemma_annotation( NLP, cas: Cas, typesystem: TypeSystem, confi
                 start_index = end_index - (len(term) - 1)
                 #print( start_index, end_index, term, text  )
                 if is_token(start_index, end_index, text):
-                    lemmas = []
-                    for word in NLP(term):
-                        lemmas.append(word.lemma_)
-                    term_lemmas = ' '.join(lemmas)
+                    if term not in terms_lemmas:
+                        terms_lemmas[ term ]=lemmatize( NLP, term )
                     cas_view.add_annotation(
                         Token(begin=tag.begin + start_index, end=tag.begin + end_index + 1, tfidfValue=tfidf,
-                              term=term))
+                              term=term ) )
                     cas_view.add_annotation(
-                        Lemma(begin=tag.begin + start_index, end=tag.begin + end_index + 1, value=term_lemmas))
-
-
+                        Lemma(begin=tag.begin + start_index, end=tag.begin + end_index + 1, value=terms_lemmas[term]))
+            
 def add_dependency_annotation( cas:Cas, typesystem: TypeSystem, config: ConfigParser, defined_terms:Generator[ List[ Tuple[ str, int, int ] ], None, None ]):
     
     '''
