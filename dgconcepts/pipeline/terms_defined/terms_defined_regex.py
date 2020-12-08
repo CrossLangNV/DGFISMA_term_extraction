@@ -16,7 +16,7 @@ def process_definitions_regex(  sentences: List[str], config: ConfigParser ) -> 
     
     #regex for terms in between quotes
     regex_terms=config[ "Regex" ].get( "REGEX_TERMS" )
-    #r"[\‘|\"|\`|\'|\’|\•|\“|\‧][a-z0-9\-(){}_/\\]{2,}[a-z0-9 \-(){}_/\\]*[a-z0-9\-(){}_/\\]+[\‘|\"|\`|\'|\’|\•|\”|\‧]"
+    #r"[\‘\"\`\'\•\“\‧][a-z0-9\-(){}_/\\:’]{2,}[a-z0-9 \-(){}_/\\:’]*[a-z0-9\-(){}_/\\:’]+[\‘\"\`\'\•\”\‧’]\B"
 
     #regex for abbreviations in between quotes
     regex_abbv=config[ "Regex" ].get( "REGEX_ABBREVIATIONS" )  
