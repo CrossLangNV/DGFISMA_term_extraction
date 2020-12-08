@@ -34,9 +34,6 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
     :return: None.        
     '''
     
-    #exclude terms matching this pattern ( i.e. terms consisting only of numericals / punctuation )
-    pattern = re.compile("[\d{}]+$".format(re.escape(string.punctuation)))
-
     sentences, _ = get_sentences( cas, SofaID=config[ 'Annotation' ].get( 'SOFA_ID' ), tagnames=set(config[ 'Annotation' ].get( 'TAG_NAMES' )), \
                                  value_between_tagtype=config[ 'Annotation' ].get( 'VALUE_BETWEEN_TAG_TYPE' )   )
 
@@ -81,7 +78,7 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
     start=time.time()
     #annotate tokens and lemmas in the cas (lemmatization done via Spacy model)
     #first remove terms consisting only of punctuation/numbers
-    clean_dictionary( terms_n_tfidf, pattern  )
+    clean_dictionary( terms_n_tfidf  )
     add_token_and_lemma_annotation( NLP, cas, typesystem, config, terms_n_tfidf ) 
     print( f"Annotation of terms and lemmas took { time.time() -start } seconds." )
     
@@ -109,21 +106,26 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
         for term in terms:
             if term not in terms_n_tfidf and term not in blacklist:
                 terms_bert[ term  ]=config[ 'TermExtraction' ].getfloat( 'TFIDF_BERT' )
-        clean_dictionary( terms_bert, pattern  )
+        clean_dictionary( terms_bert  )
         if terms_bert:
             add_token_and_lemma_annotation( NLP, cas, typesystem, config, terms_bert ) 
             
-            
-#helper function
-def clean_dictionary( terms_dict: Dict , pattern: Pattern   )-> None:
+#helper function to clean dictionary of terms
+def clean_dictionary( terms_dict: Dict )-> None:
     
     '''
-    Helper function to remove invalid terms from a dictionary using a precompiled pattern regex.
+    Helper function to remove invalid terms from a dictionary using regex.
     :param terms_dict: Dict. 
-    :param pattern: Pattern.
-    :return: None.        
+    :return: None.
     '''
     
+    extra_chars_to_exclude=[ '∙', ' ', "—", "…", "·", "+", "“", "√" , "≤", "<",'≥', ">" ,"⋅", "■", "£", "½", "÷" ]  
+    
+    #exclude terms matching this pattern ( i.e. terms consisting only of numericals / punctuation )
+    punctuation_chars=string.punctuation+"".join( extra_chars_to_exclude)
+    pattern = re.compile("[0-9{}]+$".format(re.escape( punctuation_chars )))
+    #r'[\d!"\#\$%\&\'\(\)\*\+,\-\./:;<=>\?@\[\\\]\^_`\{\|\}\~∙\ —…·\+“√≤<≥>⋅■£½÷]+$'
+
     keys=set( terms_dict.keys() )
     for term in keys:
         if pattern.match( term ):
