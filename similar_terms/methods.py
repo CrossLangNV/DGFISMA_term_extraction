@@ -4,6 +4,7 @@ Might be moved to separate files in the future.
 """
 
 import os
+import warnings
 from typing import List
 
 import fasttext
@@ -11,6 +12,8 @@ import numpy as np
 
 from examples.similar_terms_main import match_vocs
 from similar_terms.preprocessing import preprocessing_word
+
+ROOT = os.path.join(os.path.dirname(__file__), '..')
 
 
 class Vocabulary(list):
@@ -23,19 +26,31 @@ class SimilarWordsRetriever:
     Similar words are found by sorting based on the cosine similarity of word embeddings.
     """
 
-    def __init__(self, vocabulary: List[str]):
+    def __init__(self,
+                 vocabulary: List[str] = [],
+                 filename_fasttext_model=os.path.join(ROOT, 'media/dgf-model.tok.bin'),
+                 preprocessor=preprocessing_word):
+
+        self.preprocessor = preprocessor
+
+        self._ftModel = fasttext.load_model(filename_fasttext_model)
+
+        self.set_vocabulary(vocabulary)
+
+    def set_vocabulary(self, vocabulary):
+        """
+
+        Args:
+            vocabulary:
+
+        Returns:
+
+        """
         vocabulary = Vocabulary(vocabulary)
 
         self._vocabulary = vocabulary
-
-        self._map_cleaned_orig = {word: i for i, word in enumerate(map(preprocessing_word, vocabulary))}
-
+        self._map_cleaned_orig = {word: i for i, word in enumerate(map(self.preprocessor, vocabulary))}
         self._voc_cleaned = list(self._map_cleaned_orig)
-
-        # TODO choose model
-        ROOT = os.path.join(os.path.dirname(__file__), '..')
-        self._ftModel = fasttext.load_model(os.path.join(ROOT, 'media/dgf-model.tok.bin'))
-
         self._embedding_voc_cleaned = self.get_embedding(self._voc_cleaned)
 
     def get_embedding(self, s: (str, List[str])) -> np.ndarray:
@@ -57,7 +72,8 @@ class SimilarWordsRetriever:
             emb = np.asarray([self._ftModel.get_sentence_vector(s_i) for s_i in s])
 
         # Manually normalising, which is necessary in case of CBOW (average of normalised vectors is not normed)
-        return emb / np.linalg.norm(emb, axis=-1, keepdims=True)
+        emb_norm = np.linalg.norm(emb, axis=-1, keepdims=True)
+        return np.divide(emb, emb_norm, out=np.zeros_like(emb), where=emb_norm != 0)
 
     def get_voc(self):
         return self._vocabulary
@@ -68,22 +84,28 @@ class SimilarWordsRetriever:
             return self.get_voc()[i]
 
     def get_similar_foo(self, term, term_voc):
-        # TODO name
+        warnings.warn("Method should be removed", DeprecationWarning)
+        # TODO rename OR remove
 
         return list(match_vocs([term], term_voc, k=5))[0]
 
-    def get_similar_k(self, term, k=1):
+    def get_similar_k(self,
+                      term,
+                      k=1,
+                      include_self=True):
         # TODO flag to exclude self!, default on
         # TODO exclude based on preprocessing or we could just exclude sim of 1
 
         sim = self._get_sim(term)
+
+        # TODO remove self.
+        # set sim == 0 to -1?
+        if not include_self:
+            sim[sim >= 1.] = -np.inf  # Make sure, it's lowest on list.
+
         idx_sorted_k = argpartitionsort(sim, k, reverse=True)
 
-        terms_orig = [self.get_original_word(self._voc_cleaned[i]) for i in idx_sorted_k]
-
-        similarities = sim[idx_sorted_k]
-
-        return SimilarTerms(terms_orig, similarities)
+        return self._get_similar_from_idx(sim, idx_sorted_k)
 
     def get_similar_thresh(self, term, thresh=.5):
         # TODO flag to excluse self, default on
@@ -92,13 +114,25 @@ class SimilarWordsRetriever:
 
         idx_sorted_k = sorted(np.argwhere(sim >= thresh).reshape((-1,)), reverse=True, key=sim.take)
 
-        terms_orig = [self.get_original_word(self._voc_cleaned[i]) for i in idx_sorted_k]
-        similarities = sim[idx_sorted_k]
+        return self._get_similar_from_idx(sim, idx_sorted_k)
+
+    def _get_similar_from_idx(self, sim, idx):
+        """ Shared private method
+
+        Args:
+            idx:
+
+        Returns:
+
+        """
+
+        terms_orig = [self.get_original_word(self._voc_cleaned[i]) for i in idx]
+        similarities = sim[idx]
 
         return SimilarTerms(terms_orig, similarities)
 
     def _get_sim(self, term):
-        term_pre = preprocessing_word(term)
+        term_pre = self.preprocessor(term)
 
         # return as a (1 x n) matrix
         emb_term = self.get_embedding([term_pre])
@@ -108,8 +142,8 @@ class SimilarWordsRetriever:
 
     def get_sim_between_words(self, term1: str, term2: str):
 
-        term_pre1 = preprocessing_word(term1)
-        term_pre2 = preprocessing_word(term2)
+        term_pre1 = self.preprocessor(term1)
+        term_pre2 = self.preprocessor(term2)
 
         # return as a (1 x n) matrix
         emb_term1 = self.get_embedding([term_pre1])
