@@ -1,11 +1,13 @@
 def preprocessing_word(word: str,
-                       b_lower=True):
+                       b_lower=True,
+                       b_join: bool = True
+                       ):
     """Do basic processing to be able to join identical words.
     TODO: update with Francois' methods
 
     Args:
         word:
-
+        b_join: Boolean to replace spaces with '_' or not
     Returns:
 
     """
@@ -17,7 +19,8 @@ def preprocessing_word(word: str,
     word_pre = word_pre.replace('  ', ' ')  # Remove double spaces
     if b_lower:
         word_pre = lower_case(word_pre)
-    word_pre = word_pre.replace(' ', '_')
+    if b_join:
+        word_pre = word_pre.replace(' ', '_')
     word_pre = word_pre.replace('__', '_')  # Remove double underscores
 
     return word_pre

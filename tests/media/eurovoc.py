@@ -2,13 +2,13 @@ import os
 import tempfile
 import unittest
 
-from media.eurovoc import get_eurovoc_terms, EurovocSPARQL, URI_EUROVOC, get_terms_dict_from_list
+from media.eurovoc import get_eurovoc_concepts, EurovocSPARQL, URI_EUROVOC, _get_terms_dict_from_list, \
+    get_eurovoc_related_concepts, query_different_relationships_concepts
 
 
 class TestEurovocSPARQL(unittest.TestCase):
 
     def test_find_triples(self):
-
         LIMIT = 11
         q = f"""
         SELECT ?s ?p ?o
@@ -30,7 +30,6 @@ class TestEurovocSPARQL(unittest.TestCase):
             for t in l:
                 self.assertIsInstance(t, tuple, 'Expected triples to be saved as tuples')
                 self.assertEqual(3, len(t), 'Expected triples, with length 3')
-
 
 
 class TestGetTermsDictFromList(unittest.TestCase):
@@ -59,7 +58,7 @@ class TestGetTermsDictFromList(unittest.TestCase):
 
         l_terms = EurovocSPARQL().query_list(query_string)
 
-        d_terms = get_terms_dict_from_list(l_terms)
+        d_terms = _get_terms_dict_from_list(l_terms)
 
         len_d_terms = sum(len(v) for v in d_terms.values())
 
@@ -71,7 +70,7 @@ class TestGetTermsDictFromList(unittest.TestCase):
 class TestGetEurovocTerms(unittest.TestCase):
 
     def test_instance(self):
-        terms = get_eurovoc_terms()
+        terms = get_eurovoc_concepts()
 
         self.assertIsInstance(terms, dict)
 
@@ -82,12 +81,12 @@ class TestGetEurovocTerms(unittest.TestCase):
 
         """
 
-        terms_local = get_eurovoc_terms(download=False)
+        terms_local = get_eurovoc_concepts(download=False)
 
         with tempfile.TemporaryDirectory() as dir_temp:
             filename_temp = os.path.join(dir_temp, 'eurovoc_terms.json')
-            terms_fresh = get_eurovoc_terms(download=True,
-                                            filename=filename_temp)
+            terms_fresh = get_eurovoc_concepts(download=True,
+                                               filename=filename_temp)
 
         with self.subTest('uri'):
             for key_local in terms_local:
@@ -98,3 +97,31 @@ class TestGetEurovocTerms(unittest.TestCase):
                 self.assertEqual(set(labels_local),
                                  set(terms_fresh.get(key_local))
                                  )
+
+
+class TestGetEurovocRelatedConcepts(unittest.TestCase):
+
+    def test_instance(self):
+        related_concepts = get_eurovoc_related_concepts()
+
+        with self.subTest('iterable'):
+            self.assertIsInstance(related_concepts, dict)
+
+        with self.subTest('children'):
+            for el in related_concepts:
+                self.assertIsInstance(el, dict)
+
+
+class TestSPARQLQueries(unittest.TestCase):
+
+    def __init__(self, *args, **kwargs):
+        super(TestSPARQLQueries, self).__init__(*args, **kwargs)
+
+        self.sparql_wrapper = EurovocSPARQL()
+
+    def test_different_relationships_concepts(self):
+        query_string = query_different_relationships_concepts()
+
+        l_relationships = self.sparql_wrapper.query_list(query_string)
+
+        self.assertTrue(l_relationships, 'Should be non-empty')

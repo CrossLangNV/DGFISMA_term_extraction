@@ -5,85 +5,10 @@ from typing import List, Dict, Tuple
 from SPARQLWrapper import SPARQLWrapper, JSON
 
 ENDPOINT_EUROVOC = 'http://publications.europa.eu/webapi/rdf/sparql'
-# https://op.europa.eu/en/web/eu-vocabularies/th-top-concept-scheme/-/resource/eurovoc/100141
+# Documentation: https://op.europa.eu/en/web/eu-vocabularies/th-top-concept-scheme/-/resource/eurovoc/100141
 URI_EUROVOC = 'http://eurovoc.europa.eu/100141'
 
 EN = 'en'
-
-
-# def get_query_concept_by_example(term: str,  # 'term'
-#                                  lang: str = EN
-#                                  ):
-#     """ Query returns concept URI and label
-#
-#     Args:
-#         term:
-#         lang:
-#
-#     Returns:
-#
-#     """
-#
-#     assert len(term)
-#     assert len(lang)
-#
-#     query_string = f"""
-#         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-#         select ?c ?label
-#
-#         FROM <{URI_EUROVOC}>
-#
-#         where
-#         {{
-#
-#         VALUES ?searchTerm {{"{term}"}}
-#         VALUES ?searchLang {{"{lang}"}}
-#
-#         VALUES ?relation {{skos:prefLabel skos:altLabel}}
-#         ?c a skos:Concept .
-#         ?c ?relation ?label .
-#
-#         filter ( contains(?label,?searchTerm) && lang(?label)=?searchLang )
-#         }}
-#         """
-#
-#     return query_string
-#
-#
-# def get_query_related_terms(lang: str = EN,
-#                             limit: int= 0):
-#
-#     query_string = f"""
-#
-#     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-#
-#     select ?l1 ?l2 ?c ?sibling
-#
-#     FROM <{URI_EUROVOC}>
-#
-#     where{{
-#
-#     # VALUES ?c {{ "{"EuroVoc concept URI"}" }}
-#     VALUES ?relation {{ skos:related }} # skos:broader
-#     VALUES ?searchLang {{ "{lang}" undef }}
-#
-#     ?c a skos:Concept .
-#     ?c ?relation ?sibling .
-#
-#     ?c skos:prefLabel ?l1 .
-#     ?sibling skos:prefLabel ?l2 .
-#
-#     filter ( lang(?l1)=?searchLang )
-#     filter ( lang(?l2)=?searchLang )
-#     }}
-#     """
-#
-#     if limit > 0:
-#         query_string += f"""
-#             LIMIT {limit}
-#             """
-#
-#     return query_string
 
 
 class EurovocSPARQL(SPARQLWrapper):
@@ -121,8 +46,8 @@ class EurovocSPARQL(SPARQLWrapper):
         return l
 
 
-def get_eurovoc_terms(download=False,
-                      filename=os.path.join(os.path.dirname(__file__), 'eurovoc_terms.json')):
+def get_eurovoc_concepts(download=False,
+                         filename=os.path.join(os.path.dirname(__file__), 'eurovoc_terms.json')):
     """ EuroVoc terms are extracted from open data.
 
     Args:
@@ -155,7 +80,7 @@ def get_eurovoc_terms(download=False,
 
         l_terms = EurovocSPARQL().query_list(query_string)
 
-        d_terms_temp = get_terms_dict_from_list(l_terms)
+        d_terms_temp = _get_terms_dict_from_list(l_terms)
 
         with open(filename, 'w') as outfile:
             json.dump(d_terms_temp, outfile, indent=4)
@@ -166,7 +91,122 @@ def get_eurovoc_terms(download=False,
     return d_terms
 
 
-def get_terms_dict_from_list(l_terms: List[Tuple[str]]) -> Dict[str, List[str]]:
+def get_eurovoc_related_concepts(download: bool = False,
+                                 filename=os.path.join(os.path.dirname(__file__), 'eurovoc_related_concepts.json'),
+                                 lang=EN,
+                                 b_entailment: bool = True) -> Dict[str, Dict[str, str]]:
+    """ relationships between EuroVoc concepts
+
+    Entailment:
+    https://www.w3.org/TR/skos-reference/#mapping-cycles-exactMatch
+    "<A> skos:related <B> ." entails "<B> skos:related <A> ."
+    TODO correctly implement all entailments:
+
+    Args:
+        filename:
+        download: Boolean
+        limit: number of relationships to return
+        lang:
+        b_entailment: Boolean to decide if extra relationships should be entailed.
+
+    Returns:
+        dictionary of term1 URI with dict of {term2 URI: relationship}
+    """
+    # TODO only getting back "related terms". Less interesting.
+
+    limit = 0
+
+    # Check if exists already, if not: download.
+    if download or not os.path.exists(filename):
+
+        query_string = f"""
+    
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    
+        select ?l1 ?l2 ?c1 ?c2 ?relation
+    
+        FROM <{URI_EUROVOC}>
+    
+        where{{
+    
+        VALUES ?relation {{skos:related skos:broader skos:narrower
+                           skos:exactMatch 
+                           skos:closeMatch skos:broadMatch
+                           skos:mappingRelation skos:narrowMatch skos:relatedMatch
+                           }}
+    
+        VALUES ?searchLang {{ "{lang}" undef }}
+    
+        ?c1 a skos:Concept .
+        ?c1 ?relation ?c2 .
+        ?c2 a skos:Concept .
+    
+        ?c1 skos:prefLabel ?l1 .
+        ?c2 skos:prefLabel ?l2 .
+    
+        filter ( lang(?l1)=?searchLang )
+        filter ( lang(?l2)=?searchLang )
+        }}
+        """
+
+        if limit > 0:
+            query_string += f"""
+                LIMIT {limit}
+                """
+
+        l_query = EurovocSPARQL().query_list(query_string)
+
+        l_related_concepts = [(c1, c2, relation) for (l1, l2, c1, c2, relation) in l_query]
+
+        d_related_concepts = {}
+
+        for (c1, c2, relation) in l_related_concepts:
+
+            d_related_concepts.setdefault(c1, {})[c2] = relation
+
+            if b_entailment:
+                if ('related' in relation.lower()) or \
+                        ('exactmatch' in relation.lower()):
+                    d_related_concepts.setdefault(c2, {})[c1] = relation
+
+        with open(filename, 'w') as outfile:
+            json.dump(d_related_concepts, outfile, indent=4)
+
+        del (d_related_concepts)
+
+    with open(filename, 'r') as json_file:
+        d_related_concepts = json.load(json_file)
+
+    return d_related_concepts
+
+
+def query_different_relationships_concepts() -> str:
+    """ Returns the (SKOS) relationships as found in EuroVoc
+    https://op.europa.eu/en/web/eu-vocabularies/alignments
+
+    Returns:
+        SPARQL query.
+    """
+
+    query_string = f"""
+
+       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+       select distinct ?relation
+
+       FROM <{URI_EUROVOC}>
+
+       where{{
+
+       ?c1 a skos:Concept .
+       ?c1 ?relation ?c2 .
+       ?c2 a skos:Concept .
+       }}
+       """
+    return query_string
+
+
+def _get_terms_dict_from_list(l_terms: List[Tuple[str]]) -> Dict[str, List[str]]:
     """ Transform list of (uri, label) pairs to equivalent dict.
 
     Args:
@@ -181,7 +221,3 @@ def get_terms_dict_from_list(l_terms: List[Tuple[str]]) -> Dict[str, List[str]]:
         d_terms.setdefault(uri, []).append(label)
 
     return d_terms
-
-
-if __name__ == '__main__':
-    get_data()
