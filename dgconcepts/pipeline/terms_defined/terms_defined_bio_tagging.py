@@ -242,28 +242,26 @@ def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ) 
     :param sentence: String.
     :return: Generator. Generator yielding a regex match.
     '''
-    
+        
     extra_punctuation_tokens='‘\"`\'’•”‧'
 
     if '[UNK]' in tokenized_term: #if the term contains an [UNK] ==> probably not a legit term
         return
     
-    #strip leading and trailing punctuation from this term
+    #strip leading and trailing punctuation from this term, to makes sure that we don't annotate terms consisting solely of punctuations as terms
+    #+for safety and better precision, although Bert tokenization should have tokenized these punctuations: i.e. 'some' ==> ' some ' 
 
     tokenized_term=tokenized_term.strip( string.punctuation+extra_punctuation_tokens+" " )
     
     sentence=sentence.replace( "\xa0", " " )
         
     #make regex
-    term_regex=''
+    term_regex=r''
     for token in tokenized_term.split():
         if not term_regex:
             term_regex=token
-        elif token in (string.punctuation+extra_punctuation_tokens ):
-            #we have to escape special characters (i.e. . without \. would match whatever character)
-            term_regex=term_regex+"([ ]*)"+re.escape( token )
         else:
-            term_regex=term_regex+"([ ]*)"+token
+            term_regex=term_regex+r"([ ]*)"+re.escape( token )
     
     if tokenized_term:
         for match in re.finditer( term_regex , sentence , re.IGNORECASE):
