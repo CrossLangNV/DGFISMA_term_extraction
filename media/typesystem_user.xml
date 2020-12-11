@@ -50,6 +50,11 @@
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
+                <featureDescription>
+                    <name>datetime</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
             </features>
         </typeDescription>
         <typeDescription>
@@ -1341,30 +1346,13 @@
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
-            </features>
-        </typeDescription>
-        <typeDescription>
-            <name>crosslang.tfidf.type.Tfidf</name>
-            <description/>
-            <supertypeName>uima.tcas.Annotation</supertypeName>
-            <features>
                 <featureDescription>
-                    <name>tfidfValue</name>
-                    <description/>
-                    <rangeTypeName>uima.cas.Double</rangeTypeName>
-                </featureDescription>
-                <featureDescription>
-                    <name>term</name>
+                    <name>datetime</name>
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
-                <featureDescription>
-                    <name>user</name>
-                    <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
+                </featureDescription>                
             </features>
-        </typeDescription>        
+        </typeDescription>      
         <typeDescription>
             <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.Morpheme</name>
             <description/>
@@ -1742,6 +1730,11 @@
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
+                <featureDescription>
+                    <name>datetime</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription> 
             </features>
         </typeDescription>
         <typeDescription>
@@ -1766,6 +1759,11 @@
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
+                <featureDescription>
+                    <name>datetime</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription> 
             </features>
         </typeDescription>
         <typeDescription>
@@ -1783,6 +1781,11 @@
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
+                <featureDescription>
+                    <name>datetime</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription> 
             </features>
         </typeDescription>
         <typeDescription>
@@ -2111,6 +2114,11 @@
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
+                <featureDescription>
+                    <name>datetime</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription> 
             </features>
         </typeDescription>
         <typeDescription>
