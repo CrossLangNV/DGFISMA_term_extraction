@@ -19,7 +19,7 @@ def calculate_tf_idf(corpus, MAX_LEN_NGRAM, term_list)-> Dict:
     vectorizer.fit_transform(corpus)
     terms_n_tfidf = {}
     for term, score in zip(vectorizer.get_feature_names(), vectorizer.idf_):
-        terms_n_tfidf.update({term : score})
+        terms_n_tfidf.update({term : round(score,4) })
 
     terms_n_tfidf = dict(sorted(terms_n_tfidf.items(), key=operator.itemgetter(1), reverse=True))
 

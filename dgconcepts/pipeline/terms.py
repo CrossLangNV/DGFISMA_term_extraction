@@ -1,53 +1,155 @@
 from typing import List, Set, Dict, Tuple
 
+from spacy.lang.en import English
+
 from nltk.corpus import stopwords
 import contractions
 import re
 
 from .metrics import calculate_tf_idf
 
-POS_TAG_DET = 'DET'
-INVALID_POS_LABELS = ['ADP', 'VERB', 'PRON', 'CCONJ', 'SCONJ', 'ADV']
-
-
-#Main functions
-
-def get_terms( NLP , sentences: List[str] , extract_supergrams:bool=False, nMax:int=4 ) -> Tuple[Dict, List[Tuple[str,str]]]:
-
+class TermExtractor():
     '''
-    Function uses spacy model to extract nouns from a list of sentences.
+    A TermExtractor.
+    '''
     
-    :param NLP: spacy model. 
-    :param sentences: List. List of strings 
-    :param extract_supergrams: Bool.
-    :param nMax: int. Max length of extracted n-grams.
-    :return: Tuple. Dictionary with detected terms and tf_idf score, and a list of abbreviations.
-    '''
+    POS_TAG_DET = 'DET'
+    INVALID_POS_LABELS = ['ADP', 'VERB', 'PRON', 'CCONJ', 'SCONJ', 'ADV']
+    
+    def __init__( self, spacy_model: English, extract_supergrams:bool=False, nMax:int=4 ):
         
-    terms=[]
-    all_abvs = []
-    doc_for_tf_idf = []
-    for sentence in sentences:
-        doc_for_tf_idf.append(sentence)
-        ngrams, supergrams, abvs = extract_concepts(sentence, NLP, nMax )
-        all_abvs+=abvs
-        terms+=ngrams
-        if extract_supergrams:
-            terms+=supergrams
-              
-    for abv in all_abvs:
-        abbreviation=abv[0].strip()
-        full_abbreviation=abv[1].strip()
-        if not abbreviation or not full_abbreviation:
-            continue
-        terms.append( abbreviation.lower() )
-        terms.append( full_abbreviation.lower() )
+        '''
+        :param spacy_model: English. Spacy model.
+        :param extract_supergrams: Bool.
+        :param nMax: int. Max length of extracted n-grams.
+        '''
 
-    terms = list(set(terms))
-    all_abvs=list( set(all_abvs ))
-    terms_n_tfidf = calculate_tf_idf(doc_for_tf_idf, nMax, terms )
+        self._nlp=spacy_model
+        self._extract_supergrams=extract_supergrams
+        self._nMax=nMax
+                
+    def get_terms( self, sentences: List[str] , n_jobs=12, batch_size=32 )-> Tuple[Dict, List[Tuple[str,str]]]:
+
+        '''
+        Function uses spacy model to extract nouns from a list of sentences.
+
+        :param sentences: List. List of strings 
+        :param NLP: spacy model. 
+        :return: Tuple. Dictionary with detected terms and tf_idf score, and a list of abbreviations.
+        '''
+
+        terms=[]
+        all_abvs = []
+        
+        #extract terms
+        clean_sentences= [clean_text( sentence ) for sentence in sentences ]
+                    
+        trees=[]
+        for doc in self._nlp.pipe( clean_sentences, n_process=n_jobs, batch_size=batch_size ):
+            trees.append(self.parse_doc(doc))
+        
+        for tree in trees:
+            ngrams, supergrams = self.get_ngrams_supergrams(tree)
+            terms+=ngrams
+            if self._extract_supergrams:
+                terms+=supergrams
+            
+        for doc_abv in self._nlp.pipe( sentences, n_process=n_jobs, batch_size=batch_size ):        
+            all_abvs+=self.extractAbbv(doc_abv)
+      
+        #add abbreviations to extracted terms
+        for abv in all_abvs:
+            abbreviation=abv[0].strip()
+            full_abbreviation=abv[1].strip()
+            if not abbreviation or not full_abbreviation:
+                continue
+            terms.append( abbreviation.lower() )
+            terms.append( full_abbreviation.lower() )
+
+        terms = list(set(terms))
+        all_abvs=list( set(all_abvs ))
+        terms_n_tfidf = calculate_tf_idf(sentences, self._nMax, terms )
+
+        return terms_n_tfidf, all_abvs
+        
+    def get_ngrams_supergrams(self, tree)->Tuple[ List[str],List[str] ]:
+        """
+
+        :param tree: a set of noun chunks derived from the SpaCy Doc object
+        :param max_ngram_length: the max ngram length
+        :return: 2 lists : ngrams (noun phrases with length <= max_ngram_length) and supergrams (noun phrases with length >= max_ngram_length)
+        """
+        ngrams = []
+        supergrams = []
+        for ngram in tree:
+            if ngram[0].pos_ == self.POS_TAG_DET:
+                ngram = ngram[1:]
+            if len(ngram) >  self._nMax:  #add check self._extract_supergrams
+                supergrams.append(ngram.text)
+            else:
+                if self.validate_term(ngram):  # grammar check
+                    ngrams.append(ngram.text)
+
+        #TO DO check why ngram not unique
+        ngrams=list(set( ngrams ))
+        supergrams=list( set(supergrams ) )
+
+        return ngrams, supergrams
+
+    def validate_term(self, np)->bool:
+        """
+        :param np: noun phrase to be checked for validation
+        :return: whether or not the ngram is a valid term
+        """
+
+        invalid_words = get_invalid_words()
+        if any(word.pos_ in self.INVALID_POS_LABELS for word in np) == False and all(word.text.isalpha() for word in np) and any(word.text in invalid_words for word in np)==False and len(np.text) > 1:
+            return True
+        else:
+            return False
+        
+    def parse_doc(self, doc) -> Set:
+        """
+
+        :param doc: SpaCy object Doc
+        :return: a set containing noun phrases of type spacy.tokens.span.Span
+        """
+        tree = {np for nc in doc.noun_chunks for np in [nc, doc[nc.root.left_edge.i:nc.root.right_edge.i + 1]]}
+        return tree
     
-    return terms_n_tfidf, all_abvs
+    def extractAbbv(self, tokens)->List[str]:
+        """
+        Task
+        ----
+            Extract all token which are possible candidate for abbreviation
+        Args
+        ----
+            tokens,
+                Tokens to to analyze
+
+        Output
+        ------
+            list of candidate abbreviation
+        """
+        tokens = [t.text for t in tokens]
+        sw = set(stopwords.words('english'))
+        res = []
+        for i, t in enumerate(tokens):
+            prop = sum(1 for c in t if c.isupper()) / len(t)
+            if (prop > 0.5
+                    and len(t) < 6
+                    and len(t) > 1
+                    and t.lower() not in sw
+                    and sum(1 for c in t if c == 'V' or c == 'I') != len(t)
+                    and t.isalpha()):
+                term = extractAbbvTerm(tokens, i, sw)
+                if (term is not None):
+                    res.append((t, term))
+        abvs = []
+        for x in list(set(res)):
+            abvs.append( (x[0].strip(), x[1].strip() ) )
+
+        return abvs
 
 
 def remove_add_update_terms_blacklist_whitelist( terms_n_tfidf: dict, whitelist: Set[str], blacklist: Set[str], tf_idf_whitelist: float =-1.0  ) -> Dict:
@@ -112,72 +214,10 @@ def extractAbbvTerm(tokens, i, sw):
             res += t + " "
     return res
 
-
-def extractAbbv(tokens):
-    """
-    Task
-    ----
-        Extract all token which are possible candidate for abbreviation
-    Args
-    ----
-        tokens,
-            Tokens to to analyze
-            
-    Output
-    ------
-        list of candidate abbreviation
-    """
-    tokens = [t.text for t in tokens]
-    sw = set(stopwords.words('english'))
-    res = []
-    for i, t in enumerate(tokens):
-        prop = sum(1 for c in t if c.isupper()) / len(t)
-        if (prop > 0.5
-                and len(t) < 6
-                and len(t) > 1
-                and t.lower() not in sw
-                and sum(1 for c in t if c == 'V' or c == 'I') != len(t)
-                and t.isalpha()):
-            term = extractAbbvTerm(tokens, i, sw)
-            if (term is not None):
-                res.append((t, term))
-    abvs = []
-    for x in list(set(res)):
-        #abv = x[0] + " ■ " + x[1]
-        abvs.append( (x[0].strip(), x[1].strip() ) )
-
-    return abvs
-
-
 #helper functions term extraction
-
-def get_ngrams_supergrams(tree, max_ngram_length):
-    """
-
-    :param tree: a set of noun chunks derived from the SpaCy Doc object
-    :param max_ngram_length: the max ngram length
-    :return: 2 lists : ngrams (noun phrases with length <= max_ngram_length) and supergrams (noun phrases with length >= max_ngram_length)
-    """
-    ngrams = []
-    supergrams = []
-    for ngram in tree:
-        if ngram[0].pos_ == POS_TAG_DET:
-            ngram = ngram[1:]
-        if len(ngram) > max_ngram_length:
-            supergrams.append(ngram.text)
-        else:
-            if validate_term(ngram):  # grammar check
-                ngrams.append(ngram.text)
-    
-    #TO DO check why ngram not unique
-    ngrams=list(set( ngrams ))
-    supergrams=list( set(supergrams ) )
-                
-    return ngrams, supergrams
 
 def get_invalid_words():
     """
-
     :return: the list of invalid words for ngram filtering
     """
     invalid_words = ['other', 'such', 'same', 'similar', 'different', 'relevant', 'specific', 'total', 'appropriate'] + stopwords.words('english')
@@ -321,23 +361,8 @@ def get_invalid_words():
     invalid_words.append("whole")
     invalid_words.append("best")
     invalid_words.append("worst")
-
-
+    
     return invalid_words
-
-
-def validate_term(np):
-    """
-    :param np: noun phrase to be checked for validation
-    :return: whether or not the ngram is a valid term
-    """
-
-    invalid_words = get_invalid_words()
-    if any(word.pos_ in INVALID_POS_LABELS for word in np) == False and all(word.text.isalpha() for word in np) and any(word.text in invalid_words for word in np)==False and len(np.text) > 1:
-        return True
-    else:
-        return False
-
 
 def clean_text(data):
     """
@@ -349,31 +374,3 @@ def clean_text(data):
     data = data.replace(u'\xa0', ' ')
     data = contractions.fix(data)
     return data
-
-
-def parse_doc(doc):
-    """
-
-    :param doc: SpaCy object Doc
-    :return: a set containing noun phrases of type spacy.tokens.span.Span
-    """
-    tree = {np for nc in doc.noun_chunks for np in [nc, doc[nc.root.left_edge.i:nc.root.right_edge.i + 1]]}
-    return tree
-
-
-def extract_concepts(text, NLP, nMax):
-    """
-    :param text: the text segment
-    :param NLP: the spacy model
-    :param nMax: the max ngram length
-    :return: 3 lists : ngrams (n <= nMax), supergrams (n >= nMax) and abbreviations
-    """
-    clean_data = clean_text(text)
-    doc = NLP(clean_data)
-    tree = parse_doc(doc)
-    abvs = extractAbbv(NLP(text))
-    ngrams, supergrams = get_ngrams_supergrams(tree, nMax)
-    return ngrams, supergrams, abvs
-
-
-    
