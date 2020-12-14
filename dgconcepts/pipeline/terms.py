@@ -34,7 +34,8 @@ class TermExtractor():
         Function uses spacy model to extract nouns from a list of sentences.
 
         :param sentences: List. List of strings 
-        :param NLP: spacy model. 
+        :param n_jobs: Int. Nr of jobs spacy model.
+        :param batch_size: batch_size used by spacy model. 
         :return: Tuple. Dictionary with detected terms and tf_idf score, and a list of abbreviations.
         '''
 
@@ -73,12 +74,13 @@ class TermExtractor():
         return terms_n_tfidf, all_abvs
         
     def get_ngrams_supergrams(self, tree)->Tuple[ List[str],List[str] ]:
-        """
-
+        
+        '''
+        
         :param tree: a set of noun chunks derived from the SpaCy Doc object
-        :param max_ngram_length: the max ngram length
         :return: 2 lists : ngrams (noun phrases with length <= max_ngram_length) and supergrams (noun phrases with length >= max_ngram_length)
-        """
+        '''
+        
         ngrams = []
         supergrams = []
         for ngram in tree:
@@ -97,11 +99,12 @@ class TermExtractor():
         return ngrams, supergrams
 
     def validate_term(self, np)->bool:
-        """
+        
+        '''
+        
         :param np: noun phrase to be checked for validation
         :return: whether or not the ngram is a valid term
-        """
-
+        '''
         invalid_words = get_invalid_words()
         if any(word.pos_ in self.INVALID_POS_LABELS for word in np) == False and all(word.text.isalpha() for word in np) and any(word.text in invalid_words for word in np)==False and len(np.text) > 1:
             return True
@@ -109,29 +112,23 @@ class TermExtractor():
             return False
         
     def parse_doc(self, doc) -> Set:
-        """
-
+        '''
+        
         :param doc: SpaCy object Doc
         :return: a set containing noun phrases of type spacy.tokens.span.Span
-        """
+        '''
+        
         tree = {np for nc in doc.noun_chunks for np in [nc, doc[nc.root.left_edge.i:nc.root.right_edge.i + 1]]}
         return tree
     
-    def extractAbbv(self, tokens)->List[str]:
-        """
-        Task
-        ----
-            Extract all token which are possible candidate for abbreviation
-        Args
-        ----
-            tokens,
-                Tokens to to analyze
+    def extractAbbv(self, doc)->List[Tuple[ str, str ]]:
+        '''
+        
+        :param doc: SpaCy object Doc
+        :return: A List of Tuples containing abbreviations.
+        '''
 
-        Output
-        ------
-            list of candidate abbreviation
-        """
-        tokens = [t.text for t in tokens]
+        tokens = [t.text for t in doc]
         sw = set(stopwords.words('english'))
         res = []
         for i, t in enumerate(tokens):
@@ -365,10 +362,10 @@ def get_invalid_words():
     return invalid_words
 
 def clean_text(data):
-    """
+    '''
     :param data: the text segment
     :return: the cleaned text segment
-    """
+    '''
     # clean
     data = data.lower()
     data = data.replace(u'\xa0', ' ')

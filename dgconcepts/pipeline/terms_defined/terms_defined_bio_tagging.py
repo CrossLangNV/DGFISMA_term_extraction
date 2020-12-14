@@ -49,7 +49,8 @@ class TrainedBertBIOTagger( ):
         self.tokenizer=BertTokenizer.from_pretrained( self._path_model_dir, do_lower_case=True )
 
         
-def process_definitions_bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBertBIOTagger, gpu:int=-1, seq_length:int=75, batch_size:int=32 ) -> Generator[ List[ Tuple[ str, int, int ] ], None, None ]:
+def process_definitions_bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBertBIOTagger, gpu:int=-1, num_threads:int=-1,\
+                                         seq_length:int=75, batch_size:int=32 ) -> Generator[ List[ Tuple[ str, int, int ] ], None, None ]:
     
     '''
     Function will use TrainedBertBIOTagger model to tokenize the sentences and BIO tag the sentences, using the bert_bio_tagging function. 
@@ -59,13 +60,14 @@ def process_definitions_bert_bio_tagging( sentences: List[str], trained_bert_bio
     :param sentences: List. List of strings. 
     :param trained_bert_bio_tagger: TrainedBertBIOTagger. 
     :param gpu: int. GPU id. 
+    :param num_threads: int. Nr of CPU threads used during inference. Ignored when GPU>-1.
     :param seq_length: int. Sequence length. 
     :param batch_size: int.
     :return: Generator.
     '''
     
     #inference
-    tokenized_sentences, bio_tags = bert_bio_tagging( sentences, trained_bert_bio_tagger, gpu, seq_length=seq_length, batch_size=batch_size  )
+    tokenized_sentences, bio_tags = bert_bio_tagging( sentences, trained_bert_bio_tagger, gpu, num_threads, seq_length=seq_length, batch_size=batch_size  )
 
     #sanity check
     assert( len( sentences ) == len( tokenized_sentences ) == len( bio_tags ) )
@@ -80,7 +82,7 @@ def process_definitions_bert_bio_tagging( sentences: List[str], trained_bert_bio
         joint_tokenized_bio_tags.append( joint_tokenized_bio_tag )
 
     #sanity check
-    assert( len( sentences ) == len( joint_tokenized_sentences  ) ==len(  joint_tokenized_bio_tags  )  )
+    assert( len( sentences ) == len( joint_tokenized_sentences  ) == len(  joint_tokenized_bio_tags  )  )
     
     #find the offset in the original sentence
     for i in range( len( sentences ) ):
@@ -91,7 +93,8 @@ def process_definitions_bert_bio_tagging( sentences: List[str], trained_bert_bio
         yield [ (detected_term.group(0),  detected_term.span()[0], detected_term.span()[1]) for detected_term in detected_terms ] 
 
 
-def bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBertBIOTagger, gpu:int=-1, seq_length:int=75, batch_size:int=32) -> Tuple[ List[str], List[str] ]:
+def bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBertBIOTagger, gpu:int=-1, num_threads:int=-1, \
+                     seq_length:int=75, batch_size:int=32) -> Tuple[ List[str], List[str] ]:
 
     '''
     Inference using TrainedBertBIOTagger. Sentences will be padded to seq_length before being send to TrainedBertBIOTagger in batches. 
@@ -100,6 +103,7 @@ def bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBert
     :param sentences: List. List of strings.
     :param trained_bert_bio_tagger: TrainedBertBIOTagger. 
     :param gpu: int. GPU id. 
+    :param num_threads: int. Nr of CPU threads used during inference. Ignored when GPU>-1.
     :param seq_length: int. Sequence length. 
     :param batch_size: int.
     :return: Tuple. Returns a list of tokenized sentences and predicted tags. 
@@ -112,7 +116,12 @@ def bert_bio_tagging( sentences: List[str], trained_bert_bio_tagger: TrainedBert
         trained_bert_bio_tagger.model.cuda(gpu) 
         print( f"Inference (Bert BIO tagging) on gpu {gpu}." )
     else:
-        print( "Inference (Bert BIO tagging) on cpu." )
+        if num_threads==-1:  
+            #Use all available threads. By default all available threads are used by pytorch.
+            num_threads=torch.get_num_threads()
+        else:
+            torch.set_num_threads( num_threads )
+        print( f"Inference (Bert BIO tagging) on cpu using {num_threads} thread(s)." )
 
     trained_bert_bio_tagger.model.eval()
 
