@@ -41,7 +41,7 @@ def main( path_test_sentences:Path,\
     
     os.makedirs( os.path.dirname( path_output_file ) , exist_ok=True)
     
-    #Load the sentences on which to apply BERT_NER:
+    #Load the sentences on which to apply BERT_FOR_TOKEN_CLASSIFICATION:
     sentences=open( path_test_sentences  ).read().rstrip("\n").split( "\n" )
     
     trained_bert_bio_tagger=TrainedBertBIOTagger( path_model_dir )

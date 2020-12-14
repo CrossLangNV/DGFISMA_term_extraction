@@ -46,10 +46,6 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
     terms_n_tfidf, _ = termextractor.get_terms( sentences, n_jobs=config['TermExtraction'].getint('N_JOBS'), \
                                              batch_size=config['TermExtraction'].getint('BATCH_SIZE'))
     
-    #terms_n_tfidf, _ = get_terms( NLP, sentences, \
-    #                             extract_supergrams = config[ 'TermExtraction' ].getboolean( 'EXTRACT_SUPERGRAMS' ), \
-    #                             nMax = config[ 'TermExtraction' ].getint( 'MAX_LEN_NGRAM' ) )
-
     print( f"Term extraction took { time.time() -start } seconds." )
 
     #get the definitions (previously annotated via definition detector)
@@ -91,6 +87,7 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
     if config[ 'DefinedTerm' ].getboolean( 'BERT_BIO_TAGGING' ):
         terms_dependency=process_definitions_bert_bio_tagging( definitions, trained_bert_bio_tagger,\
                                                               gpu=config[ 'BertBIOTagger' ].getint( 'GPU' ),\
+                                                              num_threads=config[ 'BertBIOTagger' ].getint( 'NUM_THREADS_CPU' ),
                                                               seq_length=config[ 'BertBIOTagger' ].getint( 'SEQ_LENGTH' ),\
                                                               batch_size=config[ 'BertBIOTagger' ].getint( 'BATCH_SIZE' ) )
     else:
