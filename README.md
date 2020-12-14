@@ -18,6 +18,8 @@ We provide a configuration file: https://github.com/CrossLangNV/DGFISMA_term_ext
 ```
 [TermExtraction]
 SPACY_MODEL=en_core_web_lg
+N_JOBS=1
+BATCH_SIZE=32
 MAX_LEN_NGRAM = 4
 EXTRACT_SUPERGRAMS=False
 TFIDF_REGEX=-2.0
@@ -27,6 +29,7 @@ TFIDF_BERT=-3.0
 [BertBIOTagger]
 PATH_MODEL_DIR=Fine_tuned_models/dgfisma_bio_tag
 GPU=-1
+NUM_THREADS_CPU=-1
 SEQ_LENGTH=75
 BATCH_SIZE=32
 
@@ -41,8 +44,8 @@ FALLBACK_TO_WHITELIST=False
 FALLBACK_TO_TF_IDF=False
 
 [Regex]
-REGEX_TERMS = [\‘|\"|\`|\'|\’|\•|\“|\‧][a-z0-9\-(){}_/\\]{2,}[a-z0-9 \-(){}_/\\]*[a-z0-9\-(){}_/\\]+[\‘|\"|\`|\'|\’|\•|\”|\‧]
-REGEX_ABBREVIATIONS = [\‘|\"|\`|\'|\’|\•|\“|\‧][A-Z]{2,}[\‘|\"|\`|\'|\’|\•|\”|\‧]
+REGEX_TERMS = [\‘\"\`\'\•\“\‧][a-z0-9\-(){}_/\\:’]{2,}[a-z0-9 \-(){}_/\\:’]*[a-z0-9\-(){}_/\\:’]+[\‘\"\`\'\•\”\‧’]\B
+REGEX_ABBREVIATIONS = [\‘\"\`\'\•\“\‧][A-Z’]{2,}[\‘\"\`\'\•\”\‧\’]\B
 
 [Annotation]
 SOFA_ID=html2textView
@@ -97,6 +100,9 @@ The Term Extraction algorithm consists of the following steps:
 
     Lemmata of terms are obtained using the Spacy model `config[ 'Annotation' ].get( 'SPACY_MODEL' )`. Lemmata annotations are added at the obtained offset of the original term using the `config[ 'Annotation' ].get( 'LEMMA_TYPE' )` feature type  ( <em> .begin, .end, .value </em> ). 
     
+`config[ 'TermExtraction' ].get( 'N_JOBS' )` and `config[ 'TermExtraction' ].get( 'BATCH_SIZE' )` allows for configuration of the number of processes and batch size used by the Spacy model.
+
+    
 #### BertBIOTagger
 
 We refer to https://github.com/CrossLangNV/DGFISMA_term_extraction/tree/master/user_scripts for more information on training of a BertForTokenClassification model for BIO tagging. In short, the BertBIOTagger is used to detect the defined term in a definition. 
@@ -108,6 +114,8 @@ It is recommended to set `config[ 'Annotation' ].get( 'SEQ_LENGTH' )` (sequence 
 If a set of tokens in a definition (i.e. covered by a `config[ 'Annotation' ].get( 'DEFINITION_TYPE' )` annotation)  are labeled with B or I tags, they are annotated with the `config[ 'Annotation' ].get( 'DEPENDENCY_TYPE' )` feature.
 
 Use of the BertBIOTagger is optional. If `config[ 'DefinedTerm' ].get( 'BERT_BIO_TAGGING' )` is set to False, the `config[ 'Annotation' ].get( 'SPACY_MODEL' )` will be used for dependency parsing.
+
+If `config[ 'BertBIOTagger' ].get( 'GPU' )` is set to -1, CPU will be used for inference. `config[ 'BertBIOTagger' ].get( 'NUM_THREADS_CPU' )` allows for configuration of the number of threads used during inference on CPU. If `config[ 'BertBIOTagger' ].get( 'GPU' )` > -1, this will be ignored. When `config[ 'BertBIOTagger' ].get( 'NUM_THREADS_CPU' )` is set to -1, all available threads will be used.
 
 ##### Example:
 
