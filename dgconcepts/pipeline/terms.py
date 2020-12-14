@@ -28,7 +28,7 @@ class TermExtractor():
         self._extract_supergrams=extract_supergrams
         self._nMax=nMax
                 
-    def get_terms( self, sentences: List[str] , n_jobs=12, batch_size=32 )-> Tuple[Dict, List[Tuple[str,str]]]:
+    def get_terms( self, sentences: List[str] , n_jobs=1, batch_size=32 )-> Tuple[Dict, List[Tuple[str,str]]]:
 
         '''
         Function uses spacy model to extract nouns from a list of sentences.
