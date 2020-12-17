@@ -12,6 +12,8 @@ The "cas_content" is a UIMA CAS object, encoded in base64. The "content_type" ca
 
 For working with CAS object, [the dkpro-cassis library](https://github.com/dkpro/dkpro-cassis) is used.
 
+A pretrained BertBIOTagger (see below), and training data is provided https://github.com/CrossLangNV/DGFISMA_term_extraction/releases/tag/0.0.1.
+
 ### Configuration
 
 We provide a configuration file: https://github.com/CrossLangNV/DGFISMA_term_extraction/blob/master/media/TermExtraction.config
@@ -107,7 +109,7 @@ The Term Extraction algorithm consists of the following steps:
 
 We refer to https://github.com/CrossLangNV/DGFISMA_term_extraction/tree/master/user_scripts for more information on training of a BertForTokenClassification model for BIO tagging. In short, the BertBIOTagger is used to detect the defined term in a definition. 
 
-The `config[ 'Annotation' ].get( 'PATH_MODEL_DIR' )` is the path to the trained BertBIOTagger relative to the MODELS folder that should be created in the directory where this repository is cloned.
+The `config[ 'Annotation' ].get( 'PATH_MODEL_DIR' )` is the path to the trained BertBIOTagger relative to the MODELS folder that should be created in the directory where this repository is cloned. See https://github.com/CrossLangNV/DGFISMA_term_extraction/releases/tag/0.0.1 for such a trained BertBIOTagger.
 
 It is recommended to set `config[ 'Annotation' ].get( 'SEQ_LENGTH' )` (sequence length used during inference) to the same number as used during training of the model. 
 
