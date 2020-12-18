@@ -4,16 +4,16 @@ Might be moved to separate files in the future.
 """
 
 import os
-import warnings
 from typing import List
 
 import fasttext
 import numpy as np
 
-from examples.similar_terms_main import match_vocs
 from similar_terms.preprocessing import preprocessing_word
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
+
+FILENAME_FASTTEXT_MODEL = os.environ.get('FASTTEXT_PATH', os.path.join(ROOT, 'media/dgf-model.tok.bin'))
 
 
 class Vocabulary(list):
@@ -28,12 +28,24 @@ class SimilarWordsRetriever:
 
     def __init__(self,
                  vocabulary: List[str] = [],
-                 filename_fasttext_model=os.path.join(ROOT, 'media/dgf-model.tok.bin'),
+                 fasttext_model: fasttext.FastText = None,
+                 filename_fasttext_model=FILENAME_FASTTEXT_MODEL,
                  preprocessor=preprocessing_word):
+        """
+
+        Args:
+            vocabulary:
+            fasttext_model:
+            filename_fasttext_model: If fasttext_model is None, this should be non-empty
+            preprocessor:
+        """
+
+        if fasttext_model is None:
+            self._ftModel = fasttext.load_model(filename_fasttext_model)
+        else:
+            self._ftModel = fasttext_model
 
         self.preprocessor = preprocessor
-
-        self._ftModel = fasttext.load_model(filename_fasttext_model)
 
         self.set_vocabulary(vocabulary)
 
@@ -82,12 +94,6 @@ class SimilarWordsRetriever:
         i = self._map_cleaned_orig.get(word_pre_processed, None)
         if i is not None:
             return self.get_voc()[i]
-
-    def get_similar_foo(self, term, term_voc):
-        warnings.warn("Method should be removed", DeprecationWarning)
-        # TODO rename OR remove
-
-        return list(match_vocs([term], term_voc, k=5))[0]
 
     def get_similar_k(self,
                       term,
