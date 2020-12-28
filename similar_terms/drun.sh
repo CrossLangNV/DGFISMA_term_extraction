@@ -1,1 +1,1 @@
-docker run -d --name similartermscontainer -p 80:80 similartermsimage
+docker run -d --name similartermscontainer -p 12080:80 similartermsimage
