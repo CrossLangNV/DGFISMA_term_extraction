@@ -13,6 +13,7 @@ from rest_framework.views import APIView
 import spacy
 
 from .pipeline.inference import concept_extraction
+from .pipeline.rule_based_extraction import rule_based_concept_extraction
 from .pipeline.terms_defined.terms_defined_bio_tagging import TrainedBertBIOTagger
 
 CONFIG = configparser.ConfigParser()
@@ -61,6 +62,7 @@ class TermView(APIView):
             return JsonResponse(f)
 
         concept_extraction( NLP, TRAINED_BERT_BIO_TAGGER, cas, TYPESYSTEM, CONFIG, ( WHITELIST, BLACKLIST ) ) 
+        rule_based_concept_extraction( cas, TYPESYSTEM, CONFIG )
             
         output_json['cas_content']=base64.b64encode(  bytes( cas.to_xmi()  , 'utf-8' ) ).decode()   
         output_json['content_type']=f[ 'content_type']
