@@ -93,8 +93,8 @@ class SimTermsConnector:
         """
 
         r_docs = requests.post(urllib.parse.urljoin(self.url, 'similar_terms/align'),
-                               json={'voc1': voc1,
-                                     'voc2': voc2})  # Swagger
+                               json={'voc1': list(set(voc1)),
+                                     'voc2': list(set(voc2))})  # Swagger
 
         assert r_docs.status_code < 300
 
@@ -113,7 +113,7 @@ class SimTermsConnector:
         """
 
         r_docs = requests.post(urllib.parse.urljoin(self.url, 'similar_terms/self'),
-                               json={'voc': voc})  # Swagger
+                               json={'voc': list(set(voc))})  # Swagger
 
         assert r_docs.status_code < 300
 

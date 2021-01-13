@@ -1,5 +1,10 @@
 For building: Run dbuild.sh from the project folder.
 
+# Packages
+
+Add DGFISMA RDF lib.
+
+    pip install git+https://github.com/CrossLangNV/DGFISMA_RDF@development
 
 
 # App
