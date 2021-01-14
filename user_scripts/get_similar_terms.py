@@ -1,3 +1,4 @@
+import warnings
 from pathlib import Path
 
 import plac
@@ -5,28 +6,28 @@ import plac
 from similar_terms.methods import SimilarWordsRetriever
 
 
-# @plac.pos('path_term', "Path to file with term")
-# @plac.pos('path_terms_voc', "Path to file with vocabulary")
-# @plac.pos('path_out', "Path to write similar terms to")
-
-# @plac.annotations(
-#     path_term=plac.Annotation(type=Path)
-#     # ('model', "Model name", Path)
-# )
+@plac.annotations(
+    path_term=("Path of text-file with single term.",),
+    path_terms_voc=("Path of text-file with terms separated over each line.",),
+    path_out=("Path to export to.",)
+)
 def main(
-        path_term,
-        path_terms_voc,  #: Path,
-        path_out  #: Path
+        path_term: Path,
+        path_terms_voc: Path,
+        path_out: Path
 ):
     """
 
     Args:
-        path_term: asdf
-        path_terms_voc: asdf
-        path_out:as fd
+        path_term: File, containing single term
+        path_terms_voc: File, containing vocabulary with a term on each row.
+        path_out: File to where to export the similar terms.
 
-    Returns: asdf
+    Returns: list with terms from the vocabulary similar to the provided term.
     """
+
+    warnings.warn("Deprecated user-script", DeprecationWarning)
+
     path_term = Path(path_term)
     path_terms_voc = Path(path_terms_voc)
 
@@ -53,7 +54,6 @@ def main(
 
 if __name__ == '__main__':
     # todo remove
-
     arglist = ['--help']
 
     plac.call(main, arglist=arglist)
