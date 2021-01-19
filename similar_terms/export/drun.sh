@@ -1,0 +1,1 @@
+docker run -d --name glossarymapeurovoccontainer -p 12090:80 glossarymapeurovocimage

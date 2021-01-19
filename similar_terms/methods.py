@@ -9,11 +9,10 @@ from typing import List
 import fasttext
 import numpy as np
 
+from media.data import get_filename_fasttext_model
 from similar_terms.preprocessing import preprocessing_word
 
-ROOT = os.path.join(os.path.dirname(__file__), '..')
-
-FILENAME_FASTTEXT_MODEL = os.environ.get('FASTTEXT_PATH', os.path.join(ROOT, 'media/dgf-model.tok.bin'))
+FILENAME_FASTTEXT_MODEL = os.environ.get('FASTTEXT_PATH', get_filename_fasttext_model())
 
 
 class Vocabulary(list):

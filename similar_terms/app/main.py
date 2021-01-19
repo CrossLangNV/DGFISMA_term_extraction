@@ -2,16 +2,17 @@ import os
 from typing import List, Dict
 
 import fasttext
+import uvicorn
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse  # ,FileResponse
 from pydantic import BaseModel
+
+from media.data import get_filename_fasttext_model
+from similar_terms.methods import SimilarWordsRetriever
 
 app = FastAPI()
 
-from similar_terms.methods import SimilarWordsRetriever
-
-ROOT = os.path.join(os.path.dirname(__file__), '../..')
-FILENAME_FASTTEXT_MODEL = os.environ.get('FASTTEXT_PATH', os.path.join(ROOT, 'media/dgf-model.tok.bin'))
+FILENAME_FASTTEXT_MODEL = os.environ.get('FASTTEXT_PATH', get_filename_fasttext_model())
 FASTTEXT_MODEL = fasttext.load_model(FILENAME_FASTTEXT_MODEL)
 
 THRESHOLD = .8
@@ -57,3 +58,7 @@ async def align_voc_self(vocs: SingleVoc) -> Dict[str, str]:
     result = align_vocs(DoubleVoc(voc1=vocs.voc, voc2=vocs.voc))
 
     return await result
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -90,6 +90,6 @@ def eval_k_nearest_speed():
 
 
 if __name__ == '__main__':
-    eval_load_speed()
+    # eval_load_speed()
     eval_retrieval_speed()
     eval_k_nearest_speed()
