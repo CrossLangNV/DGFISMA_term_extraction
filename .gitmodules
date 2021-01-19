@@ -1,4 +1,4 @@
 [submodule "DGFISMA_RDF"]
 	path = DGFISMA_RDF
-	url = https://github.com/CrossLangNV/DGFISMA_RDF/
+	url = https://github.com/CrossLangNV/DGFISMA_RDF
 	branch = development
