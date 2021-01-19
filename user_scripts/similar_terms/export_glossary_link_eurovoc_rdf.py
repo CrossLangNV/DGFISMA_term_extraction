@@ -13,9 +13,7 @@ from rdflib.term import Literal, Identifier
 
 from media.eurovoc import get_eurovoc_concepts
 from similar_terms.glossary import ConceptsVoc
-from user_scripts.similar_terms.evaluation import SimTermsConnector
-
-URL = 'http://192.168.105.41:12080'  # Literal 'localhost' won't work
+from user_scripts.similar_terms.evaluation import SimTerms
 
 DELIMITER = '⬤'
 
@@ -87,7 +85,7 @@ def main(filename_terms: Path,
         d_uri_terms = {uri: term for term, uri in zip(l_terms_concept, l_uri)}
 
         # Find similar terms
-        sim_terms_connector = SimTermsConnector(URL)
+        sim_terms_connector = SimTerms()
 
         print(f'Connecting to API: {(time.time() - start_time):.2f} s')
 

@@ -3,8 +3,9 @@ import time
 
 from user_scripts.similar_terms import export_glossary_link_eurovoc_rdf
 
+ROOT = os.path.join(os.path.dirname(__file__), '../..')
 FILENAME_CONCEPTS = os.path.abspath(r'C:\Users\laure\Downloads\concepts_dgfisma(2).csv')
-FILENAME_RDF = os.path.join(os.path.dirname(__file__), 'example_export_glossary.rdf')
+FILENAME_RDF = os.path.join(ROOT, 'media/tmp/example_export_glossary.rdf')
 
 
 def main():

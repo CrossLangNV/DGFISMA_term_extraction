@@ -1,8 +1,18 @@
+import os
 import urllib.parse
 from typing import List
 
+import fasttext
 import numpy as np
 import requests
+
+from media.data import get_filename_fasttext_model
+from similar_terms.methods import SimilarWordsRetriever
+
+ROOT = os.path.join(os.path.dirname(__file__), '../..')
+FILENAME_FASTTEXT_MODEL = os.environ.get('FASTTEXT_PATH', get_filename_fasttext_model())
+
+THRESHOLD = .8
 
 
 def eval_script(concepts, related_concepts, sim_terms_pred):
@@ -66,6 +76,52 @@ def eval_script(concepts, related_concepts, sim_terms_pred):
     print(f'# TP: {n_tp}')
     print(f'# FP: {n_fp}')
     print(f'# FN: {n_fn}')
+
+
+class SimTerms:
+
+    def __init__(self):
+        self.fasttext_model = fasttext.load_model(FILENAME_FASTTEXT_MODEL)
+
+    def align(self, voc1: List[str], voc2: List[str], threshold=THRESHOLD):
+        """ Aligns 2 vocs based on similarity of words.
+    #
+    #     Args:
+    #         voc1:
+    #         voc2:
+    #
+    #     Returns:
+    #
+    #     """
+
+        voc1 = list(set(voc1))
+        voc2 = list(set(voc2))
+
+        similar_words_retriever = SimilarWordsRetriever(fasttext_model=self.fasttext_model)
+
+        similar_words_retriever.set_vocabulary(voc2)
+
+        d_matches = {}
+        for label in voc1:
+            sim_words = similar_words_retriever.get_similar_thresh(label, thresh=threshold)
+
+            sim_terms = sim_words['original terms']
+            if len(sim_terms):
+                d_matches.setdefault(label, []).extend(sim_terms)
+
+        return d_matches
+
+    def align_self(self, voc: List[str], threshold=THRESHOLD):
+        """ Align vocabulary with itself based on similar words.
+
+        Args:
+            voc:
+
+        Returns:
+
+        """
+
+        return self.align(voc, voc, threshold=threshold)
 
 
 class SimTermsConnector:

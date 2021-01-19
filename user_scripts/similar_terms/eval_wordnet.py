@@ -1,4 +1,5 @@
 import json
+import os
 import time
 from random import sample, seed
 from typing import List
@@ -6,10 +7,11 @@ from typing import List
 import numpy as np
 
 from media.wordnet import wordnet_concepts, wordnet_related_concepts
-
-URL = 'http://192.168.105.41:12080'  # Literal 'localhost' won't work
-
 from user_scripts.similar_terms.evaluation import eval_script, SimTermsConnector
+
+URL = 'http://192.168.105.41:12080'  # Literally 'localhost' won't work
+
+FILENAME_TMP = os.path.join(os.path.dirname(__file__), '../../media/tmp/sim_terms_tmp.json')
 
 
 def eval_speed(l_terms: List[str],
@@ -71,12 +73,11 @@ def main():
         print(f'Similar term retrieval took: {(end_time - start_time):.5f} seconds')
 
     b = False
-    filename_tmp = 'sim_terms_tmp.json'
     if b:
-        with open(filename_tmp, 'w') as outfile:
+        with open(FILENAME_TMP, 'w') as outfile:
             json.dump(sim_terms, outfile, indent=4)
 
-    with open(filename_tmp, 'r') as json_file:
+    with open(FILENAME_TMP, 'r') as json_file:
         sim_terms = json.load(json_file)
 
     # Remove duplicates and self:

@@ -6,6 +6,10 @@ from similar_terms.app import main
 
 client = TestClient(main.app)
 
+TERMS = ['word', 'second', 'the word', 'seconds', 'word', 'another one', 'economic', 'money', 'moneys', 'wordy',
+         'public relationships', 'relationships', 'economical transactions', 'Financial transactions']
+DEFS = ['', 'SeCoNd', 'the_word', '2nd', 'word', '', 'eco', 'gold', 'Plural?', '+y', 'abc', 'abc', 'abc', 'abc']
+
 
 class TestReadMain(unittest.TestCase):
     def test_read_main(self):

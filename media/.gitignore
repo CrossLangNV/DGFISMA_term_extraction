@@ -1,3 +1,4 @@
 # Fasttext models
 *.bin
 *.json
+tmp/

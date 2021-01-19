@@ -1,16 +1,11 @@
-import os
-import sys
-
+# Should be imported and installed as a package/module
+from DGFISMA_RDF.dgfisma_rdf.concepts import build_rdf
 from media.eurovoc import get_eurovoc_concepts
 from media.wordnet import wordnet_concepts
 from similar_terms.glossary import ConceptsVoc
 from user_scripts.similar_terms.evaluation import SimTermsConnector
 
 URL = 'http://192.168.105.41:12080'  # Literal 'localhost' won't work
-
-# Should be imported and installed as a package/module
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../DGFisma_rdf')))
-from concepts import build_rdf
 
 
 def main():
