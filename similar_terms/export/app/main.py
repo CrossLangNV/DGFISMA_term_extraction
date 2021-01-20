@@ -27,9 +27,13 @@ def export_sim_terms_eurovoc(file: UploadFile = File(...)):
     """
 
     tmp_dir = os.path.join(os.path.dirname(__file__), 'tmp')
+    if not os.path.exists(tmp_dir):
+        os.makedirs(tmp_dir)
 
     filename_csv = os.path.join(tmp_dir, 'tmp.csv')
     filename_rdf = os.path.join(tmp_dir, 'export_sim_terms_eurovoc.turtle')
+
+
 
     with open(filename_csv, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
