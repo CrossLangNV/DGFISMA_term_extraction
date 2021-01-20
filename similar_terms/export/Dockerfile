@@ -14,10 +14,10 @@ WORKDIR /
 
 EXPOSE 80
 
-COPY similar_terms /similar_terms
+COPY similar_terms/ /similar_terms
 COPY user_scripts/ /user_scripts
 
-COPY media/eurovoc.py /media/eurovoc.py
+COPY media/*.py /media/
 
 CMD ["uvicorn", "similar_terms.export.app.main:app", "--host", "0.0.0.0", "--port", "80"]
 
