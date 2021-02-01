@@ -53,7 +53,7 @@ class TermView(APIView):
             print(f"could not decode the 'cas_content' field. Make sure it is in base64 encoding.")
             return JsonResponse(f)
             
-        cas = load_cas_from_xmi(decoded_cas_content, typesystem=TYPESYSTEM)
+        cas = load_cas_from_xmi(decoded_cas_content, typesystem=TYPESYSTEM, trusted=True)
 
         try:
             cas.get_view( SOFA_ID )
