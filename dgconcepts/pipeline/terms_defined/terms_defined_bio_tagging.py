@@ -270,7 +270,7 @@ def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ) 
         if not term_regex:
             term_regex=token
         else:
-            term_regex=term_regex+r"([ ]*)"+re.escape( token )
+            term_regex=term_regex+r"([ \n]*)"+re.escape( token )
     
     if tokenized_term:
         for match in re.finditer( term_regex , sentence , re.IGNORECASE):

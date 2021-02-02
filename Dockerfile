@@ -28,7 +28,7 @@ RUN conda install -y python=3.7.3 && \
 conda install pandas=1.0.1 && \
 conda install pytorch==1.7.0 cudatoolkit=10.1 -c pytorch && \
 conda install -c conda-forge spacy==2.3.2 &&\
-conda install -c conda-forge spacy-model-en_core_web_lg
+conda install -c conda-forge spacy-model-en_core_web_lg=2.3.1=pyh9f0ad1d_0
 
 #Install Cython
 RUN apt-get update
