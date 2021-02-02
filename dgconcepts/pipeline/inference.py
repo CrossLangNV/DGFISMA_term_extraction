@@ -110,18 +110,18 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
                 terms_bert[ term  ]=config[ 'TermExtraction' ].getfloat( 'TFIDF_BERT' )
         clean_dictionary( terms_bert  )
         if terms_bert:
-            add_token_and_lemma_annotation( NLP, cas, typesystem, config, terms_bert ) 
+            add_token_and_lemma_annotation( NLP, cas, typesystem, config, terms_bert )
             
 #helper function to clean dictionary of terms
 def clean_dictionary( terms_dict: Dict )-> None:
     
     '''
-    Helper function to remove invalid terms from a dictionary using regex.
+    Helper function to remove terms consisting only of punctuation or special symbols from a dictionary using regex.
     :param terms_dict: Dict. 
     :return: None.
     '''
     
-    extra_chars_to_exclude=[ '∙', ' ', "—", "…", "·", "+", "“", "√" , "≤", "<",'≥', ">" ,"⋅", "■", "£", "½", "÷" ]  
+    extra_chars_to_exclude=[ '∙', ' ', "—", "…", "·", "+", "“", "√" , "≤", "<",'≥', ">" ,"⋅", "■", "£", "½", "÷","«","°", "»", "–", "†", "‡" ]  
     
     #exclude terms matching this pattern ( i.e. terms consisting only of numericals / punctuation )
     punctuation_chars=string.punctuation+"".join( extra_chars_to_exclude)
