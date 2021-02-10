@@ -1,3 +1,4 @@
+import re
 from pandas.core.frame import DataFrame
 
 class SentenceGetter(object):
@@ -19,3 +20,17 @@ class SentenceGetter(object):
             return s
         except:
             return None
+        
+def remove_quotations_around_terms(sentence:str, tag_begin="★", tag_end="☆" ) -> str:
+
+    '''
+    Helper function to remove quotation marks from annotated terms. Otherwise bio-tagger would only memorize these quotation marks.
+    '''
+    
+    sentence=re.sub(  f"({tag_begin} *[\‘\"\`\'\’\•\“\‧\[UNK\]])", f" {tag_begin} ", sentence )
+    sentence=re.sub(  f"([\‘\"\`\'\’\•\“\‧\[UNK\]] *{tag_begin})", f" {tag_begin} ", sentence )
+
+    sentence=re.sub(  f"({tag_end} *[\‘\"\`\'\’\•\“\‧\[UNK\]])", f" {tag_end} ", sentence )
+    sentence=re.sub(  f"([\‘\"\`\'\’\•\“\‧\[UNK\]] *{tag_end})", f" {tag_end} ", sentence )
+
+    return sentence

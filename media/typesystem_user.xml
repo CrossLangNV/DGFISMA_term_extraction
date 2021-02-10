@@ -45,6 +45,23 @@
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
+            </features>
+        </typeDescription>
+        <typeDescription>
+            <name>cassis.Token_user</name>
+            <description/>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+            <features>
+                <featureDescription>
+                    <name>id</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.Integer</rangeTypeName>
+                </featureDescription>
+                <featureDescription>
+                    <name>pos</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
                 <featureDescription>
                     <name>user</name>
                     <description/>
@@ -56,7 +73,7 @@
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
             </features>
-        </typeDescription>
+        </typeDescription>    
         <typeDescription>
             <name>com.crosslang.sdk.types.classification.AllCapsWord</name>
             <description/>
@@ -1340,6 +1357,23 @@
                     <name>term</name>
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>         
+            </features>
+        </typeDescription>
+        <typeDescription>
+            <name>de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf_user</name>
+            <description/>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+            <features>
+                <featureDescription>
+                    <name>tfidfValue</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.Double</rangeTypeName>
+                </featureDescription>
+                <featureDescription>
+                    <name>term</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
                 <featureDescription>
                     <name>user</name>
@@ -1352,7 +1386,7 @@
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>                
             </features>
-        </typeDescription>      
+        </typeDescription>     
         <typeDescription>
             <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.Morpheme</name>
             <description/>
@@ -1725,6 +1759,18 @@
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
+            </features>
+        </typeDescription>
+        <typeDescription>
+            <name>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma_user</name>
+            <description/>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+            <features>
+                <featureDescription>
+                    <name>value</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
                 <featureDescription>
                     <name>user</name>
                     <description/>
@@ -1753,6 +1799,11 @@
             <name>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Paragraph</name>
             <description/>
             <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Div</supertypeName>
+        </typeDescription>
+        <typeDescription>
+            <name>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Paragraph_user</name>
+            <description/>
+            <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Div</supertypeName>
             <features>
                 <featureDescription>
                     <name>user</name>
@@ -1768,6 +1819,18 @@
         </typeDescription>
         <typeDescription>
             <name>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence</name>
+            <description/>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+            <features>
+                <featureDescription>
+                    <name>id</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+            </features>
+        </typeDescription>
+        <typeDescription>
+            <name>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence_user</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
             <features>
@@ -2109,16 +2172,6 @@
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
                 </featureDescription>
-                <featureDescription>
-                    <name>user</name>
-                    <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
-                <featureDescription>
-                    <name>datetime</name>
-                    <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription> 
             </features>
         </typeDescription>
         <typeDescription>
