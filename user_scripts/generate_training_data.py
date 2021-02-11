@@ -6,16 +6,7 @@ from transformers import BertTokenizer
 from pathlib import Path
 import plac
 
-def remove_quotations_around_terms(sentence:str, tag_begin="★", tag_end="☆" ) -> str:
-
-    '''
-    Helper function to remove quotation marks from annotated terms. Otherwise bio-tagger would only memorize these quotation marks.
-    '''
-    
-    sentence=re.sub( f"{tag_begin} \‘|{tag_begin} \"|{tag_begin} \`|{tag_begin} \'|{tag_begin} \’|{tag_begin} \•|{tag_begin} \“|{tag_begin} \‧|{tag_begin} \[UNK\]" , f'{tag_begin}' ,  sentence  )
-    sentence=re.sub( f"\‘ {tag_end}|\" {tag_end}|\` {tag_end}|\' {tag_end}|\’ {tag_end}|\• {tag_end}|\“ {tag_end}|\‧ {tag_end}|\[UNK\] {tag_end}" , f'{tag_end}' ,  sentence  )
-    
-    return sentence
+from .utils import remove_quotations_around_terms
 
 def get_bio_tags(  tokenized_sentence, tag_begin="★", tag_end="☆" ):
 
