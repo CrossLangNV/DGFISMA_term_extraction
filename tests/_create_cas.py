@@ -7,7 +7,7 @@ import configparser
 
 MEDIA_ROOT='media'
                         
-with open( os.path.join( MEDIA_ROOT, 'typesystem.xml' )  , 'rb') as f:
+with open( os.path.join( MEDIA_ROOT, 'typesystem_user.xml' )  , 'rb') as f:
     TYPESYSTEM = load_typesystem(f)
 
 config = configparser.ConfigParser()
