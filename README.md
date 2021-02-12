@@ -59,6 +59,11 @@ DEPENDENCY_TYPE=de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Depende
 DEFINITION_TYPE=de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence
 DEFINED_TYPE=cassis.Token
 PARAGRAPH_TYPE=de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Paragraph
+
+[Annotation_user]
+DEFINITION_TYPE_USER=de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence_user
+DEFINED_TYPE_USER=cassis.Token_user
+TOKEN_TYPE_USER=de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf_user
 ```
 
 This allows configuration of the term extraction pipeline.
@@ -201,7 +206,9 @@ Setting USE_BERT to True, means that, if no `config[ 'Annotation' ].get( 'DEFINE
 
 Setting FALLBACK_TO_REGEX, FALL_BACK_TO_WHITELIST or FALL_BACK_TO_TF_IDF to True means that all terms in between quotes, whitelisted terms, or `config[ 'Annotation' ].get( 'TOKEN_TYPE' )` annotations are annotated as defined terms (i.e. as `config[ 'Annotation' ].get( 'DEFINED_TYPE' )` ). This is not recommended. 
 
+#### User annotations
 
+The annotations `config[ 'Annotation_user' ].get( 'TOKEN_TYPE_USER' )`, `config[ 'Annotation' ].get( 'DEFINED_TYPE_USER' )` and `config[ 'Annotation' ].get( 'DEFINITION_TYPE_USER' )` are annotations added by the users of the Glossary app. The provided user scripts can be used to generate whitelisted terms, training data for the BertBIOTagger for detection of defined terms and the [DistilBertSequenceClassifier](https://github.com/CrossLangNV/DGFISMA_definition_extraction) for detection of definitions.
 
 ## Testing:
 

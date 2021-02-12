@@ -18,12 +18,12 @@ import plac
 def extract_user_annotations_from_cas( cas: Cas, config: ConfigParser, users:Set[str]={} ) -> Tuple[List[str],List[str]]:
 
     '''
-    Function to extract annotations added by the user in the CAS. Extracts both definitions + defined token.
+    Function to extract annotations added by the user in the CAS. Extracts terms, definitions + defined token.
     
     :param cas: Cas. 
     :param config: ConfigParser.
     :param user: Set. List of users of which annotations should be extracted.
-    :return: Tuple[List[str],List[str]]. A list of definitions, and a list of annotated definitions (i.e. the tokens that are defined by the definition).
+    :return: Tuple[List[str],List[str]]. A list of terms, definitions, and a list of annotated definitions (i.e. the tokens that are defined by the definition).
     '''
     
     def sanity_check( defined ):
@@ -37,13 +37,19 @@ def extract_user_annotations_from_cas( cas: Cas, config: ConfigParser, users:Set
     
     SofaID=config[ 'Annotation' ].get( 'SOFA_ID' )
     value_between_tagtype=config[ 'Annotation' ].get( 'VALUE_BETWEEN_TAG_TYPE' )
+    token_type_user=config['Annotation_user']['TOKEN_TYPE_USER']
     defined_type_user=config['Annotation_user']['DEFINED_TYPE_USER']
 
+    terms=[]
     annotated_sentences=[]
     definitions=[]
     users=set( users )
     tagnames=set('p')
-
+    
+    for token in cas.get_view(SofaID ).select( token_type_user ):
+        if (token.user in users or not users):
+            terms.append( token.term )
+            
     for tag in cas.get_view( SofaID  ).select( value_between_tagtype ):
         if tag.tagName not in tagnames:
             continue
@@ -62,7 +68,7 @@ def extract_user_annotations_from_cas( cas: Cas, config: ConfigParser, users:Set
 
     annotated_sentences=[ remove_quotations_around_terms( sentence ) for sentence in  annotated_sentences ]
 
-    return definitions, annotated_sentences
+    return terms, definitions, annotated_sentences
 
 
 def annotations_to_tags( sentence:str, defined:List[ Tuple[ int , int ] ] , tag_begin="★", tag_end="☆"  )-> str:
@@ -90,6 +96,7 @@ def annotations_to_tags( sentence:str, defined:List[ Tuple[ int , int ] ] , tag_
     path_annotated_cas_files=( "Path to folder with CAS objects containing user annotations. (I.e. folder containing .xmi files).", ),
     path_typesystem=( "Path to Typesystem that can be used for loading the cas.", ),
     path_config=( "Path to Configuration file.", ),
+    path_output_file_terms=( "Path to the output file with terms (.txt).", ),
     path_output_file_definitions=( "Path to the output file with definitions (.txt).", ),
     path_output_file_defined_tokens=( "Path to the output file with annotated tokens (terms that are defined) (.txt),serves as input for user script 'generate_training_data' (.txt)", ),
     users=( "Users from which annotations are considered." , "option" ),
@@ -99,6 +106,7 @@ def annotations_to_tags( sentence:str, defined:List[ Tuple[ int , int ] ] , tag_
 def main( path_annotated_cas_files:Path,\
           path_typesystem: Path, \
           path_config: Path , \
+          path_output_file_terms:Path,\
           path_output_file_definitions:Path,\
           path_output_file_defined_tokens:Path,\
           users:Set[str]={},\
@@ -108,6 +116,10 @@ def main( path_annotated_cas_files:Path,\
     Extract training data from CAS
     '''
     
+    os.makedirs( os.path.dirname( path_output_file_terms ) , exist_ok=True)
+    os.makedirs( os.path.dirname( path_output_file_definitions ) , exist_ok=True)
+    os.makedirs( os.path.dirname( path_output_file_defined_tokens ) , exist_ok=True)
+    
     with open( path_typesystem , 'rb') as f:
         TYPESYSTEM = load_typesystem(f)
         
@@ -115,13 +127,16 @@ def main( path_annotated_cas_files:Path,\
     CONFIG.read( path_config )
     
     xmi_files=glob.glob( os.path.join( path_annotated_cas_files , "*.xmi"  ) )
-    with open( path_output_file_definitions , "w"  ) as f:
-        with open( path_output_file_defined_tokens, 'w'  ) as g:
-            for xmi_file in xmi_files:
-                f=open( xmi_file , "rb" )
-                cas=load_cas_from_xmi( f, typesystem=TYPESYSTEM, trusted=True )
-                definitions, annotated_sentences =extract_user_annotations_from_cas( cas, CONFIG, users )
-                for definition in definitions:
-                    f.write( f"{definition}\n"  )
-                for annotated_sentence in annotated_sentences:
-                    g.write( f"{annotated_sentence}\n" )
+    with open( path_output_file_terms, "w" ) as w:
+        with open( path_output_file_definitions , "w"  ) as f:
+            with open( path_output_file_defined_tokens, 'w'  ) as g:
+                for xmi_file in xmi_files:
+                    cas_file=open( xmi_file , "rb" )
+                    cas=load_cas_from_xmi( cas_file, typesystem=TYPESYSTEM, trusted=True )
+                    terms, definitions, annotated_sentences =extract_user_annotations_from_cas( cas, CONFIG, users )
+                    for term in terms:
+                        w.write( f"{term}\n" )
+                    for definition in definitions:
+                        f.write( f"{definition}\n"  )
+                    for annotated_sentence in annotated_sentences:
+                        g.write( f"{annotated_sentence}\n" )
