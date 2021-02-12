@@ -114,6 +114,8 @@ The script will generate three files: <em>whitelist_terms.txt</em>, <em>training
 
 <em>training_set_def.processed.txt</em> serves as input to the `generate_training_data.py` user script.
 
+Using the <em>users</em> option one can specify which user annotations should be extracted. Note that overlapping `config[ 'Annotation' ].get( 'DEFINED_TYPE_USER' )` annotations will be ignored for generation of the <em>training_set_def.processed.txt</em>.
+
 <h2> Training </h2>
 
 We provide code to train the classification layers of a BertForTokenClassification model:
