@@ -116,9 +116,17 @@ def main( path_annotated_cas_files:Path,\
     Extract training data from CAS
     '''
     
-    os.makedirs( os.path.dirname( path_output_file_terms ) , exist_ok=True)
-    os.makedirs( os.path.dirname( path_output_file_definitions ) , exist_ok=True)
-    os.makedirs( os.path.dirname( path_output_file_defined_tokens ) , exist_ok=True)
+    dirname=os.path.dirname( path_output_file_terms )
+    if dirname:
+        os.makedirs( dirname , exist_ok=True)
+    
+    dirname=os.path.dirname( path_output_file_definitions )
+    if dirname:
+        os.makedirs( dirname , exist_ok=True)
+        
+    dirname=os.path.dirname( path_output_file_defined_tokens )
+    if dirname:
+        os.makedirs( dirname , exist_ok=True)
     
     with open( path_typesystem , 'rb') as f:
         TYPESYSTEM = load_typesystem(f)
