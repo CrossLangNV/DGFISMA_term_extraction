@@ -61,7 +61,9 @@ def main( path_annotated_data:Path,\
     Prepare training data bio tagger.
     '''
     
-    os.makedirs( os.path.dirname( path_output_file ) , exist_ok=True)
+    dirname= os.path.dirname( path_output_file )
+    if dirname:
+        os.makedirs( dirname , exist_ok=True)
     
     definitions=open( path_annotated_data ).read().rstrip("\n").split( "\n" )
 
