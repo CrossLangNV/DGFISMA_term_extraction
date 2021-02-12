@@ -29,21 +29,28 @@ def test_extract_user_annotations_from_cas():
         
     #add user annotations
     Defined_type = TYPESYSTEM.get_type( CONFIG['Annotation_user']['DEFINED_TYPE_USER'] )
+    
     cas.get_view( CONFIG[ 'Annotation' ].get( 'SOFA_ID' ) ).add_annotation( Defined_type( begin=4271 , end=4300, user="user1", datetime="Sat_Dec_5_11:01:21_2020" ) )
 
-    Defined_type = TYPESYSTEM.get_type( CONFIG['Annotation_user']['DEFINED_TYPE_USER'] )
     cas.get_view( CONFIG[ 'Annotation' ].get( 'SOFA_ID' ) ).add_annotation( Defined_type( begin=4306 , end=4334, user="user2", datetime="Sat_Dec_5_11:01:21_2020" ) )
 
-    Defined_type = TYPESYSTEM.get_type( CONFIG['Annotation_user']['DEFINED_TYPE_USER'] )
     cas.get_view( CONFIG[ 'Annotation' ].get( 'SOFA_ID' ) ).add_annotation( Defined_type( begin=4306 , end=4334, user="user3", datetime="Sat_Dec_5_11:01:21_2020" ) )
     
-    definitions, annotated_sentences = extract_user_annotations_from_cas( cas, CONFIG, users=['user1','user2'] )
+    
+    Token_type=TYPESYSTEM.get_type( CONFIG['Annotation_user']['TOKEN_TYPE_USER'] )
+    cas.get_view( CONFIG[ 'Annotation' ].get( 'SOFA_ID' ) ).add_annotation( Token_type( term="significant supervised entity", begin=4271 , end=4300, user="user1", datetime="Sat_Dec_5_11:01:21_2020" ) )
+    
+    cas.get_view( CONFIG[ 'Annotation' ].get( 'SOFA_ID' ) ).add_annotation( Token_type( term="significant supervised group", begin=4306 , end=4334, user="user1", datetime="Sat_Dec_5_11:01:21_2020" ) )
+
+    terms, definitions, annotated_sentences = extract_user_annotations_from_cas( cas, CONFIG, users=['user1','user2'] )
     
     true_definitions=[ '‘significant supervised entity’ or ‘significant supervised group’ means an entity or group as referred to in Article 4(1)(a);']
     true_annotated_sentences=[' ★  significant supervised entity  ☆  or  ★  significant supervised group  ☆  means an entity or group as referred to in Article 4(1)(a);']
+    true_terms=[ "significant supervised entity", "significant supervised group"  ]
     
     assert definitions == true_definitions
     assert annotated_sentences == true_annotated_sentences
+    assert true_terms==terms
     
     
 def test_annotations_to_tags():
