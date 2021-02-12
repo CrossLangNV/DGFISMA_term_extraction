@@ -208,7 +208,7 @@ Setting FALLBACK_TO_REGEX, FALL_BACK_TO_WHITELIST or FALL_BACK_TO_TF_IDF to True
 
 #### User annotations
 
-The annotations `config[ 'Annotation_user' ].get( 'TOKEN_TYPE_USER' )`, `config[ 'Annotation' ].get( 'DEFINED_TYPE_USER' )` and `config[ 'Annotation' ].get( 'DEFINITION_TYPE_USER' )` are annotations added by the users of the Glossary app. The provided user script `user_scripts/generate_training_data_from_cas` can be used to generate whitelisted terms, training data for the BertBIOTagger for detection of defined terms and the [DistilBertSequenceClassifier](https://github.com/CrossLangNV/DGFISMA_definition_extraction) for detection of definitions.
+The annotations `config[ 'Annotation_user' ].get( 'TOKEN_TYPE_USER' )`, `config[ 'Annotation' ].get( 'DEFINED_TYPE_USER' )` and `config[ 'Annotation' ].get( 'DEFINITION_TYPE_USER' )` are annotations added by the users of the Glossary app. The provided user script `user_scripts/generate_training_data_from_cas.py` can be used to generate whitelisted terms, training data for the BertBIOTagger for detection of defined terms and the [DistilBertSequenceClassifier](https://github.com/CrossLangNV/DGFISMA_definition_extraction) for detection of definitions.
 
 ## Testing:
 

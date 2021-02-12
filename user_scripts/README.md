@@ -84,6 +84,34 @@ Sentence 1 |  asset | -- | B |
 
 Note the lowercasing and how quotation is stripped from the annotated term. 
 
+<h2> Preparation of training data using annotations in UIMA CAS object </h2>
+
+We provide a user script to convert annotations in a CAS object, provided by the users of the Glossary app to the format that can be used by the `generate_training_data` user script.
+
+The annotations added by the users of the Glossary app are: `config[ 'Annotation_user' ].get( 'TOKEN_TYPE_USER' )`, `config[ 'Annotation' ].get( 'DEFINED_TYPE_USER' )` and `config[ 'Annotation' ].get( 'DEFINITION_TYPE_USER' )`. 
+
+Using the user script `generate_training_data_CAS`, and given a directory containing CAS objects (<em>.xmi</em> format), we can run the following code from the Python Interpreter:
+
+```
+from user_scripts import generate_training_data_from_cas
+generate_training_data_from_cas.main( "{Path}/dir_cas" ,\
+                                      "{Path}/typesystem_user.xml" ,\
+                                      "{Path}/TermExtraction.config",\
+                                      "{Path}/whitelist_terms.txt",\
+                                      "{Path}/training_set_def.txt",\
+                                      "{Path}/training_set_def_test.processed.txt",
+                                    users=[ 'user1', 'user2'  ]
+                                    )
+```
+
+with, relative to directory path {Path}, <em>dir_cas</em> the directory containing the CAS objects, <em>typesystem_user.xml</em> the used typesystem, <em>TermExtraction.config</em> the configuration file. 
+
+The script will generate three files: <em>whitelist_terms.txt</em>, <em>training_set_def.txt</em> and <em>training_set_def.processed.txt</em>. 
+
+- <em>whitelist_terms.txt</em>: a list of whitelisted terms annotated by the users of the Glossary app with `config[ 'Annotation_user' ].get( 'TOKEN_TYPE_USER' )`). 
+-<em>training_set_def.txt</em>: a list of definitions that can be used to train [DistilBertSequenceClassifier](https://github.com/CrossLangNV/DGFISMA_definition_extraction) for detection of definitions. The list of extracted definitions is obtained via `config[ 'Annotation_user' ].get( 'VALUE_BETWEEN_TAG_TYPE' )`) with tagname=<em>'p'</em> containing a `config[ 'Annotation' ].get( 'DEFINED_TYPE_USER' )` annotation.
+- <em>training_set_def.processed.txt</em>: a list of annotated definitions obtained using the `config[ 'Annotation' ].get( 'DEFINED_TYPE_USER' )` annotation.
+
 <h2> Training </h2>
 
 We provide code to train the classification layers of a BertForTokenClassification model:
@@ -137,4 +165,3 @@ When trained on 296 annotated sentences (see release link), containing 10277 tok
 Model | precision | recall | f1-score | support |
 --- | --- | --- |--- |--- |
 BertForTokenClassification |  0.86 | 0.76 | 0.81 | 33 | 
-
