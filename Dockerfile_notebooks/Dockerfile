@@ -30,7 +30,7 @@ RUN conda install -y python=3.7.3 && \
 conda install pandas=1.0.1 && \
 conda install pytorch==1.7.0 cudatoolkit=10.1 -c pytorch && \
 conda install -c conda-forge spacy==2.3.2 &&\
-conda install -c conda-forge spacy-model-en_core_web_lg
+conda install -c conda-forge spacy-model-en_core_web_lg=2.3.1=pyh9f0ad1d_0
 
 #Install Cython
 RUN apt-get update
@@ -60,7 +60,7 @@ keras==2.4.3 \
 bs4==0.0.1 \
 beautifulsoup4==4.5.3 \
 fasttext==0.9.2 \
-dkpro-cassis==0.5.0 \
+dkpro-cassis==0.5.1 \
 pytest==6.0.1 \
 plac==1.2.0 \
 seqeval==1.2.2 \

@@ -260,8 +260,8 @@ def add_defined_term_bio_tagging( cas, typesystem, config, sentence_feature ):
     :param sentence_feature: DEFINITION_TYPE feature.
     :return List.
     '''
-    
-    
+
+
     Defined_type = typesystem.get_type( config[ 'Annotation' ].get( 'DEFINED_TYPE' ) )
     SofaID = config[ 'Annotation' ].get( 'SOFA_ID' )
     
