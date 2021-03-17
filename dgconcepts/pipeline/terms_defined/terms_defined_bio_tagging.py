@@ -254,14 +254,14 @@ def find_indices_tokenized_term_in_text( tokenized_term: str, sentence: str   ) 
         
     extra_punctuation_tokens='‘\"`\'’•”‧'
 
-    if '[UNK]' in tokenized_term: #if the term contains an [UNK] ==> probably not a legit term
-        return
-    
     #strip leading and trailing punctuation from this term, to makes sure that we don't annotate terms consisting solely of punctuations as terms
     #+for safety and better precision, although Bert tokenization should have tokenized these punctuations: i.e. 'some' ==> ' some ' 
+    #also strip leading and trailing [UNK]'s (because ‧ for example is not in BERT vocabulary, so it is converted to [UNK] ==> we have to strip it to find the term)
+    tokenized_term=tokenized_term.strip( string.punctuation+extra_punctuation_tokens+" "+"[UNK]" )
 
-    tokenized_term=tokenized_term.strip( string.punctuation+extra_punctuation_tokens+" " )
-    
+    if '[UNK]' in tokenized_term: #if the term contains an [UNK] ==> probably not a legit term
+        return
+        
     sentence=sentence.replace( "\xa0", " " )
         
     #make regex
