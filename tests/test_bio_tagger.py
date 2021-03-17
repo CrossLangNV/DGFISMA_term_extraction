@@ -122,21 +122,24 @@ def test_find_indices_tokenized_term_in_tokenized_text():
     'test sentence swaption - shops some more swaption - shops test swaption - shopsswaption - shops swaption - shops',
     'test sentence swaption - shops some more swaption - shops test swaption - shopsswaption - shops swaption - shops',    
     '',
-    'test sentence [UNK] some term [UNK] swaption - shops some more swaption - shops test swaption - shopsswaption - shops swaption - shops'
+    'test sentence [UNK] some term [UNK] swaption - shops some more swaption - shops test swaption - shopsswaption - shops swaption - shops',
+    'test [UNK] sentence [UNK] some term [UNK] swaption - shops some more swaption - shops test swaption - shopsswaption - shops swaption - shops' 
     ]
     
     tokenized_terms=[
     'swaption - shops',
     '" swaption - shops  )',
     '',
-    'sentence [UNK]'
+    'sentence [UNK]',
+    '[UNK] sentence [UNK]'
     ]
     
     true_indices=[
     [ ( 'swaption - shops' , 14, 30), ( 'swaption - shops', 41, 57 ), ( 'swaption - shops', 96, 112 ) ],
     [ ( 'swaption - shops' , 14, 30), ( 'swaption - shops', 41, 57 ), ( 'swaption - shops', 96, 112 ) ],
     [],
-    []
+    [('sentence', 5, 13)],
+    [('sentence', 11, 19)],
     ]
     
     for sentence, tokenized_term, true_index in zip( sentences, tokenized_terms, true_indices):
@@ -161,7 +164,10 @@ def test_find_defined_term_bio_tag():
     "test sentence'-. Some-()term. some-() term. Some -(termm ",
     "test sentence'-. Some-()term. some-() term. Some -(termm ",
     "Some-()term. some-() term. Some -(termm",
-    ""
+    "",
+    "‧own funds‧ shall mean ‧own funds‧",
+    "‧own funds‧ shall mean ‧own funds‧",
+    "‧own funds‧ shall mean ‧own funds‧",
     ]
     
     tokenized_sentences=[
@@ -172,7 +178,10 @@ def test_find_defined_term_bio_tag():
     "test sentence ' - . some - ( ) term . some - ( ) term . some - ( termm",
     "test sentence ' - . some - ( ) term . some - ( ) term . some - ( termm",
     "some - ( ) term . some - ( ) term . some - ( termm",
-    ""
+    "",
+    "[UNK] own funds [UNK] shall mean [UNK] own funds [UNK]",
+    "[UNK] own funds [UNK] shall mean [UNK] own funds [UNK]",
+    "[UNK] own funds [UNK] shall mean [UNK] own funds [UNK]",
     ]
     
     tokenized_bio_tags=[
@@ -183,7 +192,10 @@ def test_find_defined_term_bio_tag():
     'O O O O O I I B I O O B I I I I O O O O O', ##B and I following each other ==> considered same term.
     'O O O O O O I B I O O B I I I I O O O O O' ,
     'B I I I I O O O O O O O O O O O',
-    ''
+    '',
+    'B I I O O O O O O O',
+    'O O O O O O I I I I',
+    'B I I O O O I I I I',
     ]
     
     true_indices=[ #term + indices of the bi tagged, in the original (non-tokenized) sentence
@@ -194,7 +206,10 @@ def test_find_defined_term_bio_tag():
         [ ( 'Some' , 17, 21), ( 'some-() term', 30, 42 ) ],
         [ ( 'some-() term' , 30, 42)],
         [ ( 'Some-()term' , 0, 11)],
-        []
+        [],
+        [ ( 'own funds' , 1, 10)],
+        [ ( 'own funds' , 24, 33)],
+        [ ( 'own funds' , 1, 10), ( 'own funds' , 24, 33)  ]
     ]
     
     for sentence, tokenized_sentence, tokenized_bio_tag, true_index in zip( sentences, tokenized_sentences, tokenized_bio_tags, true_indices ):
