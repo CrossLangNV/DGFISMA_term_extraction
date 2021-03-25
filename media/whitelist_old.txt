@@ -1,5 +1,6 @@
 public undertakings operating in the manufacturing sector
 indicator value
+radiation hardened
 carrying amount
 warning contact person
 workers compensation insurance obligation
@@ -7,14 +8,18 @@ formal agreement
 cross-border merger
 nfe
 market value
+infrastructure manager
 participating interest
+single dedicated national programme
 investor
 investment firm
 college of supervisors
 derecognition
 exceeding borrowing costs
 deposit guarantee scheme
+interconnected system
 entry into operation
+congestion income
 control area
 member
 ratings based method
@@ -27,8 +32,10 @@ money market statistics
 winding-up proceedings
 passive corruption
 concentration risk
+disposal
 double deduction
 gross loss
+efficient heating and cooling
 accessible format
 guarantee agreement
 cross-border collateral
@@ -39,11 +46,13 @@ risk-mitigation techniques
 retirement benefits
 revenues
 force majeure
+through ticket
 expert judgement
 contingent form of retention
 supervised entity
 ecb supervisory decision
 significant supervised entity in a euro area member state
+network functions
 target level
 trading day
 pension scheme arrangement
@@ -54,18 +63,22 @@ remuneration
 local portion
 national
 fit and proper requirements
+daytime operations
 wholesale customer
 capture
 eu aif
 knowledgeable
 credit rating activities
+freezing of funds
 capital joint decision
 passive order
+maraging steel capable of
 settlement agent
 delegated decision
 electronic money issuer
 non-financial counterparty
 treasury asset management
+dmax
 credit rating agency
 statement of reasons
 investment advice
@@ -75,38 +88,49 @@ approved reporting mechanism
 ofi
 organised trading facility
 contribution of input data
+safety argument
+day-ahead market time-frame
 replacing instrument
 technology
 government deposits
 public service obligation
 common equity tier 1 instruments
 accounting officer
+surrender
 financial collateral arrangement
+domain name system 
 total assets
 evaluation
 euromed country
+darwin
 new and existing investment
 substantial error
 payment service
 transitional period
 managing aifs
 undertaking of a third country
+marshalling yard
 offering programme
 financial regulation
 retail investor
 interest payment
 undertaking
 trained staff members
+accident
 third country issuer
 tri-party repo
 eligible liabilities
 aggregated data
+energy sources
 general business risk
 framework contract
 tax relief
 eu parent investment firm
 nominated holding account
+digital service infrastructures
+psychoactive substances
 leverage effect
+direct instruction
 medical expense reinsurance obligation
 accepted market practice
 eligible customer
@@ -116,10 +140,14 @@ contracting parties
 forecast
 member state of the branch
 supervisory legal instrument
+maintenance of the railway infrastructure
 offer of securities to the public
 exit policy
 own funds reduction
+accident year
+price coupling algorithm
 orderly wind-down plan
+coldbox
 acquisition of a holding
 captive reinsurance undertaking
 financial year
@@ -137,6 +165,7 @@ reporting person
 financial instrument
 investment companies other than those of the closed-end type
 trade repository
+intraday cross-zonal gate closure time
 order to trade
 financial customer
 competent official
@@ -146,6 +175,7 @@ payer
 pan-european services
 agreement
 indirect clearing arrangement
+balancing energy
 taking up business
 paying agent
 insurance-based investment product
@@ -156,16 +186,21 @@ competent authorities of the eu aif
 rebalancing of the portfolio
 mergers
 authorising officer responsible
+option 2
 transfer of a business carried on by a permanent establishment
+fungible materials
 management body
 global credit arrangement
 overall efficiency
 r-transaction
 person selling a priip
 group of credit rating agencies
+software
+link
 operational risk profile
 swap
 benchmark net lending
+registered exporter
 tax period
 convenience yield
 passive nfe
@@ -181,9 +216,11 @@ indirect clearing arrangements
 equity
 recognised exchanges
 effective expected exposure ( effective ee ) at a specific date
+energy service
 authorisation scheme
 national administrative platform
 rights revenue
+network and information system
 independent expert
 significant credit institution
 write-down
@@ -197,9 +234,11 @@ financial holding company
 secured lending transaction
 active licence
 last level
+like product
 risk concentration
 money market instruments
 clearing system
+taliban sanctions committee
 position
 national payment
 basic risk-free interest rate term structure
@@ -209,17 +248,21 @@ aml/kyc procedures
 post office giro institution 
 ms contribution paid
 operational risk
+substantial refurbishment
 terrorist financing
 joint commission
 aifms
 major investment
+warrant
 risk factors
 union official
 administrative expenditures of the board
 adequate public disclosure
 date of accounting
+energy efficiency
 information
 data collection threshold
+working day
 domestic reinsurance undertaking
 portfolio swap
 financial guarantee
@@ -227,8 +270,10 @@ technical assistance
 person professionally arranging or executing transactions
 authority
 securities lending
+associated predicate offences
 discretionary pension benefits
 loan acquisition
+retail energy sales company
 system
 non-regulated undertaking
 associated enterprise
@@ -237,6 +282,7 @@ financial service
 public
 rating category
 likely to become publicly available information
+national criminal investigation authority
 resolution action
 durable medium
 equity interest
@@ -255,6 +301,7 @@ matching assets
 clearing member
 payment commitments
 sfc2014
+intraday cross-zonal gate opening time
 multiple-vote securities
 commodity
 mfi code
@@ -278,6 +325,8 @@ programming document
 user-accessible programmability
 own funds decision
 mmf registered shares/units
+natural gas undertaking
+medical interventions
 lead rating analyst
 percentage of days traded over the period considered
 forecast inflation index
@@ -288,15 +337,19 @@ qualified investors
 compensation reinsurance obligation
 group auditor
 joint account
+regional natural disaster
 fvc code
 limit order
 insurance undertaking
 bank deposits
 continuity options
+emission allowance
 dedicated window's accounts
 qualifying venture capital fund
 csd link
+energy efficiency improvement
 other equity
+distribution system operator
 hallmark
 market risk
 significant branch
@@ -315,11 +368,13 @@ licence
 contingency solution
 small undertakings
 octs concerned
+nuclear installation
 assessment team
 approved publication arrangement
 use of a benchmark
 other relevant authorities and bodies
 member state in which the risk is situated
+physical congestion
 fee period
 custody risk
 centralised bank account registries
@@ -327,6 +382,8 @@ misconduct event
 provider
 liquidity risk
 foreign investor
+security of network and information systems
+coordinated capacity calculator
 corrective measure
 shares
 close-out date
@@ -335,52 +392,68 @@ beneficial owner
 contribution debtor
 director
 reprocessing
+production
 member state of establishment
 system user
 eif contribution
 type of banknote handling machine
 eligible net lending
+sesar deployment
 public undertaking
 annual accounts
 payments on account
+system operator
 investment
 additional tier 1 instruments
 finite reinsurance
+micro-cogeneration unit
 check
 stake-building
 legal representative
+individual grid model
 new entity account
 firmness
 significant supervised group
 depositary
+petroleum products
 full cost
 holding company
 hybrid contracts
+new rail passenger service
 reference interest rate
 effective expected positive exposure 
+national donor/recipient identification number
 acquiring a holding
 change in branch particulars notification
+eafrd
 long-term planning
 reliable
 asset-backed commercial paper ( abcp ) programme
 less significant branch
+territory of the community
 significant benchmark
 person discharging managerial responsibilities
 shell bank
 traditional securitisation
+transmission facilities
 unrated position
+radioactive waste management
+aviation undertaking
 representation agreement
 appropriate regulation
 asset backed securities
+efficient individual heating and cooling
 pool exposure of type b
 individual recovery plan
 professional scepticism
 narrow participation retirement fund
 notifying authority
 credit institution
+sesar joint undertaking
 valid application
 ucits
 services passport notification
+operation of the railway infrastructure
 eurosystem sips
 specified insurance company
 delegated body
@@ -398,6 +471,7 @@ gas derivative
 advised limit
 contract notice
 fair value of the investments for which there are published price quotations
+operational security limits
 cross-border conversion
 decreases due to amounts taken against allowances
 action
@@ -409,11 +483,13 @@ quasi-equity
 relevant ncb
 settlement
 international open communication procedures and standards
+reliability margin
 mmf bearer shares/units
 mezzanine securitisation position
 member state of the provision of services
 after proper marketing
 statutory auditor
+customer mobility package
 merger by acquisition
 direct electronic access
 credit-enhancing interest-only strip
@@ -431,6 +507,7 @@ non-member country reinsurance undertaking
 government bonds
 notification date
 bodies governed by public law
+efficient district heating and cooling
 write off
 matched orders
 requirement
@@ -454,12 +531,14 @@ designated authority
 collateral
 reporting currency
 national authority
+taliban
 general assembly of members
 recipient company
 disclosing market participant
 baseline indicator
 function
 allotment
+energy audit
 expected positive exposure 
 issuer
 class of derivatives
@@ -480,6 +559,7 @@ interested parties
 remedial action
 confidential information
 credit enhancement
+load cells
 income protection reinsurance obligation
 international credits
 central bank 
@@ -488,6 +568,9 @@ margin loans
 index
 public contract
 constituent act
+energy management system
+high speed passenger services
+interface software
 retail deposits
 matching
 sectoral agreement
@@ -495,6 +578,7 @@ merger
 economic equilibrium test
 restructuring plan
 operational risk category
+day-ahead market gate closure time
 manager of a qualifying venture capital fund
 business day
 payment system
@@ -503,29 +587,37 @@ merger by the formation of a new company
 pay-out ratio at consolidated level
 critical incident stress
 association-related business
+facial image
 statutory audit
 person with whom a relevant person has a family relationship
 direct and particular risk
 serious crimes
+aib
 earmarkable assets
 technical issuer csd
+cloud computing services
 requesting member state
 mixed financial holding company
 financial undertaking
 bank account information
 financial institutions
+tourism
 competent authority of the host member state
 clearing price
 credit rating
 receiving payment service provider
 board
+coordinated net transmission capacity approach
+fingerprint data
 input data
 exempt collective investment vehicle
 central counterparty
+producer member
 item-by-item data
 sovereign issuer
 administrative enquiry
 credit valuation adjustment
+dual-use goods and technology
 prior information notice
 non-reporting financial institution
 management costs and fees
@@ -536,9 +628,11 @@ screening
 functional system
 csd access criterion 1
 consolidating entity
+net position
 fiduciary risk
 manager of a qualifying social entrepreneurship fund
 financial instruments
+biometrical risks
 non-financial entity
 open format
 findings
@@ -550,18 +644,24 @@ ncb
 bespoke arrangement
 direct debit scheme
 average daily notional amount 
+wrong-way risk
 money remittance
 insurance contract
 obligated party
 originator
 reasonable return on investment
 framework agreement
+decommissioning
+selected volcano observatory
 annual operating expenses
+territory of the union
 correspondent relationship
 algorithmic trading
 implementation strategy
+meteorological bulletin
 assessment report
 risk-sharing instrument for project bonds
+intraday market time-frame
 research or other information recommending or suggesting investment strategy
 operational risk tolerance
 relevant authority
@@ -573,18 +673,22 @@ competent regulatory authority
 delivery versus payment
 associate
 goods
+generation shift key
 head of a reporting group
 payment account
 exchange-traded fund
+wholesale energy products
 company being divided
 european union-wide performance targets
 participating countries
 bban
+refining of crude oil
 transferable securities
 disposal value
 central authority
 excluded non-monetary benefit
 structured finance instrument
+problematic use of psychoactive substances
 marketable arrangement
 foundation
 member state of the commitment
@@ -593,9 +697,12 @@ cash assimilated instrument
 vertically integrated undertaking
 cleared derivatives
 independent review
+broadband networks
 extended warranty insurance obligation
 service
+telecommunication or internet monitoring or interception services
 unit-holder
+lng system operator
 group internal model
 tier 2 instruments
 new-for-old
@@ -614,6 +721,7 @@ net liquidity outflows
 capital
 infringement
 standing order
+nda in close cooperation
 facility grade
 future discretionary bonuses
 intermediary payment service provider
@@ -632,11 +740,16 @@ two-day spot
 branch
 entrusted party
 liquidator
+hybrid transfer
+energy performance contracting
 csd access criterion 3
 sts securitisation
 building blocks
 deposit guarantee schemes
+radioactive waste
 transparent market
+non-standard intraday product
+criminal record
 annuity contract
 interest rate benchmark
 late arrears loans
@@ -648,6 +761,7 @@ index provider
 resolution authority of non-participating member states in the single resolution mechanism
 investment research
 allocation constraints
+pre-eruption volcanic activity
 nominated bank account
 public private partnership
 related financial instrument
@@ -667,7 +781,9 @@ ucits host member state
 allotment reference month
 spontaneous exchange
 customer due diligence measure
+energy savings
 sme growth market
+natural gas
 available financial means
 budget
 funding agreement
@@ -678,8 +794,12 @@ non-listed company
 payment service provider
 payee
 negative balance protection
+ccn network
+lubricating materials
 profit estimate
+elemental powder
 cash changeover date
+eu climate transition benchmark
 recommendation
 batch file transfer
 borrowing allowance
@@ -687,16 +807,21 @@ deviation from the benchmark outstanding amount
 politically exposed person
 access
 management
+time for obtaining a licence
 voice trading system
+seoul metropolitan area
 equity value
 national gaap
 active corruption
 depositor
 package transaction
+sanctions committee
+new international passenger service
 request for consultation
 group basis
 third parties
 basel iii lcr framework
+specification of the organ
 national payment transaction
 statement on origin
 health insurance obligation
@@ -705,6 +830,9 @@ monitoring period
 commercial communication
 positive outcome of a review
 international standard
+useful heat
+meteorological information
+linepack
 deferral period
 original own funds
 promotional entity
@@ -719,23 +847,32 @@ settlement fail
 euro account
 financial obligations
 contribution period
+spent fuel
 covered deposits
+aviation allowances
 second reference period
 profit forecast
+storage system operator
 ecb guide
 domestic merger
 stand-still
+capacity calculation region
 statute
 rank first
 national administrator
 certificates
 emergent market
 participating member states
+dematerialised form
 person
 user
 securities or commodities lending
+principal railway undertaking
+production unit
 ncbs
 minimum regulatory capital
+upstream pipeline network
+national central access point
 tin
 buy-back programme
 frand
@@ -746,6 +883,8 @@ special rights
 small and medium-sized enterprises
 ordinary stock
 basic custody services
+transmission system operator
+safety recommendation
 dbb/belfius
 intended settlement date
 client
@@ -764,6 +903,7 @@ management fees
 nprfc preference shares
 mixed-activity holding company
 contributing member states
+day-ahead firmness deadline
 cash changeover year
 items of correspondence
 network service provider
@@ -774,6 +914,7 @@ average outstanding electronic money
 undertaking required to maintain separate accounts
 self-securitised eligible loans
 member state financial institution
+upgrade of the railway infrastructure
 collective management organisation
 exporter
 localisation of assets
@@ -796,8 +937,11 @@ imbalances
 balancing services
 accounting portfolios
 overcollateralisation
+average timetable speed
 transaction data
 asset recovery offices
+single intraday coupling
+goods originating in crimea or sevastopol
 contract
 variance measure 1
 annual costs
@@ -805,11 +949,14 @@ established entity
 commercially reasonable replacement trade
 relevant stakeholders
 screening decision
+safety investigation
 atm network functions
 ebs
 commitment
 payment service user
+gas supply contract
 procurement
+primary energy consumption
 counterparty
 broad participation retirement fund
 storage
@@ -817,10 +964,12 @@ unused credit entitlement
 institutional investor
 packaged retail and insurance-based investment product
 capital market-driven transaction
+integrated natural gas undertaking
 epa countries
 option 3
 standard link
 movements
+renewal of the railway infrastructure
 date of the request
 legal person of an octs
 monitoring/monitored by the esrb secretariat
@@ -834,6 +983,8 @@ national guarantee fund
 inducement scheme
 hedging set
 funded credit protection
+nslt health obligations
+online search engine
 securities held in custody
 distance contract
 guarantee funds
@@ -853,6 +1004,7 @@ validation
 spot commodity contract
 parent credit institution in a member state
 custodian wallet provider
+common grid model
 entity-by-entity basis
 significant distribution
 psp
@@ -865,6 +1017,7 @@ retail client
 general documentation
 relevant authorities
 trust and company service providers
+freezing of economic resource
 retail customers
 inducement
 fully adjusted exposure value
@@ -873,6 +1026,7 @@ person-to-person transfer of funds
 margin period of risk
 sectoral legislation
 supervisory formula method
+ecris reference implementation
 preparation
 consultancy
 standardised retail savings and deposit products
@@ -882,8 +1036,10 @@ settlement internaliser
 consumption unit
 intra-group transaction
 initial period
+total useful floor area
 stock financing
 transferring payment service provider
+safety requirement
 account holder
 custodial account
 securitisation special purpose entity 
@@ -891,18 +1047,22 @@ lending credit institution
 affiliate of an audit firm
 leverage
 equity securities
+shipping agent
 portfolio compression
 market infrastructure board
 reference reporting population
+port service contract
 derivatives
 screening mechanism
 commodity benchmark
 isin code
 residence of investee
+consumption capacity
 home member state of the aif
 implementing authority or body
 use
 third indirect client
+dns service provider
 family of benchmarks
 non-standard contract
 group
@@ -912,6 +1072,7 @@ multi-arrangement special purpose vehicle
 subcontractor
 group resolution plan
 investment risk
+fatigue
 liquidity buffer
 reference outstanding amount
 regulated market
@@ -924,8 +1085,10 @@ collective investment vehicle
 depository institution
 final funding amount
 scenario analysis
+market coupling operator ( mco ) function
 transaction
 net exposure
+production facilities
 disregarded permanent establishment
 customer
 financial intermediary
@@ -939,6 +1102,7 @@ by-product
 group liquidity risk assessment report
 proportional share
 final decision
+economically justifiable demand
 payment instrument
 book entry securities collateral
 money market fund
@@ -952,12 +1116,17 @@ operation
 qualifying eligible liabilities
 resolution decision date
 srep decision
+disposal facility
+refining
 ecaa country
 transnational producer organisation
 controlling persons
+small-scale cogeneration unit
 collateral arrangement
+incident
 ias
 policy area 
+glove boxes
 dynamic data
 misappropriation
 promotional bank
@@ -967,7 +1136,9 @@ fit and proper decision
 goodwill link to the investee
 direct line
 development
+electricity from cogeneration
 new debt finance
+meteorological report
 netting set
 home member state of the aifm
 banking group
@@ -980,6 +1151,7 @@ non-practitioner
 diversification effects
 new infrastructure
 professional client
+equipment which might be used for internal repression
 clean-up call option
 indirect participant
 information and control module 
@@ -992,6 +1164,7 @@ basis risk
 minimum modelling threshold
 agent
 exchange of information on request
+security-by-security data
 temporary accommodation
 csd access criterion 4
 regional allocation
@@ -999,22 +1172,28 @@ another parliament
 group data
 third-country audit entity
 cash collateral
+national strategy on the security of network and information systems
 average daily turnover 
 representative office
 home member state
 public service obligation compensation
 major business unit
+hazard
 natural person from an octs
 delta
 servicer
 one-sided credit valuation adjustment
 parties to the bid
 third-country financial institution
+agricultural commodity derivatives
 executing state
 investment recommendations
 new individual account
+balancing capacity 
 contingent capital instrument
+incident handling
 cash value
+infrastructure assets
 systemic risk
 tenderer
 payment scheme
@@ -1022,12 +1201,14 @@ greenshoe option
 work
 union and efta-located branch
 general government
+rescue coordination centre 
 deduction
 transfer of assets
 market share
 psu
 reinsurance
 servicing continuity provisions
+meteorological observation
 fee factors
 cross-border arrangement
 benchmark outstanding amount
@@ -1048,26 +1229,35 @@ reorganisation period
 relevant nca
 ecaa agreement
 central government
+top-level domain name registry
 self-regulatory body
 company with reduced market capitalisation
+terrain
 interoperable link
 distribution of exposures
 pool exposure of type c
 calculation data set
 body-tail modelling threshold
 significant supervised entity in a participating non-euro area member state
+capacity management module
 senior securitisation position
+charging scheme
+government of libya focal point
 small-scale project
+network
 structured arrangement
 final customer
 persons known to be close associates
 legal person
+cloud computing service
 carried interest
 immobilisation
 fee-paying credit institution
 re-use
 cash dispenser
+online rights in musical works
 liquid market
+charcoal
 legal entity
 accumulated equity value
 reference period
@@ -1083,13 +1273,17 @@ pay-out ratio at solo level
 aggregate amount
 resolution strategy
 tail institution
+safety objective
 intermediate reports
+source material
 actual distribution
 independent management entity
+special fissionable material
 designating authority
 written premiums
 branch passport notification
 ipa ii beneficiary
+infrastructure
 less significant supervised entity
 data quality requirements 
 verification
@@ -1105,17 +1299,21 @@ standard licence
 legal risk
 common procedures
 parent undertaking
+market congestion
 on-site inspection team
 negative decision
 granular credit data
 final administrative decision
 synthetic securitisation
 resolution tool
+meteorological satellite
 nprfc
 indirect link
 debt instruments at cost or at amortised cost
 subscribed capital key
+gambling services
 gross carrying amount
+continuous trading matching algorithm
 intra-eurosystem balances on euro banknotes in circulation
 electronic system
 participant
@@ -1133,6 +1331,7 @@ resident
 payment order
 preliminary report
 cancellation
+hit
 non-eu aifm
 distressed sme portfolio
 company
@@ -1140,6 +1339,7 @@ person closely associated
 financial penalty
 aggregate maximum risk exposure
 pension scheme
+investigator-in-charge
 participating jurisdiction financial institution
 schedule
 less significant credit institution
@@ -1148,17 +1348,22 @@ committed capital
 pre-marketing
 bid
 indirect instruction
+taliban-controlled afghanistan
 affiliate
 interest
 if registered shares/units
 sovereign issuance
+union emblem
 liaison department
 settlement system
 rating analyst
 insurance corporations
+basic property
 common test procedures
 denominator
 economic resources
+spent fuel management
+managing body of the port
 institutions
 controlled entity
 delivery option
@@ -1169,10 +1374,13 @@ services incidental to
 non-significant benchmark
 independent valuer
 local firm
+nama
 accredited representative
 consolidated tape provider
+robot
 audit
 securities settlement system
+transnational association of producer organisations
 argument
 controlled undertaking
 recovery period
@@ -1181,35 +1389,48 @@ governing body
 counterparty risk
 investor csd
 representative of a party
+mexican juridical person
 authentication
+direct contagion
 assessor
 overrunning
+itd
 inclusion
 opinion
 request-for-quote system
 assurance undertaking
 public sector body
+final energy consumption
 liability base
 iban
 collective investment undertakings other than the closed-end type
 operating licences
+excessive imbalances
 units of a collective investment undertaking
 non-discretionary rules
+net weight
 terms of reference
 approval
+causes
 loss given default 
+hybrid entity
+network manager
 permanent establishment
 risk measure
 discontinuity options
 transfer date
 final investment decision
+cogeneration
 household customer
 scheduled exchange
 enforcement event
 own funds requirements
 regulated entity
 share capital of investee
+convicting member state
 standardised industry coding system
+severe conditions
+residential property
 relevant competent authorities
 inside information
 entry date
@@ -1233,7 +1454,11 @@ management activities
 transverse activities
 interoperability arrangement
 deemed foreign person
+reproduction
+person or body in libya
+single point of entry 
 packaged retail and insurance-based investment product manufacturer
+technical capacity
 ancillary services
 investment projects under construction
 acceptable means of compliance 
@@ -1245,8 +1470,10 @@ distribution
 multilateral system
 execution venue
 spot market
+biomass
 final reports
 eu parent credit institution
+maximum content of non-originating materials
 proxy
 ncb deadline
 retainer
@@ -1261,10 +1488,12 @@ services linked to the payment account
 re-securitisation
 pre-existing entity account
 single shared platform 
+peak exposure
 offeror
 national regulatory authority
 duly certified copy
 key financial market participant
+interconnector
 statistical information
 funds
 mezzanine tranche
@@ -1272,6 +1501,7 @@ page
 virtual currencies
 sanctions
 annual contribution
+tropical cyclone advisory centre 
 first reference period
 instalments
 market
@@ -1279,6 +1509,7 @@ data quality
 related party
 recognised agency
 partner country
+development of the railway infrastructure
 group cash value insurance contract
 full time equivalents
 central administrator
@@ -1291,23 +1522,31 @@ counterparties
 value at risk
 professional misconduct
 national unit
+nominated electricity market operator 
 product
 contract for differences
 high value account
 fees
+energy distributor
 level a
 securities account
 located
 infrastructure project entity
 guide to fit and proper assessments
 solvency ratio
+major natural disaster
+property
 group link
+high-efficiency cogeneration
 sub-class
 financing agreement
 pogi
+law enforcement information
 ms contribution
 competent financial authority
 regulatory purposes
+alphanumeric data
+nuclear safety
 board of directors
 compliance period
 real asset
@@ -1315,6 +1554,7 @@ supervisory authority
 pre-existing account
 international organisation
 investment services and activities
+spent fuel management facility
 outstanding amounts of eligible loans
 investigation
 p/e
@@ -1324,8 +1564,10 @@ standardised mortgage products
 demerger
 legally resident in the union
 debt securities
+general allowances
 right of use
 trading venue
+university
 cancelled service
 reportable person
 administrator
@@ -1335,16 +1577,22 @@ national resolution authority
 charge
 sectoral rules
 irb pool
+power-to-heat ratio
 group-level resolution authority
+deff
 parent investment firm in a member state
 general budget
 expected exposure 
 mismatch outcome
 fee-paying branch
 international accounting standards
+serious injury
+customer proprietary network information
 payment system operator
 overlapping
 excess spread
+aggregator
+flow-based approach
 ancillary stabilisation
 participating member state
 common equity tier 1 instrument
@@ -1360,10 +1608,14 @@ valuation input
 manager of the eltif
 central liaison office
 host member state
+telecommunications infrastructure
 financial services
 outsourcing
+safety regulatory audit
 multilateral trading facility
+plot ratio
 settlement account
+real property
 first fee period
 territorial allocation
 commitment period
@@ -1378,6 +1630,7 @@ competent authority of the manager of the eltif
 ancillary system 
 common equity tier 1 capital ratio
 reporting agents
+health reinsurance obligation
 cir
 sub-group
 credit transfer
@@ -1391,8 +1644,10 @@ valuer
 nca in close cooperation
 repurchase agreement
 public authorities
+infrastructure entity
 investment services
 forwards
+digital service provider
 actual inflation index
 ms contribution committed
 governmental entity
@@ -1401,6 +1656,7 @@ non-equity securities
 document
 complaining party
 express delivery services
+large risks
 significant entities
 reportable account
 division by the formation of new companies
@@ -1420,25 +1676,32 @@ financial statements
 insurance claim
 control
 representative
+single day-ahead coupling
 reuse
 order
 pool exposure of type a
 large-value payment system
 heads of work units
+eu paris-aligned benchmark
 inspections
 eligible counterparty
+prognostic chart
 third country
 grant agreement
 sponsoring undertaking
 formal open standard
+system and equipment rating training
+relevant operator
 margin threshold
 long position
 use for statistical purposes
 adviser
 expected profit included in future premiums
 security
+lng facility
 repurchase transaction
 ucits home member state
+safety directive
 conditions for resolution
 margin lending transactions
 funding procedure
@@ -1446,30 +1709,40 @@ relevant account
 liquidity risk assessment report
 cius
 balance payable on credit
+market time
 financial transaction
+average activity level
 audit report
+cogeneration unit
+freight forwarding for rail transport
 procurement document
 new financial service
 directors
 dynamic purchasing system
 institution under resolution
 fee debtor
+fatal injury
 commodity derivatives
 deduction without inclusion
 financial account
 transmission
+entity in crimea or sevastopol
 supervised contributor
 principal risk
 daily foreign exchange reference rate
 management company
 reference party
+safety management system 
+provider of port services
 long settlement transactions
 eu parent financial holding company
 securitisation
 third party
+ex-works price
 stress
 captive insurance undertaking
 volume
+uranium enriched in the isotopes 235 or 233
 transactions
 pension funds
 shareholder
@@ -1481,6 +1754,7 @@ information recommending or suggesting an investment strategy
 non-mfis
 core service platforms
 unfit euro banknotes
+slt health obligations
 excluded account
 valuation position
 investment strategy
@@ -1488,6 +1762,8 @@ treasury shares
 exclusive rights
 qualifying central counterparty
 cross-border positions
+safety assurance
+grid point data in digital form
 secondary market
 persons acting in concert
 capital commitment
@@ -1500,10 +1776,12 @@ import
 type of security
 sips operator
 supply
+emission allowance market participant
 earned premiums
 synthetic form of retention
 associated instruments
 regulated information
+rubber
 third-country firm
 market operator
 on-site inspection
@@ -1515,7 +1793,9 @@ merging companies
 depositary receipts
 clearing
 person professionally arranging transactions
+customs value
 mixed-activity insurance holding company
+structural congestion
 intra-group transactions
 net financial impact
 matching adjustment portfolio
@@ -1531,6 +1811,7 @@ multiple point of entry
 core partner
 otc derivative
 anonymisation
+radioactive waste management facility
 group of connected clients
 scheduled exchange calculator
 consumer
@@ -1540,12 +1821,14 @@ destination member state
 applicant
 intrusion upon seclusion
 business as usual
+smart metering system
 criminal activity
 risk-neutral distribution
 overallotment facility
 hybrid mismatch
 person closely associated with a person discharging managerial responsibilities within an issuer of financial instruments
 overdraft facility
+energy service provider
 parties
 low-risk assets
 close-out netting provision
@@ -1572,6 +1855,7 @@ unique identifier
 credit risk
 olaf
 future on a swap
+port service charge
 critical benchmark
 closure
 rating system
@@ -1597,6 +1881,7 @@ switching
 institutional protection scheme
 monitoring trustee
 programmable aid
+wholesale energy market
 group risk assessment report
 supplier
 cross-product netting
@@ -1605,7 +1890,9 @@ participation
 relevant costs
 candidate
 right to privacy
+production equipment
 securities issued in a continuous or repeated manner
+north korea
 consolidating supervisor
 intra-group positions
 generic services
@@ -1632,6 +1919,7 @@ escb/ssm certificate acceptance framework
 lot
 two-sided payment
 direct debit
+decarbonisation trajectory
 write-off
 data reporting services provider
 european standard
@@ -1651,6 +1939,7 @@ target2 settlement day
 regulated profession
 market maker
 national powers decisions
+development fund for iraq
 bic
 lookback period
 funding decision
@@ -1658,13 +1947,16 @@ exploitation
 horizontally integrated undertaking
 brokering
 accrual basis
+gridded global forecasts
 indirect client
 relevant taxpayer
 nomination
 insurance holding company
 title transfer financial collateral arrangement
+school juridical person
 acquisition cost
 prime broker
+economic surplus for the single day-ahead or intraday coupling
 credit risk mitigation
 confidential statistical information
 swaption
@@ -1672,7 +1964,9 @@ sponsor
 size specific to the financial instrument
 qualifying investments
 concession contract
+measures decicided on pursuant to united nations security council resolution 883 ( 1993 ) and related resolutions
 retirement
+internet exchange point 
 implementing public authority
 execution of orders on behalf of clients
 distribution channels
@@ -1680,6 +1974,7 @@ net financial effect
 national supervisory authority
 location
 institution
+height
 offeree company
 valuation exposure
 retail payment system
@@ -1692,6 +1987,7 @@ locality
 machine-readable format
 additionality
 qualifying holding
+political foundation at european level
 amendment to a decision on significance
 portfolio management
 documentation
@@ -1706,6 +2002,7 @@ csd access criterion 2
 accepted market practices
 individual action
 buy-back programmes
+freezing of economic resources
 initial margin protection
 third country or territory
 calculated area
