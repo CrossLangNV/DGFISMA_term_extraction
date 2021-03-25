@@ -2,19 +2,27 @@
 
 ## Instructions
 
-use "dbuild.sh" to build the docker image
+1) Clone the respository:
 
-use "dcli.sh" to start a docker container
+`git clone https://github.com/CrossLangNV/DGFISMA_term_extraction`
 
-Given a json, e.g.: (e.g. https://github.com/CrossLangNV/DGFISMA_term_extraction/blob/master/tests/files/test_files/jsons_with_definitions/doc_3b30d182-e395-5e6c-991a-b57cd01598d0_test_response.json) , with a "cas_content" and "content_type" field, a json with the same fields will be returned (e.g. https://github.com/CrossLangNV/DGFISMA_term_extraction/blob/master/tests/files/test_files/jsons_with_definitions_terms/doc_3b30d182-e395-5e6c-991a-b57cd01598d0.json) , but with extra annotations added (see next sections).
+2) Create the directory MODELS:
 
-The "cas_content" is a UIMA CAS object, encoded in base64. The "content_type" can be "html" or "pdf". 
+`mkdir MODELS`
 
-For working with CAS object, [the dkpro-cassis library](https://github.com/dkpro/dkpro-cassis) is used.
+3) Copy the folder containing the model for Bert BIO Tagging (see *user scripts* for info on how to obtain a trained model), in the MODELS directory. This folder should contain: config.json, pytorch_model.bin, vocab.txt and the pickled python list tags_vals, that allows for conversion between BertForTokenClassification prediction id's back to BIO tags).
+
+4) Set the path to the model for Bert BIO tagging (relative to the MODELS directory) in the configuration file that can be found in the media folder (see next section for an overview of all configuration options).
+
+5) Run dbuild.sh to build the docker image
+
+6) Run dcli.sh to start a docker container, and expose the API.
+
+Steps 3 and 4 are optional if BERT_BIO_TAGGING is set to false in the configuration file (see next section, Configuration).
 
 A pretrained BertBIOTagger (see below), and training data is provided https://github.com/CrossLangNV/DGFISMA_term_extraction/releases/tag/0.0.1.
 
-### Configuration
+## Configuration
 
 We provide a configuration file: https://github.com/CrossLangNV/DGFISMA_term_extraction/blob/master/media/TermExtraction.config
 ```
@@ -68,7 +76,7 @@ TOKEN_TYPE_USER=de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf_use
 
 This allows configuration of the term extraction pipeline.
 
-#### TermExtraction
+## TermExtraction
 
 The Term Extraction algorithm consists of the following steps:
 
@@ -110,7 +118,7 @@ The Term Extraction algorithm consists of the following steps:
 `config[ 'TermExtraction' ].get( 'N_JOBS' )` and `config[ 'TermExtraction' ].get( 'BATCH_SIZE' )` allows for configuration of the number of processes and batch size used by the Spacy model.
 
     
-#### BertBIOTagger
+## BertBIOTagger
 
 We refer to https://github.com/CrossLangNV/DGFISMA_term_extraction/tree/master/user_scripts for more information on training of a BertForTokenClassification model for BIO tagging. In short, the BertBIOTagger is used to detect the defined term in a definition. 
 
@@ -124,7 +132,7 @@ Use of the BertBIOTagger is optional. If `config[ 'DefinedTerm' ].get( 'BERT_BIO
 
 If `config[ 'BertBIOTagger' ].get( 'GPU' )` is set to -1, CPU will be used for inference. `config[ 'BertBIOTagger' ].get( 'NUM_THREADS_CPU' )` allows for configuration of the number of threads used during inference on CPU. If `config[ 'BertBIOTagger' ].get( 'GPU' )` > -1, this will be ignored. When `config[ 'BertBIOTagger' ].get( 'NUM_THREADS_CPU' )` is set to -1, all available threads will be used.
 
-##### Example:
+### Example:
 
 Given the definitions:
 
@@ -154,7 +162,7 @@ Then the term `Asset management` with offset 0 - 16 , and the term `Profit estim
 
 Note that for robustness the tags I, B are not treated differently. E.g. O, B, I, I, O and O, I, I, B, O both indicate a defined term consisting of 3 tokens starting at position 1 and ending at position 3.
 
-#### DefinedTerm
+### DefinedTerm
 
 Defined Terms (i.e. terms that are defined by a definition, annotated as `config[ 'Annotation' ].get( 'DEFINITION_TYPE' )` ) are annotated as `config[ 'Annotation' ].get( 'DEFINED_TYPE' )`.
 
@@ -206,9 +214,20 @@ Setting USE_BERT to True, means that, if no `config[ 'Annotation' ].get( 'DEFINE
 
 Setting FALLBACK_TO_REGEX, FALL_BACK_TO_WHITELIST or FALL_BACK_TO_TF_IDF to True means that all terms in between quotes, whitelisted terms, or `config[ 'Annotation' ].get( 'TOKEN_TYPE' )` annotations are annotated as defined terms (i.e. as `config[ 'Annotation' ].get( 'DEFINED_TYPE' )` ). This is not recommended. 
 
-#### User annotations
+### Data
+
+We provide training data for training of the BertBIOTagger using the [user scripts](https://github.com/CrossLangNV/DGFISMA_term_extraction/tree/master/user_scripts) (see *users_scripts/* for more explanation on use of the user_scripts). 
+
+Training data can be found here: https://github.com/CrossLangNV/DGFISMA_term_extraction/releases/tag/0.0.1.
+
+The file *training_set_def.processed.txt* contains the training data in *.txt* format, and *training_set_def.processed.csv* in *.csv* format (see *user_scripts/*).
+
+The file *test_sentences.txt* contains the test data in *.txt* format, and *gold_standard_test_sentences.csv* in *.csv* format. The file *results_test_sentences.csv* contains the predicted tags by the provided pretrained model ( *Fine_tuned_models.zip* ).
+
+### User annotations
 
 The annotations `config[ 'Annotation_user' ].get( 'TOKEN_TYPE_USER' )`, `config[ 'Annotation' ].get( 'DEFINED_TYPE_USER' )` and `config[ 'Annotation' ].get( 'DEFINITION_TYPE_USER' )` are annotations added by the users of the Glossary app. The provided user script `user_scripts/generate_training_data_from_cas.py` can be used to generate whitelisted terms, training data for the BertBIOTagger for detection of defined terms and the [DistilBertSequenceClassifier](https://github.com/CrossLangNV/DGFISMA_definition_extraction) for detection of definitions.
+
 
 ## Testing:
 
