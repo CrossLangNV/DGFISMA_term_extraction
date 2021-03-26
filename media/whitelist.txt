@@ -1761,3 +1761,25 @@ interbank loans
 interbank deposists
 total interbank loans and deposits in the eu
 liquidity buffer of the credit institution
+client orders handled
+government schemes
+investors
+joint venture
+coh
+cmh
+client money held
+investment services and activities passport notification
+financial reporting
+non-sophisticated investor
+booking branch
+homogeneous branches
+exposure
+lower level client
+smes
+connected clients
+foreign branch
+second indirect client
+investment advice of an ongoing nature
+client assets
+shares traded on a regulated market
+sophisticated investor
