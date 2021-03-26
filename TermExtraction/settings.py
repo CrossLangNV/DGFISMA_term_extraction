@@ -26,7 +26,7 @@ SECRET_KEY = '***REMOVED***'
 DEBUG = True
 
 ALLOWED_HOSTS = [h for h in os.environ.get(
-    'TERMEXTRACT_ALLOWED_HOSTS', "localhost termextract").split(" ")]
+    'TERMEXTRACT_ALLOWED_HOSTS', "localhost termextract 127.0.0.1").split(" ")]
 
 
 # Application definition
@@ -122,4 +122,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MODEL_ROOT = os.path.join(BASE_DIR, 'MODELS')
 MEDIA_URL = '/media/'
