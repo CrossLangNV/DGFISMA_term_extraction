@@ -1,49 +1,73 @@
+import os
+import configparser
+import logging
 import base64
 import binascii
 import time
-
 from cassis.typesystem import load_typesystem
 from cassis.xmi import load_cas_from_xmi
 from django.http import JsonResponse
+from django.conf import settings
 from rest_framework.views import APIView
 
-from .pipeline import tables
-from .pipeline import terms  # , cleaning
-from .pipeline.annotations import *
-from .pipeline.cleaning import get_text_html
+import spacy
 
-PATH_TO_PD2 = os.path.join(settings.MEDIA_ROOT, 'full_dgf_jsons_table2.csv')
-PATH_TO_VOC = os.path.join(settings.MEDIA_ROOT, 'fisma-voc-filtered.csv')
+from .pipeline.inference import concept_extraction
+from .pipeline.rule_based_extraction import rule_based_concept_extraction
+from .pipeline.terms_defined.terms_defined_bio_tagging import TrainedBertBIOTagger
 
+CONFIG = configparser.ConfigParser()
+CONFIG.read( os.path.join( settings.MEDIA_ROOT, "TermExtraction.config"  ))
+
+NLP = spacy.load( CONFIG['TermExtraction'].get( 'SPACY_MODEL' ) )
+
+WHITELIST = open( os.path.join( settings.MEDIA_ROOT, "whitelist.txt" )).read().rstrip( "\n" ).split( "\n" )
+BLACKLIST = open( os.path.join( settings.MEDIA_ROOT, "blacklist.txt" )).read().rstrip( "\n" ).split( "\n" )
+
+SOFA_ID=CONFIG[ 'Annotation' ].get( 'SOFA_ID' )
+
+#load the trained bio tagger
+if CONFIG['DefinedTerm'].getboolean( 'BERT_BIO_TAGGING' ):
+    TRAINED_BERT_BIO_TAGGER=TrainedBertBIOTagger( os.path.join( settings.MODEL_ROOT, CONFIG[ 'BertBIOTagger' ][ 'PATH_MODEL_DIR' ] ) ) 
+    TRAINED_BERT_BIO_TAGGER.load_model( )
+else:
+    TRAINED_BERT_BIO_TAGGER=None
+            
+with open(os.path.join(settings.MEDIA_ROOT, 'typesystem.xml'), 'rb') as f:
+    TYPESYSTEM = load_typesystem(f)
+    
 class TermView(APIView):
-
+        
     def post(self, request):
-        with open(os.path.join(settings.MEDIA_ROOT, 'typesystem.xml'), 'rb') as f:
-            typesystem = load_typesystem(f)
-
+                
+        print( "TermView post received." )
         start = time.time()
-        f = request.data  # the input is a json with 'content' and 'content_type'
+
+        f = request.data
+        
+        output_json={}
+        
         try:
             decoded_cas_content = base64.b64decode(f['cas_content']).decode('utf-8')
         except binascii.Error:
             print(f"could not decode the 'cas_content' field. Make sure it is in base64 encoding.")
+            return JsonResponse(f)
+            
+        cas = load_cas_from_xmi(decoded_cas_content, typesystem=TYPESYSTEM, trusted=True)
 
-        cas = load_cas_from_xmi(decoded_cas_content, typesystem=typesystem)  # check the format
-        sofa_id = "html2textView"
-        sentences = get_text_html(cas, sofa_id, tagnames=['p'])  # html or pdf get_text_pdf
-        dict_v1, abvs = terms.analyzeFile(' '.join(sentences))
-        terms_n_tfidf = tables.calculate_tf_idf(dict_v1, PATH_TO_PD2)
-        for abv in abvs:
-            terms_n_tfidf.update({abv : 1})
-        # terms_n_tfidf = tables.crosscheck_unigrams(terms_n_tfidf)
-        cas = add_terms_to_cas(cas, typesystem, sofa_id, [(k, v) for k, v in terms_n_tfidf.items()])
-        # cas = annotate_voc(cas, typesystem, sofa_id)  # cross check with terms and annotations
-        cas_string = base64.b64encode( bytes( cas.to_xmi() , 'utf-8' ) ).decode()
-        if 'update_voc' in f.keys():
-            tables.update_voc(dict_v1, PATH_TO_VOC)
-        if 'update_pd2' in f.keys():
-            tables.update_pd2(dict_v1, PATH_TO_PD2)
+        try:
+            cas.get_view( SOFA_ID )
+        except:
+            print(f"could not process the view in this CAS. Make sure it contains a { SOFA_ID } view.")
+            return JsonResponse(f)
+
+        concept_extraction( NLP, TRAINED_BERT_BIO_TAGGER, cas, TYPESYSTEM, CONFIG, ( WHITELIST, BLACKLIST ) ) 
+        rule_based_concept_extraction( cas, TYPESYSTEM, CONFIG )
+            
+        output_json['cas_content']=base64.b64encode(  bytes( cas.to_xmi()  , 'utf-8' ) ).decode()   
+        output_json['content_type']=f[ 'content_type']
+        
         end = time.time()
-        f['cas_content'] = cas_string
-        print(end - start)
-        return JsonResponse(f)
+        print( f"Concept extraction took {end-start} seconds." )
+
+        return JsonResponse(output_json)
