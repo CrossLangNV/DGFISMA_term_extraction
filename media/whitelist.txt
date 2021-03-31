@@ -1,1785 +1,1930 @@
-public undertakings operating in the manufacturing sector
-indicator value
-carrying amount
-warning contact person
-workers compensation insurance obligation
-formal agreement
-cross-border merger
-nfe
-market value
-participating interest
-investor
-investment firm
-college of supervisors
-derecognition
-exceeding borrowing costs
-deposit guarantee scheme
-entry into operation
-control area
-member
-ratings based method
-notification
-affiliate undertaking
-investment projects
-legal commitment
-non-euro account
-money market statistics
-winding-up proceedings
-passive corruption
-concentration risk
-double deduction
-gross loss
-accessible format
-guarantee agreement
-cross-border collateral
-active nfe
-foreign direct investment
-nostro agent
-risk-mitigation techniques
-retirement benefits
-revenues
-force majeure
-expert judgement
-contingent form of retention
-supervised entity
-ecb supervisory decision
-significant supervised entity in a euro area member state
-target level
-trading day
-pension scheme arrangement
-p/tbv
-host member state of the aifm
-interchange fee
-remuneration
-local portion
-national
-fit and proper requirements
-wholesale customer
-capture
-eu aif
-knowledgeable
-credit rating activities
-capital joint decision
-passive order
-settlement agent
-delegated decision
-electronic money issuer
-non-financial counterparty
-treasury asset management
-credit rating agency
-statement of reasons
-investment advice
-csd access criterion 5
-voting rights 
-approved reporting mechanism
-ofi
-organised trading facility
-contribution of input data
-replacing instrument
-technology
-government deposits
-public service obligation
-common equity tier 1 instruments
-accounting officer
-financial collateral arrangement
-total assets
-evaluation
-euromed country
-new and existing investment
-substantial error
-payment service
-transitional period
-managing aifs
-undertaking of a third country
-offering programme
-financial regulation
-retail investor
-interest payment
-undertaking
-trained staff members
-third country issuer
-tri-party repo
-eligible liabilities
-aggregated data
-general business risk
-framework contract
-tax relief
-eu parent investment firm
-nominated holding account
-leverage effect
-medical expense reinsurance obligation
-accepted market practice
-eligible customer
-measures
-division by acquisition
-contracting parties
-forecast
-member state of the branch
-supervisory legal instrument
-offer of securities to the public
-exit policy
-own funds reduction
-orderly wind-down plan
-acquisition of a holding
-captive reinsurance undertaking
-financial year
-interest rate incentive adjustment
-budget line
-eligible deposits
-market manipulation
-contributor
-electronic money
-financial sector
-incremental cost
-member state of origin
-asset coverage requirement
-reporting person
-financial instrument
-investment companies other than those of the closed-end type
-trade repository
-order to trade
-financial customer
-competent official
-t2s party
-expert
-payer
-pan-european services
-agreement
-indirect clearing arrangement
-taking up business
-paying agent
-insurance-based investment product
-liquidity fragmentation
-securitisation special purpose entities
-credit register
-competent authorities of the eu aif
-rebalancing of the portfolio
-mergers
-authorising officer responsible
-transfer of a business carried on by a permanent establishment
-management body
-global credit arrangement
-overall efficiency
-r-transaction
-person selling a priip
-group of credit rating agencies
-operational risk profile
-swap
-benchmark net lending
-tax period
-convenience yield
-passive nfe
-payment transaction
-kirb
-ancillary system
-date of transition to ifrss
-standard contract
-auctioneer
-assistant
-custodial institution
-indirect clearing arrangements
-equity
-recognised exchanges
-effective expected exposure ( effective ee ) at a specific date
-authorisation scheme
-national administrative platform
-rights revenue
-independent expert
-significant credit institution
-write-down
-cross-selling practice
-critical service provider
-related undertaking
-competent authorities
-recipient
-margin agreement
-financial holding company
-secured lending transaction
-active licence
-last level
-risk concentration
-money market instruments
-clearing system
-position
-national payment
-basic risk-free interest rate term structure
-directly connected party
-collective investment undertaking other than the closed-end type
-aml/kyc procedures
-post office giro institution 
-ms contribution paid
-operational risk
-terrorist financing
-joint commission
-aifms
-major investment
-risk factors
-union official
-administrative expenditures of the board
-adequate public disclosure
-date of accounting
-information
-data collection threshold
-domestic reinsurance undertaking
-portfolio swap
-financial guarantee
-technical assistance
-person professionally arranging or executing transactions
-authority
-securities lending
-discretionary pension benefits
-loan acquisition
-system
-non-regulated undertaking
-associated enterprise
-participating undertaking
-financial service
-public
-rating category
-likely to become publicly available information
-resolution action
-durable medium
-equity interest
-credit interest rate
-retention of net economic interest
-banknotes in circulation
-ecb working day
-multi-territorial licence
-public authority
-european statistics
-group of fee-paying entities
-investment phase
-pre-existing individual account
-nomination decision
-matching assets
-clearing member
-payment commitments
-sfc2014
-multiple-vote securities
-commodity
-mfi code
-risk
-testing exception
-organised market place
-structured finance products
-mortgage insurance
-financial analyst
-subsidiary
-reportable cross-border arrangement
-award notice
-macro-prudential policy measure
-automatic exchange
-convention
-public international body
-share capital
-own-use covered bonds
-group supervisor
-programming document
-user-accessible programmability
-own funds decision
-mmf registered shares/units
-lead rating analyst
-percentage of days traded over the period considered
-forecast inflation index
-liquidity support drawn
-instalment notice
-domestic insurance undertaking
-qualified investors
-compensation reinsurance obligation
-group auditor
-joint account
-fvc code
-limit order
-insurance undertaking
-bank deposits
-continuity options
-dedicated window's accounts
-qualifying venture capital fund
-csd link
-other equity
-hallmark
-market risk
-significant branch
-investment company with fixed capital
-high-frequency algorithmic trading technique
-criminal proceedings
-high-value datasets
-specific costs
-unavailable deposit
-non-euro area member state
-matched principal trading
-total main balance sheet assets
-requesting authority
-performance scheme
-licence
-contingency solution
-small undertakings
-octs concerned
-assessment team
-approved publication arrangement
-use of a benchmark
-other relevant authorities and bodies
-member state in which the risk is situated
-fee period
-custody risk
-centralised bank account registries
-misconduct event
-provider
-liquidity risk
-foreign investor
-corrective measure
-shares
-close-out date
-appointing authority
-beneficial owner
-contribution debtor
-director
-reprocessing
-member state of establishment
-system user
-eif contribution
-type of banknote handling machine
-eligible net lending
-public undertaking
-annual accounts
-payments on account
-investment
-additional tier 1 instruments
-finite reinsurance
-check
-stake-building
-legal representative
-new entity account
-firmness
-significant supervised group
-depositary
-full cost
-holding company
-hybrid contracts
-reference interest rate
-effective expected positive exposure 
-acquiring a holding
-change in branch particulars notification
-long-term planning
-reliable
-asset-backed commercial paper ( abcp ) programme
-less significant branch
-significant benchmark
-person discharging managerial responsibilities
-shell bank
-traditional securitisation
-unrated position
-representation agreement
-appropriate regulation
-asset backed securities
-pool exposure of type b
-individual recovery plan
-professional scepticism
-narrow participation retirement fund
-notifying authority
-credit institution
-valid application
-ucits
-services passport notification
-eurosystem sips
-specified insurance company
-delegated body
-third-country auditor
-operational agreement
-customised link
-issuer of sovereign and public type
-measurement basis
-association agreement
-total risk exposure
-milestone
-implementation period
-confirmation
-gas derivative
-advised limit
-contract notice
-fair value of the investments for which there are published price quotations
-cross-border conversion
-decreases due to amounts taken against allowances
-action
-vertical tranche
-value date
-departure member state
-special purpose vehicle
-quasi-equity
-relevant ncb
-settlement
-international open communication procedures and standards
-mmf bearer shares/units
-mezzanine securitisation position
-member state of the provision of services
-after proper marketing
-statutory auditor
-merger by acquisition
-direct electronic access
-credit-enhancing interest-only strip
-domestic central bank
-programme
-takeover bid
-eif activity
-close links
-custodian
-services passport application
-subsidiary undertaking
-relevant entity
-capital outflow
-non-member country reinsurance undertaking
-government bonds
-notification date
-bodies governed by public law
-write off
-matched orders
-requirement
-development year
-contract or transaction
-euro area member state
-investment window
-economic operator
-property collective investment undertaking
-designed or modified
-arbitration panel
-intermediary
-debt instruments at fair value through other comprehensive income or through equity subject to impairment
-public sector corporate bond
-eu contribution
-reported person
-nprfc investment
-actionable indication of interest
-current exposure
-designated authority
-collateral
-reporting currency
-national authority
-general assembly of members
-recipient company
-disclosing market participant
-baseline indicator
-function
-allotment
-expected positive exposure 
-issuer
-class of derivatives
-hold value
-member state of reference
-operator or supplier of a means of distance communication
-bidding window
-credit exposure
-coverage of an internal model
-licence holder
-average daily number of trades
-recovery
-base prospectus
-option
-semi-automatic observing system
-national competent authority
-interested parties
-remedial action
-confidential information
-credit enhancement
-income protection reinsurance obligation
-international credits
-central bank 
-contingency
-margin loans
-index
-public contract
-constituent act
-retail deposits
-matching
-sectoral agreement
-merger
-economic equilibrium test
-restructuring plan
-operational risk category
-manager of a qualifying venture capital fund
-business day
-payment system
-passport notifications
-merger by the formation of a new company
-pay-out ratio at consolidated level
-critical incident stress
-association-related business
-statutory audit
-person with whom a relevant person has a family relationship
-direct and particular risk
-serious crimes
-earmarkable assets
-technical issuer csd
-requesting member state
-mixed financial holding company
-financial undertaking
-bank account information
-financial institutions
-competent authority of the host member state
-clearing price
-credit rating
-receiving payment service provider
-board
-input data
-exempt collective investment vehicle
-central counterparty
-item-by-item data
-sovereign issuer
-administrative enquiry
-credit valuation adjustment
-prior information notice
-non-reporting financial institution
-management costs and fees
-relevant product
-central securities depository
-repayments
-screening
-functional system
-csd access criterion 1
-consolidating entity
-fiduciary risk
-manager of a qualifying social entrepreneurship fund
-financial instruments
-non-financial entity
-open format
-findings
-relevant person
-resolution date
-aifs
-public sector entities
-ncb
-bespoke arrangement
-direct debit scheme
-average daily notional amount 
-money remittance
-insurance contract
-obligated party
-originator
-reasonable return on investment
-framework agreement
-annual operating expenses
-correspondent relationship
-algorithmic trading
-implementation strategy
-assessment report
-risk-sharing instrument for project bonds
-research or other information recommending or suggesting investment strategy
-operational risk tolerance
-relevant authority
-money market instrument
-annual supervisory fee
-public-interest entities
-transfer of tax residence
-competent regulatory authority
-delivery versus payment
-associate
-goods
-head of a reporting group
-payment account
-exchange-traded fund
-company being divided
-european union-wide performance targets
-participating countries
-bban
-transferable securities
-disposal value
-central authority
-excluded non-monetary benefit
-structured finance instrument
-marketable arrangement
-foundation
-member state of the commitment
-joint supervisory team
-cash assimilated instrument
-vertically integrated undertaking
-cleared derivatives
-independent review
-extended warranty insurance obligation
-service
-unit-holder
-group internal model
-tier 2 instruments
-new-for-old
-risk position
-design basis
-third-country insurance undertaking
-unique transaction identifier
-variation margin
-franchise value
-cross-border payment
-resolution objectives
-winding up
-shared order book
-eurosystem central bank
-net liquidity outflows
-capital
-infringement
-standing order
-facility grade
-future discretionary bonuses
-intermediary payment service provider
-passive licence
-threshold
-public undertakings
-simple
-significant supervised entity
-qualified credit card issuer
-recognised third-country investment firms
-designated service
-key information
-trade
-mortgage lending value
-two-day spot
-branch
-entrusted party
-liquidator
-csd access criterion 3
-sts securitisation
-building blocks
-deposit guarantee schemes
-transparent market
-annuity contract
-interest rate benchmark
-late arrears loans
-forward on a swap
-relevant public authority
-market participant
-securities
-index provider
-resolution authority of non-participating member states in the single resolution mechanism
-investment research
-allocation constraints
-nominated bank account
-public private partnership
-related financial instrument
-scope of an internal model
-recirculation
-proxy advisor
-payment request
-rated position
-trust or company service provider
-international investment position
-requesting csd
-margining
-commercial presence
-less significant supervised group
-operator of essential services
-ucits host member state
-allotment reference month
-spontaneous exchange
-customer due diligence measure
-sme growth market
-available financial means
-budget
-funding agreement
-receiving csd
-secretariat
-mif
-non-listed company
-payment service provider
-payee
-negative balance protection
-profit estimate
-cash changeover date
-recommendation
-batch file transfer
-borrowing allowance
-deviation from the benchmark outstanding amount
-politically exposed person
-access
-management
-voice trading system
-equity value
-national gaap
-active corruption
-depositor
-package transaction
-request for consultation
-group basis
-third parties
-basel iii lcr framework
-national payment transaction
-statement on origin
-health insurance obligation
-audit firm
-monitoring period
-commercial communication
-positive outcome of a review
-international standard
-deferral period
-original own funds
-promotional entity
-central bank
-consolidated group for financial accounting purposes
-debt instruments
-revaluation adjustments
-group annuity contract
-reporting financial institution
-asset class
-settlement fail
-euro account
-financial obligations
-contribution period
-covered deposits
-second reference period
-profit forecast
-ecb guide
-domestic merger
-stand-still
-statute
-rank first
-national administrator
-certificates
-emergent market
-participating member states
-person
-user
-securities or commodities lending
-ncbs
-minimum regulatory capital
-tin
-buy-back programme
-frand
-cash value insurance contract
-claim
-periodic penalty payments
-special rights
-small and medium-sized enterprises
-ordinary stock
-basic custody services
-dbb/belfius
-intended settlement date
-client
-settlement period
-appropriations
-securitisation position
-securities financing transaction
-mixed pool
-union and efta branch
-ccp
-replaced instrument
-public entity
-ongoing basis
-regional investment platforms
-management fees
-nprfc preference shares
-mixed-activity holding company
-contributing member states
-cash changeover year
-items of correspondence
-network service provider
-settlement bank
-issue key
-unfunded credit protection
-average outstanding electronic money
-undertaking required to maintain separate accounts
-self-securitised eligible loans
-member state financial institution
-collective management organisation
-exporter
-localisation of assets
-feeder aif
-grounds for listing
-conviction
-deletion
-confidence interval
-stabilisation
-sovereign debt
-limited company
-financial counterparty
-unsecured overnight market rate
-rated entity
-insider dealing
-ancillary services undertaking
-key audit partner 
-pooling arrangement
-imbalances
-balancing services
-accounting portfolios
-overcollateralisation
-transaction data
-asset recovery offices
-contract
-variance measure 1
-annual costs
-established entity
-commercially reasonable replacement trade
-relevant stakeholders
-screening decision
-atm network functions
-ebs
-commitment
-payment service user
-procurement
-counterparty
-broad participation retirement fund
-storage
-unused credit entitlement
-institutional investor
-packaged retail and insurance-based investment product
-capital market-driven transaction
-epa countries
-option 3
-standard link
-movements
-date of the request
-legal person of an octs
-monitoring/monitored by the esrb secretariat
-liquidity joint decision
-risk assessment
-reference exchange rate
-major project
-inspector
-gdp
-national guarantee fund
-inducement scheme
-hedging set
-funded credit protection
-securities held in custody
-distance contract
-guarantee funds
-export
-distribution of market values
-financial service supplier
-re-securitisation position
-mortgages
-termination event
-decision
-dissemination
+1x off-the-run status
 abn amro group
-eba list
-home member state of the eltif
-supervisory authorities
-validation
-spot commodity contract
-parent credit institution in a member state
-custodian wallet provider
-entity-by-entity basis
-significant distribution
-psp
-fee notice
-counterparty credit risk
-vendor
-supervisory function
-corresponding mechanism
-retail client
-general documentation
-relevant authorities
-trust and company service providers
-retail customers
-inducement
-fully adjusted exposure value
-consignment
-person-to-person transfer of funds
-margin period of risk
-sectoral legislation
-supervisory formula method
-preparation
-consultancy
-standardised retail savings and deposit products
-indirect contagion
-supervisory board
-settlement internaliser
-consumption unit
-intra-group transaction
-initial period
-stock financing
-transferring payment service provider
-account holder
-custodial account
-securitisation special purpose entity 
-lending credit institution
-affiliate of an audit firm
-leverage
-equity securities
-portfolio compression
-market infrastructure board
-reference reporting population
-derivatives
-screening mechanism
-commodity benchmark
-isin code
-residence of investee
-home member state of the aif
-implementing authority or body
-use
-third indirect client
-family of benchmarks
-non-standard contract
-group
-dealing on own account
-benchmark
-multi-arrangement special purpose vehicle
-subcontractor
-group resolution plan
-investment risk
-liquidity buffer
-reference outstanding amount
-regulated market
-country where the contract was entered into
-subsidy
-on-market hybrid transfer
-replacement trade
-sale of business tool
-collective investment vehicle
-depository institution
-final funding amount
-scenario analysis
-transaction
-net exposure
-disregarded permanent establishment
-customer
-financial intermediary
-report of infringement
-commercial services
-shared services
-third-country reinsurance undertaking
-non-eu aif
-governing board
-by-product
-group liquidity risk assessment report
-proportional share
-final decision
-payment instrument
-book entry securities collateral
-money market fund
-administrative penalties
-valuation
-resolution plan
-relevant financial obligations
-marketing
-management entity
-operation
-qualifying eligible liabilities
-resolution decision date
-srep decision
-ecaa country
-transnational producer organisation
-controlling persons
-collateral arrangement
-ias
-policy area 
-dynamic data
-misappropriation
-promotional bank
-direct participant
-final recipient
-fit and proper decision
-goodwill link to the investee
-direct line
-development
-new debt finance
-netting set
-home member state of the aifm
-banking group
-money laundering
-money-market instruments
-reference rate
-community issuer
-fee to obtain a licence
-non-practitioner
-diversification effects
-new infrastructure
-professional client
-clean-up call option
-indirect participant
-information and control module 
-ireland
-branch of an insurance corporation
-automatic observing system
-asset separation tool
-participating member state in close cooperation
-basis risk
-minimum modelling threshold
-agent
-exchange of information on request
-temporary accommodation
-csd access criterion 4
-regional allocation
-another parliament
-group data
-third-country audit entity
-cash collateral
-average daily turnover 
-representative office
-home member state
-public service obligation compensation
-major business unit
-natural person from an octs
-delta
-servicer
-one-sided credit valuation adjustment
-parties to the bid
-third-country financial institution
-executing state
-investment recommendations
-new individual account
-contingent capital instrument
-cash value
-systemic risk
-tenderer
-payment scheme
-greenshoe option
-work
-union and efta-located branch
-general government
-deduction
-transfer of assets
-market share
-psu
-reinsurance
-servicing continuity provisions
-fee factors
-cross-border arrangement
-benchmark outstanding amount
-guidance material 
-budgetary commitment
-tranche
-corrective action
-international auditing standards
-material
-mandate
-authorising officer by delegation
-programming
-settlement date
-serious criminal offences
 abnormal operations
-public office
-reorganisation period
-relevant nca
-ecaa agreement
-central government
-self-regulatory body
-company with reduced market capitalisation
-interoperable link
-distribution of exposures
-pool exposure of type c
-calculation data set
-body-tail modelling threshold
-significant supervised entity in a participating non-euro area member state
-senior securitisation position
-small-scale project
-structured arrangement
-final customer
-persons known to be close associates
-legal person
-carried interest
-immobilisation
-fee-paying credit institution
-re-use
-cash dispenser
-liquid market
-legal entity
-accumulated equity value
-reference period
-parent financial holding company in a member state
-beneficiary
-dilution risk
-authorities
-different activities
-convertible
-non-regulated undertaking carrying out financial activities
-european neighbourhood policy partners
-pay-out ratio at solo level
-aggregate amount
-resolution strategy
-tail institution
-intermediate reports
-actual distribution
-independent management entity
-designating authority
-written premiums
-branch passport notification
-ipa ii beneficiary
-less significant supervised entity
-data quality requirements 
-verification
-supervised group
-central purchasing body
-obligor grade
-financial conglomerate
-reporting agent
-restoring the working order
-addressable bic holder
-cooperation
-standard licence
-legal risk
-common procedures
-parent undertaking
-on-site inspection team
-negative decision
-granular credit data
-final administrative decision
-synthetic securitisation
-resolution tool
-nprfc
-indirect link
-debt instruments at cost or at amortised cost
-subscribed capital key
-gross carrying amount
-intra-eurosystem balances on euro banknotes in circulation
-electronic system
-participant
-emergency situation
-research data
-electronic money institution
-related third party
-financial analysis
-base case
-fvc
-participating party
-bid limit
-insurance
-resident
-payment order
-preliminary report
-cancellation
-non-eu aifm
-distressed sme portfolio
-company
-person closely associated
-financial penalty
-aggregate maximum risk exposure
-pension scheme
-participating jurisdiction financial institution
-schedule
-less significant credit institution
-policy measure
-committed capital
-pre-marketing
-bid
-indirect instruction
-affiliate
-interest
-if registered shares/units
-sovereign issuance
-liaison department
-settlement system
-rating analyst
-insurance corporations
-common test procedures
-denominator
-economic resources
-institutions
-controlled entity
-delivery option
-special arrangement
-less significant supervised entity in a euro area member state
-pan-european atm/ans
-services incidental to
-non-significant benchmark
-independent valuer
-local firm
-accredited representative
-consolidated tape provider
-audit
-securities settlement system
-argument
-controlled undertaking
-recovery period
-portfolio trade
-governing body
-counterparty risk
-investor csd
-representative of a party
-authentication
-assessor
-overrunning
-inclusion
-opinion
-request-for-quote system
-assurance undertaking
-public sector body
-liability base
-iban
-collective investment undertakings other than the closed-end type
-operating licences
-units of a collective investment undertaking
-non-discretionary rules
-terms of reference
-approval
-loss given default 
-permanent establishment
-risk measure
-discontinuity options
-transfer date
-final investment decision
-household customer
-scheduled exchange
-enforcement event
-own funds requirements
-regulated entity
-share capital of investee
-standardised industry coding system
-relevant competent authorities
-inside information
-entry date
-unrealised profit
-financing decision
-liquidity provider
-credit entitlement
-margin close-out protection
-level 1 assets
-five-day futures
-another authority
-division
-timing loss
-forward
-net turnover
-auction process
-politically exposed persons
-systematic internaliser
-extreme but plausible market conditions
-management activities
-transverse activities
-interoperability arrangement
-deemed foreign person
-packaged retail and insurance-based investment product manufacturer
-ancillary services
-investment projects under construction
-acceptable means of compliance 
-penalties
-entity
-issuer of corporate type
-scenario
-distribution
-multilateral system
-execution venue
-spot market
-final reports
-eu parent credit institution
-proxy
-ncb deadline
-retainer
-associated member
-reinsurance undertaking
-establishment
-requested authority
-cross-border payment transaction
-competent authority
-future
-services linked to the payment account
-re-securitisation
-pre-existing entity account
-single shared platform 
-offeror
-national regulatory authority
-duly certified copy
-key financial market participant
-statistical information
-funds
-mezzanine tranche
-page
-virtual currencies
-sanctions
-annual contribution
-first reference period
-instalments
-market
-data quality
-related party
-recognised agency
-partner country
-group cash value insurance contract
-full time equivalents
-central administrator
-buy-sell back transaction
-margin lending transaction
-medium-sized undertakings
-euro area member states
-write-down and conversion powers
-counterparties
-value at risk
-professional misconduct
-national unit
-product
-contract for differences
-high value account
-fees
-level a
-securities account
-located
-infrastructure project entity
-guide to fit and proper assessments
-solvency ratio
-group link
-sub-class
-financing agreement
-pogi
-ms contribution
-competent financial authority
-regulatory purposes
-board of directors
-compliance period
-real asset
-supervisory authority
-pre-existing account
-international organisation
-investment services and activities
-outstanding amounts of eligible loans
-investigation
-p/e
-security financial collateral arrangement
-one-sided payment
-standardised mortgage products
-demerger
-legally resident in the union
-debt securities
-right of use
-trading venue
-cancelled service
-reportable person
-administrator
-online marketplace
-obliged entities
-national resolution authority
-charge
-sectoral rules
-irb pool
-group-level resolution authority
-parent investment firm in a member state
-general budget
-expected exposure 
-mismatch outcome
-fee-paying branch
-international accounting standards
-payment system operator
-overlapping
-excess spread
-ancillary stabilisation
-participating member state
-common equity tier 1 instrument
-relevant competitor
-collateral arrangements
-measure
-provisional period
-submitter
-interoperable systems
-reference value
-relevant competent authority
-valuation input
-manager of the eltif
-central liaison office
-host member state
-financial services
-outsourcing
-multilateral trading facility
-settlement account
-first fee period
-territorial allocation
-commitment period
-identity information
-delegation decision
-value-added services
-rightholder
-agent passport application
-over-the-counter ( otc ) derivative instruments
-external credit assessment institution
-competent authority of the manager of the eltif
-ancillary system 
-common equity tier 1 capital ratio
-reporting agents
-cir
-sub-group
-credit transfer
-umbrella collective investment undertaking
-initial margin
-counterparty credit risk 
-clause
-central system
-holdings of securities
-valuer
-nca in close cooperation
-repurchase agreement
-public authorities
-investment services
-forwards
-actual inflation index
-ms contribution committed
-governmental entity
-brokering services
-non-equity securities
-document
-complaining party
-express delivery services
-significant entities
-reportable account
-division by the formation of new companies
-information regarding shareholder identity
-payment applications
-reorganisation measures
-sectors of economic activity
-non-core support services
-by electronic means
-existing insurance or reinsurance contract
-passport application
-dual inclusion income
-business line
-european free trade association
-rollover risk
-financial statements
-insurance claim
-control
-representative
-reuse
-order
-pool exposure of type a
-large-value payment system
-heads of work units
-inspections
-eligible counterparty
-third country
-grant agreement
-sponsoring undertaking
-formal open standard
-margin threshold
-long position
-use for statistical purposes
-adviser
-expected profit included in future premiums
-security
-repurchase transaction
-ucits home member state
-conditions for resolution
-margin lending transactions
-funding procedure
-relevant account
-liquidity risk assessment report
-cius
-balance payable on credit
-financial transaction
-audit report
-procurement document
-new financial service
-directors
-dynamic purchasing system
-institution under resolution
-fee debtor
-commodity derivatives
-deduction without inclusion
-financial account
-transmission
-supervised contributor
-principal risk
-daily foreign exchange reference rate
-management company
-reference party
-long settlement transactions
-eu parent financial holding company
-securitisation
-third party
-stress
-captive insurance undertaking
-volume
-transactions
-pension funds
-shareholder
-relevant capital instruments
-qualifying money market fund
-storage facility
-principal purpose test
-information recommending or suggesting an investment strategy
-non-mfis
-core service platforms
-unfit euro banknotes
-excluded account
-valuation position
-investment strategy
-treasury shares
-exclusive rights
-qualifying central counterparty
-cross-border positions
-secondary market
-persons acting in concert
-capital commitment
-planning phase
-bridge institution tool
-withdrawn euro banknotes
-loan disposal
-srep report
-import
-type of security
-sips operator
-supply
-earned premiums
-synthetic form of retention
-associated instruments
-regulated information
-third-country firm
-market operator
-on-site inspection
-collection
-fundamental data
-manufacture
-reporting year
-merging companies
-depositary receipts
-clearing
-person professionally arranging transactions
-mixed-activity insurance holding company
-intra-group transactions
-net financial impact
-matching adjustment portfolio
-supply undertaking
-secured market rate
-member state where the service is provided
-countries not parties to this agreement
-transfer of funds
-relevant national resolution authority
-authorisation
-comprehensive assessment
-multiple point of entry 
-core partner
-otc derivative
-anonymisation
-group of connected clients
-scheduled exchange calculator
-consumer
-financial market participant
-sectoral data
-destination member state
-applicant
-intrusion upon seclusion
-business as usual
-criminal activity
-risk-neutral distribution
-overallotment facility
-hybrid mismatch
-person closely associated with a person discharging managerial responsibilities within an issuer of financial instruments
-overdraft facility
-parties
-low-risk assets
-close-out netting provision
-futures
-deep market
-independent director
-c6 energy derivative contracts
-deposit
-ecb supervisory procedure
-spot month contract
-local
-repertoire
-authoritative source
-converted company
-member state of destination
-subject to effective taxation
-protected customers
-conversion factor
-major trading economy
-annual target level
-nca supervisory procedure
-sensors
-unique identifier
-credit risk
-olaf
-future on a swap
-critical benchmark
-closure
-rating system
-lawyer
-foreign exchange swap
-liquidation period
-management board
-overriding reasons relating to the public interest
-third-country csd
-senior management
-monitoring
-advertisement
-national central bank 
-foreign direct investment undergoing screening
-eu aifm
-custodian bank
-erdf
-cash
-sectoral competent authorities
-professional investor
-independent
-switching
-institutional protection scheme
-monitoring trustee
-programmable aid
-group risk assessment report
-supplier
-cross-product netting
-bail-in tool
-participation
-relevant costs
-candidate
-right to privacy
-securities issued in a continuous or repeated manner
-consolidating supervisor
-intra-group positions
-generic services
-issuers
-specific body
-central counter party
-probability distribution forecast
-party
-design basis accident
-t2s advisory group 
-currency participation agreement 
-date of the final decision
-sub-asset class
-government
-tied agent
-liquidity facility
-non-household customer
-unknown client
-relevant agreement
-branch passport application
-non-objection procedure
-financial information
-escb/ssm certificate acceptance framework
-lot
-two-sided payment
-direct debit
-write-off
-data reporting services provider
-european standard
-payment institution
-building block
-financial institution
-recovery plan
-member state
-jump to default risk
-leader
-dexia
-person discharging managerial responsibilities within an issuer
-specially designed
-system development life cycle
-lei code
-target2 settlement day
-regulated profession
-market maker
-national powers decisions
-bic
-lookback period
-funding decision
-exploitation
-horizontally integrated undertaking
-brokering
-accrual basis
-indirect client
-relevant taxpayer
-nomination
-insurance holding company
-title transfer financial collateral arrangement
-acquisition cost
-prime broker
-credit risk mitigation
-confidential statistical information
-swaption
-sponsor
-size specific to the financial instrument
-qualifying investments
-concession contract
-retirement
-implementing public authority
-execution of orders on behalf of clients
-distribution channels
-net financial effect
-national supervisory authority
-location
-institution
-offeree company
-valuation exposure
-retail payment system
-qualifying social entrepreneurship fund
-non-participating member state
-collateral security
-national designated authority
-probability of default
-locality
-machine-readable format
-additionality
-qualifying holding
-amendment to a decision on significance
-portfolio management
-documentation
-provision of a benchmark
-lower value account
-financial close
-process
-basic act
-cash handlers
-business relationship
-csd access criterion 2
+acceptable means of compliance
+accepted market practice
 accepted market practices
-individual action
-buy-back programmes
-initial margin protection
-third country or territory
-calculated area
-underwriting risk
-detailed liquidity coverage requirement
-level 2a assets
-level 2b assets
-securitisation position
-exposures underlying the position
-remaining weighted average life of the tranche
-market value of level 2b securitisations
-credit institutions
-liquid coverage ratio
-liquidity coverage requirement
-covered bonds
-covered bond
-personal investment company
-liquidity coverage ratio
-stress scenarios for the purposes of the liquidity coverage ratio
-liquid assets
-liquid asset
-specific liquidity requirement
-level 2b securisations
-liquidity outflows
-liquidity inflows
-excess liquid assets
-adjusted non-covered bond level 1 assets amount
+access
+accessible format
+account holder
+account operator
+accounting officer
+accounting portfolios
+accredited representative
+accrual basis
+accumulated equity value
+acquiring a holding
+acquisition cost
+acquisition of a holding
+action
+actionable indication of interest
+active corruption
+active licence
+active nfe
+actual distribution
+actual inflation index
+additional risk adjusting multiplier for each institution
+additional risk indicators to be determined by the resolution authority pillar
+additional tier 1 instruments
+additionality
+addressable bic holder
+adequate public disclosure
 adjusted level 1 covered bonds amount
 adjusted level 2a asset amount
 adjusted level 2b asset amount
-excess liquid assets amount
-composition of the liquidity buffer
+adjusted non-covered bond level 1 assets amount
+administrative enquiry
+administrative expenditures of the board
+administrative penalties
+administrator
+advertisement
+advised limit
+adviser
+affiliate
+affiliate of an audit firm
+affiliate undertaking
+after proper marketing
+agent
+agent passport application
+aggregate amount
+aggregate maximum risk exposure
+aggregate transaction costs for a priip
+aggregated data
+aggregated value of internalised settlement instructions
+aggressive order
+agreement
+aifms
+aifs
+algorithmic trading
+allocation constraints
+allotment
+allotment reference month
+alternative investment funds
+amendment to a decision on significance
+aml/kyc procedures
+amortised cost method
+amount reported in this item
+ancillary services
+ancillary services undertaking
+ancillary stabilisation
+ancillary system
+annual accounts
+annual contribution
+annual contribution of each institution
+annual contributions
+annual costs
+annual operating expenses
+annual supervisory fee
+annual target level
+annuity contract
+anonymisation
+another authority
+another parliament
+applicable turnover of a given trade repository
+applicant
+appointing authority
+appropriate regulation
+appropriations
+approval
+approved publication arrangement
+approved reporting mechanism
+arbitration panel
+argument
+arrival price
+assessment report
+assessment team
+assessor
+asset backed securities
+asset class
+asset coverage requirement
 asset quality indicators
+asset recovery offices
+asset separation tool
+asset-backed commercial paper ( abcp ) programme
+asset-backed securities
 assets of the reporting institution
-equity instruments 	
-carrying amount of encumbered assets
-fair value of encumbered assets
-collateral received by the reporting institution
-loans on demand
-own debt securities issued other than own covered bonds or asset-backed securities
-own covered bonds and asset-backed securities issued and not yet pledged
-total assets, collateral received and own debt securities issued
-fair value of encumbered collateral received or own debt securities issued
-fair value of collateral received or own debt securities issued available for encumbrance
-matching liabilities, contingent liabilities or securities lent
 assets, collateral received and own securities issued other than covered bonds and asset-backed securities encumbered
-own funds
-mrel
-leverage ratio
-tre
-net stable funding ratio
-interbank loans
-interbank deposists
-total interbank loans and deposits in the eu
-liquidity buffer of the credit institution
-client orders handled
-government schemes
-investors
-joint venture
-coh
-cmh
-client money held
-investment services and activities passport notification
-financial reporting
-non-sophisticated investor
+assistant
+associate
+associated enterprise
+associated instruments
+associated member
+association agreement
+association-related business
+assurance undertaking
+atm network functions
+auction process
+auctioneer
+audit
+audit firm
+audit report
+authentication
+authorisation
+authorisation scheme
+authorising officer by delegation
+authorising officer responsible
+authoritative source
+authorities
+authority
+automatic exchange
+automatic observing system
+available financial means
+average daily notional amount
+average daily notional amount (adna
+average daily number of trades
+average daily turnover
+average daily turnover (adt
+average outstanding electronic money
+award notice
+bail-in tool
+balance payable on credit
+balancing services
+bank account information
+bank deposits
+banking group
+banknotes in circulation
+bankruptcy remote
+base case
+base prospectus
+basel iii lcr framework
+baseline indicator
+basic act
+basic custody services
+basic risk-free interest rate term structure
+basis risk
+batch file transfer
+bban
+bcbs
+benchmark
+benchmark net lending
+benchmark outstanding amount
+beneficial owner
+beneficiary
+bespoke arrangement
+bic
+bid
+bid limit
+bidding window
+board
+board of directors
+bodies governed by public law
+body-tail modelling threshold
+book entry securities collateral
 booking branch
-homogeneous branches
-exposure
-lower level client
-smes
-connected clients
-foreign branch
-second indirect client
-investment advice of an ongoing nature
+borrowing allowance
+branch
+branch of an insurance corporation
+branch passport application
+branch passport notification
+bridge institution tool
+broad participation retirement fund
+brokering
+brokering services
+budget
+budget line
+budgetary commitment
+building block
+building blocks
+business as usual
+business day
+business line
+business relationship
+buy-back programme
+buy-back programmes
+buy-sell back transaction
+by electronic means
+by-product
+c6 energy derivative contracts
+calculated area
+calculation data set
+cancellation
+cancelled service
+candidate
+capital
+capital commitment
+capital joint decision
+capital market-driven transaction
+capital outflow
+capital requirement
+capital requirement for equity risk
+capital requirement for marine risk
+capital requirement for type 1 equities
+captive insurance undertaking
+captive reinsurance undertaking
+capture
+carried interest
+carrying amount
+carrying amount of derivatives
+carrying amount of encumbered assets
+carrying amount of financial instruments
+cash
+cash assimilated instrument
+cash changeover date
+cash changeover year
+cash collateral
+cash dispenser
+cash handlers
+cash value
+cash value insurance contract
+category level avas for market price uncertainty
+ccp
+ccp-related transaction
+central administrator
+central authority
+central bank
+central counter party
+central counterparty
+central government
+central liaison office
+central purchasing body
+central securities depository
+central system
+centralised bank account registries
+certificates
+change in branch particulars notification
+charge
+check
+cir
+cius
+claim
+class of derivatives
+clause
+clean-up call option
+cleared derivatives
+clearing
+clearing member
+clearing price
+clearing system
+client
 client assets
+client money held
+client orders handled
+close links
+close-out costs
+close-out date
+close-out netting provision
+closing balance [present value
+closure
+cmh
+coh
+collateral
+collateral arrangement
+collateral arrangements
+collateral received by the reporting institution
+collateral security
+collection
+collective investment undertaking other than the closed-end type
+collective investment undertakings other than the closed-end type
+collective investment vehicle
+collective management organisation
+college of supervisors
+commercial communication
+commercial presence
+commercial services
+commercially reasonable replacement trade
+commitment
+commitment period
+committed capital
+commodity
+commodity benchmark
+commodity derivatives
+common equity tier 1 capital ratio
+common equity tier 1 instrument
+common equity tier 1 instruments
+common procedures
+common test procedures
+community issuer
+company
+company being divided
+company with reduced market capitalisation
+compensation reinsurance obligation
+competent authorities
+competent authorities of the eu aif
+competent authority
+competent authority of the host member state
+competent authority of the manager of the eltif
+competent financial authority
+competent official
+competent regulatory authority
+complaining party
+complexity
+compliance period
+composition of the liquidity buffer
+comprehensive assessment
+concentrated positions
+concentration risk
+concession contract
+conditions for resolution
+confidence interval
+confidential information
+confidential statistical information
+confirmation
+connected clients
+consignment
+consolidated group for financial accounting purposes
+consolidated tape provider
+consolidating entity
+consolidating supervisor
+constituent act
+consultancy
+consumer
+consumption unit
+contingency
+contingency solution
+contingent capital instrument
+contingent form of retention
+continuity options
+contract
+contract for differences
+contract notice
+contract or transaction
+contracting parties
+contractual netting agreements
+contributing member states
+contribution debtor
+contribution of input data
+contribution period
+contributions
+contributor
+control
+control area
+controlled entity
+controlled undertaking
+controlling persons
+convenience yield
+convention
+conversion factor
+converted company
+convertible
+conviction
+cooperation
+core partner
+core service platforms
+core taxonomy
+corep (lr)
+corep (of)
+corrective action
+corrective measure
+correspondent relationship
+corresponding mechanism
+counterparties
+counterparty
+counterparty credit risk
+counterparty risk
+countries not parties to this agreement
+country where the contract was entered into
+coverage of an internal model
+covered bond
+covered bonds
+covered deposits
+cpmi
+credit enhancement
+credit entitlement
+credit exposure
+credit institution
+credit institutions
+credit interest rate
+credit rating
+credit rating activities
+credit rating agency
+credit register
+credit risk
+credit risk mitigation
+credit transfer
+credit valuation adjustment
+credit-enhancing interest-only strip
+criminal activity
+criminal proceedings
+critical benchmark
+critical incident stress
+critical service provider
+cross-border arrangement
+cross-border collateral
+cross-border conversion
+cross-border merger
+cross-border payment
+cross-border payment transaction
+cross-border positions
+cross-product netting
+cross-selling practice
+csd access criterion 1
+csd access criterion 2
+csd access criterion 3
+csd access criterion 4
+csd access criterion 5
+csd link
+currency participation agreement
+current exposure
+custodial account
+custodial institution
+custodian
+custodian bank
+custodian wallet provider
+custody risk
+customer
+customer due diligence measure
+customised link
+daily foreign exchange reference rate
+data collection threshold
+data quality
+data quality requirements
+data reporting services provider
+date of accounting
+date of discovery
+date of occurrence
+date of the final decision
+date of the request
+date of transition to ifrss
+dbb/belfius
+dealing on own account
+debt instruments
+debt instruments at cost or at amortised cost
+debt instruments at fair value through other comprehensive income or through equity subject to impairment
+debt securities
+decision
+decreases due to amounts taken against allowances
+dedicated window's accounts
+deduction
+deduction without inclusion
+deemed foreign person
+deep market
+deferral period
+delegated body
+delegated decision
+delegation decision
+deletion
+delivery option
+delivery versus payment
+delta
+demerger
+denominator
+departure member state
+deposit
+deposit guarantee scheme
+deposit guarantee schemes
+depositary
+depositary receipts
+depositor
+depository institution
+derecognition
+derivatives
+design basis
+design basis accident
+designated authority
+designated service
+designating authority
+designed or modified
+destination member state
+detailed liquidity coverage requirement
+development
+development year
+deviation from the benchmark outstanding amount
+dexia
+different activities
+dilution risk
+direct and particular risk
+direct debit
+direct debit scheme
+direct electronic access
+direct line
+direct participant
+directed order
+directly connected party
+director
+directors
+disclosing market participant
+discontinuity options
+discretionary pension benefits
+disposal value
+disregarded permanent establishment
+dissemination
+distance contract
+distressed sme portfolio
+distribution
+distribution channels
+distribution of exposures
+distribution of market values
+diversification effects
+division
+division by acquisition
+division by the formation of new companies
+document
+documentation
+domestic central bank
+domestic insurance undertaking
+domestic merger
+domestic reinsurance undertaking
+double deduction
+dual inclusion income
+duly certified copy
+durable medium
+dynamic data
+dynamic purchasing system
+early termination
+earmarkable assets
+earned premiums
+eba list
+ebs
+ecaa agreement
+ecaa country
+ecb guide
+ecb supervisory decision
+ecb supervisory procedure
+ecb working day
+economic equilibrium test
+economic operator
+economic resources
+effective expected exposure
+effective expected exposure ( effective ee ) at a specific date
+effective expected positive exposure
+eif activity
+eif contribution
+electronic means
+electronic money
+electronic money institution
+electronic money issuer
+electronic system
+elgd
+eligible counterparty
+eligible customer
+eligible deposits
+eligible liabilities
+eligible net lending
+emergency situation
+emergent market
+enforcement event
+entity
+entity-by-entity basis
+entrusted party
+entry date
+entry into operation
+epa countries
+equity
+equity instruments
+equity interest
+equity securities
+equity value
+equivalent third country market
+erdf
+escb/ssm certificate acceptance framework
+esef_all
+esef_cor
+established entity
+establishment
+estimated adjustment factor for non-proportional reinsurance
+etf
+eu aif
+eu aifm
+eu contribution
+eu parent credit institution
+eu parent financial holding company
+eu parent investment firm
+euro account
+euro area member state
+euro area member states
+euromed country
+european free trade association
+european neighbourhood policy partners
+european standard
+european statistics
+european union-wide performance targets
+eurosystem central bank
+eurosystem sips
+evaluation
+exceeding borrowing costs
+excess liquid assets
+excess liquid assets amount
+excess spread
+exchange of information on request
+exchange-traded fund
+exchange-traded fund (etf)
+excluded account
+excluded non-monetary benefit
+exclusive rights
+executing state
+execution of orders
+execution of orders on behalf of clients
+execution venue
+exempt collective investment vehicle
+existing insurance or reinsurance contract
+exit policy
+expected exposure
+expected positive exposure
+expected profit included in future premiums
+expert
+expert judgement
+exploitation
+export
+exporter
+exposure
+exposure value
+exposure-weighted average loss-given-default (elgd
+exposures underlying the position
+express delivery services
+extended warranty insurance obligation
+extension taxonomy
+external credit assessment institution
+extreme but plausible market conditions
+facility grade
+failed internalised settlement instruction
+fair value
+fair value of collateral received or own debt securities issued available for encumbrance
+fair value of encumbered assets
+fair value of encumbered collateral received or own debt securities issued
+fair value of the investments for which there are published price quotations
+family of benchmarks
+fee debtor
+fee factors
+fee notice
+fee period
+fee to obtain a licence
+fee-paying branch
+fee-paying credit institution
+feeder aif
+fees
+fiduciary risk
+final administrative decision
+final customer
+final decision
+final funding amount
+final investment decision
+final recipient
+final reports
+financial account
+financial analysis
+financial analyst
+financial close
+financial collateral arrangement
+financial conglomerate
+financial counterparty
+financial customer
+financial guarantee
+financial holding company
+financial information
+financial institution
+financial institutions
+financial instrument
+financial instruments
+financial intermediary
+financial market participant
+financial obligations
+financial penalty
+financial regulation
+financial reporting
+financial sector
+financial service
+financial service supplier
+financial services
+financial stability board
+financial statements
+financial transaction
+financial undertaking
+financial year
+financing agreement
+financing decision
+findings
+finite reinsurance
+finrep
+firmness
+first fee period
+first reference period
+fit and proper decision
+fit and proper requirements
+five-day futures
+fixed overhead requirements
+following exposures
+force majeure
+forecast
+forecast inflation index
+foreign branch
+foreign direct investment
+foreign direct investment undergoing screening
+foreign exchange swap
+foreign investor
+formal agreement
+formal open standard
+forward
+forward agreement
+forward on a swap
+forwards
+foundation
+framework agreement
+framework contract
+franchise value
+frand
+fsb
+full cost
+full time equivalents
+fully adjusted exposure value
+function
+functional system
+fundamental data
+funded credit protection
+funding agreement
+funding decision
+funding procedure
+funds
+future
+future administrative costs
+future discretionary bonuses
+future on a swap
+futures
+fvc
+fvc code
+gas derivative
+gdp
+general assembly of members
+general budget
+general business risk
+general documentation
+general government
+generic services
+give-in transaction
+give-up transaction
+global credit arrangement
+goods
+goodwill link to the investee
+governing board
+governing body
+government
+government bonds
+government deposits
+government schemes
+governmental entity
+grant agreement
+granular credit data
+greenshoe option
+gross carrying amount
+gross loss
+grounds for listing
+group
+group annuity contract
+group auditor
+group basis
+group cash value insurance contract
+group data
+group institution
+group internal model
+group link
+group liquidity risk assessment report
+group of connected clients
+group of credit rating agencies
+group of fee-paying entities
+group resolution plan
+group risk assessment report
+group supervisor
+group-level resolution authority
+guarantee
+guarantee agreement
+guarantee funds
+guidance material
+guide to fit and proper assessments
+hallmark
+head of a reporting group
+heads of work units
+health insurance obligation
+hedging set
+high value account
+high-frequency algorithmic trading technique
+high-value datasets
+hold value
+holding company
+holdings of securities
+home member state
+home member state of the aif
+home member state of the aifm
+home member state of the eltif
+homogeneous branches
+horizontally integrated undertaking
+host member state
+host member state of the aifm
+household customer
+hybrid contracts
+hybrid mismatch
+ias
+iban
+identity information
+if registered shares/units
+ifrs
+ifrs consolidated financial statements
+ifrs-full
+imbalances
+immobilisation
+implementation period
+implementation strategy
+implementing authority or body
+implementing public authority
+import
+importance of an institution to the stability of the financial system or economy pillar
+inclusion
+income protection reinsurance obligation
+incremental cost
+independent
+independent director
+independent expert
+independent management entity
+independent review
+independent valuer
+index
+index provider
+indicator
+indicator value
+indirect clearing arrangement
+indirect clearing arrangements
+indirect client
+indirect contagion
+indirect instruction
+indirect link
+indirect participant
+individual action
+individual recovery plan
+inducement
+inducement scheme
+information
+information and control module
+information recommending or suggesting an investment strategy
+information regarding shareholder identity
+infrastructure project entity
+infringement
+initial margin
+initial margin protection
+initial period
+input data
+inside information
+insider dealing
+inspections
+inspector
+instalment notice
+instalments
+institution
+institution under resolution
+institution-specific countercyclical capital buffer rate
+institutional investor
+institutional protection scheme
+institutions
+insurance
+insurance claim
+insurance contract
+insurance corporations
+insurance holding company
+insurance undertaking
+insurance-based investment product
+intended settlement date
+interbank deposists
+interbank loans
+interchange fee
+interest
+interest payment
+interest rate benchmark
+interest rate incentive adjustment
+interested parties
+intermediary
+intermediary payment service provider
+intermediate reports
+internalised settlement instruction
+international accounting standards
+international auditing standards
+international credits
+international investment position
+international open communication procedures and standards
+international organisation
+international standard
+interoperability arrangement
+interoperable link
+interoperable systems
+intra-eurosystem balances on euro banknotes in circulation
+intra-group positions
+intra-group transaction
+intra-group transactions
+intrusion upon seclusion
+investigation
+investment
+investment advice
+investment advice of an ongoing nature
+investment companies other than those of the closed-end type
+investment company with fixed capital
+investment firm
+investment phase
+investment projects
+investment projects under construction
+investment recommendations
+investment research
+investment risk
+investment services
+investment services and activities
+investment services and activities passport notification
+investment strategy
+investment window
+investor
+investor csd
+investors
+ipa ii beneficiary
+irb pool
+ireland
+isin code
+issue key
+issuer
+issuer csd
+issuer of corporate type
+issuer of sovereign and public type
+issuers
+item-by-item data
+items of correspondence
+joint account
+joint commission
+joint supervisory team
+joint venture
+jump to default risk
+k-con capital requirement
+k-factor requirement
+key audit partner
+key financial market participant
+key information
+kirb
+knowledgeable
+large-value payment system
+last level
+late arrears loans
+lawyer
+lead rating analyst
+leader
+legal commitment
+legal entity
+legal person
+legal person of an octs
+legal representative
+legal risk
+legally resident in the union
+lei code
+lending credit institution
+less significant branch
+less significant credit institution
+less significant supervised entity
+less significant supervised entity in a euro area member state
+less significant supervised group
+level 1 assets
+level 2a assets
+level 2b assets
+level 2b securisations
+level a
+leverage
+leverage effect
+leverage ratio
+leverage ratio exposure value
+liabilities
+liability base
+liaison department
+licence
+licence holder
+likely to become publicly available information
+limit order
+limited company
+liquid asset
+liquid assets
+liquid coverage ratio
+liquid market
+liquidation period
+liquidator
+liquidity buffer
+liquidity buffer of the credit institution
+liquidity coverage ratio
+liquidity coverage requirement
+liquidity facility
+liquidity fragmentation
+liquidity inflows
+liquidity joint decision
+liquidity outflows
+liquidity provider
+liquidity risk
+liquidity risk assessment report
+liquidity support drawn
+loan acquisition
+loan disposal
+loans on demand
+local
+local firm
+local portion
+localisation of assets
+locality
+located
+location
+long position
+long settlement transactions
+long-term planning
+lookback period
+loss
+loss given default
+loss-given-default on derivatives
+lot
+low-risk assets
+lower level client
+lower value account
+machine-readable format
+macro-prudential policy measure
+major business unit
+major investment
+major project
+major trading economy
+management
+management activities
+management board
+management body
+management company
+management costs and fees
+management entity
+management fees
+manager of a qualifying social entrepreneurship fund
+manager of a qualifying venture capital fund
+manager of the eltif
+managing aifs
+mandate
+manufacture
+margin agreement
+margin close-out protection
+margin lending transaction
+margin lending transactions
+margin loans
+margin period of risk
+margin threshold
+margining
+market
+market infrastructure board
+market maker
+market manipulation
+market operator
+market participant
+market risk
+market share
+market value
+market value of level 2b securitisations
+marketable arrangement
+marketing
+matched orders
+matched principal trading
+matching
+matching adjustment portfolio
+matching assets
+matching liabilities, contingent liabilities or securities lent
+material
+maturity
+maturity (m)
+maturity factor
+maturity factor (mf) for each transaction
+measure
+measurement basis
+measures
+medical expense reinsurance obligation
+medium-sized undertakings
+member
+member state
+member state financial institution
+member state in which the risk is situated
+member state of destination
+member state of establishment
+member state of origin
+member state of reference
+member state of the branch
+member state of the commitment
+member state of the provision of services
+member state where the service is provided
+merger
+merger by acquisition
+merger by the formation of a new company
+mergers
+merging companies
+mezzanine securitisation position
+mezzanine tranche
+mf
+mfi code
+mif
+milestone
+minimum margin period of risk
+minimum modelling threshold
+minimum regulatory capital
+misappropriation
+misconduct event
+mismatch outcome
+mixed financial holding company
+mixed pool
+mixed-activity holding company
+mixed-activity insurance holding company
+mmf bearer shares/units
+mmf registered shares/units
+model risk
+money laundering
+money market fund
+money market instrument
+money market instruments
+money market statistics
+money remittance
+money-market instruments
+monitoring
+monitoring period
+monitoring trustee
+monitoring/monitored by the esrb secretariat
+mortgage insurance
+mortgage lending value
+mortgages
+movements
+mrel
+ms contribution
+ms contribution committed
+ms contribution paid
+multi-arrangement special purpose vehicle
+multi-territorial licence
+multilateral system
+multilateral trading facility
+multiple point of entry
+multiple-vote securities
+narrow participation retirement fund
+national
+national administrative platform
+national administrator
+national authority
+national central bank
+national competent authority
+national designated authority
+national gaap
+national generally accepted accounting principles
+national guarantee fund
+national payment
+national payment transaction
+national powers decisions
+national regulatory authority
+national resolution authority
+national supervisory authority
+national unit
+natural person from an octs
+nca in close cooperation
+nca supervisory procedure
+ncb
+ncb deadline
+ncbs
+negative balance protection
+negative decision
+net deferred taxes assets
+net exposure
+net financial effect
+net financial impact
+net liquidity outflows
+net stable funding ratio
+net turnover
+netting set
+network service provider
+new and existing investment
+new debt finance
+new entity account
+new financial service
+new individual account
+new infrastructure
+new-for-old
+nfe
+ngaap
+nominated bank account
+nominated holding account
+nomination
+nomination decision
+non-cash collateral posted and received by an investment firm, both in bilateral and cleared transactions
+non-core support services
+non-discretionary rules
+non-equity securities
+non-eu aif
+non-eu aifm
+non-euro account
+non-euro area member state
+non-financial counterparty
+non-financial entity
+non-household customer
+non-listed company
+non-member country reinsurance undertaking
+non-mfis
+non-objection procedure
+non-participating member state
+non-practitioner
+non-regulated undertaking
+non-regulated undertaking carrying out financial activities
+non-reporting financial institution
+non-significant benchmark
+non-sophisticated investor
+non-standard contract
+nostro agent
+notification
+notification date
+notification for the provision of arrangements to facilitate access to an mtf or an otf
+notifying authority
+nprfc
+nprfc investment
+nprfc preference shares
+obligated party
+obliged entities
+obligor grade
+octs concerned
+off-balance sheet exposures
+offer of securities to the public
+offeree company
+offering programme
+offeror
+ofi
+olaf
+on-market hybrid transfer
+on-site inspection
+on-site inspection team
+on-the-run index
+one-sided credit valuation adjustment
+one-sided payment
+ongoing basis
+online marketplace
+open format
+operating licences
+operation
+operational agreement
+operational risk
+operational risk category
+operational risk profile
+operational risk tolerance
+operator of essential services
+operator or supplier of a means of distance communication
+opinion
+option
+option 3
+order
+order to trade
+orderly wind-down plan
+ordinary stock
+organised market place
+organised trading facility
+original own funds
+originator
+otc derivative
+other equity
+other recurring costs ratio
+other relevant authorities and bodies
+outsourcing
+outstanding amounts of eligible loans
+over-the-counter ( otc ) derivative instruments
+overall efficiency
+overall fraud rate for each type of transaction
+overallotment facility
+overcollateralisation
+overdraft facility
+overlapping
+overriding reasons relating to the public interest
+overrunning
+own covered bonds and asset-backed securities issued and not yet pledged
+own debt securities issued other than own covered bonds or asset-backed securities
+own funds
+own funds decision
+own funds reduction
+own funds requirements
+own-use covered bonds
+p/e
+p/tbv
+package transaction
+packaged retail and insurance-based investment product
+packaged retail and insurance-based investment product manufacturer
+page
+pan-european atm/ans
+pan-european services
+parent credit institution in a member state
+parent financial holding company in a member state
+parent investment firm in a member state
+parent undertaking
+participant
+participating countries
+participating interest
+participating jurisdiction financial institution
+participating member state
+participating member state in close cooperation
+participating member states
+participating party
+participating undertaking
+participation
+parties
+parties to the bid
+partner country
+party
+passive corruption
+passive licence
+passive nfe
+passive order
+passport application
+passport notification
+passport notifications
+pay-out ratio at consolidated level
+pay-out ratio at solo level
+payee
+payer
+paying agent
+payment account
+payment applications
+payment commitments
+payment institution
+payment instrument
+payment order
+payment request
+payment scheme
+payment service
+payment service provider
+payment service user
+payment system
+payment system operator
+payment transaction
+payments on account
+penalties
+pension funds
+pension scheme
+pension scheme arrangement
+percentage of days traded over the period considered
+performance scheme
+periodic penalty payments
+permanent establishment
+person
+person closely associated
+person closely associated with a person discharging managerial responsibilities within an issuer of financial instruments
+person discharging managerial responsibilities
+person discharging managerial responsibilities within an issuer
+person professionally arranging or executing transactions
+person professionally arranging transactions
+person selling a priip
+person with whom a relevant person has a family relationship
+person-to-person transfer of funds
+personal investment company
+persons acting in concert
+persons known to be close associates
+pfe
+planning phase
+pogi
+policy area
+policy measure
+politically exposed person
+politically exposed persons
+pool exposure of type a
+pool exposure of type b
+pool exposure of type c
+pooling arrangement
+portfolio compression
+portfolio management
+portfolio swap
+portfolio trade
+position
+positive outcome of a review
+post office giro institution
+potential future exposure
+potential future exposure (pfe)
+pre-existing account
+pre-existing entity account
+pre-existing individual account
+pre-marketing
+preliminary report
+preparation
+previous reporting reference periods
+prime broker
+principal purpose test
+principal risk
+prior information notice
+probability distribution forecast
+probability of default
+process
+procurement
+procurement document
+product
+professional client
+professional investor
+professional misconduct
+professional scepticism
+profit
+profit estimate
+profit forecast
+programmable aid
+programme
+programming
+programming document
+promotional bank
+promotional entity
+property collective investment undertaking
+proportional share
+protected customers
+provider
+provision of a benchmark
+provisional period
+proxy
+proxy advisor
+psp
+psu
+public
+public authorities
+public authority
+public contract
+public entity
+public international body
+public office
+public private partnership
+public sector body
+public sector corporate bond
+public sector entities
+public service obligation
+public service obligation compensation
+public undertaking
+public undertakings
+public undertakings operating in the manufacturing sector
+public-interest entities
+qualified credit card issuer
+qualified investors
+qualifying central counterparty
+qualifying eligible liabilities
+qualifying holding
+qualifying investments
+qualifying money market fund
+qualifying social entrepreneurship fund
+qualifying venture capital fund
+quasi-equity
+r-transaction
+rank first
+rapidly recovered loss events
+rate of expected credit losses
+rated entity
+rated position
+rating analyst
+rating category
+rating system
+ratings based method
+re-securitisation
+re-securitisation position
+re-use
+real asset
+reasonable return on investment
+rebalancing of the portfolio
+receiving csd
+receiving payment service provider
+recipient
+recipient company
+recirculation
+recognised agency
+recognised exchanges
+recognised third-country investment firms
+recommendation
+recovery
+recovery period
+recovery plan
+reference exchange rate
+reference interest rate
+reference outstanding amount
+reference party
+reference period
+reference rate
+reference reporting population
+reference value
+regional allocation
+regional investment platforms
+regulated entity
+regulated information
+regulated market
+regulated profession
+regulatory purposes
+reinsurance
+reinsurance undertaking
+related financial instrument
+related party
+related third party
+related undertaking
+relevant account
+relevant agreement
+relevant authorities
+relevant authority
+relevant capital instruments
+relevant competent authorities
+relevant competent authority
+relevant competitor
+relevant costs
+relevant entity
+relevant financial obligations
+relevant legal entity
+relevant national resolution authority
+relevant nca
+relevant ncb
+relevant person
+relevant product
+relevant public authority
+relevant stakeholders
+relevant taxpayer
+reliable
+remaining maturity
+remaining weighted average life of the tranche
+remedial action
+remuneration
+reorganisation measures
+reorganisation period
+repayments
+repertoire
+replaced instrument
+replacement cost
+replacement trade
+replacing instrument
+report of infringement
+reportable account
+reportable cross-border arrangement
+reportable person
+reported person
+reporting agent
+reporting agents
+reporting currency
+reporting financial institution
+reporting person
+reporting year
+representation agreement
+representative
+representative of a party
+representative office
+reprocessing
+repurchase agreement
+repurchase transaction
+request for consultation
+request-for-quote system
+requested authority
+requesting authority
+requesting csd
+requesting member state
+requirement
+research data
+research or other information recommending or suggesting investment strategy
+residence of investee
+resident
+resolution action
+resolution authority of non-participating member states in the single resolution mechanism
+resolution date
+resolution decision date
+resolution entity
+resolution group
+resolution objectives
+resolution plan
+resolution strategy
+resolution tool
+resolvability
+restoring the working order
+restructuring plan
+retail client
+retail customers
+retail deposits
+retail investor
+retail payment system
+retainer
+retention of net economic interest
+retirement
+retirement benefits
+reuse
+revaluation adjustments
+revenues
+review period
+right of use
+right to privacy
+rightholder
+rights revenue
+risk
+risk adjusting multiplier
+risk assessment
+risk concentration
+risk factors
+risk indicator
+risk measure
+risk position
+risk profile of each institution
+risk profile of institutions
+risk-mitigation techniques
+risk-neutral distribution
+risk-sharing instrument for project bonds
+rollover risk
+rtc k-factor requirement
+rtf k-factor requirement
+sale of business tool
+sanctions
+scenario
+scenario analysis
+schedule
+scheduled exchange
+scheduled exchange calculator
+scope of an internal model
+screening
+screening decision
+screening mechanism
+sdlc
+second indirect client
+second reference period
+secondary market
+secretariat
+sectoral agreement
+sectoral competent authorities
+sectoral data
+sectoral legislation
+sectoral rules
+sectors of economic activity
+secure electronic means
+secured lending transaction
+secured market rate
+securities
+securities account
+securities financing transaction
+securities held in custody
+securities issued in a continuous or repeated manner
+securities lending
+securities or commodities lending
+securities settlement system
+securitisation
+securitisation position
+securitisation special purpose entities
+securitisation special purpose entity
+security
+security financial collateral arrangement
+self-regulatory body
+self-securitised eligible loans
+semi-automatic observing system
+senior management
+senior securitisation position
+sensors
+serious crimes
+serious criminal offences
+service
+servicer
+services incidental to
+services linked to the payment account
+services passport application
+services passport notification
+servicing continuity provisions
+settlement
+settlement account
+settlement agent
+settlement bank
+settlement date
+settlement fail
+settlement instruction
+settlement internaliser
+settlement period
+settlement restriction
+settlement system
+sfc2014
+share capital
+share capital of investee
+share of the revenues
+shared order book
+shared services
+shareholder
+shares
+shares in undertakings other than financial sector entities
 shares traded on a regulated market
+shell bank
+significant benchmark
+significant branch
+significant credit institution
+significant distribution
+significant entities
+significant gross change
+significant supervised entity
+significant supervised entity in a euro area member state
+significant supervised entity in a participating non-euro area member state
+significant supervised group
+simple
+single shared platform
+sips operator
+size specific to the financial instrument
+small and medium-sized enterprises
+small and non-interconnected investment firm
+small undertakings
+small-scale project
+sme growth market
+smes
+solvency ratio
 sophisticated investor
+sovereign debt
+sovereign issuance
+sovereign issuer
+special arrangement
+special purpose vehicle
+special rights
+specially designed
+specific body
+specific costs
+specific liquidity requirement
+specified insurance company
+sponsor
+sponsoring undertaking
+spontaneous exchange
+spot commodity contract
+spot market
+spot month contract
+srep decision
+srep report
+stabilisation
+stability and variety of sources of funding pillar
+stake-building
+stand-still
+standard contract
+standard licence
+standard link
+standardised industry coding system
+standardised mortgage products
+standardised retail savings and deposit products
+standing order
+statement of reasons
+statement on origin
+statistical information
+statute
+statutory audit
+statutory auditor
+stock financing
+storage
+storage facility
+stress
+stress scenarios for the purposes of the liquidity coverage ratio
+structured arrangement
+structured finance instrument
+structured finance products
+sts securitisation
+sub-asset class
+sub-class
+sub-group
+subcontractor
+subject to effective taxation
+submitter
+subscribed capital key
+subsidiary
+subsidiary undertaking
+subsidy
+substantial error
+summary cost indicator
+supervised contributor
+supervised entity
+supervised group
+supervisory authorities
+supervisory authority
+supervisory board
+supervisory formula method
+supervisory function
+supervisory legal instrument
+supplier
+supply
+supply undertaking
+swap
+swaption
+switching
+synthetic form of retention
+synthetic securitisation
+system
+system development life cycle
+system user
+systematic internaliser
+systemic risk
+t2s advisory group
+t2s party
+tail institution
+takeover bid
+taking up business
+target level
+target2 settlement day
+tax period
+tax relief
+technical assistance
+technical issuer csd
+technology
+temporary accommodation
+tenderer
+termination event
+terms of reference
+territorial allocation
+terrorist financing
+testing exception
+the annual supervisory fee for a given trade repository for a given year (n
+the capital requirement
+the indicator share of interbank loans and deposits in the european union
+third country
+third country issuer
+third country or territory
+third indirect client
+third parties
+third party
+third-country audit entity
+third-country auditor
+third-country csd
+third-country financial institution
+third-country firm
+third-country insurance undertaking
+third-country reinsurance undertaking
+threshold
+tied agent
+tied agent passport notification
+tier 2 instruments
+timing loss
+tin
+title transfer financial collateral arrangement
+total annual supervisory fee
+total assets
+total assets, collateral received and own debt securities issued
+total interbank loans and deposits in the eu
+total main balance sheet assets
+total risk exposure
+trade
+trade repository
+trading activities
+trading day
+trading party
+trading venue
+trading venue member
+trading venue operator
+traditional securitisation
+trained staff members
+tranche
+transaction
+transaction costs
+transaction data
+transactions
+transfer date
+transfer of a business carried on by a permanent establishment
+transfer of assets
+transfer of funds
+transfer of tax residence
+transferable securities
+transferring payment service provider
+transitional period
+transmission
+transnational producer organisation
+transparent market
+transverse activities
+tre
+treasury asset management
+treasury shares
+tri-party repo
+trust and company service providers
+trust or company service provider
+two-day spot
+two-sided payment
+type of banknote handling machine
+type of security
+ucits
+ucits home member state
+ucits host member state
+umbrella collective investment undertaking
+unavailable deposit
+undertaking
+undertaking of a third country
+undertaking required to maintain separate accounts
+undertaking-specific specific adjustment factor for non-proportional reinsurance
+underwriting risk
+unfit euro banknotes
+unfunded credit protection
+union and efta branch
+union and efta-located branch
+union financial assistance
+union official
+unique identifier
+unique transaction identifier
+unit-holder
+units of a collective investment undertaking
+unknown client
+unrated position
+unrealised profit
+unsecured overnight market rate
+unused credit entitlement
+use
+use for statistical purposes
+use of a benchmark
+user
+user-accessible programmability
+valid application
+validation
+valuation
+valuation exposure
+valuation input
+valuation position
+value
+value at risk
+value date
+value of settlement instructions
+value of the trade
+value-added services
+valuer
+variance measure 1
+variation margin
+vendor
+verification
+vertical tranche
+vertically integrated undertaking
+virtual currencies
+voice trading system
+volume
+voting rights
+warning contact person
+weight applied to the countercyclical buffer rate in each country
+weighted average life of the mmf
+weighted average maturity of the mmf
+weighted average original maturity
+weighted average residual maturity
+wholesale customer
+winding up
+winding-up proceedings
+withdrawn euro banknotes
+work
+workers compensation insurance obligation
+write off
+write-down
+write-down and conversion powers
+write-off
+written premiums
+yearly average amount
