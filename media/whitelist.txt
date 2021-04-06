@@ -1,18 +1,27 @@
+% of eligible capital
 1x off-the-run status
+abcp
 abn amro group
 abnormal operations
+abs
 acceptable means of compliance
 accepted market practice
 accepted market practices
 access
 accessible format
+account
 account holder
 account operator
+accounting balance sheet value
+accounting framework
 accounting officer
 accounting portfolios
+accounting value
+accounting value assuming no netting or other crm
 accredited representative
 accrual basis
 accumulated equity value
+accumulated other comprehensive income
 acquiring a holding
 acquisition cost
 acquisition of a holding
@@ -23,20 +32,59 @@ active licence
 active nfe
 actual distribution
 actual inflation index
+actual or contingent obligations
+actual or contingent obligations to purchase own at1 instruments
+actual or contingent obligations to purchase own cet1 instruments
+actual or contingent obligations to purchase own t2 instruments
+add-on amount for pfe associated with all derivatives transactions (mark-to-market method)
+add-on for counterparty credit risk
+add-on for sft
+additional amount of encumbered assets
+additional amount of encumbered assets. significant currency 1
+additional amount of encumbered assets. significant currency 2
+additional balances required to be installed in central bank reserves
+additional deductions of at1 capital
+additional deductions of cet1 capital
+additional deductions of t2 capital
+additional exposures arising from transactions where there is an exposure to underlying assets
+additional outflows
 additional risk adjusting multiplier for each institution
+additional risk exposure amount
+additional risk exposure amount due to fixed overheads
 additional risk indicators to be determined by the resolution authority pillar
+additional stricter prudential requirements
+additional tier 1 capital
 additional tier 1 instruments
 additionality
 addressable bic holder
 adequate public disclosure
+adjusted effective notional amount of written credit derivatives
+adjusted effective notional offsets and add-on deductions for written credit derivatives
 adjusted level 1 covered bonds amount
 adjusted level 2a asset amount
 adjusted level 2b asset amount
 adjusted non-covered bond level 1 assets amount
+adjustment factor
+adjustment for derivative financial instruments
+adjustment for entities which are consolidated for accounting purposes but are outside the scope of regulatory consolidation
+adjustment for exempted intragroup exposures excluded from the leverage ratio total exposure measure
+adjustment for exposures excluded from the leverage ratio total exposure measure
+adjustment for fiduciary assets recognised on the balance sheet pursuant to the applicable accounting framework but excluded from the leverage ratio total exposure measure
+adjustment for off-balance sheet items
+adjustment for securities financing transactions (sfts)
+adjustments for conversion to credit equivalent amounts
+adjustments for sft sales accounting transactions
+adjustments made to assets due to net liquidity inflows from early close-out of hedges
+adjustments made to assets due to net liquidity outflows from early close-out of hedges
+adjustments to cet1 due to prudential filters
 administrative enquiry
 administrative expenditures of the board
 administrative penalties
+administrative platform
 administrator
+advanced measurement approaches
+advanced method
+advanced method for additional outflows approach
 advertisement
 advised limit
 adviser
@@ -46,6 +94,8 @@ affiliate undertaking
 after proper marketing
 agent
 agent passport application
+agent transaction exposures
+agents
 aggregate amount
 aggregate maximum risk exposure
 aggregate transaction costs for a priip
@@ -56,14 +106,33 @@ agreement
 aifms
 aifs
 algorithmic trading
+algorithmic trading technique
+all other non-liquid collateral
 allocation constraints
 allotment
 allotment reference month
 alternative investment funds
+alternative liquidity approaches: additional level 1/2a/2b assets included due to currency consistency not applying for ala reasons
+alternative liquidity approaches: central bank credit facility
+alternative liquidity approaches: level 2a assets recognised as level 1
+amao
+amao (advanced method for additional outflows) approach
 amendment to a decision on significance
 aml/kyc procedures
 amortised cost method
+amount
+amount covered by a deposit guarantee scheme
+amount exceeding the 17,65 % threshold
+amount not covered by a deposit guarantee scheme
+amount of derecognised fiduciary items
+amount received
 amount reported in this item
+amount — exempted from the cap on inflows
+amount — subject to the 75 % cap on inflows
+amount — subject to the 90 % cap on inflows
+amount/market value
+amounts exempted
+ancillary service
 ancillary services
 ancillary services undertaking
 ancillary stabilisation
@@ -75,12 +144,18 @@ annual contributions
 annual costs
 annual operating expenses
 annual supervisory fee
+annual supervisory fee for a given trade repository for a given year
 annual target level
 annuity contract
 anonymisation
 another authority
 another parliament
+any other inflows within a group or an institutional protection scheme
 applicable turnover of a given trade repository
+applicable weight
+applicable weight — exempted from the cap on inflows
+applicable weight — subject to the 75 % cap on inflows
+applicable weight — subject to the 90 % cap on inflows
 applicant
 appointing authority
 appropriate regulation
@@ -91,18 +166,41 @@ approved reporting mechanism
 arbitration panel
 argument
 arrival price
+as per credit rating agencies' methodology to maintain current external credit rating on covered bond
+as per the relevant statutory covered bond regime
 assessment report
 assessment team
 assessor
+asset amount deducted
+asset amount deducted — from cet1 items — fully phased-in definition
+asset amount deducted — from cet1 items — transitional definition
+asset amount deducted — from own funds items — fully phased-in definition
+asset amount deducted — from own funds items — transitional definition
+asset amount deducted — tier 1 capital — fully phased-in definition
+asset amount deducted — tier 1 capital — transitional definition
+asset amounts deducted in determining tier 1 capital
 asset backed securities
+asset backed securities including abcp
+asset bubbles in the residential and commercial property
 asset class
 asset coverage requirement
+asset management
 asset quality indicators
 asset recovery offices
 asset separation tool
+asset-backed commercial paper
 asset-backed commercial paper ( abcp ) programme
 asset-backed securities
+asset-backed securities (auto, cqs1)
+asset-backed securities (commercial or individuals, member state, cqs1)
+asset-backed securities (residential, cqs1)
+asset-specific value
+assets borrowed on an unsecured basis
 assets of the reporting institution
+assets with an undefined contractual end date
+assets, collateral received and own securities issued other than covered bonds and abss encumbered
+assets, collateral received and own securities issued other than covered bonds and abss encumbered of which: collateral received re-used
+assets, collateral received and own securities issued other than covered bonds and abss encumbered of which: own debt securities encumbered
 assets, collateral received and own securities issued other than covered bonds and asset-backed securities encumbered
 assistant
 associate
@@ -112,15 +210,25 @@ associated member
 association agreement
 association-related business
 assurance undertaking
+at1 capital
+at1 capital elements or deductions
+at1 capital elements or deductions — other
+at1 instruments
+at1 instruments of financial sector entities
+at1 instruments of financial sector entities where the institution does not have a significant investment
+at1 instruments of financial sector entities where the institution has a significant investment
 atm network functions
 auction process
 auctioneer
 audit
+audit entity
 audit firm
+audit partner
 audit report
 authentication
 authorisation
 authorisation scheme
+authorising officer
 authorising officer by delegation
 authorising officer responsible
 authoritative source
@@ -135,21 +243,26 @@ average daily number of trades
 average daily turnover
 average daily turnover (adt
 average outstanding electronic money
+average term (days)
 award notice
 bail-in tool
 balance payable on credit
+balance sheet assets
 balancing services
 bank account information
 bank deposits
+banking book exposures
 banking group
 banknotes in circulation
 bankruptcy remote
 base case
 base prospectus
+based on oem
 basel iii lcr framework
 baseline indicator
 basic act
 basic custody services
+basic indicator approach
 basic risk-free interest rate term structure
 basis risk
 batch file transfer
@@ -160,6 +273,7 @@ benchmark net lending
 benchmark outstanding amount
 beneficial owner
 beneficiary
+benefits
 bespoke arrangement
 bic
 bid
@@ -176,6 +290,7 @@ branch
 branch of an insurance corporation
 branch passport application
 branch passport notification
+breakdown of relevant credit exposures by country
 bridge institution tool
 broad participation retirement fund
 brokering
@@ -189,6 +304,7 @@ business as usual
 business day
 business line
 business relationship
+business risk
 buy-back programme
 buy-back programmes
 buy-sell back transaction
@@ -197,18 +313,27 @@ by-product
 c6 energy derivative contracts
 calculated area
 calculation data set
+callable excess collateral
+cancellable credit card commitments
+cancellable credit cards commitments
 cancellation
 cancelled service
 candidate
 capital
 capital commitment
+capital instruments
+capital instruments and subordinated loans eligible as t2 capital
+capital instruments eligible as at1 capital
+capital instruments eligible as cet1 capital
 capital joint decision
 capital market-driven transaction
+capital market-driven transactions
 capital outflow
 capital requirement
 capital requirement for equity risk
 capital requirement for marine risk
 capital requirement for type 1 equities
+capped notional amount of written credit derivatives
 captive insurance undertaking
 captive reinsurance undertaking
 capture
@@ -216,42 +341,91 @@ carried interest
 carrying amount
 carrying amount of derivatives
 carrying amount of encumbered assets
+carrying amount of encumbered assets of which: central bank eligible
+carrying amount of encumbered assets of which: issued by other entities of the group
+carrying amount of encumbered assets of which: notionally eligible ehqla and hqla
 carrying amount of financial instruments
+carrying amount of non-encumbered assets
+carrying amount of non-encumbered assets of which: central bank eligible
+carrying amount of non-encumbered assets of which: issued by other entities of the group
+carrying amount of selected financial liabilities
+carrying amount of the underlying pool of assets
+carrying amount of unencumbered assets
+carrying amount of unencumbered assets of which: ehqla and hqla
 cash
 cash assimilated instrument
 cash changeover date
 cash changeover year
+cash clearing
 cash collateral
+cash collateral received in derivatives transactions — accounting value assuming no netting or other crm
 cash dispenser
+cash flow hedge reserve
 cash handlers
+cash inflows
+cash management
+cash outflows
+cash payables
+cash receivables
 cash value
 cash value insurance contract
+category 1
+category 2
 category level avas for market price uncertainty
 ccp
 ccp-related transaction
 central administrator
 central authority
 central bank
+central bank assets
+central bank committed liquidity facilities
+central bank funding (of all types, including repos)
+central bank or central/regional government or local authorities or public sector entities assets
+central bank reserves
+central banks
+central banks and general governments
+central banks and general governments.
 central counter party
 central counterparty
+central credit institutions: level 1 assets excluding extremely high quality covered bonds which are considered liquid assets for the depositing credit institution
+central credit institutions: level 1 extremely high quality covered bonds which are considered liquid assets for the depositing credit institution
+central credit institutions: level 2a assets which are considered liquid assets for the depositing credit institution
+central credit institutions: level 2b assets which are considered liquid assets for the depositing credit institution
 central government
+central government assets
+central governments and central banks
+central governments and central banks — leverage ratio exposure value — irb exposures
+central governments and central banks — leverage ratio exposure value — sa exposures
+central governments and central banks — rwa — irb exposures
+central governments and central banks — rwa — sa exposures
+central governments or central banks
 central liaison office
 central purchasing body
 central securities depository
 central system
 centralised bank account registries
 certificates
+cet1
+cet1 capital
+cet1 capital elements or deductions — other
+cet1 instruments
+cet1 instruments of financial sector entities where the institution does not have a significant investment
+cet1 instruments of financial sector entities where the institution has a significant investment
 change in branch particulars notification
 charge
 check
+choice on transitional arrangements for the definition of the capital measure
 cir
 cius
 claim
+claims on institutions and corporate with a short-term credit assessment
 class of derivatives
 clause
 clean-up call option
 cleared derivatives
 clearing
+clearing arrangement
+clearing arrangements
 clearing member
 clearing price
 clearing system
@@ -266,16 +440,41 @@ close-out netting provision
 closing balance [present value
 closure
 cmh
+code
 coh
+coins and banknotes
 collateral
 collateral arrangement
 collateral arrangements
+collateral extended
+collateral is non-liquid equity
+collateral is used to cover a short position
+collateral other than level 1 assets posted for derivatives
+collateral received
 collateral received by the reporting institution
+collateral received or own debt securities issued non available for encumbrance
+collateral received re-used (re-using leg)
+collateral received re-used (receiving leg)
 collateral security
+collateral swaps
+collateral that does not qualify as a liquid asset
+collateral that qualifies as a liquid asset
+collateral value cb-eligible
+collateralised deposits other than repurchase agreements
+collateralised deposits other than repurchased agreements
+collateralised deposits other than repurchased agreements of which: central banks
+collateralised derivatives only
+collateralised derivatives only: liquidity value of collateral borrowed
+collateralised derivatives only: liquidity value of collateral lent
+collateralised derivatives only: market value of collateral borrowed
+collateralised derivatives only: market value of collateral lent
+collateralized sft
 collection
+collective investment undertaking
 collective investment undertaking other than the closed-end type
 collective investment undertakings other than the closed-end type
 collective investment vehicle
+collective investments undertakings (ciu)
 collective management organisation
 college of supervisors
 commercial communication
@@ -285,10 +484,17 @@ commercially reasonable replacement trade
 commitment
 commitment period
 committed capital
+committed facilities
+commodities
+commodities lending
+commodities risks
 commodity
 commodity benchmark
 commodity derivatives
+common equity tier 1 capital
 common equity tier 1 capital ratio
+common equity tier 1 capital — fully phased-in definition
+common equity tier 1 capital — transitional definition
 common equity tier 1 instrument
 common equity tier 1 instruments
 common procedures
@@ -296,6 +502,8 @@ common test procedures
 community issuer
 company
 company being divided
+company service provider
+company service providers
 company with reduced market capitalisation
 compensation reinsurance obligation
 competent authorities
@@ -333,6 +541,7 @@ contingency
 contingency solution
 contingent capital instrument
 contingent form of retention
+contingent obligations
 continuity options
 contract
 contract for differences
@@ -354,50 +563,133 @@ controlling persons
 convenience yield
 convention
 conversion factor
+conversion powers
 converted company
 convertible
 conviction
 cooperation
+cooperative network
 core partner
 core service platforms
 core taxonomy
 corep (lr)
 corep (of)
+corporate
+corporate bond
+corporate debt securities
+corporate debt securities (cqs1)
+corporate debt securities (cqs2/3)
+corporate debt securities — non-interest bearing assets (held by credit institutions for religious reasons) (cqs1/2/3)
+corporate; of which — leverage ratio exposure value — irb exposures
+corporate; of which — leverage ratio exposure value — sa exposures
+corporate; of which — rwa — irb exposures
+corporate; of which — rwa — sa exposures
+corporates
+corporates — other
+corporates — sme
+corporates — specialised lending
 corrective action
 corrective measure
+correspondent banking and provisions of prime brokerage deposits
 correspondent relationship
 corresponding mechanism
+countercyclical capital buffer rate
+countercyclical capital buffer requirement
 counterparties
 counterparty
+counterparty credit
 counterparty credit risk
+counterparty credit risk exposure
+counterparty credit risk exposure for sft assets
+counterparty credit risk of sft agent transactions
+counterparty identification
+counterparty is central bank
+counterparty is central govt
+counterparty is non-central bank
+counterparty name
 counterparty risk
+counterparty sector
 countries not parties to this agreement
 country where the contract was entered into
+cover pool
+cover pool amounts in excess of minimum coverage requirements
+cover pool derivative positions with net negative market value
+cover pool derivative positions with net positive market value
+cover pool identifier
 coverage of an internal model
 covered bond
+covered bond liabilities
 covered bonds
+covered bonds securities issued
+covered bonds — leverage ratio exposure value — irb exposures
+covered bonds — leverage ratio exposure value — sa exposures
+covered bonds — rwa — irb exposures
+covered bonds — rwa — sa exposures
+covered by collateralized sft (securities financing transactions)
+covered by dgs
 covered deposits
 cpmi
+credit cards
+credit cards commitments
+credit data
+credit derivatives
+credit derivatives (protection bought)
+credit derivatives (protection bought) — accounting balance sheet value
+credit derivatives (protection bought) — accounting value assuming no netting or other crm
+credit derivatives (protection bought) — add-on under the mark-to-market method (assuming no netting or other crm)
+credit derivatives (protection bought) — capped notional amount
+credit derivatives (protection bought) — capped notional amount (same reference name)
+credit derivatives (protection bought) — notional amount
+credit derivatives (protection sold)
+credit derivatives (protection sold) — accounting balance sheet value
+credit derivatives (protection sold) — accounting value assuming no netting or other crm
+credit derivatives (protection sold) — add-on under the mark-to-market method (assuming no netting or other crm)
+credit derivatives (protection sold) — capped notional amount
+credit derivatives (protection sold) — notional amount
+credit derivatives (protection sold), which are not subject to a close-out clause — add-on under the mark-to-market method (assuming no netting or other crm)
+credit derivatives (protection sold), which are not subject to a close-out clause — notional amount
+credit derivatives (protection sold), which are subject to a close-out clause — add-on under the mark-to-market method (assuming no netting or other crm)
+credit derivatives (protection sold), which are subject to a close-out clause — notional amount
 credit enhancement
 credit entitlement
 credit exposure
+credit exposures
+credit facilities
 credit institution
+credit institution (protected by member state government, promotional lender) assets
+credit institution assets
 credit institutions
+credit insurance scheme
 credit interest rate
+credit losses
+credit protection
+credit quality step
 credit rating
+credit rating 1
+credit rating 2 and credit rating 3
+credit rating 3
 credit rating activities
+credit rating agencies
 credit rating agency
+credit rating agency 1
+credit rating agency 2 and credit rating agency 3
 credit register
 credit risk
+credit risk adjustments
+credit risk mitigation
 credit risk mitigation
 credit transfer
 credit valuation adjustment
 credit-enhancing interest-only strip
 criminal activity
+criminal offences
 criminal proceedings
 critical benchmark
 critical incident stress
 critical service provider
+cross holdings in at1 capital
+cross holdings in cet1 capital
+cross holdings in t2 capital
 cross-border arrangement
 cross-border collateral
 cross-border conversion
@@ -406,6 +698,7 @@ cross-border payment
 cross-border payment transaction
 cross-border positions
 cross-product netting
+cross-product netting agreement
 cross-selling practice
 csd access criterion 1
 csd access criterion 2
@@ -413,8 +706,12 @@ csd access criterion 3
 csd access criterion 4
 csd access criterion 5
 csd link
+cumulative gains and losses due to changes in own credit risk on fair valued liabilities
+currencies
+currency
 currency participation agreement
 current exposure
+current replacement cost
 custodial account
 custodial institution
 custodian
@@ -423,6 +720,7 @@ custodian wallet provider
 custody risk
 customer
 customer due diligence measure
+customer trading assets
 customised link
 daily foreign exchange reference rate
 data collection threshold
@@ -441,14 +739,39 @@ debt instruments
 debt instruments at cost or at amortised cost
 debt instruments at fair value through other comprehensive income or through equity subject to impairment
 debt securities
+debt securities issued
+debt securities issued of which: covered bonds issued
+debt securities issued of which: securitisations issued
+debt securities issued other than covered bonds and abss
+debt securities of which: asset-backed securities
+debt securities of which: covered bonds
+debt securities of which: issued by financial corporations
+debt securities of which: issued by general governments
+debt securities of which: issued by non-financial corporations
+debt securities of which: securitisations
 decision
+decision date
 decreases due to amounts taken against allowances
 dedicated window's accounts
+deductible deferred tax assets
+deductible deferred tax assets that rely on future profitability and arise from temporary differences
 deduction
 deduction without inclusion
+deductions of receivables assets
+deductions of receivables assets for cash variation margin provided in derivatives transactions
 deemed foreign person
 deep market
+default
 deferral period
+deferred tax assets
+deferred tax assets that rely on future profitability and do not arise from temporary differences net of associated tax liabilities
+deferred tax liabilities
+deferred tax liabilities associated to defined benefit pension fund assets
+deferred tax liabilities associated to goodwill
+deferred tax liabilities associated to other intangible assets
+deferred taxes assets
+defined benefit pension fund assets
+defined benefit pension fund assets which the institution has an unrestricted ability to use
 delegated body
 delegated decision
 delegation decision
@@ -458,16 +781,50 @@ delivery versus payment
 delta
 demerger
 denominator
+denominator calculations
 departure member state
 deposit
 deposit guarantee scheme
 deposit guarantee schemes
 depositary
 depositary receipts
+depositing institution
 depositor
 depository institution
+deposits
+deposits by financial customers
+deposits by network member with central institution
+deposits by network member with central institution (no obligated investment)
+deposits by network member with central institution (obligated investment in level 1 excluding extremely high quality covered bonds assets)
+deposits by network member with central institution (obligated investment in level 1 extremely high quality covered bonds assets)
+deposits by network member with central institution (obligated investment in level 2a assets)
+deposits by network member with central institution (obligated investment in level 2b assets)
+deposits by other customers
+deposits in third countries where a higher outflow is applied
+deposits subject to higher outflows
+deposits where the pay-out has been agreed within the following 30 days
+derecognised fiduciary items
 derecognition
+derivative instruments
 derivatives
+derivatives and sfts subject to a cross-product netting agreement
+derivatives and sfts subject to a cross-product netting agreement — leverage ratio exposure value
+derivatives and sfts subject to a cross-product netting agreement — rwa
+derivatives not subject to a cross-product netting agreement — leverage ratio exposure value
+derivatives not subject to a cross-product netting agreement — rwa
+derivatives of which: over-the-counter
+derivatives transactions
+derivatives — accounting balance sheet value
+derivatives — accounting value assuming no netting or other crm
+derivatives — add-on under the mark-to-market method (assuming no netting or other crm)
+derivatives — notional amount
+derivatives: add-on under the mark-to-market method
+derivatives: current replacement cost
+derogated stable deposits
+derogation for derivatives: original exposure method
+derogation for sfts: counterparty credit risk exposure
+description of the factors that had an impact on the leverage ratio during the period to which the disclosed leverage ratio refers
+description of the processes used to manage the risk of excessive leverage
 design basis
 design basis accident
 designated authority
@@ -480,12 +837,20 @@ development
 development year
 deviation from the benchmark outstanding amount
 dexia
+dgs
+difference between total weighted inflows and total weighted outflows arising from transactions in third countries where there are transfer restrictions or which are denominated in non-convertible currencies
 different activities
 dilution risk
+dilution risks
 direct and particular risk
 direct debit
 direct debit scheme
 direct electronic access
+direct exposures
+direct holdings
+direct holdings of at1 instruments
+direct holdings of cet1 instruments
+direct holdings of t2 instruments
 direct line
 direct participant
 directed order
@@ -502,6 +867,7 @@ distance contract
 distressed sme portfolio
 distribution
 distribution channels
+distribution forecast
 distribution of exposures
 distribution of market values
 diversification effects
@@ -515,7 +881,11 @@ domestic insurance undertaking
 domestic merger
 domestic reinsurance undertaking
 double deduction
+drawn amounts of revolving retail exposures — nominal value
+drawn amounts on non-revolving unconditionally cancellable commitments — nominal value
+drawn amounts on unconditionally cancellable credit card commitments — nominal value
 dual inclusion income
+due collateral
 duly certified copy
 durable medium
 dynamic data
@@ -523,20 +893,30 @@ dynamic purchasing system
 early termination
 earmarkable assets
 earned premiums
+eba
 eba list
 ebs
+ecaa
 ecaa agreement
 ecaa country
+ecb
 ecb guide
 ecb supervisory decision
 ecb supervisory procedure
 ecb working day
+economic activity
 economic equilibrium test
 economic operator
 economic resources
+effective ee
 effective expected exposure
-effective expected exposure ( effective ee ) at a specific date
+effective expected exposure (effective ee) at a specific date
 effective expected positive exposure
+effective taxation
+efta branch
+efta-located branch
+egulatory authority
+eif
 eif activity
 eif contribution
 electronic means
@@ -545,23 +925,36 @@ electronic money institution
 electronic money issuer
 electronic system
 elgd
+eligible capital
+eligible cash variation margin
+eligible cash variation margin received offset against derivatives market value
 eligible counterparty
+eligible credit risk mitigation (crm) techniques
+eligible credit risk mitigation techniques
 eligible customer
 eligible deposits
 eligible liabilities
+eligible loans
 eligible net lending
+eligible purchased credit derivatives offset against written credit derivatives
 emergency situation
 emergent market
+encumbered + non-encumbered assets
+encumbered assets
 enforcement event
 entity
+entity assets
 entity-by-entity basis
 entrusted party
 entry date
 entry into operation
 epa countries
 equity
+equity exposures under an internal models approach
+equity exposures under an internal models approach which can alternatively be subject to a 1 250 % risk weight
 equity instruments
 equity interest
+equity irb
 equity securities
 equity value
 equivalent third country market
@@ -569,6 +962,8 @@ erdf
 escb/ssm certificate acceptance framework
 esef_all
 esef_cor
+esidential properties
+esrb secretariat
 established entity
 establishment
 estimated adjustment factor for non-proportional reinsurance
@@ -582,22 +977,43 @@ eu parent investment firm
 euro account
 euro area member state
 euro area member states
+euro banknotes
 euromed country
+european banking authority
+european central bank
 european free trade association
+european investment fund
 european neighbourhood policy partners
 european standard
 european statistics
+european union
 european union-wide performance targets
 eurosystem central bank
 eurosystem sips
 evaluation
 exceeding borrowing costs
+excess inflows
+excess inflows from a related specialised credit institution
+excess liquid asset
+excess liquid asset amount
 excess liquid assets
 excess liquid assets amount
+excess of deduction from at1 items over at1 capital
+excess of deduction from at1 items over at1 capital (deducted in cet1)
+excess of deduction from t2 items over t2 capital
+excess of deduction from t2 items over t2 capital (deducted in at1)
+excess of funding to non-financial corporates
+excess of funding to non-financial customers
+excess of funding to other legal entities
+excess of funding to retail customers
+excess of funding to sovereigns, mldbs (multilateral development banks) and pses (public sector entities)
 excess spread
+exchange calculator
 exchange of information on request
+exchange rate
 exchange-traded fund
 exchange-traded fund (etf)
+exchanged traded derivatives
 excluded account
 excluded non-monetary benefit
 exclusive rights
@@ -606,8 +1022,16 @@ execution of orders
 execution of orders on behalf of clients
 execution venue
 exempt collective investment vehicle
+exempted ccp leg of client-cleared sft exposure
+exempted ccp leg of client-cleared sft exposures
+exempted ccp leg of client-cleared trade exposures
+exempted ccp leg of client-cleared trade exposures (initial margin)
+exempted ccp leg of client-cleared trade exposures (original exposure method)
+exempted ccp leg of client-cleared trade exposures (potential future exposure)
+exempted ccp leg of client-cleared trade exposures (replacement costs)
 existing insurance or reinsurance contract
 exit policy
+expected credit losses
 expected exposure
 expected positive exposure
 expected profit included in future premiums
@@ -617,21 +1041,71 @@ exploitation
 export
 exporter
 exposure
+exposure amounts
+exposure amounts resulting from the additional treatment for credit derivatives — leverage ratio exposure value
+exposure determined under original exposure method
 exposure value
+exposure value after application of exemptions and crm
+exposure value before application of exemptions and crm
+exposure value of general credit exposures for irb
+exposure value of general credit exposures for sa
+exposure value of securitisation exposures for irb
+exposure value of securitisation exposures for sa
 exposure-weighted average loss-given-default (elgd
+exposures deducted from own funds
+exposures exempted
+exposures in default
+exposures in default — leverage ratio exposure value — irb exposures
+exposures in default — leverage ratio exposure value — sa exposures
+exposures in default — rwa — irb exposures
+exposures in default — rwa — sa exposures
+exposures other than sme exposures — leverage ratio exposure value — irb exposures
+exposures other than sme exposures — leverage ratio exposure value — sa exposures
+exposures other than sme exposures — rwa — irb exposures
+exposures other than sme exposures — rwa — sa exposures
+exposures to regional governments, mdb, international organisations and pse not treated as sovereigns
+exposures to regional governments, mdbs, international organisations and pses not treated as sovereigns — leverage ratio exposure value — irb exposures
+exposures to regional governments, mdbs, international organisations and pses not treated as sovereigns — leverage ratio exposure value — sa exposures
+exposures to regional governments, mdbs, international organisations and pses not treated as sovereigns — rwa — irb exposures
+exposures to regional governments, mdbs, international organisations and pses not treated as sovereigns — rwa — sa exposures
+exposures treated as sovereigns
+exposures treated as sovereigns — leverage ratio exposure value — irb exposures
+exposures treated as sovereigns — leverage ratio exposure value — sa exposures
+exposures treated as sovereigns — rwa — irb exposures
+exposures treated as sovereigns — rwa — sa exposures
 exposures underlying the position
 express delivery services
 extended warranty insurance obligation
 extension taxonomy
 external credit assessment institution
+external credit rating
+external credit rating on covered bond
 extreme but plausible market conditions
+extremely high quality covered bonds
 facility grade
 failed internalised settlement instruction
 fair value
+fair value gains and losses arising from the institution's own credit risk related to derivative liabilities
+fair value of collateral received
 fair value of collateral received or own debt securities issued available for encumbrance
+fair value of collateral received or own debt securities issued available for encumbrance of which: central bank eligible
+fair value of collateral received or own debt securities issued available for encumbrance of which: ehqla and hqla
+fair value of collateral received or own debt securities issued available for encumbrance of which: issued by other entities of the group
+fair value of debt securities issued available for encumbrance
+fair value of debt securities issued available for encumbrance of which: central bank eligible
 fair value of encumbered assets
+fair value of encumbered assets of which: central bank eligible
+fair value of encumbered assets of which: notionally eligible ehqla and hqla
 fair value of encumbered collateral received or own debt securities issued
+fair value of encumbered collateral received or own debt securities issued of which: central bank eligible
+fair value of encumbered collateral received or own debt securities issued of which: issued by other entities of the group
+fair value of encumbered collateral received or own debt securities issued of which: notionally eligible ehqla and hqla
+fair value of non-encumbered assets
+fair value of non-encumbered assets of which: central bank eligible
+fair value of securities borrowed with non-cash collateral
 fair value of the investments for which there are published price quotations
+fair value of unencumbered assets
+fair value of unencumbered assets of which: ehqla and hqla
 family of benchmarks
 fee debtor
 fee factors
@@ -640,8 +1114,10 @@ fee period
 fee to obtain a licence
 fee-paying branch
 fee-paying credit institution
+fee-paying entities
 feeder aif
 fees
+fiduciary assets
 fiduciary risk
 final administrative decision
 final customer
@@ -650,15 +1126,27 @@ final funding amount
 final investment decision
 final recipient
 final reports
+finance instrument
+finance products
 financial account
 financial analysis
 financial analyst
+financial assistance
 financial close
 financial collateral arrangement
 financial conglomerate
+financial corporations
 financial counterparty
 financial customer
+financial customers other than credit institutions
+financial derivatives
+financial derivatives — accounting balance sheet value
+financial derivatives — accounting value assuming no netting or other crm
+financial derivatives — add-on under the mark-to-market method (assuming no netting or other crm)
+financial derivatives — notional amount
 financial guarantee
+financial guarantees
+financial guarantees received
 financial holding company
 financial information
 financial institution
@@ -680,25 +1168,37 @@ financial statements
 financial transaction
 financial undertaking
 financial year
+financial — leverage ratio exposure value — irb exposures
+financial — leverage ratio exposure value — sa exposures
+financial — rwa — irb exposures
+financial — rwa — sa exposures
 financing agreement
 financing decision
+financing facilities
+financing instruments
+financing transaction
 findings
 finite reinsurance
 finrep
 firmness
 first fee period
+first loss
 first reference period
 fit and proper decision
 fit and proper requirements
 five-day futures
 fixed overhead requirements
 following exposures
+for funding promotional loans of non-financial customers
+for funding promotional loans of retail customers
 force majeure
 forecast
 forecast inflation index
 foreign branch
+foreign currency central government
 foreign direct investment
 foreign direct investment undergoing screening
+foreign exchange
 foreign exchange swap
 foreign investor
 formal agreement
@@ -712,37 +1212,57 @@ framework agreement
 framework contract
 franchise value
 frand
+free deliveries
+free deliveries which can alternatively be subject to a 1 250 % risk weight
 fsb
 full cost
+full risk off-balance sheet items under the rsa
+full risk off-balance sheet items under the rsa — nominal value
 full time equivalents
 fully adjusted exposure value
+fully exempt inflows
 function
 functional system
 fundamental data
 funded credit protection
+funded credit protection other than substitution effect
 funding agreement
+funding commitments to non-financial customers
 funding decision
+funding pillar
 funding procedure
 funds
+funds for general banking risk
 future
 future administrative costs
 future discretionary bonuses
 future on a swap
+future premiums
+future profitability
 futures
 fvc
 fvc code
+fx inflows
+fx outflows
+gaap
 gas derivative
 gdp
 general assembly of members
 general budget
 general business risk
+general credit exposures
 general documentation
 general government
+general governments
 generic services
+giro institution
 give-in transaction
 give-up transaction
 global credit arrangement
 goods
+goodwill
+goodwill accounted for as intangible asset
+goodwill included in the valuation of significant investments
 goodwill link to the investee
 governing board
 governing body
@@ -751,17 +1271,26 @@ government bonds
 government deposits
 government schemes
 governmental entity
+grandfathered at1 capital instruments
+grandfathered cet1 capital instruments
+grandfathered t2 capital instruments
 grant agreement
 granular credit data
 greenshoe option
 gross carrying amount
+gross change
 gross loss
+gross sft assets
+gross sft assets (with no recognition of netting), after adjusting for sales accounting transactions
+gross-up for derivatives collateral provided
+gross-up for derivatives collateral provided where deducted from the balance sheet assets pursuant to the applicable accounting framework
 grounds for listing
 group
 group annuity contract
 group auditor
 group basis
 group cash value insurance contract
+group code
 group data
 group institution
 group internal model
@@ -770,12 +1299,15 @@ group liquidity risk assessment report
 group of connected clients
 group of credit rating agencies
 group of fee-paying entities
+group or individual
 group resolution plan
 group risk assessment report
 group supervisor
 group-level resolution authority
+growth market
 guarantee
 guarantee agreement
+guarantee fund
 guarantee funds
 guidance material
 guide to fit and proper assessments
@@ -784,9 +1316,13 @@ head of a reporting group
 heads of work units
 health insurance obligation
 hedging set
+high quality covered bonds
 high value account
 high-frequency algorithmic trading technique
+high-quality liquid assets
 high-value datasets
+historical look-back approach
+hlba
 hold value
 holding company
 holdings of securities
@@ -799,8 +1335,12 @@ horizontally integrated undertaking
 host member state
 host member state of the aifm
 household customer
+households
+households of which: mortgage loans
+hqla
 hybrid contracts
 hybrid mismatch
+hybrid transfer
 ias
 iban
 identity information
@@ -808,16 +1348,22 @@ if registered shares/units
 ifrs
 ifrs consolidated financial statements
 ifrs-full
+im
 imbalances
 immobilisation
+immovable properties
+impact of an adverse market scenario on derivatives, financing transactions and other contracts
 implementation period
 implementation strategy
 implementing authority or body
 implementing public authority
 import
 importance of an institution to the stability of the financial system or economy pillar
+in the form of debt securities if not treated as retail deposits
 inclusion
+inclusion income
 income protection reinsurance obligation
+increases in equity resulting from securitised assets
 incremental cost
 independent
 independent director
@@ -828,11 +1374,17 @@ independent valuer
 index
 index provider
 indicator
+indicator share
+indicator share of interbank loans and deposits in the european union
 indicator value
 indirect clearing arrangement
 indirect clearing arrangements
 indirect client
 indirect contagion
+indirect exposures
+indirect holdings of at1 instruments
+indirect holdings of cet1 instruments
+indirect holdings of t2 instruments
 indirect instruction
 indirect link
 indirect participant
@@ -840,6 +1392,23 @@ individual action
 individual recovery plan
 inducement
 inducement scheme
+inflow
+inflow — exempted from the cap on inflows
+inflow — subject to the 75 % cap on inflows
+inflow — subject to the 90 % cap on inflows
+inflows exempted from the cap on inflows
+inflows from derivatives
+inflows from secured lending and capital market-driven transactions
+inflows from the release of balances held in segregated accounts in accordance with regulatory requirements for the protection of customer trading assets
+inflows from undrawn credit or liquidity facilities and any other commitments provided by central banks provided that there is no double counting with liquid assets
+inflows from undrawn credit or liquidity facilities provided by members of a group or an institutional protection scheme where the competent authorities have granted permission to apply a higher inflow rate
+inflows from undrawn credit or liquidity facilities provided by members of a group or an institutional protection scheme where the competent authority has not granted permission to apply a higher inflow rate
+inflows from unsecured transactions/deposits
+inflows subject to 75 % cap
+inflows subject to 90 % cap
+inflows subject to the 75 % cap on inflows
+inflows subject to the 90 % cap on inflows
+inflows within a group or an institutional protection scheme
 information
 information and control module
 information recommending or suggesting an investment strategy
@@ -848,6 +1417,7 @@ infrastructure project entity
 infringement
 initial margin
 initial margin protection
+initial maturity
 initial period
 input data
 inside information
@@ -859,52 +1429,89 @@ instalments
 institution
 institution under resolution
 institution-specific countercyclical capital buffer rate
+institution-specific countercyclical capital buffer requirement
 institutional investor
 institutional protection scheme
 institutions
+institutions in %
+institutions — leverage ratio exposure value — irb exposures
+institutions — leverage ratio exposure value — sa exposures
+institutions — rwa — irb exposures
+institutions — rwa — sa exposures
+instruments issued by subsidiaries that are given recognition in at1 capital
+instruments issued by subsidiaries that are given recognition in t2 capital
 insurance
 insurance claim
+insurance company
 insurance contract
 insurance corporations
 insurance holding company
+insurance obligation
 insurance undertaking
 insurance-based investment product
+insurance-based investment product manufacturer
 intended settlement date
 interbank deposists
 interbank loans
+interbank loans and deposits
+interbank loans and deposits in the eu
 interchange fee
+interdependent inflows
 interest
 interest payment
+interest rate
 interest rate benchmark
 interest rate incentive adjustment
 interested parties
 intermediary
 intermediary payment service provider
 intermediate reports
+internal models
+internal netting of client's positions
+internal ratings based approach (irb)
+internal ratings-based exposure
 internalised settlement instruction
 international accounting standards
 international auditing standards
+international body
 international credits
 international investment position
 international open communication procedures and standards
 international organisation
+international organisations
+international organisations assets
 international standard
 interoperability arrangement
 interoperable link
 interoperable systems
+intra financial sector exposures
+intra group or ips outflows
+intra group or ips outflows of which: credit facilities without preferential treatment
+intra group or ips outflows of which: liabilities in the form of debt securities if not treated as retail deposits
+intra group or ips outflows of which: liquidity facilities without preferential treatment
+intra group or ips outflows of which: non-operational deposits
+intra group or ips outflows of which: operational deposits
+intra group or ips outflows of which: secured
+intra group or ips outflows of which: to financial customer
+intra group or ips outflows of which: to non-financial customers
 intra-eurosystem balances on euro banknotes in circulation
 intra-group positions
 intra-group transaction
 intra-group transactions
+intragroup exposures
+intragroup exposures (solo basis)
 intrusion upon seclusion
 investigation
 investment
 investment advice
 investment advice of an ongoing nature
+investment companies
 investment companies other than those of the closed-end type
+investment company
 investment company with fixed capital
 investment firm
 investment phase
+investment platforms
 investment projects
 investment projects under construction
 investment recommendations
@@ -919,7 +1526,14 @@ investor
 investor csd
 investors
 ipa ii beneficiary
+irb
+irb approach
+irb approaches when neither own estimates of lgd nor conversion factors are used
+irb approaches when own estimates of lgd and/or conversion factor are used
+irb excess of provisions over expected losses eligible
+irb exposures
 irb pool
+irb shortfall of credit risk adjustments to expected losses
 ireland
 isin code
 issue key
@@ -927,8 +1541,11 @@ issuer
 issuer csd
 issuer of corporate type
 issuer of sovereign and public type
+issuer/counterparty name
+issuer/counterparty sector
 issuers
 item-by-item data
+items associated with particular high risk
 items of correspondence
 joint account
 joint commission
@@ -942,10 +1559,33 @@ key financial market participant
 key information
 kirb
 knowledgeable
+l1 ehqcb collateral 30 day inflows
+l1 ehqcb collateral 30 day outflows
+l1 ehqcb value according to article 9: unadjusted
+l1 ehqcb “adjusted amount after cap application”
+l1 ehqcb “adjusted amount before cap application”
+l1 ehqcb “excess liquid assets amount”
+l1 excl. ehqcb collateral 30 day inflows
+l1 excl. ehqcb collateral 30 day outflows
+l1 excl. ehqcb liquidity buffer (value according to article 9): unadjusted
+l1 excl. ehqcb “adjusted amount before cap application”
+l2a collateral 30 day inflows
+l2a collateral 30 day outflows
+l2a value according to article 9: unadjusted
+l2a “adjusted amount after cap application”
+l2a “adjusted amount before cap application”
+l2a “excess liquid assets amount”
+l2b collateral 30 day inflows
+l2b collateral 30 day outflows
+l2b “adjusted amount after cap application”
+l2b “adjusted amount before cap application”
+l2b “excess liquid assets amount”
+large exposures in the trading book
 large-value payment system
 last level
 late arrears loans
 lawyer
+lcr
 lead rating analyst
 leader
 legal commitment
@@ -957,29 +1597,65 @@ legal risk
 legally resident in the union
 lei code
 lending credit institution
+lending transaction
 less significant branch
 less significant credit institution
 less significant supervised entity
 less significant supervised entity in a euro area member state
 less significant supervised group
 level 1 assets
+level 1 assets (excl. ehq covered bonds)
+level 1 assets excluding extremely high quality covered bonds which are considered liquid assets for the depositing credit institution
+level 1 collateral excluding extremely high quality covered bonds
+level 1 collateral which is extremely high quality covered bonds
+level 1 ehq covered bonds assets collateral posted for derivatives
+level 1 ehq covered bonds collateral
+level 1 excl. ehq covered bonds collateral
+level 1 excl. ehq covered bonds collateral posted for derivatives
+level 1 extremely high quality covered bonds
+level 1 extremely high quality covered bonds which are considered liquid assets for the depositing credit institution
+level 1 non-interest bearing assets (held by credit institutions for religious reasons)
+level 1/2a/2b assets excluded due to currency reasons
+level 1/2a/2b assets excluded for operational reasons except for currency reasons
 level 2a assets
+level 2a assets which are considered liquid assets for the depositing credit institution
+level 2a collateral
+level 2a non-interest bearing assets (held by credit institutions for religious reasons)
+level 2b asset backed securities (commercial or individuals) collateral
+level 2b asset backed securities (residential or auto) collateral
+level 2b asset-backed securities
+level 2b asset-backed securities (commercial or individuals, member state, cqs1)
+level 2b asset-backed securities (commercial or individuals, member state, cqs1) collateral
+level 2b asset-backed securities (residential or automobile, cqs1)
+level 2b asset-backed securities (residential or automobile, cqs1) collateral
 level 2b assets
+level 2b assets which are considered liquid assets for the depositing credit institution
+level 2b covered bonds
+level 2b high quality covered bonds
+level 2b high quality covered bonds collateral
 level 2b securisations
 level a
 leverage
 leverage effect
 leverage ratio
+leverage ratio exposure
+leverage ratio exposure amount hypothetically exempted
 leverage ratio exposure value
+leverage ratio total exposure measure
+leverage ratio — using a fully phased-in definition of tier 1 capital
+leverage ratio — using a transitional definition of tier 1 capital
 liabilities
+liabilities resulting from operating expenses
 liability base
 liaison department
 licence
 licence holder
+life of the mmf
 likely to become publicly available information
 limit order
 limited company
 liquid asset
+liquid asset collateral exchangeable for non liquid assets
 liquid assets
 liquid coverage ratio
 liquid market
@@ -988,20 +1664,34 @@ liquidator
 liquidity buffer
 liquidity buffer of the credit institution
 liquidity coverage ratio
+liquidity coverage ratio (%)
 liquidity coverage requirement
+liquidity facilities
 liquidity facility
 liquidity fragmentation
+liquidity funding available to network member from central institution (non-specified collateralisation)
 liquidity inflows
 liquidity joint decision
+liquidity outflow
 liquidity outflows
+liquidity outflows to be netted by interdependent inflows
 liquidity provider
+liquidity requirement
 liquidity risk
+liquidity risk assessment
 liquidity risk assessment report
 liquidity support drawn
+liquidity value of collateral borrowed
+liquidity value of collateral lent
 loan acquisition
+loan commitments
+loan commitments received
 loan disposal
+loans and advances other than loans on demand
+loans and advances other than loans on demand of which: mortgage loans
 loans on demand
 local
+local authorities assets
 local firm
 local portion
 localisation of assets
@@ -1013,17 +1703,27 @@ long settlement transactions
 long-term planning
 lookback period
 loss
+loss events
 loss given default
+loss of funding on structured financing activities
 loss-given-default on derivatives
 lot
+low risk off-balance sheet items
+low risk off-balance sheet items in the rsa; of which — nominal value
 low-risk assets
+low-risk off-balance sheet items or off-balance sheet items attracting a 0 % conversion factor under the solvency ratio
 lower level client
 lower value account
 machine-readable format
 macro-prudential policy measure
+maintained for clearing, custody, cash management or other comparable services in the context of an established operational relationship
+maintained in the context of an established operational relationship (other) with non-financial customers
+maintained in the context of ips (institutional protection scheme) or a cooperative network
+maintained to obtain cash clearing and central credit institution services within a network
 major business unit
 major investment
 major project
+major stock index
 major trading economy
 management
 management activities
@@ -1044,37 +1744,73 @@ margin close-out protection
 margin lending transaction
 margin lending transactions
 margin loans
+margin loans: collateral is non-liquid
 margin period of risk
+margin protection
 margin threshold
 margining
+mark-to-market method
 market
 market infrastructure board
 market maker
 market manipulation
 market operator
 market participant
+market place
+market rate
 market risk
 market share
 market value
+market value of collateral
+market value of collateral borrowed
+market value of collateral extended
+market value of collateral lent
+market value of collateral received — exempted from the cap on inflows
+market value of collateral received — subject to the 75 % cap on inflows
+market value of collateral received — subject to the 90 % cap on inflows
 market value of level 2b securitisations
+market values
 marketable arrangement
 marketing
+master netting agreement
 matched orders
 matched principal trading
 matching
 matching adjustment portfolio
 matching assets
 matching liabilities, contingent liabilities or securities lent
+matching liabilities, contingent liabilities or securities lent of which: from other entities of the group
 material
+material outflows due to deterioration of own credit quality
+maturing securities
 maturity
 maturity (m)
+maturity buckets of the exposure
+maturity buckets of the exposures
 maturity factor
 maturity factor (mf) for each transaction
+maturity factor for each transaction
+maturity of the mmf
+mdbs
+mdbs and international organisations treated as sovereigns
+mdbs and international organisations treated as sovereigns — leverage ratio exposure value — irb exposures
+mdbs and international organisations treated as sovereigns — leverage ratio exposure value — sa exposures
+mdbs and international organisations treated as sovereigns — rwa — irb exposures
+mdbs and international organisations treated as sovereigns — rwa — sa exposures
+mdbs not treated as sovereigns
+mdbs not treated as sovereigns — leverage ratio exposure value — irb exposures
+mdbs not treated as sovereigns — leverage ratio exposure value — sa exposures
+mdbs not treated as sovereigns — rwa — irb exposures
+mdbs not treated as sovereigns — rwa — sa exposures
 measure
 measurement basis
 measures
 medical expense reinsurance obligation
+medium risk off-balance sheet items under the rsa
+medium risk off-balance sheet items under the rsa — nominal value
 medium-sized undertakings
+medium/low risk off-balance sheet items under the rsa
+medium/low risk off-balance sheet items under the rsa — nominal value
 member
 member state
 member state financial institution
@@ -1087,11 +1823,18 @@ member state of the branch
 member state of the commitment
 member state of the provision of services
 member state where the service is provided
+member state-sponsored guaranteed bank assets
+member state-sponsored guaranteed bank assets subject to grandfathering
+member state-sponsored impaired asset management agencies
+member state-sponsored impaired asset management agencies subject to transitional provision
+memorandum item: capital instruments and subordinated loans not eligible
+memorandum item: capital instruments not eligible
 merger
 merger by acquisition
 merger by the formation of a new company
 mergers
 merging companies
+mezzanine
 mezzanine securitisation position
 mezzanine tranche
 mf
@@ -1101,6 +1844,8 @@ milestone
 minimum margin period of risk
 minimum modelling threshold
 minimum regulatory capital
+minority interest given recognition in cet1 capital
+minority interests
 misappropriation
 misconduct event
 mismatch outcome
@@ -1108,6 +1853,7 @@ mixed financial holding company
 mixed pool
 mixed-activity holding company
 mixed-activity insurance holding company
+mldbs
 mmf bearer shares/units
 mmf registered shares/units
 model risk
@@ -1118,6 +1864,23 @@ money market instruments
 money market statistics
 money remittance
 money-market instruments
+monies due from central banks
+monies due from central banks and financial customers
+monies due from central banks and financial customers not being classified as operational deposits
+monies due from financial customers
+monies due from financial customers being classified as operational deposits
+monies due from financial customers being classified as operational deposits where the credit institution is able to establish a corresponding symmetrical inflow rate
+monies due from financial customers being classified as operational deposits where the credit institution is not able to establish a corresponding symmetrical inflow rate
+monies due from maturing securities within 30 days
+monies due from non-financial corporates
+monies due from non-financial customers (except for central banks)
+monies due from non-financial customers (except for central banks) not corresponding to principal repayment
+monies due from other legal entities
+monies due from positions in major index equity instruments provided that there is no double counting with liquid assets
+monies due from retail customers
+monies due from securities maturing within 30 days
+monies due from sovereigns, multilateral development banks and public sector entities
+monies due from trade financing transactions
 monitoring
 monitoring period
 monitoring trustee
@@ -1125,17 +1888,23 @@ monitoring/monitored by the esrb secretariat
 mortgage insurance
 mortgage lending value
 mortgages
+mortgages that have been agreed but not yet drawn down
 movements
 mrel
 ms contribution
 ms contribution committed
 ms contribution paid
+mtm value/nominal
 multi-arrangement special purpose vehicle
 multi-territorial licence
+multilateral development bank and international organisations assets
+multilateral development banks
 multilateral system
 multilateral trading facility
 multiple point of entry
 multiple-vote securities
+nace code
+name
 narrow participation retirement fund
 national
 national administrative platform
@@ -1155,6 +1924,7 @@ national resolution authority
 national supervisory authority
 national unit
 natural person from an octs
+nca
 nca in close cooperation
 nca supervisory procedure
 ncb
@@ -1163,12 +1933,17 @@ ncbs
 negative balance protection
 negative decision
 net deferred taxes assets
+net economic interest
 net exposure
 net financial effect
 net financial impact
+net liquidity outflow
 net liquidity outflows
 net stable funding ratio
 net turnover
+netted amounts
+netted amounts of cash payables and cash receivables of gross sft assets
+netting agreement
 netting set
 network service provider
 new and existing investment
@@ -1180,34 +1955,65 @@ new infrastructure
 new-for-old
 nfe
 ngaap
+nominal amount
+nominal of collateral received or own debt securities issued non available for encumbrance
+nominal of financial guarantees received
+nominal of loan commitments received
+nominal of own debt securities issued non-available for encumbrance
+nominal value
 nominated bank account
 nominated holding account
 nomination
 nomination decision
+non credit-obligation assets
+non institutions
+non revolving unconditionally cancellable commitments
+non revolving unconditionally cancellable commitments — nominal value
+non-cash collateral posted and received by an investment firm
 non-cash collateral posted and received by an investment firm, both in bilateral and cleared transactions
+non-convertible currencies
 non-core support services
 non-discretionary rules
+non-encumbered assets
 non-equity securities
 non-eu aif
 non-eu aifm
 non-euro account
 non-euro area member state
+non-financial corporates
+non-financial corporations
+non-financial corporations of which: mortgages loans
 non-financial counterparty
+non-financial customers
+non-financial customers other than retail customers
 non-financial entity
 non-household customer
+non-interest bearing assets
+non-interest bearing assets (held by credit institutions for religious reasons)
+non-liquid assets
+non-liquid assets collateral
 non-listed company
 non-member country reinsurance undertaking
 non-mfis
 non-objection procedure
+non-operational deposits
+non-operational deposits maintained by financial customers and other customers
 non-participating member state
+non-participating member states
 non-practitioner
+non-proportional reinsurance
 non-regulated undertaking
 non-regulated undertaking carrying out financial activities
 non-reporting financial institution
+non-revolving unconditionally cancellable commitments
 non-significant benchmark
 non-sophisticated investor
 non-standard contract
+non-trading book
 nostro agent
+not assessed retail deposits
+not covered by dgs
+not treated as liquid assets for the depositing institution
 notification
 notification date
 notification for the provision of arrangements to facilitate access to an mtf or an otf
@@ -1215,17 +2021,31 @@ notifying authority
 nprfc
 nprfc investment
 nprfc preference shares
+numerator calculations
+numerator, denominator, ratio
 obligated party
 obliged entities
 obligor grade
 octs concerned
+off balance sheet items
+off-balance sheet and contingent funding obligations
 off-balance sheet exposures
+off-balance sheet exposures at gross notional amount
+off-balance sheet items
+off-balance sheet related products
+off-the-run status
 offer of securities to the public
 offeree company
 offering programme
 offeror
 ofi
 olaf
+on and off-balance sheet exposures
+on and off-balance sheet exposures (irb exposures)
+on- and off-balance sheet exposures
+on- and off-balance sheet exposures (sa exposures)
+on-balance sheet exposures
+on-balance sheet items (excluding derivatives, sfts and fiduciary assets, but including collateral)
 on-market hybrid transfer
 on-site inspection
 on-site inspection team
@@ -1235,16 +2055,24 @@ one-sided payment
 ongoing basis
 online marketplace
 open format
+open maturity
 operating licences
 operation
 operational agreement
+operational deposits
+operational deposits maintained for clearing, custody, cash management or other comparable services in the context of an established operational relationship
 operational risk
+operational risk (opr)
 operational risk category
 operational risk profile
 operational risk tolerance
 operator of essential services
 operator or supplier of a means of distance communication
 opinion
+opr
+opr advanced measurement approaches (ama)
+opr basic indicator approach (bia)
+opr standardised (tsa)/alternative standardised (asa) approaches
 option
 option 3
 order
@@ -1253,42 +2081,123 @@ orderly wind-down plan
 ordinary stock
 organised market place
 organised trading facility
+original exposure method
+original exposures
+original maturity
 original own funds
 originator
+otc
 otc derivative
+other
+other adjustments
+other assets
+other assets belonging to the trading book
+other assets belonging to the trading book — leverage ratio exposure value
+other assets belonging to the trading book — rwa
+other assets — accounting balance sheet value
+other assets — accounting value assuming no netting or other crm
+other collateral received
+other commitments
+other counterparty
 other equity
+other exposures
+other exposures; of which — leverage ratio exposure value — irb exposures
+other exposures; of which — leverage ratio exposure value — sa exposures
+other exposures; of which — rwa — irb exposures
+other exposures; of which — rwa — sa exposures
+other financial customers
+other inflows
+other intangible assets
+other intangible assets before deduction of deferred tax liabilities
+other items
+other legal entities
+other level 2b
+other level 2b assets
+other level 2b assets collateral
+other liabilities
+other monies due from non-financial customers
+other monies due from non-financial customers (except for central banks)
+other non credit-obligation assets
+other off-balance sheet and contingent funding obligations
+other off-balance sheet exposures
+other products and services
 other recurring costs ratio
 other relevant authorities and bodies
+other reserves
+other retail deposits
+other risk exposure amounts
+other risk exposure amounts of which: additional risk exposure amount
+other risk exposure amounts of which: additional stricter prudential requirements
+other risk exposure amounts of which: due to modified risk weights for targeting asset bubbles in the residential and commercial property
+other risk exposure amounts of which: of which: due to intra financial sector exposures
+other risk exposure amounts of which: requirements for large exposures
+other sources of encumbrance
+other transitional adjustments to at1 capital
+other transitional adjustments to cet1 capital
+other transitional adjustments to t2 capital
+others
+outflow
+outflows
+outflows from derivatives
+outflows from secured lending and capital market-driven transactions
+outflows from unsecured transactions/deposits
 outsourcing
+outstanding amount
 outstanding amounts of eligible loans
+over-the counter derivatives
+over-the-counter
 over-the-counter ( otc ) derivative instruments
 overall efficiency
+overall fraud rate
 overall fraud rate for each type of transaction
 overallotment facility
 overcollateralisation
 overdraft facility
+overdrafts
 overlapping
+overnight
+overnight market rate
 overriding reasons relating to the public interest
 overrunning
+own at1 instruments
+own cet1 instruments
+own covered bonds and abss issued and not yet pledged
 own covered bonds and asset-backed securities issued and not yet pledged
+own debt securities
+own debt securities issued non-available for encumbrance
+own debt securities issued other than own covered bonds or abss
 own debt securities issued other than own covered bonds or asset-backed securities
 own funds
 own funds decision
 own funds reduction
 own funds requirements
+own funds requirements weights
+own funds requirements — total
+own funds requirements: general credit exposures
+own funds requirements: securitisation exposures
+own funds requirements: trading book exposures
+own t2 instruments
 own-use covered bonds
 p/e
 p/tbv
 package transaction
+packaged retail
 packaged retail and insurance-based investment product
 packaged retail and insurance-based investment product manufacturer
 page
+paid up capital instruments
+paid up capital instruments and subordinated loans
+paid up capital instruments of which: capital instruments subscribed by public authorities in emergency situations
 pan-european atm/ans
 pan-european services
+parent credit institution
 parent credit institution in a member state
+parent financial holding company
 parent financial holding company in a member state
+parent investment firm
 parent investment firm in a member state
 parent undertaking
+part of interim or year-end profit not eligible
 participant
 participating countries
 participating interest
@@ -1302,6 +2211,7 @@ participation
 parties
 parties to the bid
 partner country
+partnership
 party
 passive corruption
 passive licence
@@ -1331,12 +2241,14 @@ payment system operator
 payment transaction
 payments on account
 penalties
+pension benefits
 pension funds
 pension scheme
 pension scheme arrangement
 percentage of days traded over the period considered
 performance scheme
 periodic penalty payments
+permanent establishmen
 permanent establishment
 person
 person closely associated
@@ -1348,10 +2260,14 @@ person professionally arranging transactions
 person selling a priip
 person with whom a relevant person has a family relationship
 person-to-person transfer of funds
+personal investment companies
 personal investment company
 persons acting in concert
 persons known to be close associates
 pfe
+pillar 2 requirement
+planned derivatives payables
+planned outflows related to renewal or extension of new retail or wholesale loans
 planning phase
 pogi
 policy area
@@ -1367,6 +2283,7 @@ portfolio management
 portfolio swap
 portfolio trade
 position
+positions in a basket for which an institution cannot determine the risk weight under the irb approach, and can alternatively be subject to a 1 250 % risk weight
 positive outcome of a review
 post office giro institution
 potential future exposure
@@ -1377,17 +2294,25 @@ pre-existing individual account
 pre-marketing
 preliminary report
 preparation
+present value
+present value (swap)
+present value (swap)/market value
 previous reporting reference periods
+previous years retained earnings
+price quotations
 prime broker
 principal purpose test
+principal repayment
 principal risk
 prior information notice
+private partnership
 probability distribution forecast
 probability of default
 process
 procurement
 procurement document
 product
+product type
 professional client
 professional investor
 professional misconduct
@@ -1395,24 +2320,46 @@ professional scepticism
 profit
 profit estimate
 profit forecast
+profit or loss attributable to owners of the parent
+profit or loss eligible
 programmable aid
 programme
 programming
 programming document
+project bonds
 promotional bank
 promotional entity
 property collective investment undertaking
 proportional share
 protected customers
+protection bought
+protection sold
+provided by credit institutions
+provided by financial customers other than credit institutions
+provided by other customers
+provided by sovereigns, central banks, mdbs and pses
 provider
 provision of a benchmark
 provisional period
 proxy
 proxy advisor
+prudent valuation
+pses
+pses not treated as sovereigns
+pses not treated as sovereigns — leverage ratio exposure value — irb exposures
+pses not treated as sovereigns — leverage ratio exposure value — sa exposures
+pses not treated as sovereigns — rwa — irb exposures
+pses not treated as sovereigns — rwa — sa exposures
+pses treated as sovereigns
+pses treated as sovereigns — leverage ratio exposure value — irb exposures
+pses treated as sovereigns — leverage ratio exposure value — sa exposures
+pses treated as sovereigns — rwa — irb exposures
+pses treated as sovereigns — rwa — sa exposures
 psp
 psu
 public
 public authorities
+public authorities in emergency situations
 public authority
 public contract
 public entity
@@ -1422,17 +2369,32 @@ public private partnership
 public sector body
 public sector corporate bond
 public sector entities
+public sector entities assets
+public sector entity assets
 public service obligation
 public service obligation compensation
 public undertaking
 public undertakings
 public undertakings operating in the manufacturing sector
 public-interest entities
+purchase assets other than securities from non-financial customers
+purchasing system
 qualified credit card issuer
 qualified investors
 qualifying central counterparty
+qualifying ciu shares/units
+qualifying ciu shares/units: underlying is asset-backed securities (commercial or individuals, member state, cqs1)
+qualifying ciu shares/units: underlying is asset-backed securities (residential or auto, cqs1)
+qualifying ciu shares/units: underlying is coins/banknotes and/or central bank exposure
+qualifying ciu shares/units: underlying is corporate debt securities (cqs2/3), shares (major stock index) or non-interest bearing assets (held by credit institutions for religious reasons) (cqs3-5)
+qualifying ciu shares/units: underlying is extremely high quality covered bonds
+qualifying ciu shares/units: underlying is high quality covered bonds
+qualifying ciu shares/units: underlying is level 1 assets excluding extremely high quality covered bonds
+qualifying ciu shares/units: underlying is level 2a assets
 qualifying eligible liabilities
 qualifying holding
+qualifying holdings outside the financial sector
+qualifying holdings outside the financial sector which can alternatively be subject to a 1 250 % risk weight
 qualifying investments
 qualifying money market fund
 qualifying social entrepreneurship fund
@@ -1452,20 +2414,33 @@ re-securitisation
 re-securitisation position
 re-use
 real asset
+real estate
 reasonable return on investment
 rebalancing of the portfolio
+receivables for cash collateral posted in derivatives transactions
+receivables for cash collateral posted in derivatives transactions — accounting value assuming no netting or other crm
+receivables for cash variation margin provided in derivatives transactions
 receiving csd
 receiving payment service provider
 recipient
 recipient company
+reciprocal cross holdings in at1 capital
+reciprocal cross holdings in cet1 capital
+reciprocal cross holdings in t2 capital
 recirculation
+recognisable domestic and foreign currency central government and central bank assets
 recognised agency
 recognised exchanges
 recognised third-country investment firms
 recommendation
+recovered loss events
 recovery
 recovery period
 recovery plan
+recurring costs ratio
+reduction for fully exempt inflows
+reduction for inflows subject to 75 % cap
+reduction for inflows subject to 90 % cap
 reference exchange rate
 reference interest rate
 reference outstanding amount
@@ -1475,8 +2450,23 @@ reference rate
 reference reporting population
 reference value
 regional allocation
+regional government/local authorities assets
+regional government/local authorities or public sector entities assets
+regional governments and local authorities not treated as sovereigns
+regional governments and local authorities not treated as sovereigns — leverage ratio exposure value — irb exposures
+regional governments and local authorities not treated as sovereigns — leverage ratio exposure value — sa exposures
+regional governments and local authorities not treated as sovereigns — rwa — irb exposures
+regional governments and local authorities not treated as sovereigns — rwa — sa exposures
+regional governments and local authorities treated as sovereigns
+regional governments and local authorities treated as sovereigns — leverage ratio exposure value — irb exposures
+regional governments and local authorities treated as sovereigns — leverage ratio exposure value — sa exposures
+regional governments and local authorities treated as sovereigns — rwa — irb exposures
+regional governments and local authorities treated as sovereigns — rwa — sa exposures
+regional governments or local authorities
 regional investment platforms
 regulated entity
+regulated financial institutions
+regulated financial institutions other than credit institutions
 regulated information
 regulated market
 regulated profession
@@ -1490,6 +2480,7 @@ related undertaking
 relevant account
 relevant agreement
 relevant authorities
+relevant authorities and bodies
 relevant authority
 relevant capital instruments
 relevant competent authorities
@@ -1518,6 +2509,8 @@ repayments
 repertoire
 replaced instrument
 replacement cost
+replacement cost associated with all derivatives transactions
+replacement costs
 replacement trade
 replacing instrument
 report of infringement
@@ -1528,8 +2521,12 @@ reported person
 reporting agent
 reporting agents
 reporting currency
+reporting date
 reporting financial institution
+reporting group
+reporting institution
 reporting person
+reporting population
 reporting year
 representation agreement
 representative
@@ -1537,6 +2534,8 @@ representative of a party
 representative office
 reprocessing
 repurchase agreement
+repurchase agreements
+repurchase agreements of which: central banks
 repurchase transaction
 request for consultation
 request-for-quote system
@@ -1547,9 +2546,14 @@ requesting member state
 requirement
 research data
 research or other information recommending or suggesting investment strategy
+residence of counterparty
 residence of investee
+residence of issuer/counterparty
+residence of the counterparty
 resident
+residual maturity
 resolution action
+resolution authority
 resolution authority of non-participating member states in the single resolution mechanism
 resolution date
 resolution decision date
@@ -1561,20 +2565,46 @@ resolution strategy
 resolution tool
 resolvability
 restoring the working order
+restricted-use central bank committed liquidity facilities
 restructuring plan
+retail
+retail bonds
+retail bonds with a residual maturity of less than 30 days
 retail client
 retail customers
 retail deposits
+retail deposits exempted from the calculation of outflows
+retail exposures
+retail exposures; of which — leverage ratio exposure value — irb exposures
+retail exposures; of which — leverage ratio exposure value — sa exposures
+retail exposures; of which — rwa — irb exposures
+retail exposures; of which — rwa — sa exposures
 retail investor
 retail payment system
+retail sme — leverage ratio exposure value — irb exposures
+retail sme — leverage ratio exposure value — sa exposures
+retail sme — rwa — irb exposures
+retail sme — rwa — sa exposures
+retail — other non-sme
+retail — other sme
+retail — qualifying revolving
+retail — secure by real estate non-sme
+retail — secure by real estate sme
+retained covered bonds issued
+retained earnings
+retained securitisations issued
 retainer
 retention of net economic interest
 retirement
 retirement benefits
+retirement fund
+return on investment
 reuse
 revaluation adjustments
 revenues
 review period
+revolving retail exposures
+revolving retail exposures; of which — nominal value
 right of use
 right to privacy
 rightholder
@@ -1582,20 +2612,37 @@ rights revenue
 risk
 risk adjusting multiplier
 risk assessment
+risk assessment report
 risk concentration
+risk exposure
+risk exposure amount
+risk exposure amount for contributions to the default fund of a ccp
+risk exposure amount for position, foreign exchange and commodities risks under standardised approaches (sa)
+risk exposure amount for positions, foreign exchange and commodity risks under internal models (im)
+risk exposure amounts
 risk factors
 risk indicator
 risk measure
 risk position
 risk profile of each institution
 risk profile of institutions
+risk weight
+risk weighted exposure amounts
+risk weighted exposure amounts for credit, counterparty credit and dilution risks and free deliveries
 risk-mitigation techniques
 risk-neutral distribution
 risk-sharing instrument for project bonds
 rollover risk
 rtc k-factor requirement
 rtf k-factor requirement
+rwa
+sa
+sa exposure
+sa exposure classes excluding securitisations positions
+sa exposures
+sa general credit risk adjustments
 sale of business tool
+sales accounting transactions
 sanctions
 scenario
 scenario analysis
@@ -1611,6 +2658,7 @@ second indirect client
 second reference period
 secondary market
 secretariat
+sector of the counterparty
 sectoral agreement
 sectoral competent authorities
 sectoral data
@@ -1618,31 +2666,75 @@ sectoral legislation
 sectoral rules
 sectors of economic activity
 secure electronic means
+secured by mortgages of immovable properties
+secured by mortgages of residential properties
+secured by mortgages of residential properties — leverage ratio exposure value — irb exposures
+secured by mortgages of residential properties — leverage ratio exposure value — sa exposures
+secured by mortgages of residential properties — rwa — irb exposures
+secured by mortgages of residential properties — rwa — sa exposures
+secured by mortgages on immovable properties
+secured by mortgages on immovable properties; of which — leverage ratio exposure value — irb exposures
+secured by mortgages on immovable properties; of which — leverage ratio exposure value — sa exposures
+secured by mortgages on immovable properties; of which — rwa — irb exposures
+secured by mortgages on immovable properties; of which — rwa — sa exposures
+secured by mortgages on immovable property
+secured cash inflows
+secured cash outflows
+secured funding
+secured lending
 secured lending transaction
 secured market rate
+secured transactions
 securities
 securities account
 securities financing transaction
+securities financing transactions
+securities financing transactions covered by a master netting agreement
+securities financing transactions covered by a master netting agreement — add-on for sft
 securities held in custody
 securities issued in a continuous or repeated manner
 securities lending
+securities maturing within 30 days
 securities or commodities lending
+securities received in an sft
+securities received in an sft that are recognised as an asset
+securities received in an sft that are recognised as an asset — accounting value assuming no netting or other crm
 securities settlement system
 securitisation
+securitisation exposures
+securitisation exposures — leverage ratio exposure value — irb exposures
+securitisation exposures — leverage ratio exposure value — sa exposures
+securitisation exposures — rwa — irb exposures
+securitisation exposures — rwa — sa exposures
 securitisation position
+securitisation positions which can alternatively be subject to a 1 250 % risk weight
 securitisation special purpose entities
 securitisation special purpose entity
+securitisations
+securitisations backed by residential loans
+securitisations backed by residential loans subject to transitional provision
+securitisations issued
+securitisations positions
+securitisations positions irb
+securitisations positions irb of which: resecuritisation
+securitisations positions sa
+securitisations positions sa of which: resecuritisation
+securitised assets
+securitization special purpose vehicle
 security
 security financial collateral arrangement
 self-regulatory body
 self-securitised eligible loans
 semi-automatic observing system
+senior
 senior management
 senior securitisation position
+senior unsecured securities
 sensors
 serious crimes
 serious criminal offences
 service
+service provider
 servicer
 services incidental to
 services linked to the payment account
@@ -1656,21 +2748,43 @@ settlement bank
 settlement date
 settlement fail
 settlement instruction
+settlement instructions
 settlement internaliser
 settlement period
 settlement restriction
 settlement system
+settlement/delivery risk in the non-trading book
+settlement/delivery risk in the trading book
 sfc2014
+sft cash conduit lending
+sft cash conduit lending (cash receivables) — accounting value assuming no netting or other crm
+sfts
+sfts covered by a master netting agreement
+sfts covered by a master netting agreement — accounting balance sheet value
+sfts covered by a master netting agreement — accounting value assuming no netting or other crm
+sfts monitoring
+sfts not covered by a master netting agreement
+sfts not covered by a master netting agreement — accounting balance sheet value
+sfts not covered by a master netting agreement — accounting value assuming no netting or other crm
+sfts not covered by a master netting agreement — add-on for sft
+sfts not subject to a cross-product netting agreement
+sfts not subject to a cross-product netting agreement — leverage ratio exposure value
+sfts not subject to a cross-product netting agreement — rwa
+sfts subject
+sfts: add-on for counterparty credit risk
 share capital
 share capital of investee
 share of the revenues
+share premium
 shared order book
 shared services
 shareholder
 shares
+shares (major stock index)
 shares in undertakings other than financial sector entities
 shares traded on a regulated market
 shell bank
+short positions
 significant benchmark
 significant branch
 significant credit institution
@@ -1682,6 +2796,7 @@ significant supervised entity in a euro area member state
 significant supervised entity in a participating non-euro area member state
 significant supervised group
 simple
+single resolution mechanism
 single shared platform
 sips operator
 size specific to the financial instrument
@@ -1689,8 +2804,16 @@ small and medium-sized enterprises
 small and non-interconnected investment firm
 small undertakings
 small-scale project
+sme exposures
+sme exposures — leverage ratio exposure value — irb exposures
+sme exposures — leverage ratio exposure value — sa exposures
+sme exposures — rwa — irb exposures
+sme exposures — rwa — sa exposures
 sme growth market
+sme portfolio
 smes
+social entrepreneurship fund
+solo basis
 solvency ratio
 sophisticated investor
 sovereign debt
@@ -1712,14 +2835,25 @@ spot market
 spot month contract
 srep decision
 srep report
+sspes
 stabilisation
 stability and variety of sources of funding pillar
+stable deposit
+stable deposits
+stable funding ratio
+staff members
 stake-building
+stakeholders
 stand-still
 standard contract
 standard licence
 standard link
+standard weight
+standardised approach
+standardised approach (sa)
+standardised approaches
 standardised industry coding system
+standardised method
 standardised mortgage products
 standardised retail savings and deposit products
 standing order
@@ -1733,10 +2867,12 @@ stock financing
 storage
 storage facility
 stress
+stress scenarios
 stress scenarios for the purposes of the liquidity coverage ratio
 structured arrangement
 structured finance instrument
 structured finance products
+structured financing instruments
 sts securitisation
 sub-asset class
 sub-class
@@ -1744,11 +2880,14 @@ sub-group
 subcontractor
 subject to effective taxation
 submitter
+subordinated loans
 subscribed capital key
 subsidiary
 subsidiary undertaking
 subsidy
 substantial error
+substitution effect of eligible credit risk mitigation techniques
+sum of long and short positions of trading book exposures
 summary cost indicator
 supervised contributor
 supervised entity
@@ -1766,12 +2905,21 @@ swap
 swaption
 switching
 synthetic form of retention
+synthetic holdings of at1 instruments
+synthetic holdings of cet1 instruments
+synthetic holdings of t2 instruments
 synthetic securitisation
 system
 system development life cycle
+system operator
 system user
 systematic internaliser
 systemic risk
+t2 capital
+t2 capital elements or deductions — other
+t2 instruments
+t2 instruments of financial sector entities where the institution does not have a significant investment
+t2 instruments of financial sector entities where the institution has a significant investment
 t2s advisory group
 t2s party
 tail institution
@@ -1779,8 +2927,12 @@ takeover bid
 taking up business
 target level
 target2 settlement day
+tax assets
+tax liabilities
 tax period
 tax relief
+tax residence
+taxpayer
 technical assistance
 technical issuer csd
 technology
@@ -1791,11 +2943,12 @@ terms of reference
 territorial allocation
 terrorist financing
 testing exception
-the annual supervisory fee for a given trade repository for a given year (n
-the capital requirement
-the indicator share of interbank loans and deposits in the european union
+third countries outflow
+third countries outflows
+third countries outflows — transfer restrictions or non- convertible currencies
 third country
 third country issuer
+third country market
 third country or territory
 third indirect client
 third parties
@@ -1810,21 +2963,102 @@ third-country reinsurance undertaking
 threshold
 tied agent
 tied agent passport notification
+tier 1 capital
+tier 1 capital — fully phased-in definition
+tier 1 capital — transitional definition
+tier 2 capital
 tier 2 instruments
 timing loss
 tin
 title transfer financial collateral arrangement
+total
+total amount received
 total annual supervisory fee
 total assets
+total assets as per published financial statements
 total assets, collateral received and own debt securities issued
+total collateral swaps
+total collateral swaps (all counterparties) where borrowed collateral has been used to cover short positions
+total collateral swaps collateralised derivatives
+total collateral swaps with central bank counterparties
+total collateral swaps with intragroup counterparties
+total derivatives exposures
+total encumbered assets
+total encumbered assets of which: central bank eligible
+total funding
+total funding of which: asset backed securities including abcp
+total funding of which: covered bonds
+total funding of which: retail deposits
+total funding of which: secured funding
+total funding of which: senior unsecured securities
+total funding of which: unsecured wholesale deposits
+total inflows
+total inflows from collateral swaps
+total interbank loans
 total interbank loans and deposits in the eu
+total leverage ratio exposure
+total leverage ratio exposure — using a fully phased-in definition of tier 1 capital
+total leverage ratio exposure — using a transitional definition of tier 1 capital
 total main balance sheet assets
+total net cash flows
+total non-encumbered assets
+total non-encumbered assets of which: central bank eligible
+total of which: covered bonds
+total of which: issued by financial corporations
+total of which: issued by general governments
+total of which: issued by non-financial corporations
+total of which: issued by other entities of the group
+total of which: non-trading book
+total of which: securitisations
+total on- and off-balance sheet exposures
+total on- and off-balance sheet exposures belonging to the non-trading book as well as exposures of the trading book subject to counterparty credit risk
+total on-balance sheet exposures
+total on-balance sheet exposures (excluding derivatives and sfts)
+total on-balance sheet exposures (excluding derivatives, sfts and fiduciary assets)
+total original exposure
+total original exposure of which: defaulted
+total outflows
+total outflows from collateral swaps
+total own funds
+total own funds — fully phased-in definition
+total own funds — transitional definition
 total risk exposure
+total risk exposure amount
+total risk exposure amount for credit valuation adjustment
+total risk exposure amount for operational risk (opr)
+total risk exposure amount for position, foreign exchange and commodities risks
+total risk exposure amount for settlement/delivery
+total risk exposure amount related to large exposures in the trading book
+total sft exposures
+total sources of encumbrance
+total unadjusted level 1 assets
+total unadjusted level 1 assets excluding extremely high quality covered bonds
+total unadjusted level 1 extremely high quality covered bonds
+total unadjusted level 2 assets
+total unadjusted level 2a assets
+total unadjusted level 2b assets
+total unadjusted liquid assets
+total weighted inflows
+total weighted outflows
+totals for transactions
 trade
+trade finance
+trade finance (memo item); of which — leverage ratio exposure value — irb exposures
+trade finance (memo item); of which — leverage ratio exposure value — sa exposures
+trade finance (memo item); of which — rwa — irb exposures
+trade finance (memo item); of which — rwa — sa exposures
+trade finance off-balance sheet related products
+trade finance; of which — leverage ratio exposure value
+trade finance; of which — rwa
 trade repository
+traded debt instruments
 trading activities
+trading book
+trading book exposures
 trading day
+trading facility
 trading party
+trading system
 trading venue
 trading venue member
 trading venue operator
@@ -1834,15 +3068,26 @@ tranche
 transaction
 transaction costs
 transaction data
+transaction identifier
 transactions
+transactions where there is an exposure to underlying assets
 transfer date
 transfer of a business carried on by a permanent establishment
 transfer of assets
 transfer of funds
 transfer of tax residence
+transfer restrictions
 transferable securities
 transferring payment service provider
+transitional adjustments
+transitional adjustments due to additional minority interests
+transitional adjustments due to additional recognition in at1 capital of instruments issued by subsidiaries
+transitional adjustments due to additional recognition in t2 capital of instruments issued by subsidiaries
+transitional adjustments due to grandfathered at1 capital instruments
+transitional adjustments due to grandfathered cet1 capital instruments
+transitional adjustments due to grandfathered t2 capital instruments and subordinated loans
 transitional period
+transitional provision
 transmission
 transnational producer organisation
 transparent market
@@ -1850,23 +3095,42 @@ transverse activities
 tre
 treasury asset management
 treasury shares
+treated as liquid assets for the depositing credit institution
 tri-party repo
 trust and company service providers
 trust or company service provider
 two-day spot
 two-sided payment
 type of banknote handling machine
+type of connection
+type of counterparty
 type of security
 ucits
 ucits home member state
 ucits host member state
 umbrella collective investment undertaking
 unavailable deposit
+unconditionally cancellable credit card commitments
+unconditionally cancellable credit cards commitments
+unconditionally cancellable credit cards commitments — nominal value
+under official export credit insurance scheme
+under official export credit insurance scheme — leverage ratio exposure value
+under official export credit insurance scheme — leverage ratio exposure value — irb exposures
+under official export credit insurance scheme — leverage ratio exposure value — sa exposures
+under official export credit insurance scheme — rwa
+under official export credit insurance scheme — rwa — irb exposures
+under official export credit insurance scheme — rwa — sa exposures
+underlying assets
 undertaking
 undertaking of a third country
 undertaking required to maintain separate accounts
+undertaking-specific
+undertaking-specific specific adjustment factor
 undertaking-specific specific adjustment factor for non-proportional reinsurance
+undertakings other than financial sector entities
 underwriting risk
+undrawn loans
+undrawn loans and advances to wholesale counterparties
 unfit euro banknotes
 unfunded credit protection
 union and efta branch
@@ -1881,6 +3145,8 @@ unknown client
 unrated position
 unrealised profit
 unsecured overnight market rate
+unsecured securities
+unsecured wholesale deposits
 unused credit entitlement
 use
 use for statistical purposes
@@ -1894,15 +3160,24 @@ valuation exposure
 valuation input
 valuation position
 value
+value adjustments
+value adjustments and provisions
+value adjustments due to the requirements for prudent valuation
 value at risk
 value date
+value of collateral extended
+value of collateral received
 value of settlement instructions
 value of the trade
+value of trading book exposures for internal models
 value-added services
 valuer
 variance measure 1
 variation margin
 vendor
+venture capital fund
+venue
+venue member
 verification
 vertical tranche
 vertically integrated undertaking
@@ -1912,14 +3187,21 @@ volume
 voting rights
 warning contact person
 weight applied to the countercyclical buffer rate in each country
+weighted average initial maturity
 weighted average life of the mmf
 weighted average maturity of the mmf
 weighted average original maturity
 weighted average residual maturity
+wholesale counterparties
 wholesale customer
+wholesale deposits
+wind-down plan
 winding up
 winding-up proceedings
+withdrawable central bank reserves
 withdrawn euro banknotes
+within a group or an ips if subject to preferential treatment
+within an ips or cooperative network if treated as liquid asset by the depositing institution
 work
 workers compensation insurance obligation
 write off

@@ -1,7 +1,15 @@
+import re
+import string
+
 from configparser import ConfigParser
 from typing import Tuple, List
 
 from cassis import Cas, TypeSystem
+
+'''
+Module to perform rule based term and definition extraction from tables.
+Terms and definitions are extracted from eur-lex files with table header: 'Legal references and instructions'.
+'''
 
 def rule_based_concept_extraction( cas: Cas, typesystem: TypeSystem, config: ConfigParser ):
     
@@ -14,9 +22,9 @@ def rule_based_concept_extraction( cas: Cas, typesystem: TypeSystem, config: Con
                 if tag_body.tagName == 'p' and tag_body.attributes =="class='tbl-hdr'" \
                 and tag_body.get_covered_text().strip() == 'Legal references and instructions':  
                     #if one of the p's inside the tbody tag contains "Legal references and instructions", then the tbody tag is one of the tables
-                    #to process via rule based system
+                    #to process via rule based system                    
                     remove_terms_and_definitions_ml( cas, typesystem, config, tag  )
-                    get_terms_and_definitions( cas, typesystem, config, tag ) 
+                    get_terms_and_definitions( cas, typesystem, config, tag )
                     break
 
 def get_terms_and_definitions(cas: Cas, typesystem: TypeSystem, config: ConfigParser, table_tag):
@@ -26,18 +34,22 @@ def get_terms_and_definitions(cas: Cas, typesystem: TypeSystem, config: ConfigPa
     
     term_cache = []  #list of all terms in the tbody tag
     for tag in cas.get_view( SofaID ).select_covered(Value_between_tagtype, table_tag):
-        if tag.tagName == 'td' and tag.attributes == "valign='top'class='table'":
+        if tag.tagName == 'td' and "valign='top'class='table'" in tag.attributes:
             for subtag in cas.get_view( SofaID ).select_covered(Value_between_tagtype, tag):
                 if subtag.tagName == 'p' and "class='ti-grseq-1'" in subtag.attributes:
-                    term = ( subtag.get_covered_text().strip(), subtag.begin, subtag.end )
+                    #strip enumeration from start of a term
+                    stripped_term=clean_term( subtag.get_covered_text() )
+                    term = ( stripped_term , subtag.begin, subtag.end )
                     definition = ( tag.get_covered_text().strip(), tag.begin, tag.end )
-                    if not subtag.get_covered_text().strip().startswith('of which'):
-                        term_cache.append(subtag.get_covered_text().strip())
+                    if not stripped_term.lower().startswith('of which'):
+                        term_cache.append( stripped_term )
                     else:
                         if term_cache:
                             term_text=term_cache[-1]+ ' '+term[0]
                             term=( term_text , term[1], term[2]  )
                     annotate_terms_and_definitions( cas, typesystem, config, (term, definition) )
+                    #break, because assume only one term (with class='ti-grseq-1' attribute ) in each 'td' tag
+                    break
 
 def remove_terms_and_definitions_ml( cas: Cas, typesystem: TypeSystem, config: ConfigParser, table_tag  ):
     
@@ -75,9 +87,24 @@ def annotate_terms_and_definitions(cas: Cas, typesystem: TypeSystem, config: Con
     definition_begin = term_and_definition[1][1]
     definition_end = term_and_definition[1][2]
     cas.get_view( SofaID ).add_annotation(
-        Token(begin=term_begin, end=term_end, tfidfValue=SCORE, term=term.lower()))
+        Token(begin=term_begin, end=term_end, tfidfValue=SCORE, term=term.strip().lower()  ))
     cas.get_view( SofaID ).add_annotation(
         Defined(begin=term_begin, end=term_end ))
     cas.get_view( SofaID ).add_annotation(
         Sentence(begin=definition_begin, end=definition_end, id='definition' ))
+    
+def clean_term( term ):
+    #remove possible enumeration from the term (i.e. 1.1. something ==> something)
+    
+    term=term.strip()
+    #remove a. from start of term
+    term=re.sub( "^[\.A-Za-z\/]*?(?=\.+?\s)", "", term  )
+    #remove 1.1. and 1.from start of term and 1.1*, 1.1**
+    term=re.sub( "^[0-9\.\/]*?(?=\.*?[\s\\*])","",term)
+    term=term.strip()
+    #remove (-), (+) and (*) from start of term
+    term=re.sub( "^\([-+*]\)\s*", "", term  )
 
+    term=term.lstrip( "*. " ).strip()
+    
+    return term
