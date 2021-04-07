@@ -45,7 +45,7 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
                                nMax = config[ 'TermExtraction' ].getint( 'MAX_LEN_NGRAM' ))
     terms_n_tfidf, _ = termextractor.get_terms( sentences, n_jobs=config['TermExtraction'].getint('N_JOBS'), \
                                              batch_size=config['TermExtraction'].getint('BATCH_SIZE'))
-    
+        
     print( f"Term extraction took { time.time() -start } seconds." )
 
     #get the definitions (previously annotated via definition detector)
@@ -98,7 +98,7 @@ def concept_extraction( NLP: English, trained_bert_bio_tagger: TrainedBertBIOTag
 
     #use the dependency annotation to determine which term is defined
     terms=add_defined_term_annotation( cas, typesystem, config )
-
+    
     # if BERT BIO tagger detected a term that was not found previously ==> annotate as tf-idf feature
     # if dependency parser is used instead of BERT BIO tagger, this list of terms will always be empty
     if terms:  
