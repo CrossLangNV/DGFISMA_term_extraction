@@ -55,6 +55,7 @@ def remove_terms_and_definitions_ml( cas: Cas, typesystem: TypeSystem, config: C
     
     defined_type = config[ 'Annotation' ].get( 'DEFINED_TYPE' )
     definition_type = config[ 'Annotation' ].get( 'DEFINITION_TYPE' )
+    paragraph_type= config[ 'Annotation' ].get( 'PARAGRAPH_TYPE' )
     SofaID = config[ 'Annotation' ].get( 'SOFA_ID' )
 
     #remove possible concepts detected by ML algorithm in the tables
@@ -66,6 +67,11 @@ def remove_terms_and_definitions_ml( cas: Cas, typesystem: TypeSystem, config: C
     
     for definition in cas.get_view( SofaID ).select_covered( definition_type , table_tag ):
         cas.get_view( SofaID ).remove_annotation(  definition )
+        
+    #remove possible paragraphs detected by ML algorithm in the tables
+
+    for par in cas.get_view( SofaID ).select_covered( paragraph_type , table_tag ):
+        cas.get_view( SofaID ).remove_annotation(  par )
 
         
 def annotate_terms_and_definitions(cas: Cas, typesystem: TypeSystem, config: ConfigParser, \
