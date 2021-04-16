@@ -109,6 +109,7 @@ def clean_term( term ):
     term=re.sub( "^[0-9\.\/]*?(?=\.*?[\s\\*])","",term)
     term=term.strip()
     #remove (-), (+) and (*) from start of term
+    term=term.lstrip( "*. " ).strip()
     term=re.sub( "^\([-+*]\)\s*", "", term  )
 
     term=term.lstrip( "*. " ).strip()
