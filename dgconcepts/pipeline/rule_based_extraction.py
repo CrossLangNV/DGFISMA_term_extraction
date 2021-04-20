@@ -132,7 +132,9 @@ def clean_term( term ):
 def get_offset_stripped_term( stripped_term, original_text  ):
     #find offset of stripped term in the original text
 
-    match=re.search(  stripped_term ,  original_text , re.IGNORECASE )
+    escaped_stripped_term=re.escape( stripped_term )
+    
+    match=re.search(  escaped_stripped_term ,  original_text , re.IGNORECASE )
 
     if match:
         offset_stripped_term=(match.span()[0], match.span()[1] )
