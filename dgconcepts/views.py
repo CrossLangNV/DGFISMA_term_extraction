@@ -62,7 +62,7 @@ class TermView(APIView):
             return JsonResponse(f)
 
         concept_extraction( NLP, TRAINED_BERT_BIO_TAGGER, cas, TYPESYSTEM, CONFIG, ( WHITELIST, BLACKLIST ) ) 
-        rule_based_concept_extraction( cas, TYPESYSTEM, CONFIG )
+        rule_based_concept_extraction( NLP, cas, TYPESYSTEM, CONFIG )
             
         output_json['cas_content']=base64.b64encode(  bytes( cas.to_xmi()  , 'utf-8' ) ).decode()   
         output_json['content_type']=f[ 'content_type']
