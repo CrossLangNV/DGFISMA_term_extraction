@@ -59,7 +59,6 @@ def add_token_and_lemma_annotation( NLP: English, cas: Cas, typesystem: TypeSyst
                 if not term:
                     continue
                 start_index = end_index - (len(term) - 1)
-                #print( start_index, end_index, term, text  )
                 if is_token(start_index, end_index, text):
                     if term not in terms_lemmas:
                         terms_lemmas[ term ]=lemmatize( NLP, term )

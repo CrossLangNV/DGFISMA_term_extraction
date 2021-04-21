@@ -62,10 +62,16 @@ def get_terms_and_definitions(NLP: English, cas: Cas, typesystem: TypeSystem, co
 
 def remove_terms_and_definitions_ml( cas: Cas, typesystem: TypeSystem, config: ConfigParser, table_tag  ):
     
+    token_type = config[ 'Annotation' ].get( 'TOKEN_TYPE' )
     defined_type = config[ 'Annotation' ].get( 'DEFINED_TYPE' )
     definition_type = config[ 'Annotation' ].get( 'DEFINITION_TYPE' )
     paragraph_type= config[ 'Annotation' ].get( 'PARAGRAPH_TYPE' )
     SofaID = config[ 'Annotation' ].get( 'SOFA_ID' )
+    
+    #remove possible terms detected by ML algorithm in the tables
+    
+    for term in cas.get_view( SofaID ).select_covered( token_type , table_tag ):
+        cas.get_view( SofaID ).remove_annotation(  term )
 
     #remove possible concepts detected by ML algorithm in the tables
     
@@ -104,7 +110,7 @@ def annotate_terms_and_definitions(NLP:English, cas: Cas, typesystem: TypeSystem
     definition_begin = term_and_definition[1][1]
     definition_end = term_and_definition[1][2]
     cas.get_view( SofaID ).add_annotation(
-        Token(begin=term_begin, end=term_end, tfidfValue=SCORE, term=term.strip().lower()  ))
+        Token(begin=term_begin, end=term_end, tfidfValue=SCORE, term=term.strip().lower()  ))    
     cas.get_view( SofaID ).add_annotation(
         Defined(begin=term_begin, end=term_end ))
     cas.get_view( SofaID ).add_annotation(
