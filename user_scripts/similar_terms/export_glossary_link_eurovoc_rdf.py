@@ -1,5 +1,7 @@
 import os
+import re
 import time
+import warnings
 from builtins import staticmethod
 from pathlib import Path
 from typing import Dict, List
@@ -44,10 +46,62 @@ def main(filename_terms: Path,
 
     start_time = time.time()
 
+    def filter_glossary_df(df: pd.DataFrame,
+                           key_rejected='Rejected'
+                           ) -> pd.DataFrame:
+        """
+        name⬤definition⬤lemma⬤acceptance_state
+
+        * Remove if it doesn't have a definition.
+        * Remove row if name only has one char.
+        * Remove row if name has no alpha characters.
+        * Refactor definition to remove newlines and double spaces.
+        * TODO check if other fields have newlines!
+
+        Returns:
+
+        """
+
+        df_clean = df.copy()
+        df = None  # Remove pointer TODO can be removed, but was to avoid changing df.
+
+        label_def = df_clean.keys()[1]
+        if label_def != 'definition':
+            warnings.warn(f"Expected def label to be 'definition': {label_def}", UserWarning)
+
+        label_lemma = df_clean.keys()[2]
+        if label_lemma != 'lemma':
+            warnings.warn(f"Expected lemma label to be 'lemma': {label_lemma}", UserWarning)
+
+        label_accepted = df_clean.keys()[3]
+        if label_accepted != 'acceptance_state':
+            warnings.warn(f"Expected accepted label to be 'acceptance_state': {label_accepted}", UserWarning)
+
+        l_def = df_clean.get(label_def)
+
+        def remove_rejected(df):
+            l_accepted = df.get(label_accepted)
+
+            if key_rejected not in l_accepted.unique():
+                warnings.warn(f"Expected rejected in column': {key_rejected} not in {l_accepted.unique()}", UserWarning)
+
+            # Remove rejected items
+            return df[l_accepted != key_rejected]
+
+        df_clean = remove_rejected(df_clean)
+
+        df_clean[label_def] = df_clean.apply(lambda row: _clean_string(row[label_def]), axis=1)
+
+        l_lemma = df_clean.get(label_lemma)
+
+        return df_clean # TODO
+
     # Get terms
     # A concept is defined as a term with a definition
     if os.path.splitext(filename_terms)[-1] in ('.csv', '.CSV'):
         df = csv_glossary_reader(filename_terms, delimiter=delimiter)
+        df = filter_glossary_df(df)
+
         label_term = df.keys()[0]
         l_terms = df[label_term].to_list()
         label_def = df.keys()[1]
@@ -165,6 +219,22 @@ def main(filename_terms: Path,
         print(f'Similarity to EuroVoc save: {(time.time() - start_time):.2f} s')
 
     return
+
+
+def _clean_string(s: str):
+    """
+    Remove newlines
+    Remove double spaces
+    Remove leading and trailing spaces
+
+    Args:
+        s:
+
+    Returns:
+
+    """
+
+    return re.sub(' +', ' ', ' '.join(s.splitlines())).strip()
 
 
 class RDFBufferedWriter:
