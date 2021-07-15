@@ -1,0 +1,16 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT distinct ?label1 ?label2
+
+WHERE {
+  ?concept1 a skos:Concept ;
+  	skos:prefLabel ?label1 ;
+    skos:definition ?definition1 ;
+    skos:relatedMatch ?concept2 .
+  ?concept2 a skos:Concept ;
+    skos:prefLabel ?label2 ;
+    skos:definition ?definition2 .
+
+  FILTER (?label1 != ?label2)
+}
+LIMIT 100

@@ -1,0 +1,10 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT distinct ?label1 ?definition1
+
+WHERE {
+  ?concept1 a skos:Concept ;
+  	skos:prefLabel ?label1 ;
+    skos:definition ?definition1 .
+}
+LIMIT 100
