@@ -5,11 +5,51 @@ import unittest
 from rdflib import Graph, Literal
 
 from user_scripts.similar_terms import export_glossary_link_eurovoc_rdf
-from user_scripts.similar_terms.export_glossary_link_eurovoc_rdf import RDFBufferedWriter
+from user_scripts.similar_terms.export_glossary_link_eurovoc_rdf import RDFBufferedWriter, _clean_string
 
 TERMS = ['word', 'second', 'the word', 'seconds', 'word', 'another one', 'economic', 'money', 'moneys', 'wordy',
          'public relationships', 'relationships', 'economical transactions', 'Financial transactions']
 DEFS = ['', 'SeCoNd', 'the_word', '2nd', 'word', '', 'eco', 'gold', 'Plural?', '+y', 'abc', 'abc', 'abc', 'abc']
+LEMMA = ['word', 'second', 'word', 'second', 'word', 'another one', 'economic', 'money', 'money', 'word',
+         'public relationship', 'relationship', 'economical transaction', 'financial transaction']
+STATE = ['Unvalidated'] * 14
+
+
+class TestCleanString(unittest.TestCase):
+    def test_clean_string(self):
+        s_in = 'A normal string'
+        s_out = s_in
+        s_pred = _clean_string(s_in)
+
+        self.assertEqual(s_pred, s_out, 'Not the expected output.')
+
+    def test_clean_string_newlines(self):
+        s_in = 'A normal string\n over multiple lines'
+        s_out = 'A normal string over multiple lines'
+        s_pred = _clean_string(s_in)
+
+        self.assertEqual(s_pred, s_out, 'Not the expected output.')
+
+    def test_clean_string_newlines_windows(self):
+        s_in = 'A normal string\r\n over multiple lines'
+        s_out = 'A normal string over multiple lines'
+        s_pred = _clean_string(s_in)
+
+        self.assertEqual(s_pred, s_out, 'Not the expected output.')
+
+    def test_clean_string_newlines_mac(self):
+        s_in = 'A normal string\r over multiple lines'
+        s_out = 'A normal string over multiple lines'
+        s_pred = _clean_string(s_in)
+
+        self.assertEqual(s_pred, s_out, 'Not the expected output.')
+
+    def test_clean_string_double_spaces(self):
+        s_in = ' All double   spaces    should be gone   !'
+        s_out = 'All double spaces should be gone !'
+        s_pred = _clean_string(s_in)
+
+        self.assertEqual(s_pred, s_out, 'Not the expected output.')
 
 
 class TestPipeline(unittest.TestCase):
@@ -113,8 +153,8 @@ class TestCSV(unittest.TestCase):
             with open(filename_glossary, mode='w') as fp:
                 delimiter = '⬤'
                 s_lines = ''
-                for term_i, def_i in zip(TERMS, DEFS):
-                    s_lines += delimiter.join([term_i, def_i]) + '\n'
+                for term_i, def_i, lemma, state in zip(TERMS, DEFS, LEMMA, STATE):
+                    s_lines += delimiter.join([term_i, def_i, lemma, state]) + '\n'
 
                 fp.writelines(s_lines)
             filename_rdf = os.path.join(tmp_dir, 'glossary_link_eurovoc.turtle')

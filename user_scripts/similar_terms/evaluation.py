@@ -85,14 +85,14 @@ class SimTerms:
 
     def align(self, voc1: List[str], voc2: List[str], threshold=THRESHOLD):
         """ Aligns 2 vocs based on similarity of words.
-    #
-    #     Args:
-    #         voc1:
-    #         voc2:
-    #
-    #     Returns:
-    #
-    #     """
+
+        Args:
+            voc1:
+            voc2:
+
+        Returns:
+
+         """
 
         voc1 = list(set(voc1))
         voc2 = list(set(voc2))
