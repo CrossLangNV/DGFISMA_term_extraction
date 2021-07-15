@@ -2,7 +2,6 @@ import unittest
 
 import numpy as np
 
-from examples.similar_terms_main import SimilarWords
 from similar_terms.methods import SimilarWordsRetriever, argpartitionsort
 from similar_terms.preprocessing import preprocessing_word
 
@@ -268,28 +267,31 @@ class TestSimilarWords(unittest.TestCase):
     def test_most_similar_return(self):
         corpus = ['one', 'two', 'three']
         word = 'four'
-        sim_words = SimilarWords(corpus=corpus)
 
+        sim_words = SimilarWordsRetriever(corpus)
         k = 2
-        retrieved_words, idx, distances = sim_words.get_similar_terms(word, k=k)
+        d_sim = sim_words.get_similar_k(word, k=k)
+        retrieved_words = d_sim.orginal_terms()
+        scores = d_sim.scores()
+        with self.subTest('Equal length'):
+            self.assertEqual(len(retrieved_words), len(scores), 'outputs should have equal length')
 
-        self.assertEqual(len(retrieved_words), len(idx), 'outputs should have equal length')
-        self.assertEqual(len(retrieved_words), len(distances), 'outputs should have equal length')
-
-        for a, b in zip(distances, sorted(distances)):
-            self.assertEqual(a, b, 'output should be sorted according to distances')
+        with self.subTest('Sorting'):
+            for a, b in zip(scores, sorted(scores, reverse=True)):
+                self.assertEqual(a, b, 'output should be sorted according to distances')
 
     def test_most_similar(self):
         """If the term is in the corpus, the most similar term should be the term itself.
         """
 
         corpus = ['one', 'two', 'three']
-
         word = corpus[-1]
-        sim_words = SimilarWords(corpus=corpus)
+
+        sim_words = SimilarWordsRetriever(corpus)
 
         k = 1
-        retrieved_words, _, _ = sim_words.get_similar_terms(word, k=k)
+        d = sim_words.get_similar_k(word, k=k)
+        retrieved_words = d.orginal_terms()
 
         self.assertEqual(len(retrieved_words), k, 'Only k most similar terms should be retrieved!')
 
@@ -298,12 +300,13 @@ class TestSimilarWords(unittest.TestCase):
     def test_check_in_corpus(self):
         corpus = ['one', 'two', 'three']
 
-        word = 'boogus'
+        word = 'bogus'
 
         assert word not in corpus, 'BUG IN TEST. This test only makes sense if word not in corpus'
 
-        sim_words = SimilarWords(corpus=corpus)
-        retrieved_words, _, _ = sim_words.get_similar_terms(word, k=2)
+        sim_words = SimilarWordsRetriever(corpus)
+        d = sim_words.get_similar_k(word, k=2)
+        retrieved_words = d.orginal_terms()
 
         for retrieved_word in retrieved_words:
             self.assertIn(retrieved_word, corpus, 'retrieved word should be member of corpus')
