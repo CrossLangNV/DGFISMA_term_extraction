@@ -19,6 +19,28 @@ class Vocabulary(list):
     def __init__(self, l: List[str]):
         super(Vocabulary, self).__init__(map(str, l))
 
+class SimilarTerms(dict):
+    _KEY_ORIG_TERMS = 'original terms'
+    _KEY_SCORE = 'score'
+
+    def __init__(self, terms_orig, similarities):
+        """ A dictionary for the retrieved similar terms
+
+        Args:
+            terms_orig: List of retrieved similar terms.
+            similarities: Matching list with the similarity scores
+        """
+        super(SimilarTerms, self).__init__()
+
+        self.update({self._KEY_ORIG_TERMS: terms_orig,
+                     self._KEY_SCORE: similarities})
+
+    def orginal_terms(self):
+        return self[self._KEY_ORIG_TERMS]
+
+    def scores(self):
+        return self[self._KEY_SCORE]
+
 
 class SimilarWordsRetriever:
     """ Based on a vocubaluray, can find similar words.
@@ -97,14 +119,9 @@ class SimilarWordsRetriever:
     def get_similar_k(self,
                       term,
                       k=1,
-                      include_self=True):
-        # TODO flag to exclude self!, default on
-        # TODO exclude based on preprocessing or we could just exclude sim of 1
-
+                      include_self=True)->SimilarTerms:
         sim = self._get_sim(term)
 
-        # TODO remove self.
-        # set sim == 0 to -1?
         if not include_self:
             sim[sim >= 1.] = -np.inf  # Make sure, it's lowest on list.
 
@@ -112,7 +129,7 @@ class SimilarWordsRetriever:
 
         return self._get_similar_from_idx(sim, idx_sorted_k)
 
-    def get_similar_thresh(self, term, thresh=.5):
+    def get_similar_thresh(self, term, thresh=.5) ->SimilarTerms:
         # TODO flag to excluse self, default on
 
         sim = self._get_sim(term)
@@ -121,7 +138,7 @@ class SimilarWordsRetriever:
 
         return self._get_similar_from_idx(sim, idx_sorted_k)
 
-    def _get_similar_from_idx(self, sim, idx):
+    def _get_similar_from_idx(self, sim, idx) -> SimilarTerms:
         """ Shared private method
 
         Args:
@@ -157,11 +174,6 @@ class SimilarWordsRetriever:
         sim = float(get_similarity_fast(emb_term1, emb_term2))
         return sim
 
-
-class SimilarTerms(dict):
-    def __init__(self, terms_orig, similarities):
-        self.update({'original terms': terms_orig,
-                     'score': similarities})
 
 
 def argpartitionsort(x: list, k: int, reverse: bool = False):

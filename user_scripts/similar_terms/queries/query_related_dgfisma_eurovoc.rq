@@ -1,0 +1,13 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT distinct ?label1 ?concept2
+
+WHERE {
+  ?concept1 a skos:Concept ;
+  	skos:prefLabel ?label1 ;
+    skos:definition ?definition1 ;
+    skos:relatedMatch ?concept2 .
+  FILTER regex(str(?concept1), "dgfisma", "i")
+  FILTER (regex(str(?concept2), "eurovoc", "i"))
+}
+LIMIT 100
