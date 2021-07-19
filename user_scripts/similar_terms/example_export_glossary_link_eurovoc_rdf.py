@@ -8,7 +8,7 @@ ROOT = os.path.join(os.path.dirname(__file__), '../..')
 FILENAME_CONCEPTS = os.path.abspath(os.path.join(ROOT, 'media/tmp/concepts_2021_07_15.csv'))
 
 # Only saves to Turtle store, to save time.
-FILENAME_RDF = os.path.abspath(os.path.join(ROOT, 'media/tmp/example_export_glossary.ttl'))
+FILENAME_RDF = os.path.abspath(os.path.join(ROOT, 'media/tmp/similar_concepts_eurovoc_2021_07_15.ttl'))
 
 def main():
     start_time = time.time()
