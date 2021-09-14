@@ -141,6 +141,7 @@ annual accounts
 annual contribution
 annual contribution of each institution
 annual contributions
+annual contributions of institutions
 annual costs
 annual operating expenses
 annual supervisory fee
