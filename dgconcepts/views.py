@@ -47,6 +47,10 @@ class TermView(APIView):
         
         output_json={}
         
+        if 'annual contributions of institutions' in WHITELIST:
+            print( "latest version" )
+        print( "test" )
+        
         try:
             decoded_cas_content = base64.b64decode(f['cas_content']).decode('utf-8')
         except binascii.Error:
